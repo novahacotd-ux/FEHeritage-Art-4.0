@@ -2,209 +2,181 @@
 
 import React, { useState, useEffect } from 'react';
 
-// Dữ liệu người dùng giả (Giữ nguyên)
-const authorData = {
-    name: "Nghệ Sĩ AI",
-    avatar: "https://cdn-icons-png.flaticon.com/512/1995/1995515.png",
-    followLink: "#"
-};
+import DinhDocLap from "../assets/Dinh Độc Lập.png";
+import diadaocuchi from "../assets/địa đạo Củ Chi.png";
+import chuagiaclam from "../assets/Chùa Giác Lâm.png";
+import langlevanduyet from "../assets/Lăng Lê Văn Duyệt.png";
+import baotangmithuat from "../assets/Bảo tàng Mỹ thuật Thành phố Hồ Chí Minh.png";
+import hoiquantuethanh from "../assets/Hội quán Tuệ Thành (Chùa Bà).png";
+import toadaisuquan from "../assets/Tòa Đại sứ quán Mỹ (nay là Tổng Lãnh sự quán Hợp chủng quốc Hoa Kỳ tại TP. Hồ Chí Minh).png";
+import caumong from "../assets/Cầu Mống.png";
 
-// Dữ liệu giả cho "More like this" (Giữ nguyên)
-const mockRelatedTags = ['Lịch sử', 'Văn hóa', 'Hà Nội', 'Kiến trúc', 'Ban đêm', 'Hồ Gươm', 'Du lịch'];
-const mockRelatedImages = [
-    { id: 1, src: 'https://images.pexels.com/photos/1683989/pexels-photo-1683989.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Đền Ngọc Sơn' },
-    { id: 2, src: 'https://images.pexels.com/photos/3584437/pexels-photo-3584437.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Phố cổ Hà Nội' },
-    { id: 3, src: 'https://images.pexels.com/photos/10795557/pexels-photo-10795557.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Hoàng thành Thăng Long' },
-    { id: 4, src: 'https://images.pexels.com/photos/10795557/pexels-photo-10795557.jpeg?auto=compress&cs=tinysrgb&w=400', alt: 'Hoàng thành Thăng Long' },
+const authorList = [
+  { name: "Nguyễn Vân Anh", avatar: "https://randomuser.me/api/portraits/women/68.jpg" },
+  { name: "Trần Minh Khôi", avatar: "https://randomuser.me/api/portraits/men/45.jpg" },
+  { name: "Lê Ngọc Hân",     avatar: "https://randomuser.me/api/portraits/women/21.jpg" },
+  { name: "Bùi Lan Hương",   avatar: "https://randomuser.me/api/portraits/women/90.jpg" },
+  { name: "Sài Gòn Ký Sự",   avatar: "https://cdn-icons-png.flaticon.com/512/9131/9131529.png" },
 ];
 
-const ImageModal = ({ imageData, onClose, onNext, onPrev }) => {
-    const [likeStatus, setLikeStatus] = useState('none');
-    const [downloading, setDownloading] = useState(false);
+// QUAN TRỌNG: Dùng đúng index trong mảng galleryData của bạn!
+const relatedImages = [
+  { index: 0,  src: DinhDocLap,       caption: "Dinh Độc Lập – nơi xe tăng 843 húc đổ cổng..." },
+  { index: 1,  src: diadaocuchi,      caption: "Địa đạo Củ Chi – kỳ quan lòng đất..." },
+  { index: 3,  src: chuagiaclam,      caption: "Chùa Giác Lâm – chùa cổ nhất Sài Gòn" },
+  { index: 7,  src: langlevanduyet,   caption: "Lăng Lê Văn Duyệt – Lăng Ông Bà Chiểu" },
+  { index: 4,  src: baotangmithuat,   caption: "Bảo tàng Mỹ thuật – kiến trúc Đông Dương" },
+  { index: 9,  src: hoiquantuethanh,  caption: "Chùa Bà Thiên Hậu Chợ Lớn" },
+  { index: 16, src: toadaisuquan,     caption: "Nơi trực thăng Mỹ rời Sài Gòn 30/4/1975" },
+  { index: 33, src: caumong,          caption: "Cầu Mống – thiết kế của Gustave Eiffel" },
+];
 
-    // Xử lý sự kiện nhấn phím (Giữ nguyên)
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') onClose();
-            if (e.key === 'ArrowRight') onNext();
-            if (e.key === 'ArrowLeft') onPrev();
-        };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [onClose, onNext, onPrev]);
+const relatedTags = ["Sài Gòn xưa", "Di tích lịch sử", "Chùa cổ", "30/4/1975", "Kiến trúc Pháp"];
 
-    // Hàm xử lý tải ảnh (Giữ nguyên)
-    const handleDownload = async () => {
-        setDownloading(true);
-        try {
-            const response = await fetch(imageData.src);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(new Blob([blob]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', `${imageData.alt || 'image'}.jpg`);
-            document.body.appendChild(link);
-            link.click();
-            link.parentNode.removeChild(link);
-            window.URL.revokeObjectURL(url);
-        } catch (error) {
-            console.error('Error downloading image:', error);
-        } finally {
-            setDownloading(false);
-        }
+const ImageModal = ({ imageData, onClose, onNext, onPrev, onImageSelect, currentIndex, totalImages }) => {
+  const [downloading, setDownloading] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const author = authorList[Math.floor(Math.random() * authorList.length)];
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setIsTransitioning(true);
+    setTimeout(() => { onNext(); setIsTransitioning(false); }, 200);
+  };
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setIsTransitioning(true);
+    setTimeout(() => { onPrev(); setIsTransitioning(false); }, 200);
+  };
+
+  // ĐÃ SỬA: Dùng đúng index thay vì id - 1
+  const handleRelatedClick = (index) => {
+    onImageSelect(index);        // ← Truyền đúng index
+    onClose();                   // ← Đóng modal hiện tại
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // ← Cuộn lên đầu
+  };
+
+  const handleDownload = () => {
+    setDownloading(true);
+    const a = document.createElement('a');
+    a.href = imageData.src;
+    a.download = `${imageData.alt || 'heritage'}.jpg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => setDownloading(false), 1000);
+  };
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') handleNext(e);
+      if (e.key === 'ArrowLeft') handlePrev(e);
     };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [onNext, onPrev, onClose]);
 
-    if (!imageData) return null;
+  if (!imageData) return null;
 
-    return (
-        // Lớp phủ nền (Giữ nguyên)
-        <div 
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-            onClick={onClose} 
-        >
-            {/* Nút đóng (Giữ nguyên) */}
-            <button onClick={onClose} className="absolute top-4 left-4 z-[60] text-white/70 hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+  return (
+    <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4 md:p-8" onClick={onClose}>
+      {/* Nút điều hướng */}
+      <button onClick={onClose} className="absolute top-4 right-4 z-50 text-white hover:scale-110 transition">
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <button onClick={handlePrev} className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-4 bg-white/10 rounded-full backdrop-blur hover:bg-white/30 transition hidden md:block">
+        <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button onClick={handleNext} className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-4 bg-white/10 rounded-full backdrop-blur hover:bg-white/30 transition hidden md:block">
+        <svg className="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* Modal chính - RỘNG + ĐẸP */}
+      <div
+        className="bg-amber-50 rounded-3xl shadow-2xl w-full max-w-7xl max-h-[94vh] overflow-hidden flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="bg-gradient-to-r from-amber-100 to-orange-100 p-6 flex items-center justify-between border-b border-amber-200">
+          <div className="flex items-center gap-4">
+            <img src={author.avatar} alt="" className="w-14 h-14 rounded-full ring-4 ring-amber-200 shadow-md" />
+            <div>
+              <p className="font-bold text-amber-900 text-xl">{author.name}</p>
+              <p className="text-amber-700">Đồng hành cùng dòng chảy lịch sử</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <button className="px-6 py-3 bg-amber-200 text-amber-900 rounded-xl font-semibold hover:bg-amber-300 transition shadow">
+              Like
             </button>
-            
-            {/* Nút điều hướng TRÁI (Giữ nguyên) */}
-            <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-4 top-1/2 -translate-y-1/2 z-[55] p-3 bg-white/20 rounded-full text-white hover:bg-white/30 transition-all hidden md:block">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-
-            {/* Nút điều hướng PHẢI (Giữ nguyên) */}
-            <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-4 top-1/2 -translate-y-1/2 z-[55] p-3 bg-white/20 rounded-full text-white hover:bg-white/30 transition-all hidden md:block">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-
-            {/* Khung Modal Chính (Giữ nguyên) */}
-            <div 
-                className="relative bg-white rounded-lg shadow-2xl overflow-hidden max-w-7xl w-full max-h-[90vh] flex flex-col"
-                onClick={(e) => e.stopPropagation()} 
+            <button
+              onClick={handleDownload}
+              className="px-7 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:shadow-lg transition flex items-center gap-2"
             >
-                {/* Header (Giữ nguyên) */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                    <div className="flex items-center gap-3">
-                        <img src={authorData.avatar} alt={authorData.name} className="h-8 w-8 rounded-full" />
-                        <div className="flex flex-col">
-                            <span className="font-semibold text-gray-800 text-sm md:text-base">{authorData.name}</span>
-                            <a href={authorData.followLink} className="text-blue-600 text-xs md:text-sm hover:underline">Follow</a>
-                        </div>
-                    </div>
+              {downloading ? "Đang tải..." : "Tải xuống"}
+            </button>
+          </div>
+        </div>
 
-                    <div className="flex items-center gap-3">
-                    {/* Nút Like (Giữ nguyên) */}
-                        <button 
-                            onClick={() => setLikeStatus(prev => prev === 'liked' ? 'none' : 'liked')}
-                            className={`flex items-center gap-1.5 p-2 rounded-lg text-sm md:text-base transition-colors duration-200 
-                                        ${likeStatus === 'liked' ? 'bg-green-100 text-green-700' : 'text-gray-600 hover:bg-gray-100'}`}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                {likeStatus === 'liked' ? (
-                                    <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.562 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-                                ) : (
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                )}
-                            </svg>
-                            <span className="hidden md:inline">Like</span>
-                        </button>
+        {/* Nội dung */}
+        <div className="flex-1 overflow-y-auto p-8">
+          <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}>
+            <img
+              src={imageData.src}
+              alt={imageData.alt}
+              className="w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl mx-auto"
+            />
+          </div>
 
-                        {/* Nút Dislike (Giữ nguyên) */}
-                        <button 
-                            onClick={() => setLikeStatus(prev => prev === 'disliked' ? 'none' : 'disliked')}
-                            className={`flex items-center gap-1.5 p-2 rounded-lg transition-colors 
-                                        ${likeStatus === 'disliked' ? 'bg-red-100 text-red-700' : 'text-gray-600 hover:bg-gray-100'}`}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                {likeStatus === 'disliked' ? (
-                                    <path d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.106-1.79l-.05-.025A4 4 0 0011.057 2H5.642a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.438 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.2-2.4a4 4 0 00.8-2.4z" />
-                                ) : (
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                                )}
-                            </svg>
-                            <span className="hidden md:inline">Dislike</span>
-                        </button>
+          <p className="text-center text-amber-900 font-medium text-xl leading-relaxed mt-8 mb-12">
+            {imageData.caption}
+          </p>
 
-                        {/* Nút Download (Giữ nguyên) */}
-                        <button onClick={handleDownload} 
-                                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-white text-sm md:text-base transition-colors duration-200 
-                                        ${downloading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600'}`}>
-                            {downloading ? (
-                                <>
-                                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                    <span>Đang tải...</span>
-                                </>
-                            ) : (
-                                <>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                    </svg>
-                                    <span className="hidden md:inline">Tải xuống</span>
-                                </>
-                            )}
-                        </button>
-                    </div>
+          <div>
+            <h3 className="text-3xl font-bold text-amber-900 text-center mb-8">Khám phá thêm</h3>
+            
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              {relatedTags.map(tag => (
+                <span key={tag} className="px-5 py-2.5 bg-amber-100 text-amber-800 rounded-full text-sm font-medium hover:bg-amber-200 transition cursor-pointer">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {relatedImages.map(item => (
+                <div
+                  key={item.index}
+                  onClick={() => handleRelatedClick(item.index)}
+                  className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300"
+                >
+                  <img src={item.src} alt="" className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <p className="text-white font-medium text-sm line-clamp-2">{item.caption}</p>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-                {/* Vùng nội dung có thể cuộn (Giữ nguyên) */}
-                <div className="flex-1 overflow-y-auto">
-                
-                    {/* Phần chứa ảnh (Giữ nguyên) */}
-                    <div className="flex items-center justify-center p-4 bg-gray-50">
-                        <img 
-                            src={imageData.src} 
-                            alt={imageData.alt} 
-                            className="max-w-full max-h-[70vh] object-contain rounded-lg shadow-md" 
-                        />
-                    </div>
-
-                    {/* Footer (caption) (Giữ nguyên) */}
-                    <div className="p-4 pt-3 text-gray-800 text-lg text-center">
-                        <p>{imageData.caption}</p>
-                    </div>
-
-                    {/* Phần "More Like This" (Giữ nguyên) */}
-                    <div className="p-4 border-t border-gray-200">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">More like this</h3>
-                        
-                        {/* Related Tags (Giữ nguyên) */}
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {mockRelatedTags.map(tag => (
-                                <button key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">
-                                    {tag}
-                                </button>
-                            ))}
-                        </div>
-                        
-                        {/* === THAY ĐỔI: Grid ảnh to hơn === */}
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4"> {/* <-- THAY ĐỔI TỪ md:grid-cols-4 */}
-                            {mockRelatedImages.map(img => (
-                                <div key={img.id} className="group relative rounded-lg overflow-hidden cursor-pointer" 
-                                     onClick={() => alert('Chuyển đến ảnh ' + img.alt)} 
-                                >
-                                    <img 
-                                        src={img.src} 
-                                        alt={img.alt} 
-                                        className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-110" // <-- THAY ĐỔI TỪ h-32
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div> 
-            </div> 
-        </div> 
-    );
+        <div className="text-center py-4 bg-amber-100 text-amber-800 font-semibold border-t border-amber-200">
+          {currentIndex + 1} / {totalImages}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ImageModal;
