@@ -87,7 +87,7 @@ export default function ThanhVienVIP() {
   };
 
   return (
-    <div style={{ background: '#f6eadf', minHeight: '100vh', width: '100%' }}>
+    <div style={{ background: '#f6eadf', minHeight: '100vh', width: '100%', paddingBottom: '3rem', paddingTop: '3rem' }}>
       <div className="max-w-7xl mx-auto py-12 px-6 bg-white rounded-2xl shadow-lg" style={{ boxShadow: '0 4px 32px 0 rgba(0,0,0,0.04)' }}>
         <h1 className="text-4xl font-bold text-orange-600 mb-4 text-center">🌟 Thành Viên VIP & Premium</h1>
         <p className="text-gray-600 text-center mb-10">
