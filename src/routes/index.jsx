@@ -5,6 +5,11 @@ import AppLayout from '../components/layouts/AppLayout.jsx';
 import MainLayout from '../components/layouts/MainLayout.jsx';
 import Cart from '../components/Cart.jsx';
 import Checkout from '../pages/Store/Checkout.jsx';
+import MuaTranhIn from '../pages/Store/MuaTranhIn.jsx';
+import ChiTietTranh from '../pages/Store/ChiTietTranh.jsx';
+import DonatUngHo from '../pages/Store/DonatUngHo.jsx';
+import ThanhVienVIP from '../pages/Store/ThanhVienVIP.jsx';
+import ThankYou from '../pages/Store/ThankYou.jsx';
 import HeroesList from '../pages/Events-News/HeroesList.jsx';
 import SurveyPage from '../pages/SurveyPage';
 import TrangChu from '../pages/Home/Home.jsx';
@@ -173,6 +178,35 @@ const router = createBrowserRouter([
           {
             path: 'congngheai',
             element: <CongNghe />,
+          },
+          // Store Routes
+          {
+            path: 'mua-tranh-in',
+            element: <MuaTranhIn />,
+          },
+          {
+            path: 'chi-tiet/:id',
+            element: <ChiTietTranh />,
+          },
+          {
+            path: 'cart',
+            element: <Cart />,
+          },
+          {
+            path: 'donat-ung-ho',
+            element: <DonatUngHo />,
+          },
+          {
+            path: 'thanh-vien-vip',
+            element: <ThanhVienVIP />,
+          },
+          {
+            path: 'checkout',
+            element: <Checkout />,
+          },
+          {
+            path: 'thank-you',
+            element: <ThankYou />,
           },
           // Account & Support Pages
       

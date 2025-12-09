@@ -88,11 +88,6 @@ export default function MuaTranhIn() {
         </div>
       )}
       <Toaster position="top-right" />
-      {/* Sidebar bộ lọc */}
-      <aside className="w-72 bg-white shadow-md p-6 border-r hidden md:block">
-        <h1 className="text-2xl font-bold text-orange-600 mb-6">🖼️ Cửa hàng HA4</h1>
-        {/* Có thể bổ sung các filter, search, ... ở đây */}
-      </aside>
       {/* Danh sách tranh */}
       <main className="flex-1 p-6 md:p-10">
         <motion.div

@@ -92,7 +92,7 @@ export default function DonatUngHo() {
   );
 
   return (
-    <div className="bg-gradient-to-br from-orange-50 via-white to-amber-50 min-h-screen">
+    <div className="bg-gradient-to-br from-orange-50 via-white to-amber-50 min-h-screen pb-12">
       <div className="max-w-6xl mx-auto py-12 px-6 text-center">
         {/* HERO */}
         <div className="mb-12">
