@@ -1,9 +1,11 @@
 // src/components/PaymentMethods.jsx
 import React, { useState } from "react";
 import { CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import momoQR from "../assets/momo.jpg";
 
 export default function PaymentMethods({ total = 0, onPay, defaultMethod = "momo" }) {
+  const navigate = useNavigate();
   const [method, setMethod] = useState(defaultMethod);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -38,7 +40,7 @@ export default function PaymentMethods({ total = 0, onPay, defaultMethod = "momo
         setCountdown(time);
         if (time === 0) {
           clearInterval(timer);
-          window.location.href = "/thank-you";
+          navigate("/thank-you");
         }
       }, 1000);
     }, 1500);
