@@ -160,6 +160,32 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.27.1"
 
+"@coreui/coreui@^5.4.3", "@coreui/coreui@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.npmjs.org/@coreui/coreui/-/coreui-5.5.0.tgz"
+  integrity sha512-ut0LHYck+VHl+sKExaClr3NXl94ihyjUra01ybaPS9YMBVD5IT0lhV4pPBjPyi9xoxL/wBOVc5zzOSliCxBEGw==
+  dependencies:
+    html-entities "^2.6.0"
+
+"@coreui/icons-react@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/@coreui/icons-react/-/icons-react-2.3.0.tgz"
+  integrity sha512-s4jjCrtHnqnu30GLcfDbtWxEaB7imBQ5E6w89JzP5Jd6EV6o38tR0RNix4nXRubayJKAvIjlwZWOKEFNG0NM7Q==
+
+"@coreui/icons@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/@coreui/icons/-/icons-3.0.1.tgz"
+  integrity sha512-u9UKEcRMyY9pa4jUoLij8pAR03g5g6TLWV33/Mx2ix8sffyi0eO4fLV8DSTQljDCw938zt7KYog5cVKEAJUxxg==
+
+"@coreui/react@^5.9.2":
+  version "5.9.2"
+  resolved "https://registry.npmjs.org/@coreui/react/-/react-5.9.2.tgz"
+  integrity sha512-5cXo2E17AaLy9mz6RW7XypNjO+HmyvVseF3O88x6sYuYon4RFA5EDjpE8Pb4WJtXOoLgN7GwlDOtzBslVPbDlw==
+  dependencies:
+    "@coreui/coreui" "^5.4.3"
+    "@popperjs/core" "^2.11.8"
+    prop-types "^15.8.1"
+
 "@esbuild/win32-x64@0.25.10":
   version "0.25.10"
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.25.10.tgz"
@@ -304,6 +330,11 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
+
+"@popperjs/core@^2.11.8":
+  version "2.11.8"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
+  integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
 "@rolldown/pluginutils@1.0.0-beta.38":
   version "1.0.0-beta.38"
@@ -958,6 +989,11 @@ has-flag@^4.0.0:
   resolved "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz"
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
 
+html-entities@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.npmjs.org/html-entities/-/html-entities-2.6.0.tgz"
+  integrity sha512-kig+rMn/QOVRvr7c86gQ8lWXq+Hkv6CbAH1hLu+RG338StTpE8Z0b44SDVaqVu7HGKf27frdmUYEs9hTUX/cLQ==
+
 https-proxy-agent@^7.0.1:
   version "7.0.6"
   resolved "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-7.0.6.tgz"
@@ -1384,7 +1420,7 @@ punycode@^2.1.0:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-"react-dom@^18.0.0 || ^19.0.0", react-dom@^19.1.1, react-dom@>=16, react-dom@>=18:
+"react-dom@^18.0.0 || ^19.0.0", react-dom@^19.1.1, react-dom@>=16, react-dom@>=17, react-dom@>=18:
   version "19.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-19.2.0.tgz"
   integrity sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==
@@ -1429,7 +1465,7 @@ react-router@7.9.4:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
 
-react@*, "react@^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0", react@^19.1.1, react@^19.2.0, react@>=16, react@>=18:
+react@*, "react@^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0", react@^19.1.1, react@^19.2.0, react@>=16, react@>=17, react@>=18:
   version "19.2.0"
   resolved "https://registry.npmjs.org/react/-/react-19.2.0.tgz"
   integrity sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==

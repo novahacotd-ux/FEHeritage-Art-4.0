@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/coreui": "^5.5.0",
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-react": "^2.3.0",
+    "@coreui/react": "^5.9.2",
     "@google/genai": "^1.25.0",
     "@tailwindcss/vite": "^4.1.14",
     "aos": "^2.3.4",
