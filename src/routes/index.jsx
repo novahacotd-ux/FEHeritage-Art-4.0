@@ -30,6 +30,21 @@ import TeacherLessonDetail from '../pages/LMS/Teacher/TeacherLessonDetail';
 import TeacherAssignmentDetail from '../pages/LMS/Teacher/TeacherAssignmentDetail';
 import UploadTaiLieu from '../pages/UploadTaiLieu';
 
+//Admin Components
+import AdminLayout from '../components/layouts/AdminLayout.jsx';
+import AdminTraiNghiem from '../pages/admin/AdminTraiNghiem.jsx';
+import AdminCongNgheAI from '../pages/admin/AdminCongNgheAI.jsx';
+import AdminTinTuc from '../pages/admin/AdminTinTuc.jsx';
+import AdminSuKien from '../pages/admin/AdminSuKien.jsx';
+import AdminPhanTich from '../pages/admin/AdminPhanTich.jsx';
+import AdminGocNhin from '../pages/admin/AdminGocNhin.jsx';
+import AdminForum from '../pages/admin/AdminForum.jsx';
+import AdminSanPham from '../pages/admin/AdminSanPham.jsx';
+import AdminOrder from '../pages/admin/AdminOrder.jsx';
+import AdminDonate from '../pages/admin/AdminDonate.jsx';
+import AdminThanhToan from '../pages/admin/AdminThanhToan.jsx';
+import AdminNguoiDung from '../pages/admin/AdminNguoiDung.jsx';
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -209,7 +224,6 @@ const router = createBrowserRouter([
             element: <ThankYou />,
           },
           // Account & Support Pages
-      
           {
             path: 'info',
             element: <InfoPage />,
@@ -244,6 +258,67 @@ const router = createBrowserRouter([
           },
         ],
       },
+
+      // Admin Routes
+      {
+        path: 'admin',
+        element: <AdminLayout />,
+        children: [
+          {
+            index: true, // Trang mặc định khi vào /admin
+            element: <AdminTraiNghiem />,
+          },
+          {
+            path: 'trainghiem',
+            element: <AdminTraiNghiem />,
+          },
+          {
+            path: 'congngheai',
+            element: <AdminCongNgheAI />,
+          },
+          {
+            path: 'tintuc',
+            element: <AdminTinTuc />,
+          },
+          {
+            path: 'sukien',
+            element: <AdminSuKien />,
+          },
+          {
+            path: 'phantich',
+            element: <AdminPhanTich />,
+          },
+          {
+            path: 'gocnhin',
+            element: <AdminGocNhin />,
+          },
+          {
+            path: 'forum',
+            element: <AdminForum />,
+          },
+          {
+            path: 'sanpham',
+            element: <AdminSanPham />,
+          },
+          {
+            path: 'order',
+            element: <AdminOrder />,
+          },
+          {
+            path: 'donate',
+            element: <AdminDonate />,
+          },
+          {
+            path: 'thanhtoan',
+            element: <AdminThanhToan />,
+          },
+          {
+            path: 'nguoidung',
+            element: <AdminNguoiDung />,
+          },
+        ],
+      },
+
       {
         path: '*',
         element: (
