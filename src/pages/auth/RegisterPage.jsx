@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import './RegisterPage.css'
+import { useUser } from '../../context/UserContext'
+import { getErrorMessage, validatePassword } from '../../utils/apiHelpers'
 
 const RegisterPage = () => {
   const navigate = useNavigate()
+  const { register, loading: contextLoading, isLoggedIn } = useUser()
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -11,10 +15,16 @@ const RegisterPage = () => {
     confirmPassword: ''
   })
   const [errors, setErrors] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [agreedToTerms, setAgreedToTerms] = useState(false)
+
+  // Redirect nếu đã đăng nhập
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/', { replace: true })
+    }
+  }, [isLoggedIn, navigate])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -48,13 +58,14 @@ const RegisterPage = () => {
       newErrors.email = 'Email không hợp lệ'
     }
 
-    // Password validation
+    // Password validation - Sử dụng helper từ apiHelpers
     if (!formData.password) {
       newErrors.password = 'Vui lòng nhập mật khẩu'
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Mật khẩu phải có ít nhất 8 ký tự'
-    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
-      newErrors.password = 'Mật khẩu phải có chữ hoa, chữ thường và số'
+    } else {
+      const passwordCheck = validatePassword(formData.password)
+      if (!passwordCheck.valid) {
+        newErrors.password = passwordCheck.errors[0] // Lấy lỗi đầu tiên
+      }
     }
 
     // Confirm password validation
@@ -75,18 +86,39 @@ const RegisterPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     if (!validateForm()) return
 
-    setIsLoading(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Registration attempt:', formData)
-      // TODO: Implement actual registration logic
-      setIsLoading(false)
-      navigate('/dangnhap')
-    }, 2000)
+    try {
+      // Chuẩn bị data để gửi lên API
+      const registerData = {
+        name: formData.fullName.trim(),
+        email: formData.email.trim(),
+        password: formData.password,
+      }
+
+      // Gọi API register
+      const result = await register(registerData)
+
+      // Hiển thị thông báo thành công
+      toast.success('Đăng ký thành công! Chào mừng bạn đến với MT4!', {
+        duration: 3000,
+        position: 'top-center',
+      })
+
+      setTimeout(() => {
+        navigate('/profile', { replace: true })
+      }, 500)
+
+    } catch (error) {
+      // Hiển thị lỗi
+      const errorMessage = getErrorMessage(error)
+      toast.error(errorMessage || 'Đăng ký thất bại', {
+        duration: 4000,
+        position: 'top-center',
+      })
+      console.error('Register error:', error)
+    }
   }
 
   const handleSocialRegister = (provider) => {
@@ -97,7 +129,7 @@ const RegisterPage = () => {
   const getPasswordStrength = () => {
     const password = formData.password
     if (!password) return { strength: 0, label: '', color: '' }
-    
+
     let strength = 0
     if (password.length >= 8) strength++
     if (password.length >= 12) strength++
@@ -123,7 +155,7 @@ const RegisterPage = () => {
               <h2 className="form-title">Tạo tài khoản mới</h2>
               <p className="form-subtitle">
                 Đã có tài khoản? {' '}
-                <Link to="/dangnhap" className="login-link">
+                <Link to="/login" className="login-link">
                   Đăng nhập ngay
                 </Link>
               </p>
@@ -222,20 +254,20 @@ const RegisterPage = () => {
                     )}
                   </button>
                 </div>
-                
+
                 {/* Password Strength Indicator */}
                 {formData.password && (
                   <div className="password-strength">
                     <div className="strength-bar">
-                      <div 
-                        className="strength-fill" 
-                        style={{ 
+                      <div
+                        className="strength-fill"
+                        style={{
                           width: `${passwordStrength.strength}%`,
                           backgroundColor: passwordStrength.color
                         }}
                       />
                     </div>
-                    <span 
+                    <span
                       className="strength-label"
                       style={{ color: passwordStrength.color }}
                     >
@@ -295,8 +327,8 @@ const RegisterPage = () => {
               {/* Terms Agreement */}
               <div className="form-group">
                 <label className="terms-agreement">
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     className="checkbox"
                     checked={agreedToTerms}
                     onChange={(e) => setAgreedToTerms(e.target.checked)}
@@ -316,10 +348,10 @@ const RegisterPage = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={isLoading}
-                className={`submit-button ${isLoading ? 'loading' : ''}`}
+                disabled={contextLoading}
+                className={`submit-button ${contextLoading ? 'loading' : ''}`}
               >
-                {isLoading ? (
+                {contextLoading ? (
                   <>
                     <span className="spinner"></span>
                     <span>Đang tạo tài khoản...</span>
@@ -347,21 +379,21 @@ const RegisterPage = () => {
                   className="social-button google"
                 >
                   <svg className="icon" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                   </svg>
                   <span>Google</span>
                 </button>
-                
+
                 <button
                   type="button"
                   onClick={() => handleSocialRegister('facebook')}
                   className="social-button facebook"
                 >
                   <svg className="icon" viewBox="0 0 24 24" fill="#1877F2">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   <span>Facebook</span>
                 </button>
