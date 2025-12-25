@@ -120,6 +120,9 @@ const ImageModal = ({ imageData, onClose, onNext, onPrev, onImageSelect, current
             <button className="px-6 py-3 bg-amber-200 text-amber-900 rounded-xl font-semibold hover:bg-amber-300 transition shadow">
               Like
             </button>
+            <button className="px-6 py-3 bg-amber-200 text-amber-900 rounded-xl font-semibold hover:bg-amber-300 transition shadow">
+              Dislike
+            </button>
             <button
               onClick={handleDownload}
               className="px-7 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl font-semibold hover:shadow-lg transition flex items-center gap-2"
