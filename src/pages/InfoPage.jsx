@@ -1,18 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import { useUser } from '../context/UserContext'
+import { authService } from '../services'
+import { validatePassword, getErrorMessage } from '../utils/apiHelpers'
 import './InfoPage.css'
 
 const InfoPage = () => {
+  const navigate = useNavigate()
+  const { user, isLoggedIn, refreshProfile, logout } = useUser()
   const [activeTab, setActiveTab] = useState('account')
   const [userAvatar, setUserAvatar] = useState('https://i.pravatar.cc/150?img=68')
   const [isEditingAvatar, setIsEditingAvatar] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
-    fullName: 'Nguyễn Văn A',
-    email: 'nguyenvana@example.com',
-    phone: '0123456789',
-    birthday: '1990-01-15',
-    gender: 'male',
-    address: 'Hà Nội, Việt Nam',
-    bio: 'Yêu thích nghệ thuật AI và sáng tạo nội dung',
+    fullName: '',
+    email: '',
+    phone: '',
+    birthday: '',
+    gender: 'Male',
+    address: '',
+    bio: '',
+    identityNumber: '',
     currentPassword: '',
     newPassword: '',
     confirmPassword: ''
@@ -29,6 +38,27 @@ const InfoPage = () => {
     showPhone: false,
     allowMessages: true
   })
+
+  // Load user data from context
+  useEffect(() => {
+    if (!isLoggedIn) {
+      toast.error('Vui lòng đăng nhập để xem trang này')
+      navigate('/login')
+      return
+    }
+
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        fullName: user.name || '',
+        email: user.email || '',
+        identityNumber: user.identity_number || '',
+        birthday: user.date_of_birth || '',
+        gender: user.gender || 'Male',
+        bio: user.intro || ''
+      }))
+    }
+  }, [user, isLoggedIn, navigate])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -63,14 +93,120 @@ const InfoPage = () => {
     }
   }
 
-  const handleSaveProfile = () => {
-    console.log('Save profile:', formData)
-    // TODO: API call
+  const getPasswordStrength = (password) => {
+    if (!password) return { strength: 0, label: '', color: '#ccc' }
+
+    let strength = 0
+    if (password.length >= 6) strength++
+    if (password.length >= 8) strength++
+    if (/[A-Z]/.test(password)) strength++
+    if (/[a-z]/.test(password)) strength++
+    if (/[0-9]/.test(password)) strength++
+    if (/[^A-Za-z0-9]/.test(password)) strength++
+
+    if (strength <= 2) return { strength: 1, label: 'Yếu', color: '#ff4444' }
+    if (strength <= 4) return { strength: 2, label: 'Trung bình', color: '#ff9800' }
+    return { strength: 3, label: 'Mạnh', color: '#4caf50' }
   }
 
-  const handleChangePassword = () => {
-    console.log('Change password')
-    // TODO: API call
+  const handleSaveProfile = async () => {
+    try {
+      // Validate birthday
+      if (formData.birthday) {
+        const selectedDate = new Date(formData.birthday)
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+
+        if (selectedDate > today) {
+          toast.error('Ngày sinh không được lớn hơn ngày hiện tại')
+          return
+        }
+      }
+
+      setLoading(true)
+
+      const profileData = {
+        name: formData.fullName,
+        identity_number: formData.identityNumber || null,
+        date_of_birth: formData.birthday || null,
+        gender: formData.gender,
+        intro: formData.bio || null
+      }
+
+      const response = await authService.updateProfile(profileData)
+
+      if (response.success) {
+        toast.success('Cập nhật thông tin thành công!')
+        // Refresh user profile in context
+        await refreshProfile()
+      } else {
+        toast.error(response.message || 'Cập nhật thông tin thất bại')
+      }
+    } catch (error) {
+      console.error('Update profile error:', error)
+      toast.error(getErrorMessage(error) || 'Có lỗi xảy ra khi cập nhật thông tin')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleChangePassword = async () => {
+    try {
+      // Validate input
+      if (!formData.currentPassword) {
+        toast.error('Vui lòng nhập mật khẩu hiện tại')
+        return
+      }
+
+      if (!formData.newPassword) {
+        toast.error('Vui lòng nhập mật khẩu mới')
+        return
+      }
+
+      if (formData.newPassword !== formData.confirmPassword) {
+        toast.error('Mật khẩu xác nhận không khớp')
+        return
+      }
+
+      // Validate password strength
+      const passwordValidation = validatePassword(formData.newPassword)
+      if (!passwordValidation.valid) {
+        toast.error(passwordValidation.errors[0] || 'Mật khẩu không hợp lệ')
+        return
+      }
+
+      setLoading(true)
+
+      const response = await authService.changePassword({
+        current_password: formData.currentPassword,
+        new_password: formData.newPassword
+      })
+
+      if (response.success) {
+        toast.success('Đổi mật khẩu thành công! Vui lòng đăng nhập lại.')
+
+        // Clear password fields
+        setFormData(prev => ({
+          ...prev,
+          currentPassword: '',
+          newPassword: '',
+          confirmPassword: ''
+        }))
+
+        // Logout and redirect to login
+        setTimeout(async () => {
+          await logout()
+          navigate('/login')
+        }, 1500)
+      } else {
+        toast.error(response.message || 'Đổi mật khẩu thất bại')
+      }
+    } catch (error) {
+      console.error('Change password error:', error)
+      toast.error(getErrorMessage(error) || 'Có lỗi xảy ra khi đổi mật khẩu')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const tabs = [
@@ -172,6 +308,7 @@ const InfoPage = () => {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Nhập họ và tên"
+                      disabled={loading}
                       className="form-textarea"
                       style={{ minHeight: '45px' }}
                     />
@@ -182,20 +319,21 @@ const InfoPage = () => {
                       type="email"
                       name="email"
                       value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Email của bạn"
+                      disabled
                       className="form-textarea"
-                      style={{ minHeight: '45px' }}
+                      style={{ minHeight: '45px', backgroundColor: '#f5f5f5', cursor: 'not-allowed' }}
+                      title="Email không thể thay đổi"
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Số điện thoại</label>
+                    <label className="form-label">Số CCCD/CMND</label>
                     <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
+                      type="text"
+                      name="identityNumber"
+                      value={formData.identityNumber}
                       onChange={handleChange}
-                      placeholder="Số điện thoại"
+                      placeholder="Nhập số CCCD/CMND"
+                      disabled={loading}
                       className="form-textarea"
                       style={{ minHeight: '45px' }}
                     />
@@ -207,6 +345,8 @@ const InfoPage = () => {
                       name="birthday"
                       value={formData.birthday}
                       onChange={handleChange}
+                      max={new Date().toISOString().split('T')[0]}
+                      disabled={loading}
                       className="form-textarea"
                       style={{ minHeight: '45px' }}
                     />
@@ -217,24 +357,13 @@ const InfoPage = () => {
                       name="gender"
                       value={formData.gender}
                       onChange={handleChange}
+                      disabled={loading}
                       className="form-select"
                     >
-                      <option value="male">Nam</option>
-                      <option value="female">Nữ</option>
-                      <option value="other">Khác</option>
+                      <option value="Male">Nam</option>
+                      <option value="Female">Nữ</option>
+                      <option value="Other">Khác</option>
                     </select>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Địa chỉ</label>
-                    <input
-                      type="text"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      placeholder="Địa chỉ của bạn"
-                      className="form-textarea"
-                      style={{ minHeight: '45px' }}
-                    />
                   </div>
                   <div className="form-group full-width">
                     <label className="form-label">Giới thiệu bản thân</label>
@@ -242,6 +371,7 @@ const InfoPage = () => {
                       name="bio"
                       value={formData.bio}
                       onChange={handleChange}
+                      disabled={loading}
                       className="form-textarea"
                       rows="4"
                       placeholder="Viết vài dòng về bạn..."
@@ -251,17 +381,18 @@ const InfoPage = () => {
                 <div className="form-actions">
                   <button
                     onClick={handleSaveProfile}
+                    disabled={loading}
                     className="form-textarea"
                     style={{
                       minHeight: '48px',
-                      background: '#b8906f',
+                      background: loading ? '#ccc' : '#b8906f',
                       color: '#fff',
                       fontWeight: 'bold',
-                      cursor: 'pointer',
+                      cursor: loading ? 'not-allowed' : 'pointer',
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    💾 Lưu thay đổi
+                    {loading ? 'Đang lưu...' : '💾 Lưu thay đổi'}
                   </button>
                 </div>
               </div>
@@ -280,6 +411,7 @@ const InfoPage = () => {
                       value={formData.currentPassword}
                       onChange={handleChange}
                       placeholder="Nhập mật khẩu hiện tại"
+                      disabled={loading}
                       className="form-textarea"
                       style={{ minHeight: '45px' }}
                     />
@@ -292,9 +424,41 @@ const InfoPage = () => {
                       value={formData.newPassword}
                       onChange={handleChange}
                       placeholder="Nhập mật khẩu mới"
+                      disabled={loading}
                       className="form-textarea"
                       style={{ minHeight: '45px' }}
                     />
+                    {formData.newPassword && (
+                      <div style={{ marginTop: '8px' }}>
+                        <div style={{
+                          display: 'flex',
+                          gap: '4px',
+                          marginBottom: '4px'
+                        }}>
+                          {[1, 2, 3].map((level) => (
+                            <div
+                              key={level}
+                              style={{
+                                flex: 1,
+                                height: '4px',
+                                borderRadius: '2px',
+                                backgroundColor: level <= getPasswordStrength(formData.newPassword).strength
+                                  ? getPasswordStrength(formData.newPassword).color
+                                  : '#e0e0e0',
+                                transition: 'background-color 0.3s ease'
+                              }}
+                            />
+                          ))}
+                        </div>
+                        <div style={{
+                          fontSize: '12px',
+                          color: getPasswordStrength(formData.newPassword).color,
+                          fontWeight: '500'
+                        }}>
+                          Độ mạnh: {getPasswordStrength(formData.newPassword).label}
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
                     <label className="form-label">Xác nhận mật khẩu mới</label>
@@ -304,6 +468,7 @@ const InfoPage = () => {
                       value={formData.confirmPassword}
                       onChange={handleChange}
                       placeholder="Nhập lại mật khẩu mới"
+                      disabled={loading}
                       className="form-textarea"
                       style={{ minHeight: '45px' }}
                     />
@@ -325,17 +490,18 @@ const InfoPage = () => {
                 <div className="form-actions">
                   <button
                     onClick={handleChangePassword}
+                    disabled={loading}
                     className="form-textarea"
                     style={{
                       minHeight: '48px',
-                      background: '#b8906f',
+                      background: loading ? '#ccc' : '#b8906f',
                       color: '#fff',
                       fontWeight: 'bold',
-                      cursor: 'pointer',
+                      cursor: loading ? 'not-allowed' : 'pointer',
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    🔐 Đổi mật khẩu
+                    {loading ? 'Đang xử lý...' : '🔐 Đổi mật khẩu'}
                   </button>
                 </div>
               </div>

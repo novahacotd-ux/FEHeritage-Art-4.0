@@ -5,16 +5,23 @@ import React, {
   useMemo,
   useEffect,
 } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useCart } from "../../../context/CartContext";
+import { useUser } from "../../../context/UserContext";
 import logo from "../../../assets/logo.png";
+import { hasRole, isAdmin } from "../../../utils/apiHelpers";
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const { getTotalItems } = useCart();
+  const { user, isLoggedIn, logout } = useUser();
   const [openSubmenu, setOpenSubmenu] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // TODO: Kết nối với auth context/state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const timeoutRef = useRef(null);
+
+  // Kiểm tra xem user có phải admin không
+  const userIsAdmin = user ? isAdmin(user) : false;
 
   // Cleanup timeout khi component unmount
   useEffect(() => {
@@ -46,24 +53,24 @@ const NavBar = () => {
           { label: "Forum", link: "/forum" },
         ],
       },
-      {
-        label: "Giáo dục",
-        submenu: [
-          { label: "Trang chủ Giáo dục", link: "/giaoduc" },
-          { label: "Tài liệu & Bài giảng", link: "/tai-lieu-bai-giang" },
-          // { label: 'Bài học minh họa', link: '/bai-giang-minh-hoa' },
-          { label: "Trò chơi tương tác", link: "/virtual-chronicle" },
-          { label: "---", separator: true },
-          {
-            label: "🏫 LMS - Giáo viên",
-            link: "/lms/teacher/dashboard?teacherId=1",
-          },
-          {
-            label: "🎓 LMS - Học sinh",
-            link: "/lms/student/dashboard?studentId=10",
-          },
-        ],
-      },
+      // {
+      //   label: "Giáo dục",
+      //   submenu: [
+      //     { label: "Trang chủ Giáo dục", link: "/giaoduc" },
+      //     { label: "Tài liệu & Bài giảng", link: "/tai-lieu-bai-giang" },
+      //     // { label: 'Bài học minh họa', link: '/bai-giang-minh-hoa' },
+      //     { label: "Trò chơi tương tác", link: "/virtual-chronicle" },
+      //     { label: "---", separator: true },
+      //     {
+      //       label: "🏫 LMS - Giáo viên",
+      //       link: "/lms/teacher/dashboard?teacherId=1",
+      //     },
+      //     {
+      //       label: "🎓 LMS - Học sinh",
+      //       link: "/lms/student/dashboard?studentId=10",
+      //     },
+      //   ],
+      // },
       {
         label: "Cửa hàng",
         submenu: [
@@ -155,10 +162,9 @@ const NavBar = () => {
                           group flex items-center gap-2 
                           px-4 py-2 rounded-lg font-semibold text-[0.938rem]
                           transition-all duration-200 ease-out
-                          ${
-                            openSubmenu === index
-                              ? "bg-[#4a2d18] text-[#ffd54f] shadow-inner"
-                              : "text-[#fff1c7] hover:text-[#ffd54f] hover:bg-[#4a2d18]/50"
+                          ${openSubmenu === index
+                            ? "bg-[#4a2d18] text-[#ffd54f] shadow-inner"
+                            : "text-[#fff1c7] hover:text-[#ffd54f] hover:bg-[#4a2d18]/50"
                           }
                         `}
                         aria-expanded={openSubmenu === index}
@@ -166,9 +172,8 @@ const NavBar = () => {
                       >
                         <span>{item.label}</span>
                         <svg
-                          className={`w-4 h-4 transition-transform duration-300 ease-out ${
-                            openSubmenu === index ? "rotate-180" : ""
-                          }`}
+                          className={`w-4 h-4 transition-transform duration-300 ease-out ${openSubmenu === index ? "rotate-180" : ""
+                            }`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -187,10 +192,9 @@ const NavBar = () => {
                         className={`
                           absolute top-full left-0 mt-2 min-w-[240px]
                           transition-all duration-200 ease-out origin-top
-                          ${
-                            openSubmenu === index
-                              ? "opacity-100 visible scale-100 translate-y-0"
-                              : "opacity-0 invisible scale-95 -translate-y-2 pointer-events-none"
+                          ${openSubmenu === index
+                            ? "opacity-100 visible scale-100 translate-y-0"
+                            : "opacity-0 invisible scale-95 -translate-y-2 pointer-events-none"
                           }
                         `}
                         onMouseEnter={handleSubmenuEnter}
@@ -265,7 +269,7 @@ const NavBar = () => {
               ))}
 
               {/* Auth Buttons - Hiển thị khi chưa đăng nhập */}
-              {!isAuthenticated && (
+              {!isLoggedIn && (
                 <>
                   <li className="ml-2 pl-2 border-l border-[#5a3822]/50">
                     <Link
@@ -328,7 +332,7 @@ const NavBar = () => {
               )}
 
               {/* User Menu - Hiển thị khi đã đăng nhập */}
-              {isAuthenticated && (
+              {isLoggedIn && (
                 <li
                   className="ml-2 pl-2 border-l border-[#5a3822]/50 relative"
                   onMouseEnter={() => handleMenuEnter(menuItems.length)}
@@ -340,10 +344,9 @@ const NavBar = () => {
                       group flex items-center gap-2 
                       px-4 py-2 rounded-lg font-semibold text-[0.938rem]
                       transition-all duration-200 ease-out
-                      ${
-                        openSubmenu === menuItems.length
-                          ? "bg-[#4a2d18] text-[#ffd54f] shadow-inner"
-                          : "text-[#fff1c7] hover:text-[#ffd54f] hover:bg-[#4a2d18]/50"
+                      ${openSubmenu === menuItems.length
+                        ? "bg-[#4a2d18] text-[#ffd54f] shadow-inner"
+                        : "text-[#fff1c7] hover:text-[#ffd54f] hover:bg-[#4a2d18]/50"
                       }
                     `}
                     aria-expanded={openSubmenu === menuItems.length}
@@ -354,9 +357,8 @@ const NavBar = () => {
                     </div>
                     <span>Tài khoản</span>
                     <svg
-                      className={`w-4 h-4 transition-transform duration-300 ease-out ${
-                        openSubmenu === menuItems.length ? "rotate-180" : ""
-                      }`}
+                      className={`w-4 h-4 transition-transform duration-300 ease-out ${openSubmenu === menuItems.length ? "rotate-180" : ""
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -375,10 +377,9 @@ const NavBar = () => {
                     className={`
                       absolute top-full right-0 mt-2 min-w-[240px]
                       transition-all duration-200 ease-out origin-top-right
-                      ${
-                        openSubmenu === menuItems.length
-                          ? "opacity-100 visible scale-100 translate-y-0"
-                          : "opacity-0 invisible scale-95 -translate-y-2 pointer-events-none"
+                      ${openSubmenu === menuItems.length
+                        ? "opacity-100 visible scale-100 translate-y-0"
+                        : "opacity-0 invisible scale-95 -translate-y-2 pointer-events-none"
                       }
                     `}
                     onMouseEnter={handleSubmenuEnter}
@@ -455,7 +456,15 @@ const NavBar = () => {
                         <li>
                           <button
                             type="button"
-                            onClick={() => setIsAuthenticated(false)} // TODO: Implement logout
+                            onClick={async () => {
+                              try {
+                                await logout();
+                                toast.success('Đăng xuất thành công!');
+                                navigate('/');
+                              } catch (error) {
+                                toast.error('Đăng xuất thất bại');
+                              }
+                            }}
                             className="
                               group/item w-full flex items-center gap-3 px-4 py-2.5 mx-2 my-0.5
                               text-[#ff6b6b] hover:text-[#ff5252] text-[0.938rem] font-medium
@@ -569,10 +578,9 @@ const NavBar = () => {
         <div
           className={`
             md:hidden overflow-hidden transition-all duration-300 ease-in-out
-            ${
-              isMobileMenuOpen
-                ? "max-h-[calc(100vh-4rem)] opacity-100"
-                : "max-h-0 opacity-0"
+            ${isMobileMenuOpen
+              ? "max-h-[calc(100vh-4rem)] opacity-100"
+              : "max-h-0 opacity-0"
             }
           `}
         >
@@ -596,9 +604,8 @@ const NavBar = () => {
                       >
                         <span>{item.label}</span>
                         <svg
-                          className={`w-5 h-5 transition-transform duration-300 ${
-                            openSubmenu === index ? "rotate-180" : ""
-                          }`}
+                          className={`w-5 h-5 transition-transform duration-300 ${openSubmenu === index ? "rotate-180" : ""
+                            }`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -615,10 +622,9 @@ const NavBar = () => {
                       <div
                         className={`
                           overflow-hidden transition-all duration-300 ease-in-out
-                          ${
-                            openSubmenu === index
-                              ? "max-h-96 opacity-100"
-                              : "max-h-0 opacity-0"
+                          ${openSubmenu === index
+                            ? "max-h-96 opacity-100"
+                            : "max-h-0 opacity-0"
                           }
                         `}
                       >
@@ -661,7 +667,7 @@ const NavBar = () => {
               ))}
 
               {/* Mobile Auth Section */}
-              {!isAuthenticated ? (
+              {!isLoggedIn ? (
                 <li className="pt-4 mt-4 border-t border-[#5a3822]/30 space-y-2 px-4">
                   <Link
                     to="/dangky"
@@ -819,9 +825,16 @@ const NavBar = () => {
                     <li>
                       <button
                         type="button"
-                        onClick={() => {
-                          setIsAuthenticated(false);
-                          setIsMobileMenuOpen(false);
+                        onClick={async () => {
+                          try {
+                            await logout();
+                            setIsMobileMenuOpen(false);
+                            toast.success('Đăng xuất thành công!');
+                            navigate('/');
+                          } catch (error) {
+                            toast.error('Đăng xuất thất bại');
+                            setIsMobileMenuOpen(false);
+                          }
                         }}
                         className="
                           w-full flex items-center gap-3 px-4 py-2.5
