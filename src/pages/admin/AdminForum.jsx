@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { forumPosts as initialPosts } from '../../data/mockData';
-import './AdminCongDong.css';
+import { Container, Row, Col, Card, Table, Button, Form, Modal, Badge, InputGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AdminForum = () => {
     const [forumList, setForumList] = useState(initialPosts);
@@ -131,234 +132,228 @@ const AdminForum = () => {
     });
 
     return (
-        <div className="admin-cong-dong">
-            <div className="admin-header">
-                <div>
-                    <h1>Quản lý Forum</h1>
-                    <p>Quản lý các bài đăng và thảo luận trên diễn đàn cộng đồng</p>
-                </div>
-                <button className="btn-primary" onClick={handleCreate}>
-                    <span>+</span> Thêm bài đăng mới
-                </button>
-            </div>
+        <Container fluid className="py-4 bg-light" style={{ minHeight: '100vh' }}>
+            <Row className="mb-4">
+                <Col>
+                    <h1 className="fw-bold">Quản lý Forum</h1>
+                    <p className="text-muted">Quản lý các bài đăng và thảo luận trên diễn đàn cộng đồng</p>
+                </Col>
+                <Col xs="auto">
+                    <Button variant="primary" size="lg" onClick={handleCreate}>
+                        <i className="bi bi-plus-circle me-2"></i>
+                        Thêm bài đăng mới
+                    </Button>
+                </Col>
+            </Row>
 
-            <div className="admin-filters">
-                <div className="search-box">
-                    <input
-                        type="text"
-                        placeholder="Tìm kiếm bài đăng..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-                <select 
-                    value={filterCategory} 
-                    onChange={(e) => setFilterCategory(e.target.value)}
-                    className="filter-select"
-                >
-                    <option value="all">Tất cả danh mục</option>
-                    {categories.map(cat => (
-                        <option key={cat} value={cat}>{cat}</option>
-                    ))}
-                </select>
-                <select 
-                    value={filterStatus} 
-                    onChange={(e) => setFilterStatus(e.target.value)}
-                    className="filter-select"
-                >
-                    <option value="all">Tất cả trạng thái</option>
-                    <option value="active">Đang hiển thị</option>
-                    <option value="hidden">Đã ẩn</option>
-                </select>
-            </div>
+            <Row className="mb-4">
+                <Col md={4}>
+                    <InputGroup>
+                        <InputGroup.Text><i className="bi bi-search"></i></InputGroup.Text>
+                        <Form.Control
+                            type="text"
+                            placeholder="Tìm kiếm bài đăng..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </InputGroup>
+                </Col>
+                <Col md={3}>
+                    <Form.Select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
+                        <option value="all">Tất cả danh mục</option>
+                        {categories.map(cat => (
+                            <option key={cat} value={cat}>{cat}</option>
+                        ))}
+                    </Form.Select>
+                </Col>
+                <Col md={3}>
+                    <Form.Select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="active">Đang hiển thị</option>
+                        <option value="hidden">Đã ẩn</option>
+                    </Form.Select>
+                </Col>
+            </Row>
 
-            <div className="admin-stats">
-                <div className="stat-card">
-                    <h3>{forumList.length}</h3>
-                    <p>Tổng bài đăng</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{forumList.filter(p => p.status === 'active').length}</h3>
-                    <p>Đang hiển thị</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{forumList.filter(p => p.isPinned).length}</h3>
-                    <p>Đã ghim</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{forumList.reduce((sum, item) => sum + item.comments, 0)}</h3>
-                    <p>Tổng bình luận</p>
-                </div>
-            </div>
+            <Row className="mb-4 g-3">
+                <Col md={3}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{forumList.length}</h2>
+                            <Card.Text className="text-muted">Tổng bài đăng</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={3}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{forumList.filter(p => p.status === 'active').length}</h2>
+                            <Card.Text className="text-muted">Đang hiển thị</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={3}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{forumList.filter(p => p.isPinned).length}</h2>
+                            <Card.Text className="text-muted">Đã ghim</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={3}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{forumList.reduce((sum, item) => sum + item.comments, 0)}</h2>
+                            <Card.Text className="text-muted">Tổng bình luận</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
 
-            <div className="admin-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tiêu đề</th>
-                            <th>Danh mục</th>
-                            <th>Tác giả</th>
-                            <th>Lượt xem</th>
-                            <th>Bình luận</th>
-                            <th>Trạng thái</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredForum.map(item => (
-                            <tr key={item.id} className={item.isPinned ? 'pinned-row' : ''}>
-                                <td>{item.id}</td>
-                                <td>
-                                    <div className="table-title">
+            <Card className="border-0 shadow-sm">
+                <Card.Body className="p-0">
+                    <Table responsive hover className="mb-0">
+                        <thead className="table-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th style={{ width: '30%' }}>Tiêu đề</th>
+                                <th>Danh mục</th>
+                                <th>Tác giả</th>
+                                <th>Lượt xem</th>
+                                <th>Bình luận</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredForum.map(item => (
+                                <tr key={item.id} className={item.isPinned ? 'table-warning' : ''}>
+                                    <td>{item.id}</td>
+                                    <td>
                                         <div>
-                                            {item.isPinned && <span className="pin-badge">📌</span>}
-                                            <strong>{item.title}</strong>
-                                            <p className="table-desc">{item.content.substring(0, 100)}...</p>
-                                            <div className="tags">
+                                            {item.isPinned && <span className="me-2">📌</span>}
+                                            <strong className="d-block mb-1">{item.title}</strong>
+                                            <small className="text-muted d-block mb-2">{item.content.substring(0, 100)}...</small>
+                                            <div className="d-flex gap-1 flex-wrap">
                                                 {item.tags.map((tag, idx) => (
-                                                    <span key={idx} className="tag">{tag}</span>
+                                                    <Badge key={idx} bg="secondary" className="small">{tag}</Badge>
                                                 ))}
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td><span className="badge">{item.category}</span></td>
-                                <td>
-                                    <div className="author-info">
-                                        <img src={item.author.avatar} alt={item.author.name} className="author-avatar" />
-                                        <div>
-                                            <strong>{item.author.name}</strong>
-                                            <p className="author-role">{item.author.role}</p>
+                                    </td>
+                                    <td><Badge bg="info">{item.category}</Badge></td>
+                                    <td>
+                                        <div className="d-flex gap-2 align-items-center">
+                                            <img 
+                                                src={item.author.avatar} 
+                                                alt={item.author.name}
+                                                style={{ 
+                                                    width: '40px', 
+                                                    height: '40px', 
+                                                    borderRadius: '50%',
+                                                    objectFit: 'cover'
+                                                }}
+                                            />
+                                            <div>
+                                                <strong className="d-block small">{item.author.name}</strong>
+                                                <small className="text-muted">{item.author.role}</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>{item.views}</td>
-                                <td>{item.comments}</td>
-                                <td>
-                                    <span className={`status-badge ${item.status}`}>
-                                        {item.status === 'active' ? 'Hiển thị' : 'Đã ẩn'}
-                                    </span>
-                                </td>
-                                <td>
-                                    <div className="action-buttons">
-                                        <button 
-                                            className="btn-pin" 
-                                            onClick={() => handleTogglePin(item.id)}
-                                            title={item.isPinned ? 'Bỏ ghim' : 'Ghim'}
-                                        >
-                                            {item.isPinned ? '📌' : '📍'}
-                                        </button>
-                                        <button 
-                                            className="btn-toggle" 
-                                            onClick={() => handleToggleStatus(item.id)}
-                                            title={item.status === 'active' ? 'Ẩn' : 'Hiện'}
-                                        >
-                                            {item.status === 'active' ? '👁️' : '🚫'}
-                                        </button>
-                                        <button className="btn-edit" onClick={() => handleEdit(item)}>Sửa</button>
-                                        <button className="btn-delete" onClick={() => handleDelete(item.id)}>Xóa</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                                    </td>
+                                    <td>{item.views}</td>
+                                    <td>{item.comments}</td>
+                                    <td>
+                                        <Badge bg={item.status === 'active' ? 'success' : 'danger'}>
+                                            {item.status === 'active' ? 'Hiển thị' : 'Đã ẩn'}
+                                        </Badge>
+                                    </td>
+                                    <td>
+                                        <div className="d-flex gap-1 flex-wrap">
+                                            <Button 
+                                                variant="outline-secondary" 
+                                                size="sm" 
+                                                onClick={() => handleTogglePin(item.id)}
+                                                title={item.isPinned ? 'Bỏ ghim' : 'Ghim'}
+                                            >
+                                                {item.isPinned ? '📌' : '📍'}
+                                            </Button>
+                                            <Button 
+                                                variant="outline-secondary" 
+                                                size="sm" 
+                                                onClick={() => handleToggleStatus(item.id)}
+                                                title={item.status === 'active' ? 'Ẩn' : 'Hiện'}
+                                            >
+                                                {item.status === 'active' ? '👁️' : '🚫'}
+                                            </Button>
+                                            <Button variant="success" size="sm" onClick={() => handleEdit(item)}>Sửa</Button>
+                                            <Button variant="danger" size="sm" onClick={() => handleDelete(item.id)}>Xóa</Button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Card.Body>
+            </Card>
 
-            {isModalOpen && (
-                <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h2>{editingItem ? 'Chỉnh sửa bài đăng' : 'Thêm bài đăng mới'}</h2>
-                            <button className="modal-close" onClick={() => setIsModalOpen(false)}>×</button>
-                        </div>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Tiêu đề *</label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    value={formData.title}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Nhập tiêu đề bài đăng"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Nội dung *</label>
-                                <textarea
-                                    name="content"
-                                    value={formData.content}
-                                    onChange={handleChange}
-                                    required
-                                    rows="8"
-                                    placeholder="Nhập nội dung bài đăng"
-                                />
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label>Danh mục *</label>
-                                    <select
-                                        name="category"
-                                        value={formData.category}
-                                        onChange={handleChange}
-                                        required
-                                    >
+            <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} size="lg" centered>
+                <Modal.Header closeButton className="bg-light">
+                    <Modal.Title>{editingItem ? 'Chỉnh sửa bài đăng' : 'Thêm bài đăng mới'}</Modal.Title>
+                </Modal.Header>
+                <Form onSubmit={handleSubmit}>
+                    <Modal.Body>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Tiêu đề <span className="text-danger">*</span></Form.Label>
+                            <Form.Control type="text" name="title" value={formData.title} onChange={handleChange} required placeholder="Nhập tiêu đề bài đăng" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Nội dung <span className="text-danger">*</span></Form.Label>
+                            <Form.Control as="textarea" rows={8} name="content" value={formData.content} onChange={handleChange} required placeholder="Nhập nội dung bài đăng" />
+                        </Form.Group>
+                        <Row>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Danh mục <span className="text-danger">*</span></Form.Label>
+                                    <Form.Select name="category" value={formData.category} onChange={handleChange} required>
                                         <option value="">Chọn danh mục</option>
                                         {categories.map(cat => (
                                             <option key={cat} value={cat}>{cat}</option>
                                         ))}
-                                    </select>
-                                </div>
-                                <div className="form-group">
-                                    <label>Trạng thái *</label>
-                                    <select
-                                        name="status"
-                                        value={formData.status}
-                                        onChange={handleChange}
-                                        required
-                                    >
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Trạng thái <span className="text-danger">*</span></Form.Label>
+                                    <Form.Select name="status" value={formData.status} onChange={handleChange} required>
                                         <option value="active">Hiển thị</option>
                                         <option value="hidden">Ẩn</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label>Tags (phân cách bằng dấu phẩy)</label>
-                                <input
-                                    type="text"
-                                    name="tags"
-                                    value={formData.tags}
-                                    onChange={handleChange}
-                                    placeholder="VD: Bảo tồn, Văn hóa, Du lịch"
-                                />
-                            </div>
-                            <div className="form-group checkbox-group">
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="isPinned"
-                                        checked={formData.isPinned}
-                                        onChange={handleChange}
-                                    />
-                                    <span>Ghim bài đăng (hiển thị ở đầu trang)</span>
-                                </label>
-                            </div>
-                            <div className="modal-actions">
-                                <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-                                    Hủy
-                                </button>
-                                <button type="submit" className="btn-primary">
-                                    {editingItem ? 'Cập nhật' : 'Tạo mới'}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-        </div>
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Tags (phân cách bằng dấu phẩy)</Form.Label>
+                            <Form.Control type="text" name="tags" value={formData.tags} onChange={handleChange} placeholder="VD: Bảo tồn, Văn hóa, Du lịch" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Check
+                                type="checkbox"
+                                name="isPinned"
+                                checked={formData.isPinned}
+                                onChange={handleChange}
+                                label="Ghim bài đăng (hiển thị ở đầu trang)"
+                            />
+                        </Form.Group>
+                    </Modal.Body>
+                    <Modal.Footer className="bg-light">
+                        <Button variant="secondary" onClick={() => setIsModalOpen(false)}>Hủy</Button>
+                        <Button variant="primary" type="submit">{editingItem ? 'Cập nhật' : 'Tạo mới'}</Button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
+        </Container>
     );
 };
 
-export default AdminForum;
+export default AdminForum;

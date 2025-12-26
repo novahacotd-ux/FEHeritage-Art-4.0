@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { events as initialEvents } from '../../data/mockData';
-import './AdminCongDong.css';
+import { Container, Row, Col, Card, Table, Button, Form, Modal, Badge, InputGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AdminSuKien = () => {
     const [eventsList, setEventsList] = useState(initialEvents);
@@ -94,194 +95,176 @@ const AdminSuKien = () => {
     );
 
     return (
-        <div className="admin-cong-dong">
-            <div className="admin-header">
-                <div>
-                    <h1>Quản lý Sự kiện</h1>
-                    <p>Quản lý các sự kiện văn hóa, triển lãm và hoạt động cộng đồng</p>
-                </div>
-                <button className="btn-primary" onClick={handleCreate}>
-                    <span>+</span> Thêm sự kiện mới
-                </button>
-            </div>
+        <Container fluid className="py-4 bg-light" style={{ minHeight: '100vh' }}>
+            <Row className="mb-4">
+                <Col>
+                    <h1 className="fw-bold">Quản lý Sự kiện</h1>
+                    <p className="text-muted">Quản lý các sự kiện văn hóa, triển lãm và hoạt động cộng đồng</p>
+                </Col>
+                <Col xs="auto">
+                    <Button variant="primary" size="lg" onClick={handleCreate}>
+                        <i className="bi bi-plus-circle me-2"></i>
+                        Thêm sự kiện mới
+                    </Button>
+                </Col>
+            </Row>
 
-            <div className="admin-filters">
-                <div className="search-box">
-                    <input
-                        type="text"
-                        placeholder="Tìm kiếm sự kiện..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-            </div>
+            <Row className="mb-4">
+                <Col md={6}>
+                    <InputGroup>
+                        <InputGroup.Text><i className="bi bi-search"></i></InputGroup.Text>
+                        <Form.Control
+                            type="text"
+                            placeholder="Tìm kiếm sự kiện..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </InputGroup>
+                </Col>
+            </Row>
 
-            <div className="admin-stats">
-                <div className="stat-card">
-                    <h3>{eventsList.length}</h3>
-                    <p>Tổng sự kiện</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{eventsList.filter(e => new Date(e.date.split('/').reverse().join('-')) >= new Date()).length}</h3>
-                    <p>Sắp diễn ra</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{filteredEvents.length}</h3>
-                    <p>Kết quả lọc</p>
-                </div>
-            </div>
+            <Row className="mb-4 g-3">
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{eventsList.length}</h2>
+                            <Card.Text className="text-muted">Tổng sự kiện</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">
+                                {eventsList.filter(e => new Date(e.date.split('/').reverse().join('-')) >= new Date()).length}
+                            </h2>
+                            <Card.Text className="text-muted">Sắp diễn ra</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{filteredEvents.length}</h2>
+                            <Card.Text className="text-muted">Kết quả lọc</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
 
-            <div className="admin-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tiêu đề</th>
-                            <th>Ngày</th>
-                            <th>Thời gian</th>
-                            <th>Địa điểm</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredEvents.map(item => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
-                                <td>
-                                    <div className="table-title">
-                                        {item.imageUrl && (
-                                            <img src={item.imageUrl} alt={item.title} className="table-thumbnail" />
-                                        )}
-                                        <div>
-                                            <strong>{item.title}</strong>
-                                            <p className="table-desc">{item.description}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>{item.date}</td>
-                                <td>{item.time}</td>
-                                <td>{item.location}</td>
-                                <td>
-                                    <div className="action-buttons">
-                                        <button className="btn-edit" onClick={() => handleEdit(item)}>Sửa</button>
-                                        <button className="btn-delete" onClick={() => handleDelete(item.id)}>Xóa</button>
-                                    </div>
-                                </td>
+            <Card className="border-0 shadow-sm">
+                <Card.Body className="p-0">
+                    <Table responsive hover className="mb-0">
+                        <thead className="table-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th style={{ width: '35%' }}>Tiêu đề</th>
+                                <th>Ngày</th>
+                                <th>Thời gian</th>
+                                <th>Địa điểm</th>
+                                <th>Hành động</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {filteredEvents.map(item => (
+                                <tr key={item.id}>
+                                    <td>{item.id}</td>
+                                    <td>
+                                        <div className="d-flex gap-3 align-items-start">
+                                            {item.imageUrl && (
+                                                <img 
+                                                    src={item.imageUrl} 
+                                                    alt={item.title}
+                                                    style={{ 
+                                                        width: '80px', 
+                                                        height: '60px', 
+                                                        objectFit: 'cover',
+                                                        borderRadius: '6px'
+                                                    }}
+                                                />
+                                            )}
+                                            <div>
+                                                <strong className="d-block mb-1">{item.title}</strong>
+                                                <small className="text-muted">{item.description}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{item.date}</td>
+                                    <td>{item.time}</td>
+                                    <td>{item.location}</td>
+                                    <td>
+                                        <div className="d-flex gap-2">
+                                            <Button variant="success" size="sm" onClick={() => handleEdit(item)}>Sửa</Button>
+                                            <Button variant="danger" size="sm" onClick={() => handleDelete(item.id)}>Xóa</Button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Card.Body>
+            </Card>
 
-            {isModalOpen && (
-                <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h2>{editingItem ? 'Chỉnh sửa sự kiện' : 'Thêm sự kiện mới'}</h2>
-                            <button className="modal-close" onClick={() => setIsModalOpen(false)}>×</button>
-                        </div>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Tiêu đề *</label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    value={formData.title}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Nhập tiêu đề sự kiện"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Mô tả ngắn *</label>
-                                <textarea
-                                    name="description"
-                                    value={formData.description}
-                                    onChange={handleChange}
-                                    required
-                                    rows="2"
-                                    placeholder="Nhập mô tả ngắn"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Giới thiệu</label>
-                                <textarea
-                                    name="shortIntro"
-                                    value={formData.shortIntro}
-                                    onChange={handleChange}
-                                    rows="2"
-                                    placeholder="Giới thiệu chi tiết về sự kiện"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Nội dung *</label>
-                                <textarea
-                                    name="content"
-                                    value={formData.content}
-                                    onChange={handleChange}
-                                    required
-                                    rows="6"
-                                    placeholder="Nhập nội dung chi tiết"
-                                />
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label>Ngày *</label>
-                                    <input
-                                        type="text"
-                                        name="date"
-                                        value={formData.date}
-                                        onChange={handleChange}
-                                        required
-                                        placeholder="DD/MM/YYYY"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Thời gian *</label>
-                                    <input
-                                        type="text"
-                                        name="time"
-                                        value={formData.time}
-                                        onChange={handleChange}
-                                        required
-                                        placeholder="VD: 08:00 - 17:00"
-                                    />
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label>Địa điểm</label>
-                                <input
-                                    type="text"
-                                    name="location"
-                                    value={formData.location}
-                                    onChange={handleChange}
-                                    placeholder="Địa điểm tổ chức"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>URL hình ảnh</label>
-                                <input
-                                    type="url"
-                                    name="imageUrl"
-                                    value={formData.imageUrl}
-                                    onChange={handleChange}
-                                    placeholder="https://example.com/image.jpg"
-                                />
-                            </div>
-                            <div className="modal-actions">
-                                <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-                                    Hủy
-                                </button>
-                                <button type="submit" className="btn-primary">
-                                    {editingItem ? 'Cập nhật' : 'Tạo mới'}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-        </div>
+            <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} size="lg" centered>
+                <Modal.Header closeButton className="bg-light">
+                    <Modal.Title>{editingItem ? 'Chỉnh sửa sự kiện' : 'Thêm sự kiện mới'}</Modal.Title>
+                </Modal.Header>
+                <Form onSubmit={handleSubmit}>
+                    <Modal.Body>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Tiêu đề <span className="text-danger">*</span></Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="title"
+                                value={formData.title}
+                                onChange={handleChange}
+                                required
+                                placeholder="Nhập tiêu đề sự kiện"
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Mô tả ngắn <span className="text-danger">*</span></Form.Label>
+                            <Form.Control as="textarea" rows={2} name="description" value={formData.description} onChange={handleChange} required placeholder="Nhập mô tả ngắn" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Giới thiệu</Form.Label>
+                            <Form.Control as="textarea" rows={2} name="shortIntro" value={formData.shortIntro} onChange={handleChange} placeholder="Giới thiệu chi tiết về sự kiện" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Nội dung <span className="text-danger">*</span></Form.Label>
+                            <Form.Control as="textarea" rows={6} name="content" value={formData.content} onChange={handleChange} required placeholder="Nhập nội dung chi tiết" />
+                        </Form.Group>
+                        <Row>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Ngày <span className="text-danger">*</span></Form.Label>
+                                    <Form.Control type="text" name="date" value={formData.date} onChange={handleChange} required placeholder="DD/MM/YYYY" />
+                                </Form.Group>
+                            </Col>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Thời gian <span className="text-danger">*</span></Form.Label>
+                                    <Form.Control type="text" name="time" value={formData.time} onChange={handleChange} required placeholder="VD: 08:00 - 17:00" />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Địa điểm</Form.Label>
+                            <Form.Control type="text" name="location" value={formData.location} onChange={handleChange} placeholder="Địa điểm tổ chức" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>URL hình ảnh</Form.Label>
+                            <Form.Control type="url" name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="https://example.com/image.jpg" />
+                        </Form.Group>
+                    </Modal.Body>
+                    <Modal.Footer className="bg-light">
+                        <Button variant="secondary" onClick={() => setIsModalOpen(false)}>Hủy</Button>
+                        <Button variant="primary" type="submit">{editingItem ? 'Cập nhật' : 'Tạo mới'}</Button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
+        </Container>
     );
 };
 
-export default AdminSuKien;
+export default AdminSuKien;

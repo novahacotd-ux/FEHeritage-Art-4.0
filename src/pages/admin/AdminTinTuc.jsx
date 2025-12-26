@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { news as initialNews } from '../../data/mockData';
-import './AdminCongDong.css';
+import { Container, Row, Col, Card, Table, Button, Form, Modal, Badge, InputGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AdminTinTuc = () => {
     const [newsList, setNewsList] = useState(initialNews);
@@ -87,140 +88,193 @@ const AdminTinTuc = () => {
     });
 
     return (
-        <div className="admin-cong-dong">
-            <div className="admin-header">
-                <div>
-                    <h1>Quản lý Tin tức</h1>
-                    <p>Quản lý các bài viết tin tức về di sản văn hóa</p>
-                </div>
-                <button className="btn-primary" onClick={handleCreate}>
-                    <span>+</span> Thêm tin tức mới
-                </button>
-            </div>
+        <Container fluid className="py-4 bg-light" style={{ minHeight: '100vh' }}>
+            <Row className="mb-4">
+                <Col>
+                    <h1 className="fw-bold">Quản lý Tin tức</h1>
+                    <p className="text-muted">Quản lý các bài viết tin tức về di sản văn hóa</p>
+                </Col>
+                <Col xs="auto">
+                    <Button variant="primary" size="lg" onClick={handleCreate}>
+                        <i className="bi bi-plus-circle me-2"></i>
+                        Thêm tin tức mới
+                    </Button>
+                </Col>
+            </Row>
 
-            <div className="admin-filters">
-                <div className="search-box">
-                    <input
-                        type="text"
-                        placeholder="Tìm kiếm tin tức..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-                <select 
-                    value={filterCategory} 
-                    onChange={(e) => setFilterCategory(e.target.value)}
-                    className="filter-select"
-                >
-                    <option value="all">Tất cả danh mục</option>
-                    {categories.map(cat => (
-                        <option key={cat} value={cat}>{cat}</option>
-                    ))}
-                </select>
-            </div>
-
-            <div className="admin-stats">
-                <div className="stat-card">
-                    <h3>{newsList.length}</h3>
-                    <p>Tổng tin tức</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{categories.length}</h3>
-                    <p>Danh mục</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{filteredNews.length}</h3>
-                    <p>Kết quả lọc</p>
-                </div>
-            </div>
-
-            <div className="admin-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tiêu đề</th>
-                            <th>Danh mục</th>
-                            <th>Tác giả</th>
-                            <th>Ngày đăng</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredNews.map(item => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
-                                <td>
-                                    <div className="table-title">
-                                        {item.imageUrl && (
-                                            <img src={item.imageUrl} alt={item.title} className="table-thumbnail" />
-                                        )}
-                                        <div>
-                                            <strong>{item.title}</strong>
-                                            <p className="table-desc">{item.description}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span className="badge">{item.category}</span></td>
-                                <td>{item.author}</td>
-                                <td>{item.date}</td>
-                                <td>
-                                    <div className="action-buttons">
-                                        <button className="btn-edit" onClick={() => handleEdit(item)}>Sửa</button>
-                                        <button className="btn-delete" onClick={() => handleDelete(item.id)}>Xóa</button>
-                                    </div>
-                                </td>
-                            </tr>
+            <Row className="mb-4">
+                <Col md={6}>
+                    <InputGroup>
+                        <InputGroup.Text>
+                            <i className="bi bi-search"></i>
+                        </InputGroup.Text>
+                        <Form.Control
+                            type="text"
+                            placeholder="Tìm kiếm tin tức..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </InputGroup>
+                </Col>
+                <Col md={3}>
+                    <Form.Select 
+                        value={filterCategory} 
+                        onChange={(e) => setFilterCategory(e.target.value)}
+                    >
+                        <option value="all">Tất cả danh mục</option>
+                        {categories.map(cat => (
+                            <option key={cat} value={cat}>{cat}</option>
                         ))}
-                    </tbody>
-                </table>
-            </div>
+                    </Form.Select>
+                </Col>
+            </Row>
 
-            {isModalOpen && (
-                <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h2>{editingItem ? 'Chỉnh sửa tin tức' : 'Thêm tin tức mới'}</h2>
-                            <button className="modal-close" onClick={() => setIsModalOpen(false)}>×</button>
-                        </div>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Tiêu đề *</label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    value={formData.title}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Nhập tiêu đề tin tức"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Mô tả ngắn *</label>
-                                <textarea
-                                    name="description"
-                                    value={formData.description}
-                                    onChange={handleChange}
-                                    required
-                                    rows="2"
-                                    placeholder="Nhập mô tả ngắn"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Nội dung *</label>
-                                <textarea
-                                    name="content"
-                                    value={formData.content}
-                                    onChange={handleChange}
-                                    required
-                                    rows="6"
-                                    placeholder="Nhập nội dung chi tiết"
-                                />
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label>Tác giả *</label>
-                                    <input
+            <Row className="mb-4 g-3">
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{newsList.length}</h2>
+                            <Card.Text className="text-muted">Tổng tin tức</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{categories.length}</h2>
+                            <Card.Text className="text-muted">Danh mục</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{filteredNews.length}</h2>
+                            <Card.Text className="text-muted">Kết quả lọc</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+
+            <Card className="border-0 shadow-sm">
+                <Card.Body className="p-0">
+                    <Table responsive hover className="mb-0">
+                        <thead className="table-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th style={{ width: '40%' }}>Tiêu đề</th>
+                                <th>Danh mục</th>
+                                <th>Tác giả</th>
+                                <th>Ngày đăng</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredNews.map(item => (
+                                <tr key={item.id}>
+                                    <td>{item.id}</td>
+                                    <td>
+                                        <div className="d-flex gap-3 align-items-start">
+                                            {item.imageUrl && (
+                                                <img 
+                                                    src={item.imageUrl} 
+                                                    alt={item.title} 
+                                                    style={{ 
+                                                        width: '80px', 
+                                                        height: '60px', 
+                                                        objectFit: 'cover',
+                                                        borderRadius: '6px'
+                                                    }}
+                                                />
+                                            )}
+                                            <div>
+                                                <strong className="d-block mb-1">{item.title}</strong>
+                                                <small className="text-muted">{item.description}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><Badge bg="info">{item.category}</Badge></td>
+                                    <td>{item.author}</td>
+                                    <td>{item.date}</td>
+                                    <td>
+                                        <div className="d-flex gap-2">
+                                            <Button 
+                                                variant="success" 
+                                                size="sm" 
+                                                onClick={() => handleEdit(item)}
+                                            >
+                                                Sửa
+                                            </Button>
+                                            <Button 
+                                                variant="danger" 
+                                                size="sm" 
+                                                onClick={() => handleDelete(item.id)}
+                                            >
+                                                Xóa
+                                            </Button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Card.Body>
+            </Card>
+
+            <Modal 
+                show={isModalOpen} 
+                onHide={() => setIsModalOpen(false)} 
+                size="lg"
+                centered
+            >
+                <Modal.Header closeButton className="bg-light">
+                    <Modal.Title>{editingItem ? 'Chỉnh sửa tin tức' : 'Thêm tin tức mới'}</Modal.Title>
+                </Modal.Header>
+                <Form onSubmit={handleSubmit}>
+                    <Modal.Body>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Tiêu đề <span className="text-danger">*</span></Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="title"
+                                value={formData.title}
+                                onChange={handleChange}
+                                required
+                                placeholder="Nhập tiêu đề tin tức"
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Mô tả ngắn <span className="text-danger">*</span></Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={2}
+                                name="description"
+                                value={formData.description}
+                                onChange={handleChange}
+                                required
+                                placeholder="Nhập mô tả ngắn"
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Nội dung <span className="text-danger">*</span></Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={6}
+                                name="content"
+                                value={formData.content}
+                                onChange={handleChange}
+                                required
+                                placeholder="Nhập nội dung chi tiết"
+                            />
+                        </Form.Group>
+
+                        <Row>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Tác giả <span className="text-danger">*</span></Form.Label>
+                                    <Form.Control
                                         type="text"
                                         name="author"
                                         value={formData.author}
@@ -228,10 +282,12 @@ const AdminTinTuc = () => {
                                         required
                                         placeholder="Tên tác giả"
                                     />
-                                </div>
-                                <div className="form-group">
-                                    <label>Danh mục *</label>
-                                    <select
+                                </Form.Group>
+                            </Col>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Danh mục <span className="text-danger">*</span></Form.Label>
+                                    <Form.Select
                                         name="category"
                                         value={formData.category}
                                         onChange={handleChange}
@@ -241,32 +297,33 @@ const AdminTinTuc = () => {
                                         {categories.map(cat => (
                                             <option key={cat} value={cat}>{cat}</option>
                                         ))}
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label>URL hình ảnh</label>
-                                <input
-                                    type="url"
-                                    name="imageUrl"
-                                    value={formData.imageUrl}
-                                    onChange={handleChange}
-                                    placeholder="https://example.com/image.jpg"
-                                />
-                            </div>
-                            <div className="modal-actions">
-                                <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-                                    Hủy
-                                </button>
-                                <button type="submit" className="btn-primary">
-                                    {editingItem ? 'Cập nhật' : 'Tạo mới'}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-        </div>
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>URL hình ảnh</Form.Label>
+                            <Form.Control
+                                type="url"
+                                name="imageUrl"
+                                value={formData.imageUrl}
+                                onChange={handleChange}
+                                placeholder="https://example.com/image.jpg"
+                            />
+                        </Form.Group>
+                    </Modal.Body>
+                    <Modal.Footer className="bg-light">
+                        <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
+                            Hủy
+                        </Button>
+                        <Button variant="primary" type="submit">
+                            {editingItem ? 'Cập nhật' : 'Tạo mới'}
+                        </Button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
+        </Container>
     );
 };
 

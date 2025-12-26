@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { perspectives as initialPerspectives } from '../../data/mockData';
-import './AdminCongDong.css';
+import { Container, Row, Col, Card, Table, Button, Form, Modal, Badge, InputGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AdminGocNhin = () => {
     const [perspectivesList, setPerspectivesList] = useState(initialPerspectives);
@@ -95,208 +96,187 @@ const AdminGocNhin = () => {
     });
 
     return (
-        <div className="admin-cong-dong">
-            <div className="admin-header">
-                <div>
-                    <h1>Quản lý Góc nhìn</h1>
-                    <p>Quản lý các bài viết quan điểm và ý kiến chuyên gia</p>
-                </div>
-                <button className="btn-primary" onClick={handleCreate}>
-                    <span>+</span> Thêm bài viết mới
-                </button>
-            </div>
+        <Container fluid className="py-4 bg-light" style={{ minHeight: '100vh' }}>
+            <Row className="mb-4">
+                <Col>
+                    <h1 className="fw-bold">Quản lý Góc nhìn</h1>
+                    <p className="text-muted">Quản lý các bài viết quan điểm và ý kiến chuyên gia</p>
+                </Col>
+                <Col xs="auto">
+                    <Button variant="primary" size="lg" onClick={handleCreate}>
+                        <i className="bi bi-plus-circle me-2"></i>
+                        Thêm bài viết mới
+                    </Button>
+                </Col>
+            </Row>
 
-            <div className="admin-filters">
-                <div className="search-box">
-                    <input
-                        type="text"
-                        placeholder="Tìm kiếm bài viết..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-                <select 
-                    value={filterCategory} 
-                    onChange={(e) => setFilterCategory(e.target.value)}
-                    className="filter-select"
-                >
-                    <option value="all">Tất cả danh mục</option>
-                    {categories.map(cat => (
-                        <option key={cat} value={cat}>{cat}</option>
-                    ))}
-                </select>
-            </div>
+            <Row className="mb-4">
+                <Col md={6}>
+                    <InputGroup>
+                        <InputGroup.Text><i className="bi bi-search"></i></InputGroup.Text>
+                        <Form.Control
+                            type="text"
+                            placeholder="Tìm kiếm bài viết..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </InputGroup>
+                </Col>
+                <Col md={3}>
+                    <Form.Select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
+                        <option value="all">Tất cả danh mục</option>
+                        {categories.map(cat => (
+                            <option key={cat} value={cat}>{cat}</option>
+                        ))}
+                    </Form.Select>
+                </Col>
+            </Row>
 
-            <div className="admin-stats">
-                <div className="stat-card">
-                    <h3>{perspectivesList.length}</h3>
-                    <p>Tổng bài viết</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{perspectivesList.reduce((sum, item) => sum + item.views, 0)}</h3>
-                    <p>Tổng lượt xem</p>
-                </div>
-                <div className="stat-card">
-                    <h3>{perspectivesList.reduce((sum, item) => sum + item.comments, 0)}</h3>
-                    <p>Tổng bình luận</p>
-                </div>
-            </div>
+            <Row className="mb-4 g-3">
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{perspectivesList.length}</h2>
+                            <Card.Text className="text-muted">Tổng bài viết</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{perspectivesList.reduce((sum, item) => sum + item.views, 0)}</h2>
+                            <Card.Text className="text-muted">Tổng lượt xem</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="text-center border-0 shadow-sm">
+                        <Card.Body>
+                            <h2 className="text-primary fw-bold">{perspectivesList.reduce((sum, item) => sum + item.comments, 0)}</h2>
+                            <Card.Text className="text-muted">Tổng bình luận</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
 
-            <div className="admin-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tiêu đề</th>
-                            <th>Danh mục</th>
-                            <th>Tác giả</th>
-                            <th>Lượt xem</th>
-                            <th>Thích</th>
-                            <th>Bình luận</th>
-                            <th>Ngày đăng</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredPerspectives.map(item => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
-                                <td>
-                                    <div className="table-title">
-                                        {item.imageUrl && (
-                                            <img src={item.imageUrl} alt={item.title} className="table-thumbnail" />
-                                        )}
-                                        <div>
-                                            <strong>{item.title}</strong>
-                                            <p className="table-desc">{item.description}</p>
-                                            <div className="tags">
-                                                {item.tags.map((tag, idx) => (
-                                                    <span key={idx} className="tag">{tag}</span>
-                                                ))}
+            <Card className="border-0 shadow-sm">
+                <Card.Body className="p-0">
+                    <Table responsive hover className="mb-0">
+                        <thead className="table-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th style={{ width: '30%' }}>Tiêu đề</th>
+                                <th>Danh mục</th>
+                                <th>Tác giả</th>
+                                <th>Lượt xem</th>
+                                <th>Thích</th>
+                                <th>Bình luận</th>
+                                <th>Ngày đăng</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredPerspectives.map(item => (
+                                <tr key={item.id}>
+                                    <td>{item.id}</td>
+                                    <td>
+                                        <div className="d-flex gap-3 align-items-start">
+                                            {item.imageUrl && (
+                                                <img 
+                                                    src={item.imageUrl} 
+                                                    alt={item.title}
+                                                    style={{ 
+                                                        width: '80px', 
+                                                        height: '60px', 
+                                                        objectFit: 'cover',
+                                                        borderRadius: '6px'
+                                                    }}
+                                                />
+                                            )}
+                                            <div>
+                                                <strong className="d-block mb-1">{item.title}</strong>
+                                                <small className="text-muted d-block mb-2">{item.description}</small>
+                                                <div className="d-flex gap-1 flex-wrap">
+                                                    {item.tags.map((tag, idx) => (
+                                                        <Badge key={idx} bg="secondary" className="small">{tag}</Badge>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td><span className="badge">{item.category}</span></td>
-                                <td>{item.author}</td>
-                                <td>{item.views}</td>
-                                <td>{item.likes}</td>
-                                <td>{item.comments}</td>
-                                <td>{item.date}</td>
-                                <td>
-                                    <div className="action-buttons">
-                                        <button className="btn-edit" onClick={() => handleEdit(item)}>Sửa</button>
-                                        <button className="btn-delete" onClick={() => handleDelete(item.id)}>Xóa</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                                    </td>
+                                    <td><Badge bg="info">{item.category}</Badge></td>
+                                    <td>{item.author}</td>
+                                    <td>{item.views}</td>
+                                    <td>{item.likes}</td>
+                                    <td>{item.comments}</td>
+                                    <td>{item.date}</td>
+                                    <td>
+                                        <div className="d-flex gap-2">
+                                            <Button variant="success" size="sm" onClick={() => handleEdit(item)}>Sửa</Button>
+                                            <Button variant="danger" size="sm" onClick={() => handleDelete(item.id)}>Xóa</Button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Card.Body>
+            </Card>
 
-            {isModalOpen && (
-                <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h2>{editingItem ? 'Chỉnh sửa góc nhìn' : 'Thêm góc nhìn mới'}</h2>
-                            <button className="modal-close" onClick={() => setIsModalOpen(false)}>×</button>
-                        </div>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Tiêu đề *</label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    value={formData.title}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Nhập tiêu đề bài viết"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Mô tả ngắn *</label>
-                                <textarea
-                                    name="description"
-                                    value={formData.description}
-                                    onChange={handleChange}
-                                    required
-                                    rows="2"
-                                    placeholder="Nhập mô tả ngắn"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Nội dung *</label>
-                                <textarea
-                                    name="content"
-                                    value={formData.content}
-                                    onChange={handleChange}
-                                    required
-                                    rows="8"
-                                    placeholder="Nhập nội dung chi tiết"
-                                />
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label>Tác giả *</label>
-                                    <input
-                                        type="text"
-                                        name="author"
-                                        value={formData.author}
-                                        onChange={handleChange}
-                                        required
-                                        placeholder="Tên tác giả"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Danh mục *</label>
-                                    <select
-                                        name="category"
-                                        value={formData.category}
-                                        onChange={handleChange}
-                                        required
-                                    >
+            <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)} size="lg" centered>
+                <Modal.Header closeButton className="bg-light">
+                    <Modal.Title>{editingItem ? 'Chỉnh sửa góc nhìn' : 'Thêm góc nhìn mới'}</Modal.Title>
+                </Modal.Header>
+                <Form onSubmit={handleSubmit}>
+                    <Modal.Body>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Tiêu đề <span className="text-danger">*</span></Form.Label>
+                            <Form.Control type="text" name="title" value={formData.title} onChange={handleChange} required placeholder="Nhập tiêu đề bài viết" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Mô tả ngắn <span className="text-danger">*</span></Form.Label>
+                            <Form.Control as="textarea" rows={2} name="description" value={formData.description} onChange={handleChange} required placeholder="Nhập mô tả ngắn" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Nội dung <span className="text-danger">*</span></Form.Label>
+                            <Form.Control as="textarea" rows={8} name="content" value={formData.content} onChange={handleChange} required placeholder="Nhập nội dung chi tiết" />
+                        </Form.Group>
+                        <Row>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Tác giả <span className="text-danger">*</span></Form.Label>
+                                    <Form.Control type="text" name="author" value={formData.author} onChange={handleChange} required placeholder="Tên tác giả" />
+                                </Form.Group>
+                            </Col>
+                            <Col md={6}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Danh mục <span className="text-danger">*</span></Form.Label>
+                                    <Form.Select name="category" value={formData.category} onChange={handleChange} required>
                                         <option value="">Chọn danh mục</option>
                                         {categories.map(cat => (
                                             <option key={cat} value={cat}>{cat}</option>
                                         ))}
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label>Tags (phân cách bằng dấu phẩy)</label>
-                                <input
-                                    type="text"
-                                    name="tags"
-                                    value={formData.tags}
-                                    onChange={handleChange}
-                                    placeholder="VD: Bảo tồn, Công nghệ, Giáo dục"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>URL hình ảnh</label>
-                                <input
-                                    type="url"
-                                    name="imageUrl"
-                                    value={formData.imageUrl}
-                                    onChange={handleChange}
-                                    placeholder="https://example.com/image.jpg"
-                                />
-                            </div>
-                            <div className="modal-actions">
-                                <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-                                    Hủy
-                                </button>
-                                <button type="submit" className="btn-primary">
-                                    {editingItem ? 'Cập nhật' : 'Tạo mới'}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-        </div>
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Tags (phân cách bằng dấu phẩy)</Form.Label>
+                            <Form.Control type="text" name="tags" value={formData.tags} onChange={handleChange} placeholder="VD: Bảo tồn, Công nghệ, Giáo dục" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>URL hình ảnh</Form.Label>
+                            <Form.Control type="url" name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="https://example.com/image.jpg" />
+                        </Form.Group>
+                    </Modal.Body>
+                    <Modal.Footer className="bg-light">
+                        <Button variant="secondary" onClick={() => setIsModalOpen(false)}>Hủy</Button>
+                        <Button variant="primary" type="submit">{editingItem ? 'Cập nhật' : 'Tạo mới'}</Button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
+        </Container>
     );
 };
 
-export default AdminGocNhin;
+export default AdminGocNhin;
