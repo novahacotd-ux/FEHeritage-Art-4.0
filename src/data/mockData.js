@@ -1043,8 +1043,274 @@ export const dynastyData = {
     }
 };
 
+// Mock data for Analysis (Phân tích)
+export const analysis = [
+    {
+        id: '1',
+        title: 'Phân tích kiến trúc cung điện Huế',
+        description: 'Nghiên cứu sâu về kiến trúc độc đáo của các công trình cung điện triều Nguyễn tại Huế.',
+        content: 'Kiến trúc cung điện Huế thể hiện sự kết hợp hài hòa giữa phong cách truyền thống Việt Nam và ảnh hưởng của kiến trúc Trung Quốc. Các công trình được bố trí theo nguyên tắc phong thủy, với sự phân chia rõ ràng giữa khu vực nội triều và ngoại triều. Điểm đặc biệt là việc sử dụng màu sắc và họa tiết trang trí tinh tế, phản ánh đẳng cấp và quyền lực của hoàng gia.',
+        date: '15/12/2024',
+        author: 'TS. Nguyễn Văn Minh',
+        category: 'Kiến trúc',
+        tags: ['Huế', 'Cung điện', 'Triều Nguyễn'],
+        imageUrl: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&h=600&fit=crop',
+        views: 1250,
+        likes: 89
+    },
+    {
+        id: '2',
+        title: 'Vai trò của nước mắm trong văn hóa ẩm thực Việt',
+        description: 'Phân tích về lịch sử, quy trình sản xuất và ý nghĩa văn hóa của nước mắm trong ẩm thực Việt Nam.',
+        content: 'Nước mắm không chỉ là một gia vị đơn thuần mà còn là biểu tượng văn hóa của người Việt. Từ thời xa xưa, nước mắm đã gắn liền với đời sống người dân ven biển và lan rộng ra toàn quốc. Quy trình làm nước mắm truyền thống đòi hỏi sự tỉ mỉ và kinh nghiệm tích lũy qua nhiều thế hệ. Mỗi vùng miền có cách làm và hương vị nước mắm riêng, tạo nên sự đa dạng phong phú.',
+        date: '10/12/2024',
+        author: 'PGS. Trần Thị Lan',
+        category: 'Văn hóa ẩm thực',
+        tags: ['Nước mắm', 'Ẩm thực', 'Văn hóa'],
+        imageUrl: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop',
+        views: 2340,
+        likes: 156
+    },
+    {
+        id: '3',
+        title: 'Nghệ thuật thư pháp Việt Nam qua các triều đại',
+        description: 'Tìm hiểu về sự phát triển và đặc điểm của nghệ thuật thư pháp Việt Nam từ thời Lý đến nay.',
+        content: 'Thư pháp Việt Nam có lịch sử phát triển lâu đời, chịu ảnh hưởng từ thư pháp Trung Quốc nhưng vẫn giữ được nét độc đáo riêng. Các triều đại Lý, Trần, Lê đều coi trọng nghệ thuật viết chữ, nhiều vua chúa và danh sĩ để lại những tác phẩm thư pháp quý giá. Thư pháp không chỉ là nghệ thuật mà còn thể hiện tâm hồn, học thức và phẩm cách của người viết.',
+        date: '05/12/2024',
+        author: 'GS. Lê Đức Hòa',
+        category: 'Nghệ thuật',
+        tags: ['Thư pháp', 'Chữ Hán', 'Nghệ thuật'],
+        imageUrl: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop',
+        views: 890,
+        likes: 67
+    },
+    {
+        id: '4',
+        title: 'Tín ngưỡng thờ Mẫu trong văn hóa dân gian',
+        description: 'Phân tích về nguồn gốc, ý nghĩa và vai trò của tín ngưỡng thờ Mẫu Tam phủ trong đời sống tinh thần người Việt.',
+        content: 'Tín ngưỡng thờ Mẫu là một trong những tín ngưỡng đặc sắc của người Việt, thể hiện sự tôn sùng các vị thần nữ bảo hộ. Lễ hội Hầu đồng là nghi lễ đặc trưng, kết hợp yếu tố tâm linh với nghệ thuật biểu diễn. UNESCO đã công nhận Tín ngưỡng thờ Mẫu Tam phủ là Di sản văn hóa phi vật thể đại diện của nhân loại năm 2016.',
+        date: '01/12/2024',
+        author: 'TS. Phạm Quỳnh Anh',
+        category: 'Tín ngưỡng',
+        tags: ['Thờ Mẫu', 'Hầu đồng', 'Tín ngưỡng'],
+        imageUrl: 'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&h=600&fit=crop',
+        views: 1567,
+        likes: 134
+    },
+    {
+        id: '5',
+        title: 'Âm nhạc cung đình Huế - Di sản âm nhạc độc đáo',
+        description: 'Nghiên cứu về đặc điểm, giá trị và sự bảo tồn âm nhạc cung đình Huế.',
+        content: 'Nhạc cung đình Huế là loại hình âm nhạc phục vụ cho các nghi lễ và sinh hoạt của triều đình nhà Nguyễn. Với hệ thống nhạc khí phong phú và kỹ thuật biểu diễn tinh tế, nhạc cung đình Huế đã được UNESCO công nhận là Kiệt tác di sản văn hóa phi vật thể của nhân loại năm 2003. Hiện nay, công tác bảo tồn và truyền dạy nhạc cung đình đang được thực hiện tích cực tại Huế.',
+        date: '25/11/2024',
+        author: 'GS. Trần Quang Hải',
+        category: 'Âm nhạc',
+        tags: ['Nhạc cung đình', 'Huế', 'Di sản'],
+        imageUrl: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=800&h=600&fit=crop',
+        views: 1123,
+        likes: 98
+    }
+];
+
+// Mock data for Perspective (Góc nhìn)
+export const perspectives = [
+    {
+        id: '1',
+        title: 'Bảo tồn di sản trong thời đại số hóa',
+        description: 'Quan điểm về việc ứng dụng công nghệ số trong công tác bảo tồn và phát huy giá trị di sản văn hóa.',
+        content: 'Thời đại số hóa mở ra nhiều cơ hội mới cho công tác bảo tồn di sản. Công nghệ 3D scanning, thực tế ảo (VR), thực tế tăng cường (AR) giúp lưu trữ và tái hiện các di tích, hiện vật một cách chính xác. Tuy nhiên, cần cân nhắc giữa việc ứng dụng công nghệ và việc giữ gìn tính nguyên bản của di sản. Số hóa không thay thế mà bổ trợ cho các phương pháp bảo tồn truyền thống.',
+        date: '18/12/2024',
+        author: 'Nguyễn Minh Tuấn',
+        category: 'Công nghệ',
+        tags: ['Số hóa', 'Bảo tồn', 'Công nghệ'],
+        imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
+        views: 2145,
+        likes: 187,
+        comments: 45
+    },
+    {
+        id: '2',
+        title: 'Vai trò của giới trẻ trong bảo vệ di sản',
+        description: 'Góc nhìn về tầm quan trọng của sự tham gia của thế hệ trẻ trong việc bảo vệ và phát huy di sản văn hóa.',
+        content: 'Giới trẻ đóng vai trò then chốt trong việc kế thừa và phát triển di sản văn hóa. Họ có khả năng kết nối truyền thống với hiện đại, sử dụng mạng xã hội và các nền tảng số để quảng bá di sản một cách sáng tạo. Tuy nhiên, cần có các chương trình giáo dục phù hợp để giúp giới trẻ hiểu đúng và yêu quý di sản. Sự tham gia tích cực của thanh niên là chìa khóa để di sản tồn tại và phát triển bền vững.',
+        date: '12/12/2024',
+        author: 'Trần Phương Linh',
+        category: 'Giáo dục',
+        tags: ['Giới trẻ', 'Bảo vệ di sản', 'Giáo dục'],
+        imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop',
+        views: 1876,
+        likes: 156,
+        comments: 38
+    },
+    {
+        id: '3',
+        title: 'Du lịch di sản: Cơ hội và thách thức',
+        description: 'Phân tích về tác động của phát triển du lịch đến việc bảo tồn di sản văn hóa.',
+        content: 'Du lịch di sản mang lại nguồn thu quan trọng và nâng cao nhận thức về giá trị văn hóa. Tuy nhiên, việc phát triển du lịch không bền vững có thể gây hại cho di sản. Áp lực từ lượng khách đông, hoạt động thương mại hóa quá mức, thiếu quản lý chuyên nghiệp là những thách thức cần giải quyết. Cần có chiến lược phát triển du lịch di sản bền vững, cân bằng giữa kinh tế và bảo tồn.',
+        date: '08/12/2024',
+        author: 'Lê Hoàng Nam',
+        category: 'Du lịch',
+        tags: ['Du lịch', 'Di sản', 'Phát triển bền vững'],
+        imageUrl: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop',
+        views: 1543,
+        likes: 112,
+        comments: 29
+    },
+    {
+        id: '4',
+        title: 'Làng nghề truyền thống trong bối cảnh hội nhập',
+        description: 'Quan điểm về việc duy trì và phát triển làng nghề truyền thống trong nền kinh tế thị trường.',
+        content: 'Làng nghề truyền thống là di sản văn hóa sống động, gắn liền với đời sống cộng đồng. Trong bối cảnh hội nhập, làng nghề đối mặt với cạnh tranh từ sản phẩm công nghiệp, thiếu thợ thủ công lành nghề, khó khăn về thị trường. Cần có chính sách hỗ trợ toàn diện: bảo hộ thương hiệu, đào tạo nghề, mở rộng thị trường, kết hợp với du lịch. Sự sáng tạo trong thiết kế sản phẩm giúp làng nghề thích ứng với nhu cầu hiện đại.',
+        date: '03/12/2024',
+        author: 'Phạm Thu Hà',
+        category: 'Kinh tế',
+        tags: ['Làng nghề', 'Hội nhập', 'Kinh tế'],
+        imageUrl: 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=600&fit=crop',
+        views: 1234,
+        likes: 89,
+        comments: 24
+    },
+    {
+        id: '5',
+        title: 'Bản sắc văn hóa trong thời kỳ toàn cầu hóa',
+        description: 'Suy ngẫm về việc giữ gìn bản sắc văn hóa dân tộc trong bối cảnh toàn cầu hóa.',
+        content: 'Toàn cầu hóa tạo điều kiện cho các nền văn hóa giao lưu, học hỏi lẫn nhau nhưng cũng đặt ra nguy cơ đồng nhất hóa văn hóa. Việt Nam cần chủ động trong việc tiếp nhận tinh hoa văn hóa thế giới nhưng vẫn giữ vững bản sắc dân tộc. Giáo dục văn hóa từ sớm, khuyến khích sáng tạo nghệ thuật đương đại mang dấu ấn Việt, phát triển công nghiệp văn hóa là những giải pháp quan trọng.',
+        date: '28/11/2024',
+        author: 'Vũ Đức Minh',
+        category: 'Văn hóa',
+        tags: ['Bản sắc', 'Toàn cầu hóa', 'Văn hóa'],
+        imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+        views: 1987,
+        likes: 165,
+        comments: 52
+    }
+];
+
+// Mock data for Forum Posts
+export const forumPosts = [
+    {
+        id: '1',
+        title: 'Làm sao để khôi phục các bức tranh cổ bị phai màu?',
+        content: 'Mình có một bức tranh cổ của ông bà để lại nhưng đã bị phai màu khá nhiều. Mọi người có kinh nghiệm hoặc biết nơi nào có thể khôi phục tranh cổ không ạ?',
+        author: {
+            id: 'u1',
+            name: 'Nguyễn Văn An',
+            avatar: 'https://i.pravatar.cc/150?img=12',
+            role: 'Thành viên'
+        },
+        category: 'Bảo tồn',
+        tags: ['Tranh cổ', 'Khôi phục', 'Bảo quản'],
+        createdAt: '2024-12-20T10:30:00',
+        updatedAt: '2024-12-20T10:30:00',
+        views: 234,
+        likes: 45,
+        comments: 12,
+        status: 'active'
+    },
+    {
+        id: '2',
+        title: 'Chia sẻ kinh nghiệm tham quan di tích Mỹ Sơn',
+        content: 'Mình vừa có chuyến tham quan thánh địa Mỹ Sơn rất ấn tượng. Muốn chia sẻ với mọi người về lịch trình và những điều cần lưu ý khi đến đây. Ai quan tâm thì cùng thảo luận nhé!',
+        author: {
+            id: 'u2',
+            name: 'Trần Thị Bình',
+            avatar: 'https://i.pravatar.cc/150?img=25',
+            role: 'Thành viên'
+        },
+        category: 'Du lịch di sản',
+        tags: ['Mỹ Sơn', 'Du lịch', 'Champa'],
+        createdAt: '2024-12-19T14:20:00',
+        updatedAt: '2024-12-19T14:20:00',
+        views: 567,
+        likes: 89,
+        comments: 28,
+        status: 'active',
+        isPinned: true
+    },
+    {
+        id: '3',
+        title: 'Hỏi về khóa học làm gốm truyền thống',
+        content: 'Mình rất muốn học làm gốm truyền thống nhưng chưa biết nên bắt đầu từ đâu. Có ai biết các khóa học hoặc nghệ nhân dạy nghề ở Hà Nội không ạ?',
+        author: {
+            id: 'u3',
+            name: 'Lê Hoàng Cường',
+            avatar: 'https://i.pravatar.cc/150?img=33',
+            role: 'Thành viên mới'
+        },
+        category: 'Học hỏi',
+        tags: ['Gốm', 'Làng nghề', 'Học nghề'],
+        createdAt: '2024-12-18T09:15:00',
+        updatedAt: '2024-12-18T09:15:00',
+        views: 432,
+        likes: 67,
+        comments: 18,
+        status: 'active'
+    },
+    {
+        id: '4',
+        title: 'Thảo luận về âm nhạc dân gian Nam Bộ',
+        content: 'Âm nhạc dân gian Nam Bộ có những đặc trưng gì? Mọi người cùng chia sẻ hiểu biết và tình yêu với loại hình nghệ thuật này nhé!',
+        author: {
+            id: 'u4',
+            name: 'Phạm Minh Đức',
+            avatar: 'https://i.pravatar.cc/150?img=15',
+            role: 'Chuyên gia'
+        },
+        category: 'Nghệ thuật',
+        tags: ['Âm nhạc', 'Dân gian', 'Nam Bộ'],
+        createdAt: '2024-12-17T16:45:00',
+        updatedAt: '2024-12-17T16:45:00',
+        views: 789,
+        likes: 123,
+        comments: 35,
+        status: 'active'
+    },
+    {
+        id: '5',
+        title: 'Tìm hiểu về lễ hội Đền Hùng',
+        content: 'Lễ hội Đền Hùng có ý nghĩa như thế nào trong đời sống tâm linh của người Việt? Những nghi lễ chính diễn ra trong lễ hội là gì?',
+        author: {
+            id: 'u5',
+            name: 'Hoàng Thị Em',
+            avatar: 'https://i.pravatar.cc/150?img=47',
+            role: 'Thành viên'
+        },
+        category: 'Tín ngưỡng',
+        tags: ['Lễ hội', 'Đền Hùng', 'Tín ngưỡng'],
+        createdAt: '2024-12-16T11:20:00',
+        updatedAt: '2024-12-16T11:20:00',
+        views: 654,
+        likes: 98,
+        comments: 22,
+        status: 'active'
+    },
+    {
+        id: '6',
+        title: 'Ứng dụng AI trong bảo tồn di sản có hiệu quả không?',
+        content: 'Gần đây có nhiều dự án sử dụng AI để khôi phục và bảo tồn di sản. Mọi người nghĩ sao về việc áp dụng công nghệ này? Có những ưu điểm và hạn chế gì?',
+        author: {
+            id: 'u6',
+            name: 'Vũ Đức Phương',
+            avatar: 'https://i.pravatar.cc/150?img=52',
+            role: 'Chuyên gia'
+        },
+        category: 'Công nghệ',
+        tags: ['AI', 'Công nghệ', 'Bảo tồn'],
+        createdAt: '2024-12-15T13:30:00',
+        updatedAt: '2024-12-15T13:30:00',
+        views: 1234,
+        likes: 187,
+        comments: 56,
+        status: 'active',
+        isPinned: true
+    }
+];
+
 // Helper functions
 export const getEventById = (id) => events.find(event => event.id === id)
 export const getNewsById = (id) => news.find(article => article.id === id)
 export const getSpeakerById = (id) => speakers.find(speaker => speaker.id === id)
 export const getDynastyData = (key) => dynastyData[key] || null
+export const getAnalysisById = (id) => analysis.find(item => item.id === id)
+export const getPerspectiveById = (id) => perspectives.find(item => item.id === id)
+export const getForumPostById = (id) => forumPosts.find(post => post.id === id)
