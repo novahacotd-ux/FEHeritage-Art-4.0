@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { useUser } from '../context/UserContext'
-import { authService, cloudinaryService } from '../services'
-import { validatePassword, getErrorMessage, isValidEmail, isValidIdentityNumber } from '../utils/apiHelpers'
+import { useUser } from '../../context/UserContext'
+import { authService, cloudinaryService } from '../../services'
+import { validatePassword, getErrorMessage, isValidEmail, isValidIdentityNumber } from '../../utils/apiHelpers'
 import './InfoPage.css'
 
 const InfoPage = () => {

@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import toast from 'react-hot-toast'
-import { useUser } from '../context/UserContext'
-import { friendService, socketService, cloudinaryService } from '../services'
-import { getErrorMessage } from '../utils/apiHelpers'
-import ChatModal from '../components/chat/ChatModal'
+import { useUser } from '../../context/UserContext'
+import { friendService, socketService, cloudinaryService, authService } from '../../services'
+import { getErrorMessage } from '../../utils/apiHelpers'
+import ChatModal from '../../components/chat/ChatModal'
 import './FriendsPage.css'
 
 const FriendsPage = () => {
-  const { user } = useUser()
+  const { user, refreshProfile } = useUser()
   const [activeTab, setActiveTab] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [friends, setFriends] = useState([])
@@ -21,6 +21,7 @@ const FriendsPage = () => {
   const [isChatOpen, setIsChatOpen] = useState(false)
 
   const [isEditingAvatar, setIsEditingAvatar] = useState(false)
+  const [uploadingAvatar, setUploadingAvatar] = useState(false)
 
   // Load data on mount
   useEffect(() => {
@@ -197,35 +198,64 @@ const FriendsPage = () => {
     const file = e.target.files?.[0]
     if (!file) return
 
-    // Check file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error('Kích thước file không được vượt quá 5MB')
-      return
-    }
-
-    // Check file type
-    if (!file.type.startsWith('image/')) {
-      toast.error('Vui lòng chọn file ảnh')
-      return
-    }
-
     try {
-      toast.loading('Đang tải ảnh lên...', { id: 'upload-avatar' })
-      await cloudinaryService.uploadAvatar(file)
-      // Update via authService would be better but for now just show success
-      toast.success('Cập nhật ảnh đại diện thành công!', { id: 'upload-avatar' })
+      // Validate file
+      const validation = cloudinaryService.validateFile(file)
+      if (!validation.isValid) {
+        toast.error(validation.error)
+        return
+      }
+
+      setUploadingAvatar(true)
       setIsEditingAvatar(false)
+      toast.loading('Đang tải ảnh lên...', { id: 'upload-avatar' })
+
+      // Upload via backend API
+      const result = await cloudinaryService.uploadImage(file)
+
+      // Update avatar in backend
+      const response = await authService.updateProfile({
+        avatar: result.url
+      })
+
+      if (response.success) {
+        toast.success('Cập nhật ảnh đại diện thành công!', { id: 'upload-avatar' })
+        await refreshProfile()
+      } else {
+        throw new Error(response.message || 'Cập nhật avatar thất bại')
+      }
     } catch (error) {
       console.error('Avatar upload error:', error)
-      toast.error('Không thể tải ảnh lên', { id: 'upload-avatar' })
+      toast.error(getErrorMessage(error) || 'Không thể tải ảnh lên', { id: 'upload-avatar' })
+    } finally {
+      setUploadingAvatar(false)
     }
   }
 
-  const handleAvatarURL = () => {
+  const handleAvatarURL = async () => {
     const url = prompt('Nhập URL ảnh đại diện:')
-    if (url) {
-      toast.success('Cập nhật ảnh đại diện thành công!')
+    if (!url) return
+
+    try {
+      setUploadingAvatar(true)
       setIsEditingAvatar(false)
+
+      // Update avatar in backend
+      const response = await authService.updateProfile({
+        avatar: url
+      })
+
+      if (response.success) {
+        toast.success('Cập nhật ảnh đại diện thành công!')
+        await refreshProfile()
+      } else {
+        throw new Error(response.message || 'Cập nhật avatar thất bại')
+      }
+    } catch (error) {
+      console.error('Avatar update error:', error)
+      toast.error(getErrorMessage(error) || 'Không thể cập nhật ảnh')
+    } finally {
+      setUploadingAvatar(false)
     }
   }
 

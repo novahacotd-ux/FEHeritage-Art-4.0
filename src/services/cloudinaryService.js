@@ -1,4 +1,4 @@
-import { API_CONFIG } from '../configs';
+import api from './api';
 
 // Cloudinary Upload Service
 const cloudinaryService = {
@@ -19,39 +19,28 @@ const cloudinaryService = {
       const formData = new FormData();
       formData.append('avatar', file);
 
-      // Get token from localStorage
-      const token = localStorage.getItem('authToken');
-      if (!token) {
-        throw new Error('Vui lòng đăng nhập để upload ảnh');
-      }
+      // Upload through backend using axios with HTTP-Only cookies
+      // No need to manually add token - it's automatically sent via cookies
+      console.log('Uploading to backend: /upload/avatar');
 
-      // Upload through backend
-      const uploadURL = `${API_CONFIG.BASE_URL}/upload/avatar`;
-      console.log('Uploading to backend:', uploadURL);
-
-      const response = await fetch(uploadURL, {
-        method: 'POST',
+      const response = await api.post('/upload/avatar', formData, {
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Content-Type': 'multipart/form-data',
         },
-        body: formData,
       });
 
-      console.log('Backend response status:', response.status);
+      console.log('Backend response:', response);
 
-      const data = await response.json();
-      console.log('Backend response data:', data);
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Upload failed');
+      if (!response.success) {
+        throw new Error(response.message || 'Upload failed');
       }
 
       return {
-        url: data.data.url,
-        publicId: data.data.publicId,
-        width: data.data.width,
-        height: data.data.height,
-        format: data.data.format,
+        url: response.data.url,
+        publicId: response.data.publicId,
+        width: response.data.width,
+        height: response.data.height,
+        format: response.data.format,
       };
     } catch (error) {
       console.error('Upload error details:', {

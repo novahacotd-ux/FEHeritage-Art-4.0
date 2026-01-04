@@ -1,0 +1,335 @@
+/* Settings Styles - Applied based on user preferences */
+
+/* ============================================
+   FONT SIZE SETTINGS
+   ============================================ */
+:root {
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+}
+
+.font-small {
+  font-size: var(--font-size-small);
+}
+
+.font-medium {
+  font-size: var(--font-size-base);
+}
+
+.font-large {
+  font-size: var(--font-size-large);
+}
+
+.font-large h1 {
+  font-size: 2.5rem;
+}
+
+.font-large h2 {
+  font-size: 2rem;
+}
+
+.font-large h3 {
+  font-size: 1.75rem;
+}
+
+.font-large p {
+  font-size: 1.125rem;
+}
+
+.font-large button {
+  font-size: 1.125rem;
+}
+
+.font-small h1 {
+  font-size: 1.75rem;
+}
+
+.font-small h2 {
+  font-size: 1.5rem;
+}
+
+.font-small h3 {
+  font-size: 1.25rem;
+}
+
+.font-small p {
+  font-size: 0.875rem;
+}
+
+.font-small button {
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+.dark-mode {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0b0b0;
+  --border-color: #404040;
+  --brand-brown-900: #f0f0f0;
+  --brand-brown-700: #d0d0d0;
+  --brand-brown-600: #b89968;
+  --brand-brown-100: #404040;
+}
+
+.dark-mode body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.dark-mode .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark-mode .text-brand-brown-900 {
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .text-brand-brown-700,
+.dark-mode .text-brand-brown-600 {
+  color: var(--text-secondary) !important;
+}
+
+.dark-mode .border-brand-brown-200,
+.dark-mode .border-brand-brown-100 {
+  border-color: var(--border-color) !important;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.dark-mode .bg-gradient-to-b {
+  background: linear-gradient(to bottom, #1a1a1a, #2d2d2d) !important;
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+.high-contrast {
+  --contrast-bg: #000;
+  --contrast-text: #fff;
+  --contrast-link: #ffff00;
+  --contrast-border: #fff;
+}
+
+.high-contrast body {
+  background-color: var(--contrast-bg) !important;
+  color: var(--contrast-text) !important;
+}
+
+.high-contrast * {
+  border-color: var(--contrast-border) !important;
+}
+
+.high-contrast a,
+.high-contrast button {
+  color: var(--contrast-link) !important;
+  text-decoration: underline;
+}
+
+.high-contrast .bg-white,
+.high-contrast .bg-gradient-to-b,
+.high-contrast .bg-gradient-to-r {
+  background: var(--contrast-bg) !important;
+  color: var(--contrast-text) !important;
+}
+
+.high-contrast img {
+  filter: contrast(1.5);
+}
+
+/* ============================================
+   LARGE BUTTONS
+   ============================================ */
+.large-buttons button,
+.large-buttons .btn,
+.large-buttons a[role="button"] {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 1rem 1.5rem !important;
+  font-size: 1.125rem !important;
+}
+
+.large-buttons input[type="checkbox"],
+.large-buttons input[type="radio"] {
+  width: 24px;
+  height: 24px;
+}
+
+.large-buttons .toggle-switch {
+  transform: scale(1.3);
+}
+
+/* ============================================
+   REDUCE MOTION
+   ============================================ */
+.reduce-motion,
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ============================================
+   THEME VARIATIONS
+   ============================================ */
+
+/* Default Theme - Heritage Brown */
+.theme-default {
+  --primary-color: #7a5a42;
+  --primary-light: #b89968;
+  --primary-dark: #3b2412;
+}
+
+/* Warm Theme - Sunset Orange */
+.theme-warm {
+  --primary-color: #d97706;
+  --primary-light: #fbbf24;
+  --primary-dark: #92400e;
+  --bg-gradient-from: #fff7ed;
+  --bg-gradient-to: #fed7aa;
+}
+
+.theme-warm .bg-gradient-to-b {
+  background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to)) !important;
+}
+
+.theme-warm .from-\[\#3b2412\],
+.theme-warm .bg-gradient-to-r {
+  background: linear-gradient(to right, var(--primary-dark), var(--primary-color)) !important;
+}
+
+/* Cool Theme - Ocean Blue */
+.theme-cool {
+  --primary-color: #0891b2;
+  --primary-light: #22d3ee;
+  --primary-dark: #164e63;
+  --bg-gradient-from: #ecfeff;
+  --bg-gradient-to: #cffafe;
+}
+
+.theme-cool .bg-gradient-to-b {
+  background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to)) !important;
+}
+
+.theme-cool .from-\[\#3b2412\],
+.theme-cool .bg-gradient-to-r {
+  background: linear-gradient(to right, var(--primary-dark), var(--primary-color)) !important;
+}
+
+.theme-cool .text-brand-brown-600 {
+  color: var(--primary-color) !important;
+}
+
+/* Classic Theme - Elegant Gray */
+.theme-classic {
+  --primary-color: #4b5563;
+  --primary-light: #9ca3af;
+  --primary-dark: #1f2937;
+  --bg-gradient-from: #f9fafb;
+  --bg-gradient-to: #e5e7eb;
+}
+
+.theme-classic .bg-gradient-to-b {
+  background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to)) !important;
+}
+
+.theme-classic .from-\[\#3b2412\],
+.theme-classic .bg-gradient-to-r {
+  background: linear-gradient(to right, var(--primary-dark), var(--primary-color)) !important;
+}
+
+.theme-classic .text-brand-brown-600 {
+  color: var(--primary-color) !important;
+}
+
+/* ============================================
+   KEYBOARD NAVIGATION FOCUS
+   ============================================ */
+.keyboard-navigation *:focus-visible {
+  outline: 3px solid #fbbf24 !important;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SCREEN READER UTILITIES
+   ============================================ */
+.screen-reader .sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.25rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+}
+
+.skip-to-main:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1em;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .reduce-motion * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+
+  .large-buttons button,
+  .large-buttons .btn {
+    min-height: 44px;
+    padding: 0.875rem 1.25rem !important;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - Touch Target Size
+   ============================================ */
+.large-buttons a,
+.large-buttons button,
+.large-buttons input,
+.large-buttons select {
+  touch-action: manipulation;
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+  /* Mobile touch devices */
+  .large-buttons button,
+  .large-buttons a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

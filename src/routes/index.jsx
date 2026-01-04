@@ -28,7 +28,7 @@ import StudentLessonView from '../pages/LMS/Student/StudentLessonView';
 import StudentAssignmentDetail from '../pages/LMS/Student/StudentAssignmentDetail';
 import TeacherLessonDetail from '../pages/LMS/Teacher/TeacherLessonDetail';
 import TeacherAssignmentDetail from '../pages/LMS/Teacher/TeacherAssignmentDetail';
-import UploadTaiLieu from '../pages/UploadTaiLieu';
+import UploadTaiLieu from '../pages/giaoDuc/UploadTaiLieu.jsx';
 
 //Admin Components
 import AdminLayout from '../components/layouts/AdminLayout.jsx';

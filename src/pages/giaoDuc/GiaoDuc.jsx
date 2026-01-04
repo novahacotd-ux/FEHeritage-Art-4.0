@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import banner from '../assets/banner.png';
-import LazyImage from '../components/common/LazyImage';
+import banner from '../../assets/banner.png';
+import LazyImage from '../../components/common/LazyImage';
 
 const SectionDivider = () => (
   <div className="w-full py-6">

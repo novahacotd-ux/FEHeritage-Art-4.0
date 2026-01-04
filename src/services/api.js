@@ -5,17 +5,16 @@ import { API_CONFIG } from '../configs';
 const api = axios.create({
   baseURL: API_CONFIG.BASE_URL,
   timeout: API_CONFIG.TIMEOUT,
+  withCredentials: true, // Important: Send cookies with requests
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
+// Request interceptor - No longer need to manually add token from localStorage
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // Token is automatically sent via HTTP-Only cookies
     return config;
   },
   (error) => {
@@ -29,7 +28,9 @@ api.interceptors.response.use(
     // Trả về data từ response
     return response.data;
   },
-  (error) => {
+  async (error) => {
+    const originalRequest = error.config;
+
     // Xử lý các lỗi phổ biến
     if (error.response) {
       // Server trả về response với status code ngoài 2xx
@@ -38,13 +39,31 @@ api.interceptors.response.use(
       switch (status) {
         case 401:
           // Unauthorized - Token hết hạn hoặc không hợp lệ
-          localStorage.removeItem('authToken');
-          localStorage.removeItem('userProfile');
-          localStorage.removeItem('isLoggedIn');
+          // Try to refresh token if not already retrying
+          if (!originalRequest._retry) {
+            originalRequest._retry = true;
 
-          // Redirect to login nếu không phải trang public
-          if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
-            window.location.href = '/login';
+            try {
+              // Call refresh token endpoint
+              await axios.post(
+                `${API_CONFIG.BASE_URL}/auth/refresh`,
+                {},
+                { withCredentials: true }
+              );
+
+              // Retry original request
+              return api(originalRequest);
+            } catch (refreshError) {
+              // Refresh failed, redirect to login
+              console.error('Token refresh failed, redirecting to login');
+
+              // Redirect to login nếu không phải trang public
+              if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
+                window.location.href = '/login';
+              }
+
+              return Promise.reject(refreshError);
+            }
           }
           break;
 

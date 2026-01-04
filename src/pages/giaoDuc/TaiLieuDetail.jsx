@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { periodsData } from '../data/educationData';
-import CitationModal from '../components/common/CitationModal';
-import ShareModal from '../components/common/ShareModal';
+import { periodsData } from '../../data/educationData';
+import CitationModal from '../../components/common/CitationModal';
+import ShareModal from '../../components/common/ShareModal';
 
 const TaiLieuDetail = () => {
   const { id } = useParams();

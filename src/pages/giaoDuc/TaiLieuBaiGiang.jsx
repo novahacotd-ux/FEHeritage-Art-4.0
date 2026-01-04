@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { periodsData, categories, sortOptions } from '../data/educationData';
+import { periodsData, categories, sortOptions } from '../../data/educationData';
 
 // Loading Skeleton Component
 const DocumentSkeleton = ({ viewMode }) => (

@@ -5,11 +5,7 @@ const authService = {
   register: async (userData) => {
     try {
       const response = await api.post(API_ENDPOINTS.AUTH.REGISTER, userData);
-
-      if (response.success && response.data.token) {
-        localStorage.setItem('authToken', response.data.token);
-      }
-
+      // Token is now stored in HTTP-Only cookies automatically
       return response;
     } catch (error) {
       throw error;
@@ -19,12 +15,7 @@ const authService = {
   login: async (credentials) => {
     try {
       const response = await api.post(API_ENDPOINTS.AUTH.LOGIN, credentials);
-
-      // Lưu token vào localStorage
-      if (response.success && response.data.token) {
-        localStorage.setItem('authToken', response.data.token);
-      }
-
+      // Token is now stored in HTTP-Only cookies automatically
       return response;
     } catch (error) {
       throw error;
@@ -34,16 +25,12 @@ const authService = {
   logout: async () => {
     try {
       const response = await api.post(API_ENDPOINTS.AUTH.LOGOUT);
-
-      // Xóa token khỏi localStorage
-      localStorage.removeItem('authToken');
+      // Clear any user data from localStorage (but not tokens - they're in cookies)
       localStorage.removeItem('userProfile');
       localStorage.removeItem('isLoggedIn');
-
       return response;
     } catch (error) {
-      // Vẫn xóa token dù API call failed
-      localStorage.removeItem('authToken');
+      // Still clear user data even if API call failed
       localStorage.removeItem('userProfile');
       localStorage.removeItem('isLoggedIn');
       throw error;
@@ -77,12 +64,14 @@ const authService = {
     }
   },
 
-  isAuthenticated: () => {
-    return !!localStorage.getItem('authToken');
-  },
-
-  getToken: () => {
-    return localStorage.getItem('authToken');
+  // Check authentication by trying to get profile
+  isAuthenticated: async () => {
+    try {
+      await api.get(API_ENDPOINTS.AUTH.PROFILE);
+      return true;
+    } catch (error) {
+      return false;
+    }
   },
 };
 
