@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { periodsData } from '../data/educationData';
-import CitationModal from '../components/common/CitationModal';
-import ShareModal from '../components/common/ShareModal';
-import { getYouTubeVideoId, getYouTubeEmbedUrl, isYouTubeUrl, formatTime } from '../utils/videoUtils';
+import { periodsData } from '../../data/educationData';
+import CitationModal from '../../components/common/CitationModal';
+import ShareModal from '../../components/common/ShareModal';
+import { getYouTubeVideoId, getYouTubeEmbedUrl, isYouTubeUrl, formatTime } from '../../utils/videoUtils';
 
 const BaiGiangDetail = () => {
   const { id } = useParams();

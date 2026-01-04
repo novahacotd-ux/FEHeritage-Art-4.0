@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import { Home, HomeEvent, Events, News, EventDetail, NewsDetail, EventRegistration, VanHoaLichSu, PhanTichGocNhin, Forum, TraiNghiem, TaoTranh, CongNghe, GiaoDuc, BaiGiangMinhHoa, BaiGiangDetail, TaiLieuBaiGiang, TaiLieuDetail, BaiHocMinhHoaDetail, VirtualChronicle, ProfilePage, InfoPage, FriendsPage, ContactPage, Settings, Guides, Contact, LoginPage, RegisterPage } from '../pages'
+import { Home, HomeEvent, Events, News, EventDetail, NewsDetail, EventRegistration, VanHoaLichSu, PhanTichGocNhin, Forum, TraiNghiem, TaoTranh, CongNghe, GiaoDuc, BaiGiangMinhHoa, BaiGiangDetail, TaiLieuBaiGiang, TaiLieuDetail, BaiHocMinhHoaDetail, VirtualChronicle, InfoPage, FriendsPage, ContactPage, Settings, Guides, Contact, LoginPage, RegisterPage } from '../pages'
 import AppLayout from '../components/layouts/AppLayout.jsx';
 import MainLayout from '../components/layouts/MainLayout.jsx';
 import Cart from '../components/Cart.jsx';
@@ -28,7 +28,7 @@ import StudentLessonView from '../pages/LMS/Student/StudentLessonView';
 import StudentAssignmentDetail from '../pages/LMS/Student/StudentAssignmentDetail';
 import TeacherLessonDetail from '../pages/LMS/Teacher/TeacherLessonDetail';
 import TeacherAssignmentDetail from '../pages/LMS/Teacher/TeacherAssignmentDetail';
-import UploadTaiLieu from '../pages/UploadTaiLieu';
+import UploadTaiLieu from '../pages/giaoDuc/UploadTaiLieu.jsx';
 
 //Admin Components
 import AdminLayout from '../components/layouts/AdminLayout.jsx';

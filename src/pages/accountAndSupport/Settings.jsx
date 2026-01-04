@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import SectionHeading from '../../components/common/SectionHeading'
 import ToggleSwitch from '../../components/common/ToggleSwitch'
+import { useSettingsContext } from '../../context/SettingsContext'
 import {
   settingsTabs,
-  defaultFormData,
   notificationSettings,
   appearanceSettings,
   privacySettings,
@@ -19,22 +20,44 @@ import {
 } from '../../data/settingsData'
 
 const Settings = () => {
-  const [activeTab, setActiveTab] = useState('notifications')
-  const [formData, setFormData] = useState(defaultFormData)
+  const [activeTab, setActiveTab] = useState('appearance')
+  const { settings, updateSetting, updateMultipleSettings, resetSettings } = useSettingsContext()
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
+    const newValue = type === 'checkbox' ? checked : value
+    updateSetting(name, newValue)
+    // Auto-save feedback
+    toast.success('Đã lưu tự động!', { duration: 1500 })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // TODO: Handle form submission
-    console.log('Settings updated:', formData)
-    alert('Cập nhật cài đặt thành công!')
+    // Settings auto-save, just show confirmation
+    toast.success('Tất cả cài đặt đã được lưu!', { icon: '✅' })
+  }
+
+  const handleClearCache = () => {
+    if (window.confirm('Bạn có chắc muốn xóa bộ nhớ cache?')) {
+      // Clear cache logic
+      localStorage.removeItem('heritage_art_cache')
+      toast.success('Đã xóa bộ nhớ cache thành công!')
+    }
+  }
+
+  const handleClearHistory = () => {
+    if (window.confirm('Bạn có chắc muốn xóa lịch sử duyệt web?')) {
+      // Clear history logic
+      sessionStorage.clear()
+      toast.success('Đã xóa lịch sử thành công!')
+    }
+  }
+
+  const handleReset = () => {
+    if (window.confirm('Bạn có chắc muốn khôi phục cài đặt mặc định?')) {
+      resetSettings()
+      toast.success('Đã khôi phục cài đặt mặc định!')
+    }
   }
 
   return (
@@ -89,7 +112,7 @@ const Settings = () => {
                           <ToggleSwitch
                             id={setting.id}
                             name={setting.id}
-                            checked={formData[setting.id]}
+                            checked={settings[setting.id]}
                             onChange={handleInputChange}
                             label={setting.title}
                             description={setting.description}
@@ -117,7 +140,7 @@ const Settings = () => {
                           <ToggleSwitch
                             id={setting.id}
                             name={setting.id}
-                            checked={formData[setting.id]}
+                            checked={settings[setting.id]}
                             onChange={handleInputChange}
                             label={setting.title}
                             description={setting.description}
@@ -133,7 +156,7 @@ const Settings = () => {
                       </label>
                       <select
                         name="fontSize"
-                        value={formData.fontSize}
+                        value={settings.fontSize}
                         onChange={handleInputChange}
                         className="w-full rounded-lg border border-brand-brown-200 px-4 py-3 focus:border-brand-brown-600 focus:outline-none focus:ring-2 focus:ring-brand-brown-600/20"
                       >
@@ -152,7 +175,7 @@ const Settings = () => {
                       </label>
                       <select
                         name="theme"
-                        value={formData.theme}
+                        value={settings.theme}
                         onChange={handleInputChange}
                         className="w-full rounded-lg border border-brand-brown-200 px-4 py-3 focus:border-brand-brown-600 focus:outline-none focus:ring-2 focus:ring-brand-brown-600/20"
                       >
@@ -171,7 +194,7 @@ const Settings = () => {
                       </label>
                       <select
                         name="language"
-                        value={formData.language}
+                        value={settings.language}
                         onChange={handleInputChange}
                         className="w-full rounded-lg border border-brand-brown-200 px-4 py-3 focus:border-brand-brown-600 focus:outline-none focus:ring-2 focus:ring-brand-brown-600/20"
                       >
@@ -186,9 +209,40 @@ const Settings = () => {
                       </p>
                     </div>
 
-                    <div className="rounded-lg bg-[#f6eadf] p-4 mt-6">
+                    {/* Live Preview */}
+                    <div className="rounded-lg border-2 border-brand-brown-300 p-6 mt-6 bg-white">
+                      <h3 className="font-semibold text-brand-brown-900 mb-3">👁️ Xem trước</h3>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Chế độ tối:</span>
+                          <strong className={settings.darkMode ? 'text-green-600' : 'text-gray-400'}>
+                            {settings.darkMode ? '🌙 Bật' : '☀️ Tắt'}
+                          </strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Kích thước chữ:</span>
+                          <strong className="text-brand-brown-900">
+                            {settings.fontSize === 'small' ? 'Nhỏ (14px)' : settings.fontSize === 'large' ? 'Lớn (18px)' : 'Trung bình (16px)'}
+                          </strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Chủ đề:</span>
+                          <strong className="text-brand-brown-900">
+                            {settings.theme === 'default' ? '🏺 Mặc định' : settings.theme === 'warm' ? '🌅 Ấm áp' : settings.theme === 'cool' ? '🌊 Mát mẻ' : '🎨 Cổ điển'}
+                          </strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Hiệu ứng động:</span>
+                          <strong className={settings.animatedEffects ? 'text-green-600' : 'text-gray-400'}>
+                            {settings.animatedEffects ? '✨ Bật' : '🚫 Tắt'}
+                          </strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="rounded-lg bg-[#f6eadf] p-4 mt-4">
                       <p className="text-sm text-brand-brown-700">
-                        <strong>💡 Mẹo:</strong> Thay đổi giao diện để có trải nghiệm phù hợp với sở thích của bạn.
+                        <strong>💡 Mẹo:</strong> Thay đổi giao diện sẽ được áp dụng ngay lập tức và lưu tự động.
                       </p>
                     </div>
                   </div>
@@ -208,7 +262,7 @@ const Settings = () => {
                         </label>
                         <select
                           name="profileVisibility"
-                          value={formData.profileVisibility}
+                          value={settings.profileVisibility}
                           onChange={handleInputChange}
                           className="w-full rounded-lg border border-brand-brown-200 px-4 py-3 focus:border-brand-brown-600 focus:outline-none focus:ring-2 focus:ring-brand-brown-600/20"
                         >
@@ -228,7 +282,7 @@ const Settings = () => {
                           <ToggleSwitch
                             id={setting.id}
                             name={setting.id}
-                            checked={formData[setting.id]}
+                            checked={settings[setting.id]}
                             onChange={handleInputChange}
                             label={setting.title}
                             description={setting.description}
@@ -264,11 +318,7 @@ const Settings = () => {
                               </div>
                               <button
                                 type="button"
-                                onClick={() => {
-                                  if (confirm(`Bạn có chắc muốn ${setting.title.toLowerCase()}?`)) {
-                                    alert(`Đã ${setting.title.toLowerCase()} thành công!`)
-                                  }
-                                }}
+                                onClick={setting.id === 'clearCache' ? handleClearCache : handleClearHistory}
                                 className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition"
                               >
                                 Xóa ngay
@@ -278,7 +328,7 @@ const Settings = () => {
                             <ToggleSwitch
                               id={setting.id}
                               name={setting.id}
-                              checked={formData[setting.id]}
+                              checked={settings[setting.id]}
                               onChange={handleInputChange}
                               label={setting.title}
                               description={setting.description}
@@ -316,7 +366,7 @@ const Settings = () => {
                           <ToggleSwitch
                             id={setting.id}
                             name={setting.id}
-                            checked={formData[setting.id]}
+                            checked={settings[setting.id]}
                             onChange={handleInputChange}
                             label={setting.title}
                             description={setting.description}
@@ -325,9 +375,40 @@ const Settings = () => {
                       ))}
                     </div>
 
-                    <div className="rounded-lg bg-[#f6eadf] p-4 mt-6">
+                    {/* Live Preview */}
+                    <div className="rounded-lg border-2 border-brand-brown-300 p-6 mt-6 bg-white">
+                      <h3 className="font-semibold text-brand-brown-900 mb-3">👁️ Trạng thái hiện tại</h3>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Độ tương phản cao:</span>
+                          <strong className={settings.highContrast ? 'text-green-600' : 'text-gray-400'}>
+                            {settings.highContrast ? '✅ Bật' : '⭕ Tắt'}
+                          </strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Nút bấm lớn:</span>
+                          <strong className={settings.largeButtons ? 'text-green-600' : 'text-gray-400'}>
+                            {settings.largeButtons ? '✅ Bật (48px)' : '⭕ Tắt (mặc định)'}
+                          </strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Giảm chuyển động:</span>
+                          <strong className={settings.reduceMotion ? 'text-green-600' : 'text-gray-400'}>
+                            {settings.reduceMotion ? '✅ Bật' : '⭕ Tắt'}
+                          </strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Điều hướng bàn phím:</span>
+                          <strong className={settings.keyboardNavigation ? 'text-green-600' : 'text-gray-400'}>
+                            {settings.keyboardNavigation ? '✅ Bật' : '⭕ Tắt'}
+                          </strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="rounded-lg bg-[#f6eadf] p-4 mt-4">
                       <p className="text-sm text-brand-brown-700">
-                        <strong>♿ Lưu ý:</strong> Các tính năng trợ năng giúp website thân thiện hơn với người khuyết tật.
+                        <strong>♿ Lưu ý:</strong> Các tính năng trợ năng được áp dụng ngay lập tức để cải thiện trải nghiệm.
                       </p>
                     </div>
                   </div>
@@ -353,7 +434,7 @@ const Settings = () => {
                           <ToggleSwitch
                             id={setting.id}
                             name={setting.id}
-                            checked={formData[setting.id]}
+                            checked={settings[setting.id]}
                             onChange={handleInputChange}
                             label={setting.title}
                             description={setting.description}
@@ -418,20 +499,45 @@ const Settings = () => {
                   </div>
                 )}
 
-                {/* Submit Button */}
-                <div className="mt-8 flex justify-end space-x-4">
-                  <button
-                    type="button"
-                    className="rounded-full border-2 border-brand-brown-300 px-6 py-3 font-semibold text-brand-brown-700 transition hover:bg-brand-brown-50"
-                  >
-                    Hủy bỏ
-                  </button>
-                  <button
-                    type="submit"
-                    className="rounded-full bg-gradient-to-r from-[#3b2412] to-[#4a2d18] px-6 py-3 font-semibold text-white shadow-lg transition hover:shadow-xl"
-                  >
-                    Lưu thay đổi
-                  </button>
+                {/* Action Buttons */}
+                <div className="mt-8">
+                  {/* Auto-save indicator */}
+                  <div className="mb-4 rounded-lg bg-green-50 border border-green-200 p-4">
+                    <div className="flex items-center gap-2">
+                      <span className="text-green-600 text-xl">✓</span>
+                      <div>
+                        <p className="text-sm font-semibold text-green-800">Lưu tự động được bật</p>
+                        <p className="text-xs text-green-600">Tất cả thay đổi được lưu ngay lập tức vào trình duyệt của bạn</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center">
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      className="rounded-full border-2 border-red-500 px-6 py-3 font-semibold text-red-600 transition hover:bg-red-50 flex items-center gap-2"
+                    >
+                      <span>🔄</span>
+                      Khôi phục mặc định
+                    </button>
+                    <div className="flex space-x-4">
+                      <button
+                        type="button"
+                        onClick={() => window.location.href = '/'}
+                        className="rounded-full border-2 border-brand-brown-300 px-6 py-3 font-semibold text-brand-brown-700 transition hover:bg-brand-brown-50"
+                      >
+                        Về trang chủ
+                      </button>
+                      <button
+                        type="submit"
+                        className="rounded-full bg-gradient-to-r from-[#3b2412] to-[#4a2d18] px-6 py-3 font-semibold text-white shadow-lg transition hover:shadow-xl flex items-center gap-2"
+                      >
+                        <span>✓</span>
+                        Xác nhận cài đặt
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
