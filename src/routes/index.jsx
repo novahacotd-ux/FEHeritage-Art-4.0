@@ -44,6 +44,7 @@ import AdminOrder from '../pages/admin/AdminOrder.jsx';
 import AdminDonate from '../pages/admin/AdminDonate.jsx';
 import AdminThanhToan from '../pages/admin/AdminThanhToan.jsx';
 import AdminNguoiDung from '../pages/admin/AdminNguoiDung.jsx';
+import AdminDanhMuc from '../pages/admin/AdminDanhMuc.jsx';
 
 const router = createBrowserRouter([
   {
@@ -315,6 +316,10 @@ const router = createBrowserRouter([
           {
             path: 'nguoidung',
             element: <AdminNguoiDung />,
+          },
+          {
+            path: 'danhmuc',
+            element: <AdminDanhMuc />,
           },
         ],
       },

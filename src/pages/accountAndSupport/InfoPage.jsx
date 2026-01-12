@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import { useUser } from '../../context/UserContext'
 import { authService, cloudinaryService } from '../../services'
 import { validatePassword, getErrorMessage, isValidEmail, isValidIdentityNumber } from '../../utils/apiHelpers'
+import AddressManager from '../../components/AddressManager'
 import './InfoPage.css'
 
 const InfoPage = () => {
@@ -379,6 +380,7 @@ const InfoPage = () => {
 
   const tabs = [
     { id: 'account', label: 'Tài khoản', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+    { id: 'addresses', label: 'Địa chỉ', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' },
     { id: 'security', label: 'Bảo mật', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
     { id: 'notifications', label: 'Thông báo', icon: 'M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9' },
     { id: 'privacy', label: 'Quyền riêng tư', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' }
@@ -590,6 +592,13 @@ const InfoPage = () => {
                     {loading ? 'Đang lưu...' : '💾 Lưu thay đổi'}
                   </button>
                 </div>
+              </div>
+            )}
+
+            {/* Addresses Tab */}
+            {activeTab === 'addresses' && (
+              <div className="content-section">
+                <AddressManager />
               </div>
             )}
 
