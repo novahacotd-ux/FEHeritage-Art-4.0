@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
     Sparkles, Wand2, Palette, Download, X, Loader2,
     Star, ExternalLink, AlertTriangle,
