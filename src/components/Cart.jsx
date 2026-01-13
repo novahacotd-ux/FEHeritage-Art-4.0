@@ -4,7 +4,6 @@ import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
 
 export default function Cart() {
-  // Lấy các hàm và state từ context
   const {
     cart,
     updateQuantity,
@@ -12,12 +11,34 @@ export default function Cart() {
     clearCart,
     getTotalItems,
     getTotalPrice,
+    // Selection
+    selectedItems,
+    toggleSelectItem,
+    selectAllItems,
+    deselectAllItems,
+    isItemSelected,
+    getSelectedTotalPrice,
+    getSelectedTotalItems,
   } = useCart();
   const navigate = useNavigate();
 
+  // Check if all items are selected
+  const allSelected = cart.length > 0 && selectedItems.length === cart.length;
+
+  // Toggle select all
+  const handleToggleAll = () => {
+    if (allSelected) {
+      deselectAllItems();
+    } else {
+      selectAllItems();
+    }
+  };
+
   // Xử lý chuyển sang trang thanh toán
   const handleCheckout = () => {
-    if (cart.length === 0) return;
+    if (selectedItems.length === 0) {
+      return;
+    }
     navigate("/checkout");
   };
 
@@ -25,7 +46,7 @@ export default function Cart() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100">
       <div className="mx-auto max-w-7xl px-4 py-8">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,7 +76,7 @@ export default function Cart() {
               <div className="text-white">
                 <h1 className="text-3xl font-bold mb-1">Giỏ hàng của bạn</h1>
                 <p className="text-orange-100 text-lg">
-                  {cart.length === 0 ? "Chưa có sản phẩm nào" : `${getTotalItems()} sản phẩm đang chờ thanh toán`}
+                  {cart.length === 0 ? "Chưa có sản phẩm nào" : `${getTotalItems()} sản phẩm trong giỏ`}
                 </p>
               </div>
             </div>
@@ -64,7 +85,7 @@ export default function Cart() {
 
         {/* Nếu giỏ hàng rỗng */}
         {cart.length === 0 ? (
-          <motion.div 
+          <motion.div
             className="rounded-2xl bg-white p-16 text-center shadow-lg border border-gray-200"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -84,92 +105,116 @@ export default function Cart() {
           <div className="grid lg:grid-cols-3 gap-6">
             {/* Danh sách sản phẩm - 2 cột */}
             <div className="lg:col-span-2 space-y-4">
-              {cart.map((item, index) => (
-                <motion.div
-                  key={`${item.id}-${item.selectedType}`}
-                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all border border-gray-100"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <div className="flex items-center gap-4 p-5">
-                    {/* Ảnh sản phẩm */}
-                    <div className="flex-shrink-0">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-28 h-28 rounded-xl object-cover shadow-md border-2 border-orange-100"
-                      />
-                    </div>
+              {/* Select All Header */}
+              <div className="bg-white rounded-xl shadow-sm p-4 flex items-center gap-4 border border-gray-100">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={allSelected}
+                    onChange={handleToggleAll}
+                    className="w-5 h-5 rounded border-gray-300 text-orange-500 focus:ring-orange-500 cursor-pointer"
+                  />
+                  <span className="font-medium text-gray-700">
+                    {allSelected ? "Bỏ chọn tất cả" : "Chọn tất cả"} ({cart.length} sản phẩm)
+                  </span>
+                </label>
+                {selectedItems.length > 0 && (
+                  <span className="ml-auto text-sm text-orange-600 font-medium">
+                    Đã chọn {selectedItems.length} sản phẩm
+                  </span>
+                )}
+              </div>
 
-                    {/* Thông tin sản phẩm */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-gray-800 text-lg mb-2 truncate">
-                        {item.title}
-                      </h3>
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-flex items-center gap-1 bg-orange-100 text-orange-700 px-3 py-1 rounded-lg text-sm font-medium">
-                          <span>📦</span>
-                          {item.selectedType}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-sm text-gray-500 font-medium">Đơn giá:</span>
-                        <span className="text-orange-600 font-semibold">
-                          {item.price.toLocaleString()}₫
-                        </span>
+              {cart.map((item, index) => {
+                const itemId = item.id || item.product_id;
+                const isSelected = isItemSelected(itemId);
+
+                return (
+                  <motion.div
+                    key={`${itemId}-${item.selectedType}`}
+                    className={`bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all border-2 ${isSelected ? 'border-orange-400' : 'border-gray-100'
+                      }`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    <div className="flex items-center gap-4 p-5">
+                      {/* Checkbox */}
+                      <div className="flex-shrink-0">
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => toggleSelectItem(itemId)}
+                          className="w-5 h-5 rounded border-gray-300 text-orange-500 focus:ring-orange-500 cursor-pointer"
+                        />
                       </div>
 
-                      {/* Số lượng */}
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm text-gray-500 font-medium">Số lượng:</span>
-                        <div className="flex items-center bg-gray-50 rounded-lg border-2 border-gray-200 overflow-hidden">
-                          <button
-                            className="px-4 py-2 hover:bg-orange-100 text-gray-700 font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed"
-                            onClick={() => updateQuantity(item.id, item.selectedType, item.quantity - 1)}
-                            disabled={item.quantity <= 1}
-                          >
-                            −
-                          </button>
-                          <input
-                            type="number"
-                            min={1}
-                            className="w-16 text-center font-bold text-orange-600 bg-white border-x-2 border-gray-200 py-2 outline-none"
-                            value={item.quantity}
-                            onChange={(e) => updateQuantity(item.id, item.selectedType, Math.max(1, Number(e.target.value)))}
-                          />
-                          <button
-                            className="px-4 py-2 hover:bg-orange-100 text-gray-700 font-semibold transition"
-                            onClick={() => updateQuantity(item.id, item.selectedType, item.quantity + 1)}
-                          >
-                            +
-                          </button>
+                      {/* Ảnh sản phẩm */}
+                      <div className="flex-shrink-0">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-24 h-24 rounded-xl object-cover shadow-md border-2 border-orange-100"
+                        />
+                      </div>
+
+                      {/* Thông tin sản phẩm */}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-bold text-gray-800 text-lg mb-2 truncate">
+                          {item.title || item.name}
+                        </h3>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-sm text-gray-500 font-medium">Đơn giá:</span>
+                          <span className="text-orange-600 font-semibold">
+                            {item.price.toLocaleString()}₫
+                          </span>
+                        </div>
+
+                        {/* Số lượng */}
+                        <div className="flex items-center gap-3">
+                          <span className="text-sm text-gray-500 font-medium">Số lượng:</span>
+                          <div className="flex items-center bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+                            <button
+                              className="px-3 py-1.5 hover:bg-orange-100 text-gray-700 font-semibold transition disabled:opacity-40"
+                              onClick={() => updateQuantity(itemId, item.selectedType, item.quantity - 1)}
+                              disabled={item.quantity <= 1}
+                            >
+                              −
+                            </button>
+                            <span className="px-4 font-bold text-orange-600">{item.quantity}</span>
+                            <button
+                              className="px-3 py-1.5 hover:bg-orange-100 text-gray-700 font-semibold transition"
+                              onClick={() => updateQuantity(itemId, item.selectedType, item.quantity + 1)}
+                            >
+                              +
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Giá và nút xóa */}
-                    <div className="flex flex-col items-end gap-3">
-                      <div className="text-right">
-                        <div className="text-xs text-gray-500 mb-1">Thành tiền</div>
-                        <div className="text-2xl font-bold text-orange-600">
-                          {(item.price * item.quantity).toLocaleString()}₫
+                      {/* Giá và nút xóa */}
+                      <div className="flex flex-col items-end gap-3">
+                        <div className="text-right">
+                          <div className="text-xs text-gray-500 mb-1">Thành tiền</div>
+                          <div className="text-xl font-bold text-orange-600">
+                            {(item.price * item.quantity).toLocaleString()}₫
+                          </div>
                         </div>
+                        <button
+                          className="flex items-center gap-1 text-red-500 hover:text-red-700 font-medium text-sm bg-red-50 px-3 py-1.5 rounded-lg hover:bg-red-100 transition"
+                          onClick={() => removeFromCart(itemId, item.selectedType)}
+                        >
+                          🗑️ Xóa
+                        </button>
                       </div>
-                      <button
-                        className="flex items-center gap-1 text-red-500 hover:text-red-700 font-medium text-sm bg-red-50 px-4 py-2 rounded-lg hover:bg-red-100 transition"
-                        onClick={() => removeFromCart(item.id, item.selectedType)}
-                      >
-                        <span>🗑️</span> Xóa
-                      </button>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Tổng kết và thanh toán - 1 cột sticky */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-1"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -180,15 +225,15 @@ export default function Cart() {
                   <span>💰</span> Tóm tắt đơn hàng
                 </h2>
 
-                {/* Chi tiết */}
+                {/* Chi tiết đã chọn */}
                 <div className="space-y-3 mb-6 pb-6 border-b border-gray-200">
                   <div className="flex justify-between text-gray-600">
-                    <span>Tổng sản phẩm</span>
-                    <span className="font-semibold">{getTotalItems()} món</span>
+                    <span>Đã chọn</span>
+                    <span className="font-semibold">{getSelectedTotalItems()} sản phẩm</span>
                   </div>
                   <div className="flex justify-between text-gray-600">
                     <span>Tạm tính</span>
-                    <span className="font-semibold">{getTotalPrice().toLocaleString()}₫</span>
+                    <span className="font-semibold">{getSelectedTotalPrice().toLocaleString()}₫</span>
                   </div>
                   <div className="flex justify-between text-gray-600">
                     <span>Phí vận chuyển</span>
@@ -200,8 +245,8 @@ export default function Cart() {
                 <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-4 mb-6 border border-orange-200">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-700 font-semibold text-lg">Tổng cộng</span>
-                    <span className="text-3xl font-bold text-orange-600">
-                      {getTotalPrice().toLocaleString()}₫
+                    <span className="text-2xl font-bold text-orange-600">
+                      {getSelectedTotalPrice().toLocaleString()}₫
                     </span>
                   </div>
                 </div>
@@ -209,10 +254,12 @@ export default function Cart() {
                 {/* Nút thanh toán */}
                 <button
                   onClick={handleCheckout}
-                  disabled={cart.length === 0}
+                  disabled={selectedItems.length === 0}
                   className="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-lg shadow-lg hover:from-orange-600 hover:to-amber-600 transition-all transform hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  Tiến hành thanh toán →
+                  {selectedItems.length === 0
+                    ? "Chọn sản phẩm để thanh toán"
+                    : `Thanh toán (${selectedItems.length}) →`}
                 </button>
 
                 {/* Thông tin thêm */}
