@@ -1,0 +1,1508 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* ===== VARIABLES ===== */
+:root {
+  --primary-gold: #d4a574;
+  --primary-orange: #c17d4d;
+  --primary-red: #a85637;
+  --warm-beige: #f6eadf;
+  --light-surface: rgba(255, 255, 255, 0.7);
+  --text-dark: #855b3c;
+  --text-muted: rgba(61, 40, 25, 0.65);
+  --border-subtle: rgba(193, 125, 77, 0.2);
+  --accent-brown: #8b5a3c;
+  --soft-shadow: rgba(61, 40, 25, 0.08);
+  --transition: 0.3s ease;
+  --max-width: 1200px;
+}
+
+/* ===== GSAP ANIMATION STYLES ===== */
+
+/* Split Text Characters */
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Word wrapper for split text */
+.word-wrap {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.word-wrap .word {
+  display: inline-block;
+  will-change: transform, opacity;
+  /* Fallback visibility - GSAP will override */
+  opacity: 1;
+}
+
+/* Hero title GSAP specific - NO BLUR */
+.hero-title-gsap {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1;
+  will-change: auto;
+}
+
+.hero-title-gsap .split-char {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* Scroll reveal base states - handled by GSAP */
+.gt-stats-card,
+.gt-feature-item,
+.gt-mission-card,
+.gt-vision-card,
+.gt-impact-item {
+  will-change: transform, opacity, filter;
+}
+
+/* Remove CSS animations that conflict with GSAP */
+.gioithieu-page .gioithieu-section {
+  opacity: 1;
+  animation: none;
+}
+
+.gioithieu-page .gt-section-heading {
+  opacity: 1;
+  animation: none;
+}
+
+.gioithieu-page .gt-overview-content,
+.gioithieu-page .gt-vision-content {
+  opacity: 1;
+  animation: none;
+}
+
+.gioithieu-page .gt-feature-item,
+.gioithieu-page .gt-vision-card {
+  opacity: 1;
+  animation: none;
+}
+
+.gioithieu-page .gt-mission-grid {
+  opacity: 1;
+  animation: none;
+}
+
+/* Ensure hero content is visible for GSAP */
+.gioithieu-page .gioithieu-hero__content {
+  animation: none;
+}
+
+/* ===== GENERAL STYLES ===== */
+.gioithieu-page {
+  min-height: 100vh;
+  background: #f6eadf;
+  color: var(--text-dark);
+  /* Use Poppins as primary font for stronger appearance; fallbacks kept */
+  font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  /* Use a slightly heavier base weight so body text doesn't feel too thin */
+  font-weight: 500;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated background overlay */
+.gioithieu-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 10%, rgba(212, 165, 116, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 80% 30%, rgba(193, 125, 77, 0.04) 0%, transparent 25%),
+    radial-gradient(circle at 40% 60%, rgba(168, 86, 55, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 70% 80%, rgba(212, 165, 116, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 10% 90%, rgba(193, 125, 77, 0.04) 0%, transparent 25%);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+  animation: backgroundShift 30s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translate(2%, -2%) scale(1.02);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: translate(-2%, 2%) scale(1.01);
+    opacity: 0.65;
+  }
+  75% { 
+    transform: translate(2%, 2%) scale(1.02);
+    opacity: 0.7;
+  }
+}
+
+/* Noise texture overlay */
+.gioithieu-page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(212, 165, 116, 0.02) 2px,
+      rgba(212, 165, 116, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(193, 125, 77, 0.02) 2px,
+      rgba(193, 125, 77, 0.02) 4px
+    );
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gioithieu-page .gioithieu-main {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Ambient glow effect */
+.gioithieu-page .gioithieu-main::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.12), transparent 70%);
+  filter: blur(100px);
+  animation: ambientGlow1 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gioithieu-page .gioithieu-main::after {
+  content: '';
+  position: absolute;
+  bottom: 30%;
+  right: 10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(193, 125, 77, 0.1), transparent 70%);
+  filter: blur(120px);
+  animation: ambientGlow2 25s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ambientGlow1 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  33% { 
+    transform: translate(30px, -40px) scale(1.1);
+    opacity: 0.7;
+  }
+  66% { 
+    transform: translate(-40px, 30px) scale(0.9);
+    opacity: 0.6;
+  }
+}
+
+@keyframes ambientGlow2 {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  40% { 
+    transform: translate(-30px, 40px) scale(1.15);
+    opacity: 0.65;
+  }
+  80% { 
+    transform: translate(40px, -30px) scale(0.95);
+    opacity: 0.55;
+  }
+}
+
+/* Smooth transitions between sections */
+.gioithieu-page .gioithieu-main > * {
+  will-change: transform, opacity;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== HERO SECTION ===== */
+.gioithieu-page .gioithieu-hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(212, 165, 116, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 80%, rgba(193, 125, 77, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(168, 86, 55, 0.05) 0%, transparent 60%);
+  padding: 8rem 2rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.gioithieu-page .gioithieu-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(193, 125, 77, 0.08) 1.5px, transparent 1.5px);
+  background-size: 50px 50px;
+  opacity: 0.4;
+  animation: float 20s ease-in-out infinite;
+}
+
+.gioithieu-page .gioithieu-hero::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, rgba(193, 125, 77, 0.05) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 10s ease-in-out infinite;
+  filter: blur(60px);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 0.4; 
+  }
+  50% { 
+    transform: scale(1.15) rotate(10deg); 
+    opacity: 0.6; 
+  }
+}
+
+.gioithieu-page .gioithieu-hero__content {
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+  /* Animation handled by GSAP */
+}
+
+.gioithieu-page .gt-hero-badge {
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(193, 125, 77, 0.12));
+  border: 1.5px solid rgba(193, 125, 77, 0.4);
+  border-radius: 50px;
+  color: var(--accent-brown);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(193, 125, 77, 0.15);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 4px 15px rgba(193, 125, 77, 0.15); }
+  50% { box-shadow: 0 4px 25px rgba(193, 125, 77, 0.3); }
+}
+
+.gioithieu-page .gioithieu-hero h1 {
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #8b5a3c 0%, #c17d4d 50%, #d4a574 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Remove any blur effects */
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  text-shadow: none;
+  letter-spacing: -0.5px;
+}
+
+/* Ensure split characters maintain gradient */
+.gioithieu-page .gioithieu-hero h1 .split-char {
+  background: linear-gradient(135deg, #8b5a3c 0%, #c17d4d 50%, #d4a574 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: none !important;
+}
+
+.gioithieu-page .gt-hero-description {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+.gioithieu-page .gioithieu-hero__actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.gioithieu-page .gt-hero-action {
+  padding: 1.25rem 3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  font-size: 1.2rem;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gioithieu-page .gt-hero-action::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.gioithieu-page .gt-hero-action:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.gioithieu-page .gt-hero-action span {
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-hero-action--primary {
+  background: linear-gradient(135deg, #c17d4d 0%, #d4a574 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 35px rgba(193, 125, 77, 0.3);
+  border: none;
+}
+
+.gioithieu-page .gt-hero-action--primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 50px rgba(193, 125, 77, 0.45);
+}
+
+.gioithieu-page .gt-hero-action--ghost {
+  background: rgba(212, 165, 116, 0.08);
+  color: var(--accent-brown);
+  border: 2px solid var(--primary-gold);
+  backdrop-filter: blur(5px);
+}
+
+.gioithieu-page .gt-hero-action--ghost:hover {
+  background: rgba(212, 165, 116, 0.18);
+  border-color: #c17d4d;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(193, 125, 77, 0.25);
+}
+
+/* ===== STATISTICS SECTION ===== */
+.gioithieu-page .gioithieu-stats-section {
+  background: 
+    linear-gradient(180deg, 
+      rgba(212, 165, 116, 0.08) 0%,
+      rgba(193, 125, 77, 0.1) 50%,
+      rgba(168, 86, 55, 0.08) 100%
+    ),
+    radial-gradient(ellipse at 20% 30%, rgba(212, 165, 116, 0.1), transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(193, 125, 77, 0.08), transparent 50%);
+  padding: 8rem 2rem;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(193, 125, 77, 0.2);
+  border-bottom: 1px solid rgba(193, 125, 77, 0.2);
+  box-shadow: 
+    inset 0 1px 0 rgba(212, 165, 116, 0.15),
+    inset 0 -1px 0 rgba(212, 165, 116, 0.15);
+}
+
+.gioithieu-page .gioithieu-stats-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(rgba(193, 125, 77, 0.06) 1.5px, transparent 1.5px);
+  background-size: 45px 45px;
+  opacity: 0.5;
+  animation: float 25s linear infinite;
+}
+
+.gioithieu-page .gt-stats-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-stats-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.gioithieu-page .gt-stats-header h2 {
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
+  font-weight: 800;
+  
+  background: linear-gradient(135deg, #8b5a3c 0%, #c17d4d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.gioithieu-page .gt-stats-header p {
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.gioithieu-page .gioithieu-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  position: relative;
+}
+
+.gioithieu-page .gt-stats-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+  backdrop-filter: blur(15px);
+  border: 1.5px solid rgba(193, 125, 77, 0.2);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.gioithieu-page .gt-stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c17d4d, #d4a574);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.gioithieu-page .gt-stats-card:hover::before {
+  transform: scaleX(1);
+}
+
+.gioithieu-page .gt-stats-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(193, 125, 77, 0.4);
+  box-shadow: 0 15px 40px rgba(193, 125, 77, 0.2), 0 5px 15px var(--soft-shadow);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+}
+
+.gioithieu-page .gt-stats-card strong {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #8b5a3c, #c17d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.gioithieu-page .gt-stats-card span {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ===== SECTIONS ===== */
+.gioithieu-page .gioithieu-section {
+  padding: 10rem 2rem;
+  margin: 0 auto;
+  position: relative;
+  /* Removed animation - handled by GSAP */
+}
+
+/* Stagger animation removed - handled by GSAP */
+.gioithieu-page .gt-overview {
+  background: 
+    radial-gradient(ellipse at 15% 20%, rgba(212, 165, 116, 0.06), transparent 60%),
+    radial-gradient(ellipse at 85% 80%, rgba(193, 125, 77, 0.05), transparent 60%);
+}
+
+.gioithieu-page .gt-mission {
+  background: 
+    radial-gradient(ellipse at 85% 30%, rgba(193, 125, 77, 0.07), transparent 60%),
+    radial-gradient(ellipse at 15% 70%, rgba(168, 86, 55, 0.05), transparent 60%),
+    linear-gradient(180deg, transparent 0%, rgba(212, 165, 116, 0.03) 50%, transparent 100%);
+}
+
+.gioithieu-page .gt-vision {
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(212, 165, 116, 0.07), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(193, 125, 77, 0.06), transparent 60%),
+    linear-gradient(180deg, rgba(168, 86, 55, 0.03) 0%, transparent 50%, rgba(212, 165, 116, 0.03) 100%);
+}
+
+.gioithieu-page .gioithieu-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 120px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(212, 165, 116, 0.3) 20%,
+    rgba(212, 165, 116, 0.5) 40%, 
+    rgba(193, 125, 77, 0.5) 60%,
+    rgba(193, 125, 77, 0.3) 80%, 
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: lineGrow 1.5s ease-out 0.5s forwards;
+  box-shadow: 0 0 15px rgba(212, 165, 116, 0.3);
+}
+
+@keyframes lineGrow {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 120px;
+    opacity: 1;
+  }
+}
+
+/* Decorative elements */
+.gioithieu-page .gioithieu-section::after {
+  content: '';
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #c17d4d, #d4a574);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 20px rgba(212, 165, 116, 0.5);
+  opacity: 0;
+  animation: dotAppear 0.5s ease-out 1.5s forwards;
+}
+
+@keyframes dotAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.gioithieu-page .gt-section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.gioithieu-page .gt-section-heading {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 6rem;
+  /* Animation handled by GSAP */
+}
+
+.gioithieu-page .gt-section-eyebrow {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(193, 125, 77, 0.12));
+  border: 1.5px solid rgba(193, 125, 77, 0.35);
+  border-radius: 50px;
+  color: var(--accent-brown);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(193, 125, 77, 0.12);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gioithieu-page .gt-section-eyebrow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.gioithieu-page .gt-section-eyebrow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(193, 125, 77, 0.2);
+}
+
+.gioithieu-page .gt-section-eyebrow:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+.gioithieu-page .gt-section-heading h2 {
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #8b5a3c 0%, #c17d4d 50%, #d4a574 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  position: relative;
+}
+
+.gioithieu-page .gt-section-heading h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #c17d4d, #d4a574, transparent);
+  border-radius: 2px;
+}
+
+.gioithieu-page .gt-section-intro {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  line-height: 2;
+  font-weight: 400;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* ===== OVERVIEW SECTION ===== */
+.gioithieu-page .gt-overview-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  /* Animation handled by GSAP */
+}
+
+.gioithieu-page .gt-overview-main {
+  margin-bottom: 4.5rem;
+  padding: 4rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(193, 125, 77, 0.2);
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 32px var(--soft-shadow),
+    inset 0 1px 0 rgba(212, 165, 116, 0.15),
+    0 0 0 1px rgba(212, 165, 116, 0.08);
+}
+
+.gioithieu-page .gt-overview-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at top right, rgba(212, 165, 116, 0.08), transparent 60%),
+    radial-gradient(circle at bottom left, rgba(193, 125, 77, 0.05), transparent 60%);
+  pointer-events: none;
+}
+
+.gioithieu-page .gt-overview-lead {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-bottom: 2.5rem;
+  line-height: 2;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-overview-main p {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 2.1;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-overview-main p:last-child {
+  margin-bottom: 0;
+}
+
+.gioithieu-page .gt-overview-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.gioithieu-page .gt-feature-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.6));
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(193, 125, 77, 0.18);
+  border-radius: 24px;
+  padding: 3.5rem 3rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  /* Animation handled by GSAP */
+}
+
+.gioithieu-page .gt-feature-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(212, 165, 116, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.gioithieu-page .gt-feature-item:hover::before {
+  opacity: 1;
+}
+
+.gioithieu-page .gt-feature-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(193, 125, 77, 0.35);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+  box-shadow: 0 20px 50px rgba(193, 125, 77, 0.18);
+}
+
+.gioithieu-page .gt-feature-icon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(193, 125, 77, 0.1));
+  border-radius: 20px;
+  filter: drop-shadow(0 4px 15px rgba(212, 165, 116, 0.3));
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-feature-item:hover .gt-feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.gioithieu-page .gt-feature-item h3 {
+  font-size: 1.9rem;
+  color: var(--text-dark);
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-feature-item p {
+  color: var(--text-muted);
+  line-height: 1.9;
+  font-size: 1.35rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== MISSION SECTION ===== */
+/* Giảm padding-top cho section Mission */
+.gioithieu-page .gioithieu-section.gt-mission {
+  padding-top: 4rem;
+}
+.gioithieu-page .gt-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+  /* Animation handled by GSAP */
+}
+
+.gioithieu-page .gt-mission-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.65));
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(193, 125, 77, 0.18);
+  border-radius: 24px;
+  padding: 3.5rem 3rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.gioithieu-page .gt-mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 0;
+  background: linear-gradient(to bottom, #c17d4d, #d4a574, #a85637);
+  transition: height 0.4s ease;
+  border-radius: 24px 0 0 24px;
+}
+
+.gioithieu-page .gt-mission-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(212, 165, 116, 0.1), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gioithieu-page .gt-mission-card:hover::before {
+  height: 100%;
+}
+
+.gioithieu-page .gt-mission-card:hover::after {
+  opacity: 1;
+}
+
+.gioithieu-page .gt-mission-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(193, 125, 77, 0.35);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  box-shadow: 0 20px 50px rgba(193, 125, 77, 0.18), 0 10px 20px var(--soft-shadow);
+}
+
+.gioithieu-page .gt-mission-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-mission-icon {
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(193, 125, 77, 0.1));
+  border-radius: 20px;
+  filter: drop-shadow(0 4px 15px rgba(212, 165, 116, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.gioithieu-page .gt-mission-card:hover .gt-mission-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.gioithieu-page .gt-mission-number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, rgba(193, 125, 77, 0.5), rgba(212, 165, 116, 0.4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gioithieu-page .gt-mission-title {
+  font-size: 1.75rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-mission-description {
+  color: var(--text-muted);
+  line-height: 1.9;
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-mission-summary {
+  margin-top: 5rem;
+}
+
+.gioithieu-page .gt-summary-box {
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(193, 125, 77, 0.12));
+  border: 2px solid rgba(193, 125, 77, 0.3);
+  border-radius: 20px;
+  padding: 3.5rem 3rem;
+  text-align: center;
+}
+
+.gioithieu-page .gt-summary-box h3 {
+  font-size: 2rem;
+  color: var(--accent-brown);
+  margin-bottom: 1.25rem;
+  font-weight: 800;
+}
+
+.gioithieu-page .gt-summary-box p {
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  line-height: 2;
+}
+
+/* ===== VISION SECTION ===== */
+.gioithieu-page .gt-vision-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  /* Animation handled by GSAP */
+}
+
+.gioithieu-page .gt-vision-main {
+  margin-bottom: 4.5rem;
+  padding: 4rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(193, 125, 77, 0.2);
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 32px var(--soft-shadow),
+    inset 0 1px 0 rgba(212, 165, 116, 0.15),
+    0 0 0 1px rgba(212, 165, 116, 0.08);
+}
+
+.gioithieu-page .gt-vision-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at top left, rgba(193, 125, 77, 0.08), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(168, 86, 55, 0.05), transparent 60%);
+  pointer-events: none;
+}
+
+.gioithieu-page .gt-vision-lead {
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-bottom: 2.5rem;
+  line-height: 2;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-vision-main p {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  line-height: 2.1;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.gioithieu-page .gt-vision-main p:last-child {
+  margin-bottom: 0;
+}
+
+.gioithieu-page .gt-vision-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  margin: 5rem 0;
+}
+
+.gioithieu-page .gt-vision-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.65));
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(193, 125, 77, 0.18);
+  border-radius: 24px;
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  /* Animation handled by GSAP */
+}
+
+.gioithieu-page .gt-vision-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c17d4d, #d4a574, #a85637);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.gioithieu-page .gt-vision-card:hover::before {
+  transform: scaleX(1);
+}
+
+.gioithieu-page .gt-vision-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(212, 165, 116, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gioithieu-page .gt-vision-card:hover::after {
+  opacity: 1;
+}
+
+.gioithieu-page .gt-vision-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: rgba(193, 125, 77, 0.35);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  box-shadow: 0 20px 50px rgba(193, 125, 77, 0.2), 0 10px 25px var(--soft-shadow);
+}
+
+.gioithieu-page .gt-vision-icon {
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(193, 125, 77, 0.1));
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 4px 15px rgba(212, 165, 116, 0.3));
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-vision-card:hover .gt-vision-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.gioithieu-page .gt-vision-card h3 {
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-vision-card p {
+  color: var(--text-muted);
+  line-height: 1.95;
+  font-size: 1.35rem;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-vision-quote {
+  margin: 5rem auto;
+  max-width: 850px;
+  text-align: center;
+}
+
+.gioithieu-page .gt-vision-quote blockquote {
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 5px solid var(--primary-gold);
+  border-radius: 15px;
+  padding: 3.5rem 3rem;
+  font-style: italic;
+}
+
+.gioithieu-page .gt-vision-quote blockquote p {
+  font-size: 1.55rem;
+  color: var(--text-dark);
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.gioithieu-page .gt-vision-quote cite {
+  display: block;
+  font-size: 1.15rem;
+  color: var(--accent-brown);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.gioithieu-page .gt-vision-impact {
+  margin-top: 5rem;
+}
+
+.gioithieu-page .gt-vision-impact h3 {
+  font-size: 2.3rem;
+  color: var(--text-dark);
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 800;
+}
+
+.gioithieu-page .gt-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+}
+
+.gioithieu-page .gt-impact-item {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: 15px;
+  padding: 2.5rem;
+  transition: all var(--transition);
+}
+
+.gioithieu-page .gt-impact-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-orange);
+}
+
+.gioithieu-page .gt-impact-item strong {
+  display: block;
+  font-size: 1.6rem;
+  color: var(--accent-brown);
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.gioithieu-page .gt-impact-item p {
+  color: var(--text-muted);
+  line-height: 1.95;
+  font-size: 1.25rem;
+}
+
+/* ===== CTA SECTION ===== */
+.gioithieu-page .gioithieu-cta {
+  background: 
+    linear-gradient(180deg, 
+      rgba(212, 165, 116, 0.1) 0%,
+      rgba(193, 125, 77, 0.14) 30%,
+      rgba(168, 86, 55, 0.12) 60%,
+      rgba(193, 125, 77, 0.14) 80%,
+      rgba(212, 165, 116, 0.1) 100%
+    ),
+    radial-gradient(ellipse at 30% 50%, rgba(212, 165, 116, 0.15), transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(193, 125, 77, 0.12), transparent 50%);
+  border-top: 1px solid rgba(193, 125, 77, 0.25);
+  border-bottom: 1px solid rgba(193, 125, 77, 0.25);
+  padding: 8rem 2rem;
+  margin: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1px 0 rgba(212, 165, 116, 0.2),
+    inset 0 -1px 0 rgba(212, 165, 116, 0.2),
+    0 10px 40px rgba(193, 125, 77, 0.08),
+    0 -10px 40px rgba(193, 125, 77, 0.08);
+}
+
+.gioithieu-page .gioithieu-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle, rgba(193, 125, 77, 0.06) 1.5px, transparent 1.5px);
+  background-size: 45px 45px;
+  animation: float 30s linear infinite;
+  opacity: 0.6;
+}
+
+.gioithieu-page .gt-cta-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-cta-content h2 {
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  background: linear-gradient(135deg, #8b5a3c, #c17d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.gioithieu-page .gt-cta-content p {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin-bottom: 3.5rem;
+  line-height: 2;
+  font-weight: 400;
+}
+
+.gioithieu-page .gt-cta-actions {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gioithieu-page .gt-cta-button {
+  padding: 1.4rem 3.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.gioithieu-page .gt-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.gioithieu-page .gt-cta-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.gioithieu-page .gt-cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-cta-button--primary {
+  background: linear-gradient(135deg, #c17d4d, #d4a574);
+  color: #ffffff;
+  box-shadow: 0 15px 40px rgba(193, 125, 77, 0.3);
+}
+
+.gioithieu-page .gt-cta-button--primary:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 20px 60px rgba(193, 125, 77, 0.45);
+}
+
+.gioithieu-page .gt-cta-button--secondary {
+  background: rgba(212, 165, 116, 0.1);
+  color: var(--accent-brown);
+  border: 2px solid var(--primary-gold);
+  backdrop-filter: blur(5px);
+}
+
+.gioithieu-page .gt-cta-button--secondary:hover {
+  background: rgba(212, 165, 116, 0.25);
+  border-color: #c17d4d;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(193, 125, 77, 0.25);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .gioithieu-page .gioithieu-hero {
+    min-height: 70vh;
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .gioithieu-page .gioithieu-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .gioithieu-page .gioithieu-stats-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .gioithieu-page .gioithieu-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .gioithieu-page .gt-stats-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .gioithieu-page .gt-stats-card strong {
+    font-size: 2.5rem;
+  }
+
+  .gioithieu-page .gt-section-heading {
+    margin-bottom: 3rem;
+  }
+
+  .gioithieu-page .gt-section-heading h2 {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .gioithieu-page .gt-overview-main,
+  .gioithieu-page .gt-vision-main {
+    padding: 2rem;
+  }
+
+  .gioithieu-page .gt-mission-grid,
+  .gioithieu-page .gt-vision-highlights-grid,
+  .gioithieu-page .gt-impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gioithieu-page .gt-overview-features {
+    grid-template-columns: 1fr;
+  }
+
+  .gioithieu-page .gt-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gioithieu-page .gt-hero-action,
+  .gioithieu-page .gt-cta-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Adjust split text for mobile */
+  .gioithieu-page .gioithieu-hero h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .gioithieu-page .gioithieu-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .gioithieu-page .gt-stats-card strong {
+    font-size: 2rem;
+  }
+}
+
+/* ===== GSAP ENHANCED HOVER EFFECTS ===== */
+
+/* Floating icon effect enhancement */
+.gt-feature-icon,
+.gt-vision-icon,
+.gt-mission-icon {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Smooth perspective for 3D effects */
+.gt-mission-grid,
+.gt-vision-highlights-grid,
+.gt-overview-features {
+  perspective: 1000px;
+}
+
+/* Card 3D transform origin */
+.gt-mission-card,
+.gt-vision-card,
+.gt-feature-item {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Hero description word animation */
+.gt-hero-description .desc-word {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+/* Mission title word animation */
+.gt-mission-title .mission-title-word {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  /* Fallback visibility - GSAP will override */
+  opacity: 1;
+}
+
+/* Ensure mission title text is visible */
+.gioithieu-page .gt-mission-title {
+  min-height: 1.4em;
+}
+
+/* Smooth scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-20px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
