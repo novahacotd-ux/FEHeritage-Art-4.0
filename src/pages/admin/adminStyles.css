@@ -557,8 +557,6 @@
   border-radius: 14px;
   padding: 20px;
 }
-
-/* CKEditor content hiển thị đúng style */
 .modal-content .ck-content {
   font-size: 15px;
   line-height: 1.7;

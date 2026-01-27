@@ -2500,6 +2500,7 @@ const initialData = [
 
 const ITEMS_PER_PAGE = 10;
 
+
 const statuses = [
     { value: "published", label: "Đã duyệt" },
     { value: "pending", label: "Chờ duyệt" },
@@ -2533,6 +2534,8 @@ const initialFormState = {
     province: "",
     type: "heritage",
     status: "pending",
+    lat: '',
+    lng: '',
 };
 
 // cho tab ẩm thực
@@ -2544,6 +2547,8 @@ const initialFoodFormState = {
     province: "",
     type: "food",
     status: "pending",
+    lat: '',
+    lng: '',
 };
 
 // ---  mock ẩm thực ---
@@ -2558,6 +2563,8 @@ const mockFoodData = [
         province: "TP. Hồ Chí Minh",
         type: "food",
         status: "published",
+        lat: '',
+        lng: '',
     },
     {
         name: "Phở",
@@ -2569,6 +2576,8 @@ const mockFoodData = [
         province: "Hà Nội",
         type: "food",
         status: "published",
+        lat: '',
+        lng: '',
     },
     {
         name: "Mì Quảng",
@@ -2580,6 +2589,8 @@ const mockFoodData = [
         province: "Quảng Nam",
         type: "food",
         status: "published",
+        lat: '',
+        lng: '',
     }
 ];
 
@@ -2605,7 +2616,7 @@ const AdminTraiNghiem = () => {
         [
             ...mockFoodData,
             ...((initialData || []).filter(item => item.type === "food").map(item =>
-                item.status ? item : { ...item, status: "pending" }))
+                item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
         ]
     );
     const [searchTerm, setSearchTerm] = useState("");
@@ -2728,6 +2739,14 @@ const AdminTraiNghiem = () => {
             toast.error("Vui lòng chọn trạng thái bài viết!");
             return;
         }
+        if (!formData.lat.trim()) {
+            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
+            return;
+        }
+        if (!formData.lng.trim()) {
+            toast.error("Vui lòng nhập: Kinh độ (lng)!");
+            return;
+        }
         const newItem = {
             name: formData.name.trim(),
             province: formData.province.trim(),
@@ -2737,6 +2756,8 @@ const AdminTraiNghiem = () => {
             region: formData.region,
             type: formData.type || "heritage",
             status: formData.status,
+            lat: formData.lat.trim(),
+            lng: formData.lng.trim(),
         };
         if (editingIndex !== null) {
             const updated = [...data];
@@ -2772,6 +2793,14 @@ const AdminTraiNghiem = () => {
             toast.error("Vui lòng chọn trạng thái bài viết!");
             return;
         }
+        if (!foodFormData.lat.trim()) {
+            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
+            return;
+        }
+        if (!foodFormData.lng.trim()) {
+            toast.error("Vui lòng nhập: Kinh độ (lng)!");
+            return;
+        }
         const newItem = {
             name: foodFormData.name.trim(),
             province: foodFormData.province.trim(),
@@ -2780,6 +2809,8 @@ const AdminTraiNghiem = () => {
             region: foodFormData.region,
             type: "food",
             status: foodFormData.status,
+            lat: foodFormData.lat.trim(),
+            lng: foodFormData.lng.trim(),
         };
         if (editingFoodIndex !== null) {
             const updated = [...foodData];
@@ -2822,6 +2853,8 @@ const AdminTraiNghiem = () => {
                 province: item.province || "",
                 type: item.type || "heritage",
                 status: item.status || "pending",
+                lat: item.lat || '',
+                lng: item.lng || '',
             });
             setImagePreview(item.images || []);
             setIsAdding(true);
@@ -2836,6 +2869,8 @@ const AdminTraiNghiem = () => {
                 province: item.province || "",
                 type: item.type || "food",
                 status: item.status || "pending",
+                lat: item.lat || '',
+                lng: item.lng || '',
             });
             setFoodImagePreview(item.images || []);
             setIsAddingFood(true);
@@ -3219,6 +3254,33 @@ const AdminTraiNghiem = () => {
                                             </select>
                                         </div>
                                         <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={formData.lat}
+                                                onChange={(e) => setFormData({ ...formData, lat: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="10.777141734059974"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Kinh độ (lng) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={formData.lng}
+                                                onChange={(e) => setFormData({ ...formData, lng: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="106.69522699878702"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
+                                        </div>
+                                        <div>
                                             <label className="block text-sm font-medium text-blue-700 mb-2">
                                                 Vùng <span className="text-red-500">*</span>
                                             </label>
@@ -3432,6 +3494,33 @@ const AdminTraiNghiem = () => {
                                                     <option key={p} value={p}>{p}</option>
                                                 ))}
                                             </select>
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={foodFormData.lat}
+                                                onChange={(e) => setFoodFormData({ ...foodFormData, lat: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="10.777141734059974"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Kinh độ (lng) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={foodFormData.lng}
+                                                onChange={(e) => setFoodFormData({ ...foodFormData, lng: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="106.69522699878702"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-blue-700 mb-2">
