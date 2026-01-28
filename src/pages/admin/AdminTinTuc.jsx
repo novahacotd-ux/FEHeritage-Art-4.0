@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CKEditorField from "../../components/common/CKEditorField";
-
+import "./adminStyles.css"
 // ====== DỮ LIỆU MẪU ======
 const initialNews = [
     {
@@ -100,82 +100,7 @@ const AdminTinTuc = () => {
 
     return (
         <>
-            <style>{`
-                /* Custom shadow and hover for buttons */
-                .btn-transition {
-                    transition: background 0.15s, box-shadow 0.15s;
-                }
-                .btn-primary {
-                    background: linear-gradient(90deg,#2563eb,#22d3ee);
-                    color: #fff;
-                    font-weight: 600;
-                    box-shadow: 0 2px 6px 0 #dbeafecc;
-                }
-                .btn-primary:hover {
-                    background: linear-gradient(90deg,#2563eb 80%,#0ea5e9);
-                }
-                .btn-cancel {
-                    background: #f1f5f9;
-                    color: #0369a1;
-                }
-                .btn-cancel:hover {
-                    background: #e0e7ef;
-                }
-                /* List card hover border-color and shadow */
-                .admin-tintuc-card:hover {
-                    border-color: #38bdf8;
-                    box-shadow: 0 4px 12px 0 #60a5fa38;
-                }
-                .admin-tintuc-modal-anim {
-                    animation: adminFadeIn 0.30s;
-                }
-                @keyframes adminFadeIn {
-                    from { opacity: 0; transform: translateY(35px);}
-                    to   { opacity: 1; transform: translateY(0);}
-                }
-                /* Hide file input visually, custom file label */
-                .input-file-label {
-                    display: inline-flex;
-                    align-items: center;
-                    background: #e0e7ef;
-                    color: #0369a1;
-                    padding: 0.5rem 1rem;
-                    border-radius: 0.75rem;
-                    cursor: pointer;
-                    font-weight: 500;
-                    box-shadow: 0 2px 8px 0 #dbeafe50;
-                    margin-top: 0.3rem;
-                    transition: background 0.16s;
-                }
-                .input-file-label svg {
-                    margin-right: 0.5rem;
-                }
-                .input-file-label:hover {
-                    background: #bae6fd;
-                }
-                .input-file {
-                    display: none;
-                }
-                /* Preview image styles enhance */
-                .admin-preview-img {
-                    box-shadow: 0 2px 12px 0 #2563eb34;
-                    border: 2px solid #bae6fd;
-                    transition: box-shadow .2s;
-                }
-                .admin-preview-img:hover {
-                    box-shadow: 0 4px 18px 0 #2563eb54;
-                }
-                /* Button X absolute (delete thumbnail) */
-                .admin-thumbnail-remove {
-                    opacity: 0.84;
-                    background: linear-gradient(45deg,#e11d48,#f87171);
-                    border: none;
-                }
-                .admin-thumbnail-remove:hover {
-                    opacity: 1;
-                    background: linear-gradient(85deg,#b91c1c,#f43f5e);
-                }
-            `}</style>
+            
             <div className="w-full flex flex-col gap-8 mt-4">
                 {/* ===== HEADER ===== */}
                 <div className="flex items-center justify-between py-4 px-6 bg-white border-b border-blue-100 rounded-t-lg">

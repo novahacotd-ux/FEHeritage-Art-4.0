@@ -64,42 +64,7 @@ const AdminPhanTich = () => {
 
     return (
         <>
-            <style>{`
-                .btn-transition {
-                    transition: background 0.15s, box-shadow 0.15s;
-                }
-                .btn-primary {
-                    background: linear-gradient(90deg,#2563eb,#38bdf8);
-                    color: #fff;
-                    font-weight: 600;
-                    box-shadow: 0 2px 6px 0 #2563eb22;
-                }
-                .btn-primary:hover {
-                    background: linear-gradient(90deg,#1d4ed8 80%,#0ea5e9);
-                }
-                .btn-cancel {
-                    background: #e0e7ff;
-                    color: #2563eb;
-                }
-                .btn-cancel:hover {
-                    background: #c7d2fe;
-                }
-                .admin-phantich-card:hover {
-                    border-color: #0ea5e9;
-                    box-shadow: 0 4px 12px 0 #38bdf828;
-                }
-                .admin-phantich-modal-anim {
-                    animation: adminFadeIn 0.30s;
-                }
-                @keyframes adminFadeIn {
-                    from { opacity: 0; transform: translateY(35px);}
-                    to   { opacity: 1; transform: translateY(0);}
-                }
-                .badge-warning {
-                    background: #e0e7ff;
-                    color: #2563eb;
-                }
-            `}</style>
+           
             <div className="w-full flex flex-col gap-8 mt-4">
                 {/* ===== HEADER ===== */}
                 <div className="flex items-center justify-between py-4 px-6 bg-white border-b border-blue-100 rounded-t-lg">
