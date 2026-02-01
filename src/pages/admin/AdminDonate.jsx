@@ -246,29 +246,29 @@ const AdminDonate = () => {
             {/* ─── HEADER ─── */}
             <div className="dashboard-header">
                 <div>
-                    <h3>💰 Quản lý ủng hộ & Thanh toán</h3>
+                    <h3>Quản lý ủng hộ & Thanh toán</h3>
                     <p className="panel-description">Theo dõi và quản lý các khoản ủng hộ & mua hàng của dự án Heritage Art 4.0</p>
                 </div>
             </div>
 
             {/* ─── COMBINED STATS ROW ─── */}
             <div className="dashboard-stats-row">
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #f97316" }}>
+                <div className="dashboard-stat-card" >
                     <h5>Doanh thu bán hàng</h5>
                     <div className="stat-value" style={{ color: "#87684a" }}>{stats.totalRevenue.toLocaleString()}₫</div>
                     <div className="stat-sub">Từ {stats.paymentCount} đơn hàng</div>
                 </div>
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #8b5cf6" }}>
+                <div className="dashboard-stat-card" >
                     <h5>Tổng ủng hộ</h5>
                     <div className="stat-value" style={{ color: "#87684a" }}>{stats.totalDonations.toLocaleString()}₫</div>
                     <div className="stat-sub">Từ {stats.donationCount} khoản ủng hộ</div>
                 </div>
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #10b981" }}>
+                <div className="dashboard-stat-card">
                     <h5>Tổng thu</h5>
                     <div className="stat-value" style={{ color: "#87684a" }}>{(stats.totalRevenue + stats.totalDonations).toLocaleString()}₫</div>
                     <div className="stat-sub">{stats.paymentCount + stats.donationCount} giao dịch tổng</div>
                 </div>
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #3b82f6" }}>
+                <div className="dashboard-stat-card" >
                     <h5>Đơn hàng hôm nay</h5>
                     <div className="stat-value" style={{ color: "#87684a" }}>
                         {payments.filter(p => new Date(p.timestamp).toDateString() === new Date().toDateString()).length}
@@ -283,8 +283,8 @@ const AdminDonate = () => {
                 border: "1px solid #e0e7ff", overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.06)"
             }}>
                 {[
-                    { key: "payment", label: "Lịch sử mua hàng", count: payments.length, color: "#f97316" },
-                    { key: "donation", label: "Lịch sử ủng hộ", count: donations.length, color: "#8b5cf6" }
+                    { key: "payment", label: "Lịch sử mua hàng", count: payments.length, color: "#2563eb" },
+                    { key: "donation", label: "Lịch sử ủng hộ", count: donations.length, color: "#2563eb" }
                 ].map(tab => (
                     <button
                         key={tab.key}
@@ -298,7 +298,7 @@ const AdminDonate = () => {
                         }}
                     >
                         <span style={{
-                            fontSize: "15px", fontWeight: activeTab === tab.key ? "700" : "500",
+                             fontSize: "clamp(0.9rem, 2.5vw, 15px)", fontWeight: activeTab === tab.key ? "700" : "500",
                             color: activeTab === tab.key ? tab.color : "#64748b"
                         }}>{tab.label}</span>
                         <span style={{
@@ -319,13 +319,13 @@ const AdminDonate = () => {
                     <div className="dashboard-panel">
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", alignItems: "end" }}>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>⏰ Lọc thời gian</label>
+                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Lọc thời gian</label>
                                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                                     {["all", "today", "week", "month"].map(f => (
                                         <button key={f} onClick={() => setPayFilter(f)} style={{
                                             cursor: "pointer", padding: "6px 12px", border: "none", borderRadius: "8px",
-                                            backgroundColor: payFilter === f ? "#f97316" : "#e5e7eb",
-                                            color: payFilter === f ? "#fff" : "#374151", fontWeight: "500", fontSize: "13px"
+                                            backgroundColor: payFilter === f ? "#2563eb" : "#e5e7eb",
+                                            color: payFilter === f ? "#fff" : "#374151", fontWeight: "500", fontSize: "clamp(0.75rem, 2vw, 13px)"
                                         }}>
                                             {f === "all" ? "Tất cả" : f === "today" ? "Hôm nay" : f === "week" ? "7 ngày" : "30 ngày"}
                                         </button>
@@ -335,7 +335,8 @@ const AdminDonate = () => {
                             <div>
                                 <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔽 Sắp xếp</label>
                                 <select value={paySort} onChange={e => setPaySort(e.target.value)} style={{
-                                    width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer"
+                                    width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", 
+  fontSize: "clamp(0.75rem, 2vw, 13px)", cursor: "pointer"
                                 }}>
                                     <option value="date-desc">Mới nhất</option>
                                     <option value="date-asc">Cũ nhất</option>
@@ -347,18 +348,20 @@ const AdminDonate = () => {
                                 <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔍 Tìm kiếm</label>
                                 <input type="text" placeholder="Tên, sản phẩm, ngân hàng..." value={paySearch}
                                     onChange={e => setPaySearch(e.target.value)} style={{
-                                        width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", boxSizing: "border-box"
+                                        width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", 
+    fontSize: "clamp(0.75rem, 2vw, 13px)", boxSizing: "border-box"
                                     }} />
                             </div>
                             <div style={{ display: "flex", gap: "8px" }}>
                                 <button onClick={() => handleExportCSV("payment")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#10b981", color: "#fff",
-                                    border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
+  border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", 
+  fontSize: "clamp(0.75rem, 2vw, 13px)"
                                 }}>📊 Export</button>
                                 <button onClick={() => handleDeleteAll("payment")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#ef4444", color: "#fff",
                                     border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>🗑️ Xóa tất cả</button>
+                                }}>Xóa tất cả</button>
                             </div>
                         </div>
                     </div>
@@ -366,8 +369,8 @@ const AdminDonate = () => {
                     {/* Payment Table */}
                     <div className="dashboard-panel">
                         <div className="panel-head">
-                            <h3>📦 Lịch sử mua hàng</h3>
-                            <span className="badge success" style={{ backgroundColor: "#f97316", color: "#fff" }}>{filteredPayments.length} đơn</span>
+                            <h3>Lịch sử mua hàng</h3>
+                            <span className="badge success" style={{ backgroundColor: "#2563EB", color: "#fff" }}>{filteredPayments.length} đơn</span>
                         </div>
 
                         {filteredPayments.length === 0 ? (
@@ -409,17 +412,17 @@ const AdminDonate = () => {
                                                         <td><strong style={{ color: "#374151", fontSize: "13px" }}>{payment.customerName || "Không rõ"}</strong></td>
                                                         <td>
                                                             <button onClick={() => setExpandedPayment(isExpanded ? null : payment.id)} style={{
-                                                                background: "#eef2ff", color: "#4f46e5", border: "none",
-                                                                padding: "3px 10px", borderRadius: "12px", fontSize: "0.8rem",
+                                                                background: "#eef2ff", color: "#000000", border: "none",
+                                                                padding: "3px 10px", borderRadius: "12px", fontSize: "clamp(0.75rem, 2vw, 0.8rem)",
                                                                 fontWeight: "600", cursor: "pointer"
                                                             }}>
                                                                 {payment.items?.length || 0} mặt hàng {isExpanded ? "▲" : "▼"}
                                                             </button>
                                                         </td>
-                                                        <td><span style={{ fontWeight: "700", color: "#f97316", fontSize: "14px" }}>{(payment.totalAmount || 0).toLocaleString()}₫</span></td>
+                                                        <td><span style={{ fontWeight: "700", color: "#000000", fontSize: "14px" }}>{(payment.totalAmount || 0).toLocaleString()}₫</span></td>
                                                         <td>
                                                             <span style={{
-                                                                padding: "3px 10px", backgroundColor: "#fef3c7", color: "#92400e",
+                                                                padding: "3px 10px", backgroundColor: "#A8266D", color: "#fff",
                                                                 borderRadius: "12px", fontSize: "0.8rem", fontWeight: "600"
                                                             }}>{payment.paymentMethod || "N/A"}</span>
                                                         </td>
@@ -438,11 +441,12 @@ const AdminDonate = () => {
                                                             <button onClick={() => handleDelete(payment.id, "payment")} style={{
                                                                 background: "#fee2e2", color: "#dc2626", border: "none",
                                                                 padding: "5px 10px", borderRadius: "6px", cursor: "pointer",
-                                                                fontWeight: "600", fontSize: "0.8rem"
+  fontWeight: "600", fontSize: "clamp(0.75rem, 2vw, 0.8rem)",
+  whiteSpace: "nowrap"
                                                             }}
                                                                 onMouseOver={e => e.currentTarget.style.background = "#fecaca"}
                                                                 onMouseOut={e => e.currentTarget.style.background = "#fee2e2"}
-                                                            >🗑️ Xóa</button>
+                                                            >Xóa</button>
                                                         </td>
                                                     </tr>
                                                     {/* Expanded Items Detail */}
@@ -453,16 +457,16 @@ const AdminDonate = () => {
                                                                     background: "#fff", borderRadius: "10px", border: "1px solid #e0e7ff",
                                                                     padding: "14px 16px", display: "flex", flexDirection: "column", gap: "8px"
                                                                 }}>
-                                                                    <div style={{ fontSize: "13px", fontWeight: "700", color: "#4f46e5", marginBottom: "4px" }}>📋 Chi tiết mặt hàng:</div>
+                                                                    <div style={{ fontSize: "13px", fontWeight: "700", color: "#2563eb", marginBottom: "4px" }}>Chi tiết mặt hàng:</div>
                                                                     {payment.items?.map((item, i) => (
                                                                         <div key={i} style={{
                                                                             display: "flex", alignItems: "center", gap: "12px",
                                                                             padding: "8px 12px", background: "#f8fafc", borderRadius: "8px", border: "1px solid #e2e8f0"
                                                                         }}>
                                                                             <span style={{ fontSize: "13px", fontWeight: "600", color: "#374151", flex: 1 }}>{item.title}</span>
-                                                                            <span style={{ fontSize: "12px", color: "#8b5cf6", background: "#ede9fe", padding: "2px 8px", borderRadius: "8px" }}>{item.selectedType}</span>
+                                                                            <span style={{ fontSize: "12px", color: "#000000", background: "#ede9fe", padding: "2px 8px", borderRadius: "8px" }}>{item.selectedType}</span>
                                                                             <span style={{ fontSize: "12px", color: "#666" }}>x{item.quantity}</span>
-                                                                            <span style={{ fontSize: "13px", fontWeight: "700", color: "#f97316" }}>{(item.price * item.quantity).toLocaleString()}₫</span>
+                                                                            <span style={{ fontSize: "13px", fontWeight: "700", color: "#000000" }}>{(item.price * item.quantity).toLocaleString()}₫</span>
                                                                         </div>
                                                                     ))}
                                                                 </div>
@@ -487,12 +491,12 @@ const AdminDonate = () => {
                 <>
                     {/* Level Stats */}
                     <div className="dashboard-panel">
-                        <div className="panel-head"><h3>📊 Thống kê theo mức độ ủng hộ</h3></div>
+                        <div className="panel-head"><h3>Thống kê theo mức độ ủng hộ</h3></div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px" }}>
                             {Object.entries(levelStats).map(([level, count]) => (
                                 <div key={level} style={{
-                                    padding: "14px 10px", background: "linear-gradient(120deg, #f8fafc 60%, #ede9fe 94%)",
-                                    borderRadius: "12px", textAlign: "center", border: "2px solid rgb(92, 59, 30)"
+                                    padding: "14px 10px", background: "linear-gradient(120deg, #f8fafc 60%, #dbeafe 94%)",
+                                    borderRadius: "10px", textAlign: "center", border: "0.5px solid rgb(92, 59, 30)"
                                 }}>
                                     <div style={{ fontSize: "1.75rem", fontWeight: "700", marginBottom: "4px" }}>{count}</div>
                                     <div style={{ fontSize: "0.85rem", fontWeight: "500", color: "#374151" }}>{level}</div>
@@ -505,12 +509,12 @@ const AdminDonate = () => {
                     <div className="dashboard-panel">
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", alignItems: "end" }}>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>⏰ Lọc thời gian</label>
+                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Lọc thời gian</label>
                                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                                     {["all", "today", "week", "month"].map(f => (
                                         <button key={f} onClick={() => setDonFilter(f)} style={{
                                             cursor: "pointer", padding: "6px 12px", border: "none", borderRadius: "8px",
-                                            backgroundColor: donFilter === f ? "#8b5cf6" : "#e5e7eb",
+                                            backgroundColor: donFilter === f ? "#2563eb" : "#e5e7eb",
                                             color: donFilter === f ? "#fff" : "#374151", fontWeight: "500", fontSize: "13px"
                                         }}>
                                             {f === "all" ? "Tất cả" : f === "today" ? "Hôm nay" : f === "week" ? "7 ngày" : "30 ngày"}
@@ -544,7 +548,7 @@ const AdminDonate = () => {
                                 <button onClick={() => handleDeleteAll("donation")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#ef4444", color: "#fff",
                                     border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>🗑️ Xóa tất cả</button>
+                                }}>Xóa tất cả</button>
                             </div>
                         </div>
                     </div>
@@ -552,8 +556,8 @@ const AdminDonate = () => {
                     {/* Donation Table */}
                     <div className="dashboard-panel">
                         <div className="panel-head">
-                            <h3>❤️ Lịch sử ủng hộ</h3>
-                            <span className="badge success" style={{ backgroundColor: "#8b5cf6", color: "#fff" }}>{filteredDonations.length} khoản</span>
+                            <h3>Lịch sử ủng hộ</h3>
+                            <span className="badge success" style={{ backgroundColor: "#2563EB", color: "#fff" }}>{filteredDonations.length} khoản</span>
                         </div>
 
                         {filteredDonations.length === 0 ? (
@@ -592,10 +596,10 @@ const AdminDonate = () => {
                                                         <strong style={{ color: "#374151", fontSize: "13px" }}>{donation.donorName}</strong>
                                                     )}
                                                 </td>
-                                                <td><span style={{ fontWeight: "700", color: "#8b5cf6", fontSize: "14px" }}>{donation.amount.toLocaleString()}₫</span></td>
+                                                <td><span style={{ fontWeight: "700", color: "#000000", fontSize: "14px" }}>{donation.amount.toLocaleString()}₫</span></td>
                                                 <td>
                                                     <span style={{
-                                                        padding: "3px 10px", backgroundColor: "#fef3c7", color: "#92400e",
+                                                        padding: "3px 10px", backgroundColor: "#A8266D", color: "#fff",
                                                         borderRadius: "12px", fontSize: "0.8rem", fontWeight: "600"
                                                     }}>{donation.method}</span>
                                                 </td>
@@ -611,7 +615,7 @@ const AdminDonate = () => {
                                                 <td>
                                                     <span style={{
                                                         padding: "3px 10px", borderRadius: "12px", fontSize: "0.8rem", fontWeight: "600",
-                                                        background: "linear-gradient(120deg, #f8fafc 60%, #ede9fe 94%)", color: "rgb(92, 59, 30)"
+                                                        background: "linear-gradient(120deg, #f8fafc 60%, #ede9fe 94%)", color: "#000000"
                                                     }}>{donation.level}</span>
                                                 </td>
                                                 <td>
@@ -621,7 +625,7 @@ const AdminDonate = () => {
                                                     }}
                                                         onMouseOver={e => e.currentTarget.style.background = "#fecaca"}
                                                         onMouseOut={e => e.currentTarget.style.background = "#fee2e2"}
-                                                    >🗑️ Xóa</button>
+                                                    >Xóa</button>
                                                 </td>
                                             </tr>
                                         ))}
