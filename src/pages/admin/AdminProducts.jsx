@@ -95,11 +95,11 @@ export default function AdminProducts() {
     if (editingProduct) {
       const updated = products.map((x) => (x.id === editingProduct.id ? { ...form } : x));
       saveProducts(updated);
-      showSuccess("✅ Đã cập nhật sản phẩm!");
+      showSuccess("Đã cập nhật sản phẩm!");
     } else {
       const newProduct = { ...form, id: `SP-${Date.now()}-${Math.random().toString(36).slice(2, 9)}` };
       saveProducts([...products, newProduct]);
-      showSuccess("✅ Đã thêm sản phẩm!");
+      showSuccess("Đã thêm sản phẩm!");
     }
     setShowModal(false);
   };
@@ -114,7 +114,7 @@ export default function AdminProducts() {
       saveProducts(products.filter((p) => p.id !== deleteTarget));
       setShowDeleteModal(false);
       setDeleteTarget(null);
-      showSuccess("✅ Đã xóa sản phẩm!");
+      showSuccess("Đã xóa sản phẩm!");
     }
   };
 
@@ -148,29 +148,10 @@ export default function AdminProducts() {
     <div className="dashboard-wrapper">
       <div className="dashboard-header">
         <div>
-          <h3>🛍️ Quản lý Sản phẩm</h3>
+          <h3>Quản lý Sản phẩm</h3>
           <p className="panel-description">Theo dõi và quản lý sản phẩm cửa hàng (tranh in, danh mục, tồn kho)</p>
         </div>
-        <div style={{ display: "flex", gap: "0.75rem" }}>
-          <button onClick={loadProducts} className="dashboard-mock-btn">
-            🔄 Làm mới
-          </button>
-          <button
-            onClick={openAdd}
-            style={{
-              background: "linear-gradient(90deg, #2563eb, #22d3ee)",
-              color: "#fff",
-              border: "none",
-              borderRadius: "0.5rem",
-              padding: "0.56rem 1.25rem",
-              cursor: "pointer",
-              fontWeight: "600",
-              boxShadow: "0 2px 6px 0 #dbeafecc",
-            }}
-          >
-            ➕ Thêm sản phẩm
-          </button>
-        </div>
+        <button onClick={openAdd} className="dashboard-btn-primary">Thêm sản phẩm</button>
       </div>
 
       <div className="dashboard-stats-row">
@@ -199,21 +180,21 @@ export default function AdminProducts() {
       <div className="dashboard-panel">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", alignItems: "end" }}>
           <div>
-            <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔍 Tìm kiếm</label>
+            <label className="dashboard-input-label">Tìm kiếm</label>
             <input
               type="text"
+              className="dashboard-input"
               placeholder="Tên, mã, danh mục..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", boxSizing: "border-box" }}
             />
           </div>
           <div>
-            <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Trạng thái</label>
+            <label className="dashboard-input-label">Trạng thái</label>
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              style={{ width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer" }}
+              className="dashboard-select"
             >
               <option value="all">Tất cả</option>
               <option value="active">Đang bán</option>
@@ -221,11 +202,11 @@ export default function AdminProducts() {
             </select>
           </div>
           <div>
-            <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Danh mục</label>
+            <label className="dashboard-input-label">Danh mục</label>
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              style={{ width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer" }}
+              className="dashboard-select"
             >
               <option value="all">Tất cả</option>
               {CATEGORIES.map((c) => (
@@ -238,12 +219,11 @@ export default function AdminProducts() {
 
       <div className="dashboard-panel">
         <div className="panel-head">
-          <h3>📦 Danh sách sản phẩm</h3>
+          <h3>Danh sách sản phẩm</h3>
           <span className="badge success" style={{ backgroundColor: "#2563eb", color: "#fff" }}>{filteredData.length} sản phẩm</span>
         </div>
         {filteredData.length === 0 ? (
           <div style={{ textAlign: "center", padding: "3rem 1rem", color: "#999" }}>
-            <div style={{ fontSize: "3rem", marginBottom: "8px" }}>📭</div>
             <p style={{ fontSize: "1.05rem", fontWeight: "600", margin: "0 0 4px", color: "#374151" }}>Chưa có sản phẩm nào</p>
             <p style={{ fontSize: "0.9rem", color: "#666", margin: 0 }}>Thêm sản phẩm bằng nút "Thêm sản phẩm" phía trên.</p>
           </div>
@@ -270,7 +250,7 @@ export default function AdminProducts() {
                       {p.image ? (
                         <img src={p.image} alt="" style={{ width: 48, height: 48, objectFit: "cover", borderRadius: "8px", border: "1px solid #e0e7ff" }} />
                       ) : (
-                        <div style={{ width: 48, height: 48, background: "#e0e7ff", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px" }}>🖼️</div>
+                        <div style={{ width: 48, height: 48, background: "#e0e7ff", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px", color: "#64748b" }}>—</div>
                       )}
                     </td>
                     <td>
@@ -296,36 +276,8 @@ export default function AdminProducts() {
                     </td>
                     <td>
                       <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                        <button
-                          onClick={() => openEdit(p)}
-                          style={{
-                            background: "#e0e7ff",
-                            color: "#4f46e5",
-                            border: "none",
-                            padding: "5px 10px",
-                            borderRadius: "6px",
-                            cursor: "pointer",
-                            fontWeight: "600",
-                            fontSize: "0.8rem",
-                          }}
-                        >
-                          ✏️ Sửa
-                        </button>
-                        <button
-                          onClick={() => handleDelete(p.id)}
-                          style={{
-                            background: "#fee2e2",
-                            color: "#dc2626",
-                            border: "none",
-                            padding: "5px 10px",
-                            borderRadius: "6px",
-                            cursor: "pointer",
-                            fontWeight: "600",
-                            fontSize: "0.8rem",
-                          }}
-                        >
-                          🗑️ Xóa
-                        </button>
+                        <button onClick={() => openEdit(p)} className="dashboard-btn-edit">Sửa</button>
+                        <button onClick={() => handleDelete(p.id)} className="dashboard-btn-danger">Xóa</button>
                       </div>
                     </td>
                   </tr>
@@ -340,65 +292,71 @@ export default function AdminProducts() {
       {showModal && (
         <div style={overlayStyle} onClick={() => setShowModal(false)}>
           <div style={modalBoxStyle} onClick={(e) => e.stopPropagation()}>
-            <h3 style={{ margin: "0 0 16px", fontSize: "1.2rem", color: "#2563eb" }}>{editingProduct ? "✏️ Sửa sản phẩm" : "➕ Thêm sản phẩm"}</h3>
+            <h3 style={{ margin: "0 0 16px", fontSize: "1.2rem", color: "#2563eb" }}>{editingProduct ? "Sửa sản phẩm" : "Thêm sản phẩm"}</h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               <div>
-                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Tên sản phẩm *</label>
+                <label className="dashboard-input-label">Tên sản phẩm *</label>
                 <input
+                  className="dashboard-input"
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "14px", boxSizing: "border-box" }}
+                  style={{ padding: "8px 10px", fontSize: "14px" }}
                   placeholder="Nhập tên sản phẩm"
                 />
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                 <div>
-                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Giá (₫)</label>
+                  <label className="dashboard-input-label">Giá (₫)</label>
                   <input
                     type="number"
+                    className="dashboard-input"
                     min={0}
                     value={form.price || ""}
                     onChange={(e) => setForm((f) => ({ ...f, price: Number(e.target.value) || 0 }))}
-                    style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "14px", boxSizing: "border-box" }}
+                    style={{ padding: "8px 10px", fontSize: "14px" }}
                   />
                 </div>
                 <div>
-                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Tồn kho</label>
+                  <label className="dashboard-input-label">Tồn kho</label>
                   <input
                     type="number"
+                    className="dashboard-input"
                     min={0}
                     value={form.stock_quantity ?? ""}
                     onChange={(e) => setForm((f) => ({ ...f, stock_quantity: Number(e.target.value) || 0 }))}
-                    style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "14px", boxSizing: "border-box" }}
+                    style={{ padding: "8px 10px", fontSize: "14px" }}
                   />
                 </div>
               </div>
               <div>
-                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>URL ảnh</label>
+                <label className="dashboard-input-label">URL ảnh</label>
                 <input
+                  className="dashboard-input"
                   value={form.image || ""}
                   onChange={(e) => setForm((f) => ({ ...f, image: e.target.value }))}
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "14px", boxSizing: "border-box" }}
+                  style={{ padding: "8px 10px", fontSize: "14px" }}
                   placeholder="https://..."
                 />
               </div>
               <div>
-                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Mô tả</label>
+                <label className="dashboard-input-label">Mô tả</label>
                 <textarea
+                  className="dashboard-input"
                   value={form.description || ""}
                   onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
                   rows={2}
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "14px", boxSizing: "border-box", resize: "vertical" }}
+                  style={{ padding: "8px 10px", fontSize: "14px", resize: "vertical" }}
                   placeholder="Mô tả ngắn"
                 />
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
                 <div>
-                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Danh mục</label>
+                  <label className="dashboard-input-label">Danh mục</label>
                   <select
                     value={form.category || CATEGORIES[0]}
                     onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
-                    style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer" }}
+                    className="dashboard-select"
+                    style={{ padding: "8px 10px", fontSize: "13px" }}
                   >
                     {CATEGORIES.map((c) => (
                       <option key={c} value={c}>{c}</option>
@@ -406,11 +364,12 @@ export default function AdminProducts() {
                   </select>
                 </div>
                 <div>
-                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Chủ đề</label>
+                  <label className="dashboard-input-label">Chủ đề</label>
                   <select
                     value={form.topic || TOPICS[0]}
                     onChange={(e) => setForm((f) => ({ ...f, topic: e.target.value }))}
-                    style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer" }}
+                    className="dashboard-select"
+                    style={{ padding: "8px 10px", fontSize: "13px" }}
                   >
                     {TOPICS.map((t) => (
                       <option key={t} value={t}>{t}</option>
@@ -418,11 +377,12 @@ export default function AdminProducts() {
                   </select>
                 </div>
                 <div>
-                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Phong cách</label>
+                  <label className="dashboard-input-label">Phong cách</label>
                   <select
                     value={form.style || STYLES[0]}
                     onChange={(e) => setForm((f) => ({ ...f, style: e.target.value }))}
-                    style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer" }}
+                    className="dashboard-select"
+                    style={{ padding: "8px 10px", fontSize: "13px" }}
                   >
                     {STYLES.map((s) => (
                       <option key={s} value={s}>{s}</option>
@@ -431,11 +391,12 @@ export default function AdminProducts() {
                 </div>
               </div>
               <div>
-                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Trạng thái</label>
+                <label className="dashboard-input-label">Trạng thái</label>
                 <select
                   value={form.status || "active"}
                   onChange={(e) => setForm((f) => ({ ...f, status: e.target.value }))}
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer" }}
+                  className="dashboard-select"
+                  style={{ padding: "8px 10px", fontSize: "13px" }}
                 >
                   <option value="active">Đang bán</option>
                   <option value="inactive">Ẩn</option>
@@ -443,18 +404,8 @@ export default function AdminProducts() {
               </div>
             </div>
             <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
-              <button
-                onClick={() => setShowModal(false)}
-                style={{ flex: 1, padding: "10px 0", border: "none", borderRadius: "10px", backgroundColor: "#f3f4f6", color: "#374151", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}
-              >
-                Hủy
-              </button>
-              <button
-                onClick={handleSave}
-                style={{ flex: 1, padding: "10px 0", border: "none", borderRadius: "10px", background: "linear-gradient(90deg, #2563eb, #22d3ee)", color: "#fff", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}
-              >
-                {editingProduct ? "Lưu thay đổi" : "Thêm sản phẩm"}
-              </button>
+              <button onClick={() => setShowModal(false)} className="dashboard-mock-btn" style={{ flex: 1, padding: "10px 0" }}>Hủy</button>
+              <button onClick={handleSave} className="dashboard-btn-primary" style={{ flex: 1, padding: "10px 0" }}>{editingProduct ? "Lưu thay đổi" : "Thêm sản phẩm"}</button>
             </div>
           </div>
         </div>
@@ -465,13 +416,12 @@ export default function AdminProducts() {
         <div style={overlayStyle} onClick={() => setShowDeleteModal(false)}>
           <div style={modalBoxStyle} onClick={(e) => e.stopPropagation()}>
             <div style={{ textAlign: "center", marginBottom: "20px" }}>
-              <div style={{ fontSize: "48px", marginBottom: "12px" }}>⚠️</div>
               <h3 style={{ margin: "0 0 8px", fontSize: "20px", color: "#1f2937" }}>Xác nhận xóa</h3>
               <p style={{ margin: 0, color: "#6b7280", fontSize: "14px" }}>Bạn có chắc muốn xóa sản phẩm này? Hành động không thể khôi phục.</p>
             </div>
             <div style={{ display: "flex", gap: "12px" }}>
-              <button onClick={() => setShowDeleteModal(false)} style={{ flex: 1, padding: "10px 0", border: "none", borderRadius: "10px", backgroundColor: "#f3f4f6", color: "#374151", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}>Hủy</button>
-              <button onClick={confirmDelete} style={{ flex: 1, padding: "10px 0", border: "none", borderRadius: "10px", backgroundColor: "#ef4444", color: "#fff", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}>Xóa</button>
+              <button onClick={() => setShowDeleteModal(false)} className="dashboard-mock-btn" style={{ flex: 1, padding: "10px 0" }}>Hủy</button>
+              <button onClick={confirmDelete} className="dashboard-btn-danger" style={{ flex: 1, padding: "10px 0", background: "#ef4444", color: "#fff" }}>Xóa</button>
             </div>
           </div>
         </div>

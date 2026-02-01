@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import PaymentMethods from "../../components/PaymentMethods";
 
 export default function DonatUngHo() {
+  const navigate = useNavigate();
+  
   // State cho số tiền, ẩn danh, carousel, modal
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState("");
@@ -32,7 +35,6 @@ export default function DonatUngHo() {
     if (saved) {
       try {
         const history = JSON.parse(saved);
-        // Lấy 12 người ủng hộ gần nhất
         const recent = history.slice(-12).reverse();
         setRecentDonors(recent);
       } catch (error) {
@@ -51,10 +53,8 @@ export default function DonatUngHo() {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
-  // Xử lý chọn mức ủng hộ
   const handleDonateClick = (amount) => setSelectedAmount(amount);
   
-  // Xử lý nhập số tiền tuỳ chọn
   const handleCustomDonate = () => {
     const parsed = parseInt(customAmount);
     if (!parsed || parsed < 10000) {
@@ -64,7 +64,6 @@ export default function DonatUngHo() {
     setSelectedAmount(parsed);
   };
   
-  // Hàm xác định mức độ ủng hộ
   const getDonateLevel = (amount) => {
     if (amount >= 1000000) return "Nhà bảo trợ nghệ thuật";
     if (amount >= 500000) return "Ủng hộ lớn";
@@ -72,11 +71,10 @@ export default function DonatUngHo() {
     return "Ủng hộ nhỏ";
   };
 
-  // Xử lý thanh toán - LƯU VÀO LOCALSTORAGE
+  // XỬ LÝ THANH TOÁN - CHUYỂN HƯỚNG NGAY LẬP TỨC
   const handlePayment = (method, details) => {
     const donorName = isAnonymous ? "Người ủng hộ ẩn danh" : details.name || "Bạn";
     
-    // Tạo object donation
     const donation = {
       id: `DN-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       donorName: donorName,
@@ -90,30 +88,39 @@ export default function DonatUngHo() {
       level: getDonateLevel(details.amount)
     };
 
-    // Lưu vào localStorage
+    const order = {
+      id: donation.id,
+      createdAt: donation.timestamp,
+      source: "donation",
+      type: "donation",
+      payment: {
+        amount: details.amount,
+        method: method,
+        status: "success",
+        bankInfo: details.bankName ? { bankName: details.bankName } : null
+      },
+      customer: {
+        name: donorName,
+        isAnonymous: isAnonymous
+      }
+    };
+
     try {
       const existing = localStorage.getItem("donationHistory");
       const history = existing ? JSON.parse(existing) : [];
       history.push(donation);
       localStorage.setItem("donationHistory", JSON.stringify(history));
+      localStorage.setItem("lastOrder", JSON.stringify(order));
       
-      // Hiển thị thông báo thành công
-      alert(`🎉 Cảm ơn ${donorName} đã ủng hộ ${details.amount.toLocaleString()}₫ bằng ${method}!`);
+      // CHUYỂN HƯỚNG NGAY - SỬ DỤNG navigate
+      navigate("/thank-you");
       
-      // Reset form
-      setSelectedAmount(null);
-      setCustomAmount("");
-      setIsAnonymous(false);
-      
-      // Reload recent donors
-      loadRecentDonors();
     } catch (error) {
       console.error("Error saving donation:", error);
       alert("❌ Có lỗi xảy ra khi lưu thông tin. Vui lòng thử lại!");
     }
   };
 
-  // Carousel nhà tài trợ
   const visibleCount = 3;
   const displayDonors = recentDonors.length > 0 ? recentDonors : [
     { donorName: "Nguyễn Minh Anh", level: "Nhà bảo trợ nghệ thuật", amount: 1000000 },
@@ -134,7 +141,6 @@ export default function DonatUngHo() {
   const prevSlide = () => setCarouselIndex((prev) => (prev - 1 + total) % total);
   const nextSlide = () => setCarouselIndex((prev) => (prev + 1) % total);
 
-  // Modal báo cáo minh bạch
   const ReportModal = () => {
     const saved = localStorage.getItem("donationHistory");
     const history = saved ? JSON.parse(saved) : [];
@@ -197,7 +203,6 @@ export default function DonatUngHo() {
   return (
     <div className="bg-gradient-to-br from-orange-50 via-white to-amber-50 min-h-screen pb-12">
       <div className="max-w-6xl mx-auto py-12 px-6 text-center">
-        {/* HERO */}
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-orange-600 mb-4">
             Ủng Hộ Dự Án{" "}
@@ -217,7 +222,6 @@ export default function DonatUngHo() {
           </p>
         </div>
 
-        {/* DONATE LEVELS */}
         {!selectedAmount && (
           <>
             <motion.div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6" variants={containerVariants} initial="hidden" animate="show">
@@ -245,7 +249,6 @@ export default function DonatUngHo() {
               ))}
             </motion.div>
 
-            {/* CUSTOM AMOUNT FORM */}
             <motion.div 
               className="mt-12 bg-white rounded-2xl shadow-lg p-8 max-w-xl mx-auto border border-orange-100" 
               initial={{ opacity: 0, y: 30 }} 
@@ -282,7 +285,6 @@ export default function DonatUngHo() {
           </>
         )}
 
-        {/* PAYMENT UI */}
         {selectedAmount && (
           <motion.div 
             className="mt-12 bg-white rounded-2xl shadow-xl p-8 max-w-lg mx-auto" 
@@ -296,14 +298,13 @@ export default function DonatUngHo() {
             <PaymentMethods total={selectedAmount} onPay={handlePayment} />
             <button 
               onClick={() => setSelectedAmount(null)} 
-              className="mt-6 px-5 py-2 bg-gray-200 rounded-xl hover:bg-gray-300 transition-all"
+              className="mt-6 px-5 py-2 bg-gray-200 rounded-xl hover:bg-gray-300 transition-all w-full"
             >
               ⬅ Quay lại
             </button>
           </motion.div>
         )}
 
-        {/* TRI ÂN NHÀ TÀI TRỢ - CAROUSEL */}
         <section className="mt-20 relative">
           <h2 className="text-3xl font-bold text-orange-600 mb-8 text-center">🌟 Tri Ân Nhà Tài Trợ</h2>
           <p className="text-gray-600 mb-12 text-center max-w-3xl mx-auto">
@@ -349,7 +350,6 @@ export default function DonatUngHo() {
                   })}
                 </motion.div>
               </AnimatePresence>
-              {/* Prev / Next buttons */}
               {total > visibleCount && (
                 <>
                   <button 
@@ -371,7 +371,6 @@ export default function DonatUngHo() {
         </section>
       </div>
       
-      {/* SHARE + CONTACT */}
       <div className="mt-16 flex justify-center space-x-4">
         <a 
           href="https://facebook.com/sharer/sharer.php?u=https://nghethuackyuc.vn" 
@@ -398,7 +397,6 @@ export default function DonatUngHo() {
         </a>
       </div>
       
-      {/* MODAL */}
       {showReport && <ReportModal />}
     </div>
   );

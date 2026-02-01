@@ -298,7 +298,7 @@ const AdminDonate = () => {
                         }}
                     >
                         <span style={{
-                             fontSize: "clamp(0.9rem, 2.5vw, 15px)", fontWeight: activeTab === tab.key ? "700" : "500",
+                            fontSize: "15px", fontWeight: activeTab === tab.key ? "700" : "500",
                             color: activeTab === tab.key ? tab.color : "#64748b"
                         }}>{tab.label}</span>
                         <span style={{
@@ -325,7 +325,7 @@ const AdminDonate = () => {
                                         <button key={f} onClick={() => setPayFilter(f)} style={{
                                             cursor: "pointer", padding: "6px 12px", border: "none", borderRadius: "8px",
                                             backgroundColor: payFilter === f ? "#2563eb" : "#e5e7eb",
-                                            color: payFilter === f ? "#fff" : "#374151", fontWeight: "500", fontSize: "clamp(0.75rem, 2vw, 13px)"
+                                            color: payFilter === f ? "#fff" : "#374151", fontWeight: "500", fontSize: "13px"
                                         }}>
                                             {f === "all" ? "Tất cả" : f === "today" ? "Hôm nay" : f === "week" ? "7 ngày" : "30 ngày"}
                                         </button>
@@ -335,8 +335,7 @@ const AdminDonate = () => {
                             <div>
                                 <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔽 Sắp xếp</label>
                                 <select value={paySort} onChange={e => setPaySort(e.target.value)} style={{
-                                    width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", 
-  fontSize: "clamp(0.75rem, 2vw, 13px)", cursor: "pointer"
+                                    width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer"
                                 }}>
                                     <option value="date-desc">Mới nhất</option>
                                     <option value="date-asc">Cũ nhất</option>
@@ -348,15 +347,13 @@ const AdminDonate = () => {
                                 <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔍 Tìm kiếm</label>
                                 <input type="text" placeholder="Tên, sản phẩm, ngân hàng..." value={paySearch}
                                     onChange={e => setPaySearch(e.target.value)} style={{
-                                        width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", 
-    fontSize: "clamp(0.75rem, 2vw, 13px)", boxSizing: "border-box"
+                                        width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", boxSizing: "border-box"
                                     }} />
                             </div>
                             <div style={{ display: "flex", gap: "8px" }}>
                                 <button onClick={() => handleExportCSV("payment")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#10b981", color: "#fff",
-  border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", 
-  fontSize: "clamp(0.75rem, 2vw, 13px)"
+                                    border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
                                 }}>📊 Export</button>
                                 <button onClick={() => handleDeleteAll("payment")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#ef4444", color: "#fff",
@@ -413,7 +410,7 @@ const AdminDonate = () => {
                                                         <td>
                                                             <button onClick={() => setExpandedPayment(isExpanded ? null : payment.id)} style={{
                                                                 background: "#eef2ff", color: "#000000", border: "none",
-                                                                padding: "3px 10px", borderRadius: "12px", fontSize: "clamp(0.75rem, 2vw, 0.8rem)",
+                                                                padding: "3px 10px", borderRadius: "12px", fontSize: "0.8rem",
                                                                 fontWeight: "600", cursor: "pointer"
                                                             }}>
                                                                 {payment.items?.length || 0} mặt hàng {isExpanded ? "▲" : "▼"}
@@ -441,8 +438,7 @@ const AdminDonate = () => {
                                                             <button onClick={() => handleDelete(payment.id, "payment")} style={{
                                                                 background: "#fee2e2", color: "#dc2626", border: "none",
                                                                 padding: "5px 10px", borderRadius: "6px", cursor: "pointer",
-  fontWeight: "600", fontSize: "clamp(0.75rem, 2vw, 0.8rem)",
-  whiteSpace: "nowrap"
+                                                                fontWeight: "600", fontSize: "0.8rem"
                                                             }}
                                                                 onMouseOver={e => e.currentTarget.style.background = "#fecaca"}
                                                                 onMouseOut={e => e.currentTarget.style.background = "#fee2e2"}

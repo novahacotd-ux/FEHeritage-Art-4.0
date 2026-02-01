@@ -81,7 +81,7 @@ export default function AdminPurchaseHistory() {
       localStorage.setItem(VIP_STORAGE_KEY, JSON.stringify(updated));
       setShowDeleteModal(false);
       setDeleteTarget(null);
-      showSuccess("✅ Đã xóa bản ghi lịch sử mua gói!");
+      showSuccess("Đã xóa bản ghi lịch sử mua gói!");
     }
   };
 
@@ -135,29 +135,10 @@ export default function AdminPurchaseHistory() {
     <div className="dashboard-wrapper">
       <div className="dashboard-header">
         <div>
-          <h3>📋 Lịch sử mua gói</h3>
+          <h3>Lịch sử mua gói</h3>
           <p className="panel-description">Theo dõi lịch sử mua gói thành viên VIP / Premium tại cửa hàng</p>
         </div>
-        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-          <button onClick={loadVIPHistory} className="dashboard-mock-btn">
-            🔄 Làm mới
-          </button>
-          <button
-            onClick={handleExportCSV}
-            style={{
-              background: "#10b981",
-              color: "#fff",
-              border: "none",
-              borderRadius: "0.5rem",
-              padding: "0.56rem 1.25rem",
-              cursor: "pointer",
-              fontWeight: "500",
-              fontSize: "13px",
-            }}
-          >
-            📊 Export CSV
-          </button>
-        </div>
+        <button onClick={handleExportCSV} className="dashboard-btn-primary">Export CSV</button>
       </div>
 
       <div className="dashboard-stats-row">
@@ -186,21 +167,21 @@ export default function AdminPurchaseHistory() {
       <div className="dashboard-panel">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", alignItems: "end" }}>
           <div>
-            <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔍 Tìm kiếm</label>
+            <label className="dashboard-input-label">Tìm kiếm</label>
             <input
               type="text"
+              className="dashboard-input"
               placeholder="Tên, email, mã đơn, tên gói..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", boxSizing: "border-box" }}
             />
           </div>
           <div>
-            <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>Trạng thái</label>
+            <label className="dashboard-input-label">Trạng thái</label>
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              style={{ width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer" }}
+              className="dashboard-select"
             >
               <option value="all">Tất cả</option>
               <option value="active">Đang hoạt động</option>
@@ -208,7 +189,7 @@ export default function AdminPurchaseHistory() {
             </select>
           </div>
           <div>
-            <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>⏰ Thời gian</label>
+            <label className="dashboard-input-label">Thời gian</label>
             <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
               {["all", "today", "week", "month"].map((f) => (
                 <button
@@ -235,12 +216,11 @@ export default function AdminPurchaseHistory() {
 
       <div className="dashboard-panel">
         <div className="panel-head">
-          <h3>📦 Danh sách lịch sử mua gói</h3>
+          <h3>Danh sách lịch sử mua gói</h3>
           <span className="badge success" style={{ backgroundColor: "#2563eb", color: "#fff" }}>{filteredData.length} bản ghi</span>
         </div>
         {filteredData.length === 0 ? (
           <div style={{ textAlign: "center", padding: "3rem 1rem", color: "#999" }}>
-            <div style={{ fontSize: "3rem", marginBottom: "8px" }}>📭</div>
             <p style={{ fontSize: "1.05rem", fontWeight: "600", margin: "0 0 4px", color: "#374151" }}>Chưa có lịch sử mua gói</p>
             <p style={{ fontSize: "0.9rem", color: "#666", margin: 0 }}>Khi có người dùng mua gói VIP / Premium, dữ liệu sẽ hiển thị tại đây.</p>
           </div>
@@ -287,7 +267,7 @@ export default function AdminPurchaseHistory() {
                           color: item.status === "active" ? "#16a34a" : "#dc2626",
                         }}
                       >
-                        {item.status === "active" ? "✓ Còn hiệu lực" : "✗ Hết hạn"}
+                        {item.status === "active" ? "Còn hiệu lực" : "Hết hạn"}
                       </span>
                     </td>
                     <td>
@@ -302,27 +282,11 @@ export default function AdminPurchaseHistory() {
                           color: item.autoRenew ? "#1e40af" : "#64748b",
                         }}
                       >
-                        {item.autoRenew ? "🔄 Bật" : "⏸ Tắt"}
+                        {item.autoRenew ? "Bật" : "Tắt"}
                       </span>
                     </td>
                     <td>
-                      <button
-                        onClick={() => handleDelete(item.id)}
-                        style={{
-                          background: "#fee2e2",
-                          color: "#dc2626",
-                          border: "none",
-                          padding: "5px 10px",
-                          borderRadius: "6px",
-                          cursor: "pointer",
-                          fontWeight: "600",
-                          fontSize: "0.8rem",
-                        }}
-                        onMouseOver={(e) => (e.currentTarget.style.background = "#fecaca")}
-                        onMouseOut={(e) => (e.currentTarget.style.background = "#fee2e2")}
-                      >
-                        🗑️ Xóa
-                      </button>
+                      <button onClick={() => handleDelete(item.id)} className="dashboard-btn-danger">Xóa</button>
                     </td>
                   </tr>
                 ))}
@@ -336,13 +300,12 @@ export default function AdminPurchaseHistory() {
         <div style={overlayStyle} onClick={() => setShowDeleteModal(false)}>
           <div style={modalBoxStyle} onClick={(e) => e.stopPropagation()}>
             <div style={{ textAlign: "center", marginBottom: "20px" }}>
-              <div style={{ fontSize: "48px", marginBottom: "12px" }}>⚠️</div>
               <h3 style={{ margin: "0 0 8px", fontSize: "20px", color: "#1f2937" }}>Xác nhận xóa</h3>
               <p style={{ margin: 0, color: "#6b7280", fontSize: "14px" }}>Bạn có chắc muốn xóa bản ghi lịch sử mua gói này? Hành động không thể khôi phục.</p>
             </div>
             <div style={{ display: "flex", gap: "12px" }}>
-              <button onClick={() => setShowDeleteModal(false)} style={{ flex: 1, padding: "10px 0", border: "none", borderRadius: "10px", backgroundColor: "#f3f4f6", color: "#374151", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}>Hủy</button>
-              <button onClick={confirmDelete} style={{ flex: 1, padding: "10px 0", border: "none", borderRadius: "10px", backgroundColor: "#ef4444", color: "#fff", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}>Xóa</button>
+              <button onClick={() => setShowDeleteModal(false)} className="dashboard-mock-btn" style={{ flex: 1, padding: "10px 0" }}>Hủy</button>
+              <button onClick={confirmDelete} className="dashboard-btn-danger" style={{ flex: 1, padding: "10px 0", background: "#ef4444", color: "#fff" }}>Xóa</button>
             </div>
           </div>
         </div>

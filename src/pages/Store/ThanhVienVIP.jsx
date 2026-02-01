@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import PaymentMethods from "../../components/PaymentMethods";
 
 export default function ThanhVienVIP() {
+  const navigate = useNavigate();
+  
   // State cho gói chọn, chu kỳ, tự động gia hạn
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [billingCycle, setBillingCycle] = useState("monthly");
@@ -16,10 +19,11 @@ export default function ThanhVienVIP() {
   
   const discountRate = 0.2;
 
-  // Danh sách gói hội viên
+  // Danh sách gói hội viên - THÊM TIER
   const vipPlans = [
     {
       title: "Miễn Phí (Freemium)",
+      tier: "free",
       priceMonthly: 0,
       benefits: [
         { text: "Tạo ảnh AI giới hạn lượt/ngày", tooltip: "Giới hạn số lượt tạo ảnh mỗi ngày" },
@@ -31,6 +35,7 @@ export default function ThanhVienVIP() {
     },
     {
       title: "Premium Cá Nhân",
+      tier: "premium",
       priceMonthly: 149000,
       benefits: [
         { text: "Tạo ảnh AI không giới hạn", tooltip: "Không giới hạn số lượt tạo ảnh mỗi ngày" },
@@ -43,6 +48,7 @@ export default function ThanhVienVIP() {
     },
     {
       title: "Nhà Bảo Trợ Nghệ Thuật",
+      tier: "patron",
       priceMonthly: 499000,
       benefits: [
         { text: "Tất cả quyền lợi gói Premium", tooltip: "Bao gồm mọi quyền lợi của gói Premium" },
@@ -87,6 +93,19 @@ export default function ThanhVienVIP() {
     return today.toISOString().split('T')[0];
   };
 
+  // Hàm lấy ID tiếp theo
+  const getNextSubscriptionId = () => {
+    const subscriptions = JSON.parse(localStorage.getItem("subscriptions") || "[]");
+    if (subscriptions.length === 0) return 1;
+    const maxId = Math.max(...subscriptions.map(sub => sub.id));
+    return maxId + 1;
+  };
+
+  // Hàm tạo user_id ngẫu nhiên
+  const generateUserId = () => {
+    return Math.floor(1000 + Math.random() * 9000);
+  };
+
   // Chọn gói
   const handleSelectPlan = (plan) => {
     if (plan.priceMonthly === 0) {
@@ -118,53 +137,72 @@ export default function ThanhVienVIP() {
     return true;
   };
 
-  // Thanh toán - TÍCH HỢP LOCALSTORAGE
+  // Thanh toán - LƯU VÀO SUBSCRIPTIONS và CHUYỂN HƯỚNG
   const handlePayment = (method, details) => {
     // Validate thông tin trước khi thanh toán
     if (!validateUserInfo()) {
       return;
     }
 
-    // Tạo bản ghi mới cho VIP
-    const newVIPRecord = {
-      id: `VIP-${Date.now()}`,
+    const today = new Date().toISOString().split('T')[0];
+    const expiryDate = calculateExpiryDate(billingCycle);
+
+    // Tạo bản ghi theo cấu trúc AdminVIP
+    const newSubscription = {
+      id: getNextSubscriptionId(),
+      user_id: generateUserId(),
       userName: userInfo.userName.trim(),
-      email: userInfo.email.trim(),
-      packageName: selectedPlan.title,
-      packagePrice: getPrice(selectedPlan),
-      billingCycle: billingCycle,
-      purchaseDate: new Date().toISOString().split('T')[0],
-      expiryDate: calculateExpiryDate(billingCycle),
-      status: "active",
-      autoRenew: autoRenew,
-      paymentMethod: method,
-      timestamp: new Date().toISOString(),
+      userEmail: userInfo.email.trim(),
+      tier: selectedPlan.tier, // "free", "premium", "patron"
+      assignDate: today,
+      expirationDate: expiryDate,
+      cancelled_at: null,
+      next_billing_date: expiryDate,
+      payment_method: method,
+      ai_generation_limit: selectedPlan.tier === "free" ? 10 : -1,
+      ai_generations_used: 0,
+      limit_reset_at: expiryDate,
+      status: "active"
     };
 
-    // Lấy dữ liệu hiện tại từ localStorage
-    const vipHistory = JSON.parse(localStorage.getItem("vipHistory") || "[]");
+    // Lấy dữ liệu subscriptions hiện tại
+    const subscriptions = JSON.parse(localStorage.getItem("subscriptions") || "[]");
     
-    // Thêm bản ghi mới
-    vipHistory.push(newVIPRecord);
+    // Thêm subscription mới
+    subscriptions.push(newSubscription);
     
     // Lưu lại vào localStorage
-    localStorage.setItem("vipHistory", JSON.stringify(vipHistory));
+    localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
 
-    // Thông báo thành công
-    alert(
-      `🎉 Cảm ơn bạn đã đăng ký gói "${selectedPlan.title}"!\n\n` +
-      `👤 Tên: ${userInfo.userName}\n` +
-      `📧 Email: ${userInfo.email}\n` +
-      `💰 Giá: ${details.amount.toLocaleString()}₫\n` +
-      `💳 Phương thức: ${method}\n` +
-      `📅 Chu kỳ: ${billingCycle === "monthly" ? "Theo tháng" : "Theo năm"}\n` +
-      `🔄 Tự động gia hạn: ${autoRenew ? "Bật ✅" : "Tắt ❌"}\n\n` +
-      `✨ Lịch sử nâng cấp đã được lưu vào hệ thống!`
-    );
+    // Lưu thông tin VIP vào lastOrder để hiển thị ở Thank You page
+    const vipOrder = {
+      id: `VIP-${Date.now()}`,
+      type: "vip-subscription", // Đánh dấu đây là đơn VIP
+      createdAt: new Date().toISOString(),
+      packageName: selectedPlan.title,
+      packageTier: selectedPlan.tier,
+      billingCycle: billingCycle,
+      customer: {
+        name: userInfo.userName.trim(),
+        email: userInfo.email.trim(),
+      },
+      payment: {
+        amount: getPrice(selectedPlan),
+        method: method,
+        status: "success",
+      },
+      subscription: {
+        assignDate: today,
+        expirationDate: expiryDate,
+        autoRenew: autoRenew,
+      }
+    };
 
-    // Reset state
-    setSelectedPlan(null);
-    setUserInfo({ userName: "", email: "" });
+    // Lưu vào lastOrder
+    localStorage.setItem("lastOrder", JSON.stringify(vipOrder));
+
+    // CHUYỂN HƯỚNG THẲNG SANG THANK YOU (không có modal)
+    navigate("/thank-you");
   };
 
   return (
@@ -209,7 +247,7 @@ export default function ThanhVienVIP() {
                 return (
                   <motion.div
                     key={idx}
-                    className={`relative bg-gradient-to-br ${plan.color} rounded-2xl shadow-lg p-8 text-white transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col h-full`}
+                    className={`relative bg-gradient-to-br ${plan.color} rounded-2xl shadow-lg p-8 text-white transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer`}
                     whileHover={{ scale: 1.03 }}
                     onClick={() => handleSelectPlan(plan)}
                   >
