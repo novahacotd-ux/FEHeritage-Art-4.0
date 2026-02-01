@@ -144,24 +144,24 @@ export default function AdminVIP() {
       </div>
 
       <div className="dashboard-stats-row">
-        <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #2563eb" }}>
+        <div className="dashboard-stat-card">
           <h5>Tổng số gói</h5>
-          <div className="stat-value" style={{ color: "#87684a" }}>{stats.total}</div>
+          <div className="stat-value">{stats.total}</div>
           <div className="stat-sub">Tất cả gói đã đăng ký</div>
         </div>
-        <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #10b981" }}>
+        <div className="dashboard-stat-card">
           <h5>Đang hoạt động</h5>
-          <div className="stat-value" style={{ color: "#87684a" }}>{stats.active}</div>
+          <div className="stat-value">{stats.active}</div>
           <div className="stat-sub">Gói còn hiệu lực</div>
         </div>
-        <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #f59e0b" }}>
+        <div className="dashboard-stat-card">
           <h5>Đã hết hạn</h5>
-          <div className="stat-value" style={{ color: "#87684a" }}>{stats.expired}</div>
+          <div className="stat-value">{stats.expired}</div>
           <div className="stat-sub">Gói hết hiệu lực</div>
         </div>
-        <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #8b5cf6" }}>
+        <div className="dashboard-stat-card">
           <h5>Doanh thu</h5>
-          <div className="stat-value" style={{ color: "#87684a" }}>{stats.revenue.toLocaleString()}₫</div>
+          <div className="stat-value">{stats.revenue.toLocaleString()}₫</div>
           <div className="stat-sub">Gói đang hoạt động</div>
         </div>
       </div>
@@ -248,8 +248,8 @@ export default function AdminVIP() {
                           {item.billingCycle === "monthly" ? "Theo tháng" : "Theo năm"}
                         </div>
                       </td>
-                      <td style={{ padding: "0.45em 0.4em", fontSize: "0.97rem", color: "#334155", fontWeight: "600" }}>
-                        {item.packagePrice.toLocaleString()}₫
+                      <td style={{ padding: "0.45em 0.4em", fontSize: "0.97rem" }}>
+                        <span className="dashboard-price">{item.packagePrice.toLocaleString()}₫</span>
                       </td>
                       <td style={{ padding: "0.45em 0.4em", fontSize: "0.97rem", color: "#334155" }}>
                         {new Date(item.purchaseDate).toLocaleDateString("vi-VN")}

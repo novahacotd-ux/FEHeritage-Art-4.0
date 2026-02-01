@@ -341,24 +341,24 @@ const AdminDonate = () => {
 
             {/* ─── COMBINED STATS ROW ─── */}
             <div className="dashboard-stats-row">
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #f97316" }}>
+                <div className="dashboard-stat-card">
                     <h5>Doanh thu bán hàng</h5>
-                    <div className="stat-value" style={{ color: "#87684a" }}>{stats.totalRevenue.toLocaleString()}₫</div>
+                    <div className="stat-value">{stats.totalRevenue.toLocaleString()}₫</div>
                     <div className="stat-sub">Từ {stats.paymentCount} đơn hàng</div>
                 </div>
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #8b5cf6" }}>
+                <div className="dashboard-stat-card">
                     <h5>Tổng ủng hộ</h5>
-                    <div className="stat-value" style={{ color: "#87684a" }}>{stats.totalDonations.toLocaleString()}₫</div>
+                    <div className="stat-value">{stats.totalDonations.toLocaleString()}₫</div>
                     <div className="stat-sub">Từ {stats.donationCount} khoản ủng hộ</div>
                 </div>
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #10b981" }}>
+                <div className="dashboard-stat-card">
                     <h5>Tổng thu</h5>
-                    <div className="stat-value" style={{ color: "#87684a" }}>{(stats.totalRevenue + stats.totalDonations).toLocaleString()}₫</div>
+                    <div className="stat-value">{(stats.totalRevenue + stats.totalDonations).toLocaleString()}₫</div>
                     <div className="stat-sub">{stats.paymentCount + stats.donationCount} giao dịch tổng</div>
                 </div>
-                <div className="dashboard-stat-card" style={{ borderLeft: "4px solid #3b82f6" }}>
+                <div className="dashboard-stat-card">
                     <h5>Đơn hàng hôm nay</h5>
-                    <div className="stat-value" style={{ color: "#87684a" }}>
+                    <div className="stat-value">
                         {payments.filter(p => new Date(p.timestamp).toDateString() === new Date().toDateString()).length}
                     </div>
                     <div className="stat-sub">Đơn hàng mới nhất</div>
@@ -497,7 +497,7 @@ const AdminDonate = () => {
                                                                 {payment.items?.length || 0} mặt hàng {isExpanded ? "▲" : "▼"}
                                                             </button>
                                                         </td>
-                                                        <td><span style={{ fontWeight: "700", color: "#f97316", fontSize: "14px" }}>{(payment.totalAmount || 0).toLocaleString()}₫</span></td>
+                                                        <td><span className="dashboard-price">{(payment.totalAmount || 0).toLocaleString()}₫</span></td>
                                                         <td>
                                                             <span style={{
                                                                 padding: "3px 10px", backgroundColor: "#fef3c7", color: "#92400e",
@@ -543,7 +543,7 @@ const AdminDonate = () => {
                                                                             <span style={{ fontSize: "13px", fontWeight: "600", color: "#374151", flex: 1 }}>{item.title}</span>
                                                                             <span style={{ fontSize: "12px", color: "#8b5cf6", background: "#ede9fe", padding: "2px 8px", borderRadius: "8px" }}>{item.selectedType}</span>
                                                                             <span style={{ fontSize: "12px", color: "#666" }}>x{item.quantity}</span>
-                                                                            <span style={{ fontSize: "13px", fontWeight: "700", color: "#f97316" }}>{(item.price * item.quantity).toLocaleString()}₫</span>
+                                                                            <span className="dashboard-price">{(item.price * item.quantity).toLocaleString()}₫</span>
                                                                         </div>
                                                                     ))}
                                                                 </div>
@@ -666,7 +666,7 @@ const AdminDonate = () => {
                                                         <strong style={{ color: "#374151", fontSize: "13px" }}>{donation.donorName}</strong>
                                                     )}
                                                 </td>
-                                                <td><span style={{ fontWeight: "700", color: "#8b5cf6", fontSize: "14px" }}>{donation.amount.toLocaleString()}₫</span></td>
+                                                <td><span className="dashboard-price">{donation.amount.toLocaleString()}₫</span></td>
                                                 <td>
                                                     <span style={{
                                                         padding: "3px 10px", backgroundColor: "#fef3c7", color: "#92400e",
