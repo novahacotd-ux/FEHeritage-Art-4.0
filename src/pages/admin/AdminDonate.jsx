@@ -57,6 +57,7 @@ const AdminDonate = () => {
                     method: d.method || "N/A",
                     date: d.date || new Date().toLocaleDateString("vi-VN"),
                     time: d.time || new Date().toLocaleTimeString("vi-VN"),
+                    timestamp: d.timestamp != null ? d.timestamp : new Date().getTime(),
                     level: d.level || "Ủng hộ nhỏ"
                 }));
                 setDonations(normalized);
@@ -64,6 +65,16 @@ const AdminDonate = () => {
                 console.error("Error loading donations:", error);
                 setDonations([]);
             }
+        } else {
+            const mockDonations = [
+                { id: "DN-001", donorName: "Nguyễn Văn An", amount: 500000, method: "Chuyển khoản", bankName: "Vietcombank", date: "28/01/2025", time: "09:15:00", timestamp: new Date("2025-01-28T09:15:00").getTime(), level: "Ủng hộ vừa", isAnonymous: false },
+                { id: "DN-002", donorName: "Trần Thị Bình", amount: 2000000, method: "Chuyển khoản", bankName: "Techcombank", date: "27/01/2025", time: "14:30:00", timestamp: new Date("2025-01-27T14:30:00").getTime(), level: "Ủng hộ lớn", isAnonymous: false },
+                { id: "DN-003", donorName: "Ẩn danh", amount: 100000, method: "Ví điện tử", bankName: "", date: "29/01/2025", time: "08:00:00", timestamp: new Date("2025-01-29T08:00:00").getTime(), level: "Ủng hộ nhỏ", isAnonymous: true },
+                { id: "DN-004", donorName: "Lê Minh Cường", amount: 10000000, method: "Chuyển khoản", bankName: "BIDV", date: "25/01/2025", time: "16:45:00", timestamp: new Date("2025-01-25T16:45:00").getTime(), level: "Nhà bảo trợ nghệ thuật", isAnonymous: false },
+                { id: "DN-005", donorName: "Phạm Thu Hà", amount: 300000, method: "Chuyển khoản", bankName: "MB Bank", date: "30/01/2025", time: "11:20:00", timestamp: new Date("2025-01-30T11:20:00").getTime(), level: "Ủng hộ nhỏ", isAnonymous: false },
+            ];
+            localStorage.setItem("donationHistory", JSON.stringify(mockDonations));
+            setDonations(mockDonations);
         }
     };
 
@@ -77,6 +88,83 @@ const AdminDonate = () => {
                 console.error("Error loading payments:", error);
                 setPayments([]);
             }
+        } else {
+            const mockPayments = [
+                {
+                    id: "PAY-2025-001",
+                    customerName: "Hoàng Văn Đức",
+                    totalAmount: 1250000,
+                    paymentMethod: "Chuyển khoản",
+                    bankName: "Vietcombank",
+                    date: "28/01/2025",
+                    time: "10:30:00",
+                    timestamp: new Date("2025-01-28T10:30:00").getTime(),
+                    status: "Thành công",
+                    items: [
+                        { title: "Tranh Phong cảnh Hạ Long", selectedType: "Canvas 40x60", quantity: 1, price: 850000 },
+                        { title: "Tranh Đông Hồ Con gà", selectedType: "Gỗ 30x40", quantity: 1, price: 400000 },
+                    ],
+                },
+                {
+                    id: "PAY-2025-002",
+                    customerName: "Ngô Thị Mai",
+                    totalAmount: 450000,
+                    paymentMethod: "Ví Momo",
+                    bankName: "Momo",
+                    date: "29/01/2025",
+                    time: "14:15:00",
+                    timestamp: new Date("2025-01-29T14:15:00").getTime(),
+                    status: "Thành công",
+                    items: [
+                        { title: "Tranh Chân dung Bác Hồ", selectedType: "Canvas 30x40", quantity: 1, price: 450000 },
+                    ],
+                },
+                {
+                    id: "PAY-2025-003",
+                    customerName: "Đinh Quang Huy",
+                    totalAmount: 2100000,
+                    paymentMethod: "Chuyển khoản",
+                    bankName: "Techcombank",
+                    date: "27/01/2025",
+                    time: "09:00:00",
+                    timestamp: new Date("2025-01-27T09:00:00").getTime(),
+                    status: "Thành công",
+                    items: [
+                        { title: "Tranh Phong cảnh Hạ Long", selectedType: "Canvas 40x60", quantity: 2, price: 850000 },
+                        { title: "Tranh Đông Hồ Con gà", selectedType: "Gỗ 30x40", quantity: 1, price: 400000 },
+                    ],
+                },
+                {
+                    id: "PAY-2025-004",
+                    customerName: "Vũ Thị Lan",
+                    totalAmount: 680000,
+                    paymentMethod: "Chuyển khoản",
+                    bankName: "BIDV",
+                    date: "30/01/2025",
+                    time: "16:45:00",
+                    timestamp: new Date("2025-01-30T16:45:00").getTime(),
+                    status: "Thành công",
+                    items: [
+                        { title: "Tranh Chân dung Bác Hồ", selectedType: "Tranh Gỗ 40x50", quantity: 1, price: 680000 },
+                    ],
+                },
+                {
+                    id: "PAY-2025-005",
+                    customerName: "Bùi Minh Tuấn",
+                    totalAmount: 400000,
+                    paymentMethod: "Ví ZaloPay",
+                    bankName: "ZaloPay",
+                    date: "26/01/2025",
+                    time: "11:20:00",
+                    timestamp: new Date("2025-01-26T11:20:00").getTime(),
+                    status: "Thành công",
+                    items: [
+                        { title: "Tranh Đông Hồ Con gà", selectedType: "Canvas 30x40", quantity: 1, price: 400000 },
+                    ],
+                },
+            ];
+            localStorage.setItem("paymentHistory", JSON.stringify(mockPayments));
+            setPayments(mockPayments);
         }
     };
 
@@ -166,7 +254,7 @@ const AdminDonate = () => {
         setShowDeleteModal(false);
         setDeleteTarget(null);
         setDeleteType(null);
-        showSuccess(deleteType === "payment" ? "✅ Đã xóa đơn hàng thành công!" : "✅ Đã xóa khoản ủng hộ thành công!");
+        showSuccess(deleteType === "payment" ? "Đã xóa đơn hàng thành công!" : "Đã xóa khoản ủng hộ thành công!");
     };
 
     const handleDeleteAll = (type) => {
@@ -187,7 +275,7 @@ const AdminDonate = () => {
             }
             setShowDeleteAllModal(false);
             setConfirmText("");
-            showSuccess(deleteAllType === "payment" ? "✅ Đã xóa toàn bộ lịch sử mua hàng!" : "✅ Đã xóa toàn bộ lịch sử ủng hộ!");
+            showSuccess(deleteAllType === "payment" ? "Đã xóa toàn bộ lịch sử mua hàng!" : "Đã xóa toàn bộ lịch sử ủng hộ!");
         }
     };
 
@@ -246,7 +334,7 @@ const AdminDonate = () => {
             {/* ─── HEADER ─── */}
             <div className="dashboard-header">
                 <div>
-                    <h3>💰 Quản lý ủng hộ & Thanh toán</h3>
+                    <h3>Quản lý ủng hộ & Thanh toán</h3>
                     <p className="panel-description">Theo dõi và quản lý các khoản ủng hộ & mua hàng của dự án Heritage Art 4.0</p>
                 </div>
             </div>
@@ -319,7 +407,7 @@ const AdminDonate = () => {
                     <div className="dashboard-panel">
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", alignItems: "end" }}>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>⏰ Lọc thời gian</label>
+                                <label className="dashboard-input-label">Lọc thời gian</label>
                                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                                     {["all", "today", "week", "month"].map(f => (
                                         <button key={f} onClick={() => setPayFilter(f)} style={{
@@ -333,7 +421,7 @@ const AdminDonate = () => {
                                 </div>
                             </div>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔽 Sắp xếp</label>
+                                <label className="dashboard-input-label">Sắp xếp</label>
                                 <select value={paySort} onChange={e => setPaySort(e.target.value)} style={{
                                     width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer"
                                 }}>
@@ -344,21 +432,15 @@ const AdminDonate = () => {
                                 </select>
                             </div>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔍 Tìm kiếm</label>
+                                <label className="dashboard-input-label">Tìm kiếm</label>
                                 <input type="text" placeholder="Tên, sản phẩm, ngân hàng..." value={paySearch}
                                     onChange={e => setPaySearch(e.target.value)} style={{
                                         width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", boxSizing: "border-box"
                                     }} />
                             </div>
                             <div style={{ display: "flex", gap: "8px" }}>
-                                <button onClick={() => handleExportCSV("payment")} style={{
-                                    flex: 1, padding: "6px 10px", backgroundColor: "#10b981", color: "#fff",
-                                    border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>📊 Export</button>
-                                <button onClick={() => handleDeleteAll("payment")} style={{
-                                    flex: 1, padding: "6px 10px", backgroundColor: "#ef4444", color: "#fff",
-                                    border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>🗑️ Xóa tất cả</button>
+                                <button onClick={() => handleExportCSV("payment")} className="dashboard-btn-primary" style={{ flex: 1, padding: "6px 10px" }}>Export</button>
+                                <button onClick={() => handleDeleteAll("payment")} className="dashboard-btn-danger" style={{ flex: 1, padding: "6px 10px", background: "#ef4444", color: "#fff" }}>Xóa tất cả</button>
                             </div>
                         </div>
                     </div>
@@ -366,13 +448,12 @@ const AdminDonate = () => {
                     {/* Payment Table */}
                     <div className="dashboard-panel">
                         <div className="panel-head">
-                            <h3>📦 Lịch sử mua hàng</h3>
+                            <h3>Lịch sử mua hàng</h3>
                             <span className="badge success" style={{ backgroundColor: "#f97316", color: "#fff" }}>{filteredPayments.length} đơn</span>
                         </div>
 
                         {filteredPayments.length === 0 ? (
                             <div style={{ textAlign: "center", padding: "3rem 1rem", color: "#999" }}>
-                                <div style={{ fontSize: "3rem", marginBottom: "8px" }}>📭</div>
                                 <p style={{ fontSize: "1.05rem", fontWeight: "600", margin: "0 0 4px", color: "#374151" }}>Chưa có đơn hàng nào</p>
                                 <p style={{ fontSize: "0.9rem", color: "#666", margin: 0 }}>
                                     {paySearch || payFilter !== "all" ? "Không tìm thấy kết quả phù hợp" : "Khi có khách hàng mua tranh, dữ liệu sẽ hiển thị tại đây"}
@@ -425,8 +506,8 @@ const AdminDonate = () => {
                                                         </td>
                                                         <td><span style={{ fontWeight: "500", color: "#374151", fontSize: "13px" }}>{payment.bankName || "—"}</span></td>
                                                         <td>
-                                                            <div style={{ fontSize: "0.82rem", fontWeight: "500", color: "#374151" }}>📅 {payment.date}</div>
-                                                            <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>🕐 {payment.time}</div>
+<div style={{ fontSize: "0.82rem", fontWeight: "500", color: "#374151" }}>{payment.date}</div>
+                                                    <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>{payment.time}</div>
                                                         </td>
                                                         <td>
                                                             <span style={{
@@ -442,7 +523,7 @@ const AdminDonate = () => {
                                                             }}
                                                                 onMouseOver={e => e.currentTarget.style.background = "#fecaca"}
                                                                 onMouseOut={e => e.currentTarget.style.background = "#fee2e2"}
-                                                            >🗑️ Xóa</button>
+                                                            >Xóa</button>
                                                         </td>
                                                     </tr>
                                                     {/* Expanded Items Detail */}
@@ -453,7 +534,7 @@ const AdminDonate = () => {
                                                                     background: "#fff", borderRadius: "10px", border: "1px solid #e0e7ff",
                                                                     padding: "14px 16px", display: "flex", flexDirection: "column", gap: "8px"
                                                                 }}>
-                                                                    <div style={{ fontSize: "13px", fontWeight: "700", color: "#4f46e5", marginBottom: "4px" }}>📋 Chi tiết mặt hàng:</div>
+                                                                    <div style={{ fontSize: "13px", fontWeight: "700", color: "#4f46e5", marginBottom: "4px" }}>Chi tiết mặt hàng:</div>
                                                                     {payment.items?.map((item, i) => (
                                                                         <div key={i} style={{
                                                                             display: "flex", alignItems: "center", gap: "12px",
@@ -487,7 +568,7 @@ const AdminDonate = () => {
                 <>
                     {/* Level Stats */}
                     <div className="dashboard-panel">
-                        <div className="panel-head"><h3>📊 Thống kê theo mức độ ủng hộ</h3></div>
+                        <div className="panel-head"><h3>Thống kê theo mức độ ủng hộ</h3></div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px" }}>
                             {Object.entries(levelStats).map(([level, count]) => (
                                 <div key={level} style={{
@@ -505,7 +586,7 @@ const AdminDonate = () => {
                     <div className="dashboard-panel">
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", alignItems: "end" }}>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>⏰ Lọc thời gian</label>
+                                <label className="dashboard-input-label">Lọc thời gian</label>
                                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                                     {["all", "today", "week", "month"].map(f => (
                                         <button key={f} onClick={() => setDonFilter(f)} style={{
@@ -519,7 +600,7 @@ const AdminDonate = () => {
                                 </div>
                             </div>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔽 Sắp xếp</label>
+                                <label className="dashboard-input-label">Sắp xếp</label>
                                 <select value={donSort} onChange={e => setDonSort(e.target.value)} style={{
                                     width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer"
                                 }}>
@@ -530,21 +611,15 @@ const AdminDonate = () => {
                                 </select>
                             </div>
                             <div>
-                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔍 Tìm kiếm</label>
+                                <label className="dashboard-input-label">Tìm kiếm</label>
                                 <input type="text" placeholder="Tên, phương thức..." value={donSearch}
                                     onChange={e => setDonSearch(e.target.value)} style={{
                                         width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", boxSizing: "border-box"
                                     }} />
                             </div>
                             <div style={{ display: "flex", gap: "8px" }}>
-                                <button onClick={() => handleExportCSV("donation")} style={{
-                                    flex: 1, padding: "6px 10px", backgroundColor: "#10b981", color: "#fff",
-                                    border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>📊 Export</button>
-                                <button onClick={() => handleDeleteAll("donation")} style={{
-                                    flex: 1, padding: "6px 10px", backgroundColor: "#ef4444", color: "#fff",
-                                    border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>🗑️ Xóa tất cả</button>
+                                <button onClick={() => handleExportCSV("donation")} className="dashboard-btn-primary" style={{ flex: 1, padding: "6px 10px" }}>Export</button>
+                                <button onClick={() => handleDeleteAll("donation")} className="dashboard-btn-danger" style={{ flex: 1, padding: "6px 10px", background: "#ef4444", color: "#fff" }}>Xóa tất cả</button>
                             </div>
                         </div>
                     </div>
@@ -552,13 +627,12 @@ const AdminDonate = () => {
                     {/* Donation Table */}
                     <div className="dashboard-panel">
                         <div className="panel-head">
-                            <h3>❤️ Lịch sử ủng hộ</h3>
+                            <h3>Lịch sử ủng hộ</h3>
                             <span className="badge success" style={{ backgroundColor: "#8b5cf6", color: "#fff" }}>{filteredDonations.length} khoản</span>
                         </div>
 
                         {filteredDonations.length === 0 ? (
                             <div style={{ textAlign: "center", padding: "3rem 1rem", color: "#999" }}>
-                                <div style={{ fontSize: "3rem", marginBottom: "8px" }}>📭</div>
                                 <p style={{ fontSize: "1.05rem", fontWeight: "600", margin: "0 0 4px", color: "#374151" }}>Chưa có khoản ủng hộ nào</p>
                                 <p style={{ fontSize: "0.9rem", color: "#666", margin: 0 }}>
                                     {donSearch || donFilter !== "all" ? "Không tìm thấy kết quả phù hợp" : "Khi có người ủng hộ, dữ liệu sẽ hiển thị tại đây"}
@@ -587,7 +661,7 @@ const AdminDonate = () => {
                                                 <td style={{ fontFamily: "monospace", fontSize: "0.75rem", color: "#666" }}>{String(donation.id).substring(0, 18)}...</td>
                                                 <td>
                                                     {donation.isAnonymous ? (
-                                                        <span style={{ fontStyle: "italic", color: "#999", fontSize: "13px" }}>🎭 Ẩn danh</span>
+                                                        <span style={{ fontStyle: "italic", color: "#999", fontSize: "13px" }}>Ẩn danh</span>
                                                     ) : (
                                                         <strong style={{ color: "#374151", fontSize: "13px" }}>{donation.donorName}</strong>
                                                     )}
@@ -605,8 +679,8 @@ const AdminDonate = () => {
                                                     ) : <span style={{ color: "#999" }}>—</span>}
                                                 </td>
                                                 <td>
-                                                    <div style={{ fontSize: "0.82rem", fontWeight: "500", color: "#374151" }}>📅 {donation.date}</div>
-                                                    <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>🕐 {donation.time}</div>
+                                                    <div style={{ fontSize: "0.82rem", fontWeight: "500", color: "#374151" }}>{donation.date}</div>
+                                                    <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>{donation.time}</div>
                                                 </td>
                                                 <td>
                                                     <span style={{
@@ -621,7 +695,7 @@ const AdminDonate = () => {
                                                     }}
                                                         onMouseOver={e => e.currentTarget.style.background = "#fecaca"}
                                                         onMouseOut={e => e.currentTarget.style.background = "#fee2e2"}
-                                                    >🗑️ Xóa</button>
+                                                    >Xóa</button>
                                                 </td>
                                             </tr>
                                         ))}
@@ -638,7 +712,6 @@ const AdminDonate = () => {
                 <div style={overlayStyle} onClick={() => setShowDeleteModal(false)}>
                     <div style={modalBoxStyle} onClick={e => e.stopPropagation()}>
                         <div style={{ textAlign: "center", marginBottom: "20px" }}>
-                            <div style={{ fontSize: "48px", marginBottom: "12px" }}>⚠️</div>
                             <h3 style={{ margin: "0 0 8px", fontSize: "20px", color: "#1f2937" }}>Xác nhận xóa</h3>
                             <p style={{ margin: 0, color: "#6b7280", fontSize: "14px" }}>
                                 Bạn có chắc muốn xóa {deleteType === "payment" ? "đơn hàng" : "khoản ủng hộ"} này?

@@ -1120,6 +1120,65 @@
 .dashboard-mock-btn:hover {
     background: #e3e8ee;
 }
+.dashboard-btn-primary {
+    background: linear-gradient(90deg, #2563eb, #0ea5e9);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.56rem 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+.dashboard-btn-primary:hover {
+    opacity: 0.95;
+}
+.dashboard-btn-danger {
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.dashboard-btn-danger:hover {
+    background: #fecaca;
+}
+.dashboard-btn-edit {
+    background: #e0e7ff;
+    color: #4f46e5;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.dashboard-btn-edit:hover {
+    background: #c7d2fe;
+}
+.dashboard-input-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #374151;
+}
+.dashboard-input,
+.dashboard-select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+.dashboard-select {
+    cursor: pointer;
+}
 .dashboard-stats-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
