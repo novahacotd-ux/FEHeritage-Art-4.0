@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 
 const AdminDonate = () => {
+    // ─── SECURITY STATE ───
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [pinInput, setPinInput] = useState("");
+    const [pinError, setPinError] = useState("");
+    const ADMIN_PIN = "1234"; 
+
     // ─── TAB STATE ───
-    const [activeTab, setActiveTab] = useState("payment"); // "payment" | "donation"
+    const [activeTab, setActiveTab] = useState("payment");
 
     // ─── DONATION STATE ───
     const [donations, setDonations] = useState([]);
     const [donFilter, setDonFilter] = useState("all");
     const [donSearch, setDonSearch] = useState("");
     const [donSort, setDonSort] = useState("date-desc");
+    const [donAmountFilter, setDonAmountFilter] = useState("all"); // Lọc theo khoảng tiền
 
     // ─── PAYMENT STATE ───
     const [payments, setPayments] = useState([]);
@@ -17,15 +24,31 @@ const AdminDonate = () => {
     const [paySort, setPaySort] = useState("date-desc");
     const [expandedPayment, setExpandedPayment] = useState(null);
 
+    // ─── EXPORT MODAL STATE ───
+    const [showExportModal, setShowExportModal] = useState(false);
+    const [exportType, setExportType] = useState(null);
+    const [exportRange, setExportRange] = useState("all");
+    const [exportStartDate, setExportStartDate] = useState("");
+    const [exportEndDate, setExportEndDate] = useState("");
+
     // ─── MODAL STATE ───
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [deleteTarget, setDeleteTarget] = useState(null);
-    const [deleteType, setDeleteType] = useState(null); // "payment" | "donation"
+    const [deleteType, setDeleteType] = useState(null);
     const [showDeleteAllModal, setShowDeleteAllModal] = useState(false);
     const [deleteAllType, setDeleteAllType] = useState(null);
     const [confirmText, setConfirmText] = useState("");
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
+
+    // ─── HELPER: Phân loại mức ủng hộ theo số tiền ───
+    const getAmountLevel = (amount) => {
+        const amountInThousands = amount / 1000; // Chuyển sang nghìn
+        if (amountInThousands < 100) return "Ủng hộ nhỏ";
+        if (amountInThousands < 500) return "Ủng hộ vừa";
+        if (amountInThousands < 1000) return "Ủng hộ lớn";
+        return "Nhà bảo trợ nghệ thuật";
+    };
 
     // ─── LOAD DATA ───
     useEffect(() => {
@@ -49,16 +72,19 @@ const AdminDonate = () => {
         if (saved) {
             try {
                 const parsed = JSON.parse(saved);
-                const normalized = parsed.map(d => ({
-                    ...d,
-                    id: d.id || `DN-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-                    donorName: d.donorName || "Không rõ",
-                    amount: d.amount || 0,
-                    method: d.method || "N/A",
-                    date: d.date || new Date().toLocaleDateString("vi-VN"),
-                    time: d.time || new Date().toLocaleTimeString("vi-VN"),
-                    level: d.level || "Ủng hộ nhỏ"
-                }));
+                const normalized = parsed.map(d => {
+                    const amount = d.amount || 0;
+                    return {
+                        ...d,
+                        id: d.id || `DN-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+                        donorName: d.donorName || "Không rõ",
+                        amount: amount,
+                        method: d.method || "N/A",
+                        date: d.date || new Date().toLocaleDateString("vi-VN"),
+                        time: d.time || new Date().toLocaleTimeString("vi-VN"),
+                        level: getAmountLevel(amount) // Tự động tính level theo số tiền
+                    };
+                });
                 setDonations(normalized);
             } catch (error) {
                 console.error("Error loading donations:", error);
@@ -78,6 +104,25 @@ const AdminDonate = () => {
                 setPayments([]);
             }
         }
+    };
+
+    // ─── PIN AUTHENTICATION ───
+    const handlePinSubmit = () => {
+        if (pinInput === ADMIN_PIN) {
+            setIsAuthenticated(true);
+            setPinError("");
+            setPinInput("");
+        } else {
+            setPinError("Mã PIN không chính xác!");
+            setPinInput("");
+        }
+    };
+
+    const handleLogout = () => {
+        setIsAuthenticated(false);
+        setActiveTab("payment");
+        setPinInput("");
+        setPinError("");
     };
 
     // ─── FILTER & SORT HELPERS ───
@@ -115,9 +160,11 @@ const AdminDonate = () => {
         return applySort(filtered, paySort);
     };
 
-    // ─── FILTERED DONATIONS ───
+    // ─── FILTERED DONATIONS (CÓ LỌC THEO SỐ TIỀN) ───
     const getFilteredDonations = () => {
         let filtered = applyTimeFilter(donations, donFilter);
+        
+        // Lọc theo tìm kiếm
         if (donSearch) {
             filtered = filtered.filter(d =>
                 d.donorName?.toLowerCase().includes(donSearch.toLowerCase()) ||
@@ -125,6 +172,21 @@ const AdminDonate = () => {
                 d.bankName?.toLowerCase().includes(donSearch.toLowerCase())
             );
         }
+
+        // Lọc theo khoảng số tiền
+        if (donAmountFilter !== "all") {
+            filtered = filtered.filter(d => {
+                const amountInThousands = (d.amount || 0) / 1000;
+                switch (donAmountFilter) {
+                    case "small": return amountInThousands < 100; // 0-99k
+                    case "medium": return amountInThousands >= 100 && amountInThousands < 500; // 100-499k
+                    case "large": return amountInThousands >= 500 && amountInThousands < 1000; // 500-999k
+                    case "patron": return amountInThousands >= 1000; // 1000k+
+                    default: return true;
+                }
+            });
+        }
+
         return applySort(filtered, donSort);
     };
 
@@ -140,10 +202,10 @@ const AdminDonate = () => {
     };
 
     const levelStats = {
-        "Nhà bảo trợ nghệ thuật": filteredDonations.filter(d => d.level === "Nhà bảo trợ nghệ thuật").length,
-        "Ủng hộ lớn": filteredDonations.filter(d => d.level === "Ủng hộ lớn").length,
-        "Ủng hộ vừa": filteredDonations.filter(d => d.level === "Ủng hộ vừa").length,
-        "Ủng hộ nhỏ": filteredDonations.filter(d => d.level === "Ủng hộ nhỏ").length,
+        "Nhà bảo trợ nghệ thuật": donations.filter(d => getAmountLevel(d.amount) === "Nhà bảo trợ nghệ thuật").length,
+        "Ủng hộ lớn": donations.filter(d => getAmountLevel(d.amount) === "Ủng hộ lớn").length,
+        "Ủng hộ vừa": donations.filter(d => getAmountLevel(d.amount) === "Ủng hộ vừa").length,
+        "Ủng hộ nhỏ": donations.filter(d => getAmountLevel(d.amount) === "Ủng hộ nhỏ").length,
     };
 
     // ─── DELETE HANDLERS ───
@@ -197,30 +259,389 @@ const AdminDonate = () => {
         setTimeout(() => setShowSuccessModal(false), 2000);
     };
 
-    // ─── EXPORT CSV ───
-    const handleExportCSV = (type) => {
-        let headers, rows, filename;
-        if (type === "payment") {
-            headers = ["Mã GD", "Khách hàng", "Số mặn hàng", "Tổng tiền", "Phương thức", "Ngân hàng", "Thời gian", "Trạng thái"];
-            rows = filteredPayments.map(p => [
-                p.id, p.customerName, p.items?.length || 0, p.totalAmount,
-                p.paymentMethod, p.bankName || "", `${p.date} ${p.time}`, p.status || "Thành công"
-            ]);
-            filename = `payments_${new Date().toISOString().split('T')[0]}.csv`;
-        } else {
-            headers = ["Mã GD", "Người ủng hộ", "Số tiền", "Phương thức", "Ngân hàng", "Thời gian", "Mức độ"];
-            rows = filteredDonations.map(d => [
-                d.id, d.isAnonymous ? "Ẩn danh" : d.donorName, d.amount,
-                d.method, d.bankName || "", `${d.date} ${d.time}`, d.level
-            ]);
-            filename = `donations_${new Date().toISOString().split('T')[0]}.csv`;
+    // ─── EXPORT EXCEL ───
+    const openExportModal = (type) => {
+        setExportType(type);
+        setShowExportModal(true);
+        setExportRange("all");
+        setExportStartDate("");
+        setExportEndDate("");
+    };
+
+    const handleExportExcel = () => {
+        let dataToExport = exportType === "payment" ? payments : donations;
+        
+        // Filter by date range if custom range is selected
+        if (exportRange === "custom" && exportStartDate && exportEndDate) {
+            const start = new Date(exportStartDate);
+            const end = new Date(exportEndDate);
+            end.setHours(23, 59, 59, 999);
+            
+            dataToExport = dataToExport.filter(item => {
+                const itemDate = new Date(item.timestamp);
+                return itemDate >= start && itemDate <= end;
+            });
+        } else if (exportRange === "today") {
+            const today = new Date().toDateString();
+            dataToExport = dataToExport.filter(item => new Date(item.timestamp).toDateString() === today);
+        } else if (exportRange === "week") {
+            const weekAgo = new Date(Date.now() - 7 * 86400000);
+            dataToExport = dataToExport.filter(item => new Date(item.timestamp) >= weekAgo);
+        } else if (exportRange === "month") {
+            const monthAgo = new Date(Date.now() - 30 * 86400000);
+            dataToExport = dataToExport.filter(item => new Date(item.timestamp) >= monthAgo);
         }
-        const csvContent = [headers.join(","), ...rows.map(row => row.map(cell => `"${cell}"`).join(","))].join("\n");
-        const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+
+        // Sắp xếp donations theo thứ tự: Bảo trợ > Lớn > Vừa > Nhỏ
+        if (exportType === "donation") {
+            const levelOrder = {
+                "Nhà bảo trợ nghệ thuật": 1,
+                "Ủng hộ lớn": 2,
+                "Ủng hộ vừa": 3,
+                "Ủng hộ nhỏ": 4
+            };
+            dataToExport = [...dataToExport].sort((a, b) => {
+                const levelA = getAmountLevel(a.amount);
+                const levelB = getAmountLevel(b.amount);
+                return levelOrder[levelA] - levelOrder[levelB];
+            });
+        }
+
+        if (dataToExport.length === 0) {
+            alert("Không có dữ liệu để xuất trong khoảng thời gian này!");
+            return;
+        }
+
+        // Create Excel-compatible HTML with enhanced styling
+        let html = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        .summary {
+            background: white;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            border-left: 3px solid #667eea;
+            border-right: 3px solid #667eea;
+        }
+        .summary-item {
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .summary-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        .summary-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 0 0 10px 10px;
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+        tbody tr:hover {
+            background: #f8f9ff;
+        }
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+        .amount {
+            font-weight: 700;
+            color: #2ecc71;
+            text-align: right;
+        }
+        .level-patron {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #854d0e;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .level-large {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .level-medium {
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .level-small {
+            background: #f3f4f6;
+            color: #6b7280;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .footer {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            border: 2px solid #e0e0e0;
+        }
+        @media print {
+            body { background: white; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 BÁO CÁO ${exportType === "payment" ? "MUA HÀNG" : "ỦNG HỘ"}</h1>
+        <p>Heritage Art 4.0 - Dự án Nghệ Thuật Di Sản</p>
+        <p>Xuất ngày: ${new Date().toLocaleDateString("vi-VN", { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })}</p>
+    </div>
+    <div class="summary">
+        <div class="summary-item">
+            <div class="summary-label">Tổng số giao dịch</div>
+            <div class="summary-value">${dataToExport.length}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Tổng giá trị</div>
+            <div class="summary-value">${dataToExport.reduce((sum, item) => sum + (item.totalAmount || item.amount || 0), 0).toLocaleString("vi-VN")}₫</div>
+        </div>`;
+
+        // Thêm thống kê chi tiết cho donation
+        if (exportType === "donation") {
+            const patronCount = dataToExport.filter(d => getAmountLevel(d.amount) === "Nhà bảo trợ nghệ thuật").length;
+            const largeCount = dataToExport.filter(d => getAmountLevel(d.amount) === "Ủng hộ lớn").length;
+            const mediumCount = dataToExport.filter(d => getAmountLevel(d.amount) === "Ủng hộ vừa").length;
+            const smallCount = dataToExport.filter(d => getAmountLevel(d.amount) === "Ủng hộ nhỏ").length;
+
+            html += `
+        <div class="summary-item">
+            <div class="summary-label">Bảo trợ nghệ thuật</div>
+            <div class="summary-value" style="color: #d97706;">${patronCount}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Ủng hộ lớn</div>
+            <div class="summary-value" style="color: #2563eb;">${largeCount}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Ủng hộ vừa</div>
+            <div class="summary-value" style="color: #4f46e5;">${mediumCount}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Ủng hộ nhỏ</div>
+            <div class="summary-value" style="color: #6b7280;">${smallCount}</div>
+        </div>`;
+        }
+
+        html += `
+        <div class="summary-item">
+            <div class="summary-label">Khoảng thời gian</div>
+            <div class="summary-value" style="font-size: 16px;">
+                ${exportRange === "custom" && exportStartDate && exportEndDate 
+                    ? `${new Date(exportStartDate).toLocaleDateString("vi-VN")} - ${new Date(exportEndDate).toLocaleDateString("vi-VN")}`
+                    : exportRange === "all" ? "Toàn bộ"
+                    : exportRange === "today" ? "Hôm nay"
+                    : exportRange === "week" ? "7 ngày qua"
+                    : "30 ngày qua"
+                }
+            </div>
+        </div>
+    </div>
+    <table>`;
+
+        if (exportType === "payment") {
+            html += `
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã GD</th>
+                <th>Khách hàng</th>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Phương thức</th>
+                <th>Ngân hàng</th>
+                <th>Ngày GD</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>`;
+            dataToExport.forEach((p, i) => {
+                const products = p.items?.map(item => `${item.title} (${item.selectedType})`).join(", ") || "N/A";
+                const totalItems = p.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+                html += `
+            <tr>
+                <td>${i + 1}</td>
+                <td style="font-family: monospace; font-size: 11px;">${p.id}</td>
+                <td><strong>${p.customerName || "Không rõ"}</strong></td>
+                <td>${products}</td>
+                <td style="text-align: center;">${totalItems}</td>
+                <td class="amount">${(p.totalAmount || 0).toLocaleString("vi-VN")}₫</td>
+                <td>${p.paymentMethod || "N/A"}</td>
+                <td>${p.bankName || "—"}</td>
+                <td>${p.date} ${p.time}</td>
+                <td><span class="status status-success">${p.status || "Thành công"}</span></td>
+            </tr>`;
+            });
+        } else {
+            html += `
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã GD</th>
+                <th>Người ủng hộ</th>
+                <th>Số tiền</th>
+                <th>Phương thức</th>
+                <th>Ngân hàng</th>
+                <th>Ngày GD</th>
+                <th>Mức độ</th>
+            </tr>
+        </thead>
+        <tbody>`;
+            dataToExport.forEach((d, i) => {
+                const level = getAmountLevel(d.amount);
+                const levelClass = level === "Nhà bảo trợ nghệ thuật" ? "level-patron" 
+                    : level === "Ủng hộ lớn" ? "level-large"
+                    : level === "Ủng hộ vừa" ? "level-medium"
+                    : "level-small";
+                
+                html += `
+            <tr>
+                <td>${i + 1}</td>
+                <td style="font-family: monospace; font-size: 11px;">${d.id}</td>
+                <td><strong>${d.isAnonymous ? "🎭 Ẩn danh" : d.donorName}</strong></td>
+                <td class="amount">${d.amount.toLocaleString("vi-VN")}₫</td>
+                <td>${d.method}</td>
+                <td>${d.bankName || "—"}</td>
+                <td>${d.date} ${d.time}</td>
+                <td><span class="${levelClass}">${level}</span></td>
+            </tr>`;
+            });
+        }
+
+        html += `
+        </tbody>
+    </table>
+    <div class="footer">
+        <p><strong>Heritage Art 4.0</strong> - Dự án Bảo Tồn và Phát Triển Nghệ Thuật Truyền Thống Việt Nam</p>
+        <p>Báo cáo được tạo tự động từ hệ thống quản lý • Mọi thông tin trong báo cáo này là bảo mật</p>`;
+
+        if (exportType === "donation") {
+            html += `
+        <div style="margin-top: 15px; padding: 12px; background: #fef3c7; border-left: 4px solid #f59e0b; text-align: left; border-radius: 5px;">
+            <strong style="color: #92400e;">📋 Phân loại mức ủng hộ:</strong>
+            <ul style="margin: 8px 0; padding-left: 20px; color: #78350f;">
+                <li>Ủng hộ nhỏ: 0₫ - 99,000₫</li>
+                <li>Ủng hộ vừa: 100,000₫ - 499,000₫</li>
+                <li>Ủng hộ lớn: 500,000₫ - 999,000₫</li>
+                <li>Nhà bảo trợ nghệ thuật: từ 1,000,000₫ trở lên</li>
+            </ul>
+        </div>`;
+        }
+
+        html += `
+        <p style="margin-top: 10px; color: #999; font-size: 11px;">
+            © ${new Date().getFullYear()} Heritage Art 4.0. All rights reserved.
+        </p>
+    </div>
+</body>
+</html>`;
+
+        // Create and download file
+        const blob = new Blob([html], { type: "application/vnd.ms-excel;charset=utf-8;" });
         const link = document.createElement("a");
+        const fileName = exportType === "payment" 
+            ? `BaoCao_MuaHang_${new Date().toISOString().split('T')[0]}.xls`
+            : `BaoCao_UngHo_${new Date().toISOString().split('T')[0]}.xls`;
+        
         link.href = URL.createObjectURL(blob);
-        link.download = filename;
+        link.download = fileName;
         link.click();
+
+        setShowExportModal(false);
+        showSuccess(`✅ Đã xuất ${dataToExport.length} giao dịch thành công!`);
     };
 
     // ─── SHARED STYLES ───
@@ -241,6 +662,22 @@ const AdminDonate = () => {
         return { bg: "#e0e7ff", color: "#4f46e5" };
     };
 
+    // ─── HANDLE TAB CLICK WITH AUTH CHECK ───
+    const handleTabClick = (tabKey) => {
+        if (tabKey === "donation") {
+            if (!isAuthenticated) {
+                setActiveTab("donation");
+                return;
+            }
+            setActiveTab("donation");
+        } else {
+            setActiveTab(tabKey);
+        }
+    };
+
+    // ─── PIN MODAL (shown over content, not replacing it) ───
+    const showPinModal = activeTab === "donation" && !isAuthenticated;
+
     return (
         <div className="dashboard-wrapper">
             {/* ─── HEADER ─── */}
@@ -249,17 +686,34 @@ const AdminDonate = () => {
                     <h3>Quản lý ủng hộ & Thanh toán</h3>
                     <p className="panel-description">Theo dõi và quản lý các khoản ủng hộ & mua hàng của dự án Heritage Art 4.0</p>
                 </div>
+                {activeTab === "donation" && isAuthenticated && (
+                    <button
+                        onClick={handleLogout}
+                        style={{
+                            padding: "8px 16px",
+                            background: "#fee2e2",
+                            color: "#dc2626",
+                            border: "none",
+                            borderRadius: "8px",
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            cursor: "pointer"
+                        }}
+                    >
+                        Thoát
+                    </button>
+                )}
             </div>
 
             {/* ─── COMBINED STATS ROW ─── */}
             <div className="dashboard-stats-row">
-                <div className="dashboard-stat-card" >
+                <div className="dashboard-stat-card">
                     <h5>Doanh thu bán hàng</h5>
                     <div className="stat-value">{stats.totalRevenue.toLocaleString()}₫</div>
                     <div className="stat-sub">Từ {stats.paymentCount} đơn hàng</div>
                 </div>
 
-                <div className="dashboard-stat-card" >
+                <div className="dashboard-stat-card">
                     <h5>Tổng ủng hộ</h5>
                     <div className="stat-value">{stats.totalDonations.toLocaleString()}₫</div>
                     <div className="stat-sub">Từ {stats.donationCount} khoản ủng hộ</div>
@@ -289,7 +743,7 @@ const AdminDonate = () => {
                 ].map(tab => (
                     <button
                         key={tab.key}
-                        onClick={() => setActiveTab(tab.key)}
+                        onClick={() => handleTabClick(tab.key)}
                         style={{
                             flex: 1, padding: "14px 20px", border: "none", cursor: "pointer",
                             background: activeTab === tab.key ? `linear-gradient(135deg, ${tab.color}15, ${tab.color}08)` : "transparent",
@@ -352,10 +806,10 @@ const AdminDonate = () => {
                                     }} />
                             </div>
                             <div style={{ display: "flex", gap: "8px" }}>
-                                <button onClick={() => handleExportCSV("payment")} style={{
+                                <button onClick={() => openExportModal("payment")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#10b981", color: "#fff",
                                     border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>📊 Export</button>
+                                }}>📊 Xuất Excel</button>
                                 <button onClick={() => handleDeleteAll("payment")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#ef4444", color: "#fff",
                                     border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
@@ -465,7 +919,6 @@ const AdminDonate = () => {
                                                                             <span style={{ fontSize: "12px", color: "#000000", background: "#ede9fe", padding: "2px 8px", borderRadius: "8px" }}>{item.selectedType}</span>
                                                                             <span style={{ fontSize: "12px", color: "#666" }}>x{item.quantity}</span>
                                                                             <span style={{ fontSize: "13px", fontWeight: "700", color: "#000000" }}>{(item.price * item.quantity).toLocaleString()}₫</span>
-                                                                            <span className="dashboard-price">{(item.price * item.quantity).toLocaleString()}₫</span>
                                                                         </div>
                                                                     ))}
                                                                 </div>
@@ -522,6 +975,18 @@ const AdminDonate = () => {
                                 </div>
                             </div>
                             <div>
+                                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>💰 Mức ủng hộ</label>
+                                <select value={donAmountFilter} onChange={e => setDonAmountFilter(e.target.value)} style={{
+                                    width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer"
+                                }}>
+                                    <option value="all">Tất cả</option>
+                                    <option value="patron">🌟 Bảo trợ (≥1,000k)</option>
+                                    <option value="large">💎 Lớn (500-999k)</option>
+                                    <option value="medium">💚 Vừa (100-499k)</option>
+                                    <option value="small">💙 Nhỏ (0-99k)</option>
+                                </select>
+                            </div>
+                            <div>
                                 <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "0.85rem", color: "#374151" }}>🔽 Sắp xếp</label>
                                 <select value={donSort} onChange={e => setDonSort(e.target.value)} style={{
                                     width: "100%", padding: "6px 10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "13px", cursor: "pointer"
@@ -540,10 +1005,10 @@ const AdminDonate = () => {
                                     }} />
                             </div>
                             <div style={{ display: "flex", gap: "8px" }}>
-                                <button onClick={() => handleExportCSV("donation")} style={{
+                                <button onClick={() => openExportModal("donation")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#10b981", color: "#fff",
                                     border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
-                                }}>📊 Export</button>
+                                }}>📊 Xuất Excel</button>
                                 <button onClick={() => handleDeleteAll("donation")} style={{
                                     flex: 1, padding: "6px 10px", backgroundColor: "#ef4444", color: "#fff",
                                     border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: "500", fontSize: "13px"
@@ -564,7 +1029,7 @@ const AdminDonate = () => {
                                 <div style={{ fontSize: "3rem", marginBottom: "8px" }}>📭</div>
                                 <p style={{ fontSize: "1.05rem", fontWeight: "600", margin: "0 0 4px", color: "#374151" }}>Chưa có khoản ủng hộ nào</p>
                                 <p style={{ fontSize: "0.9rem", color: "#666", margin: 0 }}>
-                                    {donSearch || donFilter !== "all" ? "Không tìm thấy kết quả phù hợp" : "Khi có người ủng hộ, dữ liệu sẽ hiển thị tại đây"}
+                                    {donSearch || donFilter !== "all" || donAmountFilter !== "all" ? "Không tìm thấy kết quả phù hợp" : "Khi có người ủng hộ, dữ liệu sẽ hiển thị tại đây"}
                                 </p>
                             </div>
                         ) : (
@@ -584,58 +1049,229 @@ const AdminDonate = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {filteredDonations.map((donation, index) => (
-                                            <tr key={donation.id} style={{ backgroundColor: index % 2 === 0 ? "#fafafa" : "#fff" }}>
-                                                <td style={{ fontWeight: "600", color: "#666", fontSize: "13px" }}>{index + 1}</td>
-                                                <td style={{ fontFamily: "monospace", fontSize: "0.75rem", color: "#666" }}>{String(donation.id).substring(0, 18)}...</td>
-                                                <td>
-                                                    {donation.isAnonymous ? (
-                                                        <span style={{ fontStyle: "italic", color: "#999", fontSize: "13px" }}>🎭 Ẩn danh</span>
-                                                    ) : (
-                                                        <strong style={{ color: "#374151", fontSize: "13px" }}>{donation.donorName}</strong>
-                                                    )}
-                                                </td>
+                                        {filteredDonations.map((donation, index) => {
+                                            const level = getAmountLevel(donation.amount);
+                                            return (
+                                                <tr key={donation.id} style={{ backgroundColor: index % 2 === 0 ? "#fafafa" : "#fff" }}>
+                                                    <td style={{ fontWeight: "600", color: "#666", fontSize: "13px" }}>{index + 1}</td>
+                                                    <td style={{ fontFamily: "monospace", fontSize: "0.75rem", color: "#666" }}>{String(donation.id).substring(0, 18)}...</td>
+                                                    <td>
+                                                        {donation.isAnonymous ? (
+                                                            <span style={{ fontStyle: "italic", color: "#999", fontSize: "13px" }}>🎭 Ẩn danh</span>
+                                                        ) : (
+                                                            <strong style={{ color: "#374151", fontSize: "13px" }}>{donation.donorName}</strong>
+                                                        )}
+                                                    </td>
 
-                                                <td><span style={{ fontWeight: "700", color: "#000000", fontSize: "14px" }}>{donation.amount.toLocaleString()}₫</span></td>
-                                               
-                                                <td>
-                                                    <span style={{
-                                                        padding: "3px 10px", backgroundColor: "#A8266D", color: "#fff",
-                                                        borderRadius: "12px", fontSize: "0.8rem", fontWeight: "600"
-                                                    }}>{donation.method}</span>
-                                                </td>
-                                                <td>
-                                                    {donation.bankName ? (
-                                                        <span style={{ fontWeight: "500", color: "#374151", fontSize: "13px" }}>{donation.bankName}</span>
-                                                    ) : <span style={{ color: "#999" }}>—</span>}
-                                                </td>
-                                                <td>
-                                                    <div style={{ fontSize: "0.82rem", fontWeight: "500", color: "#374151" }}>📅 {donation.date}</div>
-                                                    <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>🕐 {donation.time}</div>
-                                                </td>
-                                                <td>
-                                                    <span style={{
-                                                        padding: "3px 10px", borderRadius: "12px", fontSize: "0.8rem", fontWeight: "600",
-                                                        background: "linear-gradient(120deg, #f8fafc 60%, #ede9fe 94%)", color: "#000000"
-                                                    }}>{donation.level}</span>
-                                                </td>
-                                                <td>
-                                                    <button onClick={() => handleDelete(donation.id, "donation")} style={{
-                                                        background: "#fee2e2", color: "#dc2626", border: "none",
-                                                        padding: "5px 10px", borderRadius: "6px", cursor: "pointer", fontWeight: "600", fontSize: "0.8rem"
-                                                    }}
-                                                        onMouseOver={e => e.currentTarget.style.background = "#fecaca"}
-                                                        onMouseOut={e => e.currentTarget.style.background = "#fee2e2"}
-                                                    >Xóa</button>
-                                                </td>
-                                            </tr>
-                                        ))}
+                                                    <td><span style={{ fontWeight: "700", color: "#000000", fontSize: "14px" }}>{donation.amount.toLocaleString()}₫</span></td>
+                                                   
+                                                    <td>
+                                                        <span style={{
+                                                            padding: "3px 10px", backgroundColor: "#A8266D", color: "#fff",
+                                                            borderRadius: "12px", fontSize: "0.8rem", fontWeight: "600"
+                                                        }}>{donation.method}</span>
+                                                    </td>
+                                                    <td>
+                                                        {donation.bankName ? (
+                                                            <span style={{ fontWeight: "500", color: "#374151", fontSize: "13px" }}>{donation.bankName}</span>
+                                                        ) : <span style={{ color: "#999" }}>—</span>}
+                                                    </td>
+                                                    <td>
+                                                        <div style={{ fontSize: "0.82rem", fontWeight: "500", color: "#374151" }}>📅 {donation.date}</div>
+                                                        <div style={{ fontSize: "0.75rem", color: "#999", marginTop: "2px" }}>🕐 {donation.time}</div>
+                                                    </td>
+                                                    <td>
+                                                        <span style={{
+                                                            padding: "3px 10px", 
+                                                            borderRadius: "12px", 
+                                                            fontSize: "0.8rem", 
+                                                            fontWeight: "600",
+                                                            background: level === "Nhà bảo trợ nghệ thuật" ? "linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)"
+                                                                : level === "Ủng hộ lớn" ? "#dbeafe"
+                                                                : level === "Ủng hộ vừa" ? "#e0e7ff"
+                                                                : "#f3f4f6",
+                                                            color: level === "Nhà bảo trợ nghệ thuật" ? "#854d0e"
+                                                                : level === "Ủng hộ lớn" ? "#1e40af"
+                                                                : level === "Ủng hộ vừa" ? "#4f46e5"
+                                                                : "#6b7280"
+                                                        }}>{level}</span>
+                                                    </td>
+                                                    <td>
+                                                        <button onClick={() => handleDelete(donation.id, "donation")} style={{
+                                                            background: "#fee2e2", color: "#dc2626", border: "none",
+                                                            padding: "5px 10px", borderRadius: "6px", cursor: "pointer", fontWeight: "600", fontSize: "0.8rem"
+                                                        }}
+                                                            onMouseOver={e => e.currentTarget.style.background = "#fecaca"}
+                                                            onMouseOut={e => e.currentTarget.style.background = "#fee2e2"}
+                                                        >Xóa</button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
                                     </tbody>
                                 </table>
                             </div>
                         )}
                     </div>
                 </>
+            )}
+
+            {/* ─── MODAL: EXPORT EXCEL ─── */}
+            {showExportModal && (
+                <div style={overlayStyle} onClick={() => setShowExportModal(false)}>
+                    <div style={{
+                        ...modalBoxStyle,
+                        maxWidth: "550px"
+                    }} onClick={e => e.stopPropagation()}>
+                        <div style={{ marginBottom: "24px" }}>
+                            <h3 style={{ margin: "0 0 8px", fontSize: "20px", color: "#1e293b" }}>
+                                📊 Xuất Excel
+                            </h3>
+                            <p style={{ margin: 0, color: "#64748b", fontSize: "14px" }}>
+                                Chọn khoảng thời gian để xuất báo cáo {exportType === "payment" ? "mua hàng" : "ủng hộ"}
+                            </p>
+                            
+                        </div>
+
+                        <div style={{ marginBottom: "20px" }}>
+                            <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", fontSize: "14px", color: "#374151" }}>
+                                Chọn khoảng thời gian
+                            </label>
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+                                {[
+                                    { value: "all", label: "📅 Toàn bộ" },
+                                    { value: "today", label: "📅 Hôm nay" },
+                                    { value: "week", label: "📅 7 ngày qua" },
+                                    { value: "month", label: "📅 30 ngày qua" }
+                                ].map(option => (
+                                    <button
+                                        key={option.value}
+                                        onClick={() => setExportRange(option.value)}
+                                        style={{
+                                            padding: "10px",
+                                            border: exportRange === option.value ? "2px solid #2563eb" : "1px solid #e2e8f0",
+                                            borderRadius: "8px",
+                                            background: exportRange === option.value ? "#eff6ff" : "#fff",
+                                            color: exportRange === option.value ? "#2563eb" : "#64748b",
+                                            cursor: "pointer",
+                                            fontWeight: exportRange === option.value ? "600" : "500",
+                                            fontSize: "13px",
+                                            transition: "all 0.2s"
+                                        }}
+                                    >
+                                        {option.label}
+                                    </button>
+                                ))}
+                                <button
+                                    onClick={() => setExportRange("custom")}
+                                    style={{
+                                        gridColumn: "1 / -1",
+                                        padding: "10px",
+                                        border: exportRange === "custom" ? "2px solid #2563eb" : "1px solid #e2e8f0",
+                                        borderRadius: "8px",
+                                        background: exportRange === "custom" ? "#eff6ff" : "#fff",
+                                        color: exportRange === "custom" ? "#2563eb" : "#64748b",
+                                        cursor: "pointer",
+                                        fontWeight: exportRange === "custom" ? "600" : "500",
+                                        fontSize: "13px"
+                                    }}
+                                >
+                                    📅 Tùy chỉnh khoảng thời gian
+                                </button>
+                            </div>
+                        </div>
+
+                        {exportRange === "custom" && (
+                            <div style={{ 
+                                background: "#f8fafc", 
+                                padding: "16px", 
+                                borderRadius: "10px", 
+                                marginBottom: "20px",
+                                border: "1px solid #e2e8f0"
+                            }}>
+                                <div style={{ marginBottom: "12px" }}>
+                                    <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "13px", color: "#374151" }}>
+                                        Từ ngày
+                                    </label>
+                                    <input
+                                        type="date"
+                                        value={exportStartDate}
+                                        onChange={e => setExportStartDate(e.target.value)}
+                                        style={{
+                                            width: "100%",
+                                            padding: "8px 12px",
+                                            border: "1px solid #d1d5db",
+                                            borderRadius: "8px",
+                                            fontSize: "14px",
+                                            boxSizing: "border-box"
+                                        }}
+                                    />
+                                </div>
+                                <div>
+                                    <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "13px", color: "#374151" }}>
+                                        Đến ngày
+                                    </label>
+                                    <input
+                                        type="date"
+                                        value={exportEndDate}
+                                        onChange={e => setExportEndDate(e.target.value)}
+                                        style={{
+                                            width: "100%",
+                                            padding: "8px 12px",
+                                            border: "1px solid #d1d5db",
+                                            borderRadius: "8px",
+                                            fontSize: "14px",
+                                            boxSizing: "border-box"
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        )}
+
+ 
+
+                        <div style={{ display: "flex", gap: "12px" }}>
+                            <button
+                                onClick={() => setShowExportModal(false)}
+                                style={{
+                                    flex: 1,
+                                    padding: "12px 0",
+                                    border: "none",
+                                    borderRadius: "10px",
+                                    backgroundColor: "#f3f4f6",
+                                    color: "#374151",
+                                    fontWeight: "600",
+                                    fontSize: "14px",
+                                    cursor: "pointer"
+                                }}
+                            >
+                                Hủy
+                            </button>
+                            <button
+                                onClick={handleExportExcel}
+                                disabled={exportRange === "custom" && (!exportStartDate || !exportEndDate)}
+                                style={{
+                                    flex: 1,
+                                    padding: "12px 0",
+                                    border: "none",
+                                    borderRadius: "10px",
+                                    background: (exportRange === "custom" && (!exportStartDate || !exportEndDate))
+                                        ? "#d1d5db"
+                                        : "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                                    color: "#fff",
+                                    fontWeight: "600",
+                                    fontSize: "14px",
+                                    cursor: (exportRange === "custom" && (!exportStartDate || !exportEndDate))
+                                        ? "not-allowed"
+                                        : "pointer",
+                                    opacity: (exportRange === "custom" && (!exportStartDate || !exportEndDate)) ? 0.6 : 1
+                                }}
+                            >
+                                📥 Tải xuống Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
             )}
 
             {/* ─── MODAL: XÓA 1 KHOẢN ─── */}
@@ -669,7 +1305,7 @@ const AdminDonate = () => {
                 <div style={overlayStyle} onClick={() => setShowDeleteAllModal(false)}>
                     <div style={modalBoxStyle} onClick={e => e.stopPropagation()}>
                         <div style={{ textAlign: "center", marginBottom: "20px" }}>
-                            <div style={{ fontSize: "48px", marginBottom: "12px" }}></div>
+                            <div style={{ fontSize: "48px", marginBottom: "12px" }}>🗑️</div>
                             <p style={{ margin: "0 0 4px", color: "#374151", fontSize: "15px", fontWeight: "600" }}>
                                 Xóa toàn bộ lịch sử {deleteAllType === "payment" ? "mua hàng" : "ủng hộ"}?
                             </p>
@@ -722,6 +1358,120 @@ const AdminDonate = () => {
                         borderRadius: "16px", boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
                         fontSize: "18px", fontWeight: "700"
                     }}>{successMessage}</div>
+                </div>
+            )}
+
+            {/* ─── PIN AUTHENTICATION MODAL ─── */}
+            {showPinModal && (
+                <div style={overlayStyle} onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveTab("payment");
+                }}>
+                    <div style={{
+                        ...modalBoxStyle,
+                        maxWidth: "500px"
+                    }} onClick={e => e.stopPropagation()}>
+                        <div style={{ textAlign: "center", padding: "40px 20px" }}>
+                            <div style={{ 
+                                width: "100px", height: "100px", margin: "0 auto 30px",
+                                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                borderRadius: "50%", display: "flex", alignItems: "center", 
+                                justifyContent: "center", fontSize: "48px", color: "#fff",
+                                boxShadow: "0 10px 30px rgba(102, 126, 234, 0.3)"
+                            }}>
+                                🔒
+                            </div>
+                        
+                            <p style={{ color: "#64748b", marginBottom: "30px", fontSize: "14px" }}>
+                                Chỉ admin có quyền xem thông tin ủng hộ 
+                            </p> 
+                            <h3 style={{ color: "#64748b", marginBottom: "30px", fontSize: "14px" }}>
+                                Nhập mã PIN có 4 số
+                            </h3>
+
+                            <input
+                                type="password"
+                                value={pinInput}
+                                onChange={(e) => setPinInput(e.target.value)}
+                                onKeyPress={(e) => e.key === "Enter" && handlePinSubmit()}
+                                maxLength="4"
+                                style={{
+                                    width: "100%", 
+                                    padding: "16px 20px", 
+                                    fontSize: "24px",
+                                    textAlign: "center",
+                                    letterSpacing: "8px",
+                                    border: pinError ? "2px solid #ef4444" : "2px solid #e2e8f0",
+                                    borderRadius: "12px",
+                                    marginBottom: "15px",
+                                    boxSizing: "border-box",
+                                    fontFamily: "monospace",
+                                    outline: "none",
+                                    transition: "all 0.2s"
+                                }}
+                                autoFocus
+                            />
+
+                            {pinError && (
+                                <div style={{
+                                    background: "#fee2e2",
+                                    color: "#dc2626",
+                                    padding: "12px",
+                                    borderRadius: "8px",
+                                    marginBottom: "15px",
+                                    fontSize: "14px",
+                                    fontWeight: "600"
+                                }}>
+                                    {pinError}
+                                </div>
+                            )}
+
+                            <button
+                                onClick={handlePinSubmit}
+                                style={{
+                                    width: "100%",
+                                    padding: "16px",
+                                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                    color: "#fff",
+                                    border: "none",
+                                    borderRadius: "12px",
+                                    fontSize: "16px",
+                                    fontWeight: "600",
+                                    cursor: "pointer",
+                                    transition: "transform 0.2s, box-shadow 0.2s",
+                                    boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)"
+                                }}
+                                onMouseOver={(e) => {
+                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                    e.currentTarget.style.boxShadow = "0 6px 20px rgba(102, 126, 234, 0.5)";
+                                }}
+                                onMouseOut={(e) => {
+                                    e.currentTarget.style.transform = "translateY(0)";
+                                    e.currentTarget.style.boxShadow = "0 4px 15px rgba(102, 126, 234, 0.4)";
+                                }}
+                            >
+                                Xác nhận
+                            </button>
+
+                            <button
+                                onClick={() => setActiveTab("payment")}
+                                style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                    padding: "12px",
+                                    background: "transparent",
+                                    color: "#64748b",
+                                    border: "1px solid #e2e8f0",
+                                    borderRadius: "12px",
+                                    fontSize: "14px",
+                                    fontWeight: "500",
+                                    cursor: "pointer"
+                                }}
+                            >
+                                ← Quay lại
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

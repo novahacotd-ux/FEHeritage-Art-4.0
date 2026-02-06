@@ -11,11 +11,19 @@ import { useCart } from "../../context/CartContext";
 export default function MuaTranhIn() {
   // Context và state
   const { user } = useContext(UserContext);
-  const { addToCart, cart, updateQuantity, removeFromCart, clearCart, getTotalItems, getTotalPrice } = useCart();
-  
+  const {
+    addToCart,
+    cart,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    getTotalItems,
+    getTotalPrice,
+  } = useCart();
+
   // 🔹 Lấy dữ liệu từ context (đã cập nhật)
   const { artsOnly, souvenirs } = useArts();
-  
+
   const navigate = useNavigate();
   const [selectedTypes, setSelectedTypes] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,7 +32,7 @@ export default function MuaTranhIn() {
   const [maxPrice, setMaxPrice] = useState(5000000);
   const [sortOrder, setSortOrder] = useState("none");
   const [showCart, setShowCart] = useState(false);
-  
+
   // State mới cho tab sản phẩm
   const [productTab, setProductTab] = useState("tranh"); // "tranh" hoặc "doLuuNiem"
 
@@ -33,8 +41,12 @@ export default function MuaTranhIn() {
 
   // Lọc sản phẩm theo các tiêu chí
   const filteredProducts = currentProducts
-    .filter((product) => product.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    .filter((product) => filterCategory === "Tất cả" ? true : product.category === filterCategory)
+    .filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    )
+    .filter((product) =>
+      filterCategory === "Tất cả" ? true : product.category === filterCategory,
+    )
     .filter((product) => {
       // Lọc theo chất liệu/loại sản phẩm
       const filterMaterial = selectedTypes["filterMaterial"];
@@ -118,11 +130,11 @@ export default function MuaTranhIn() {
 
       {/* Cart popup modal */}
       {showCart && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
           onClick={() => setShowCart(false)}
         >
-          <motion.div 
+          <motion.div
             className="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden relative"
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -135,7 +147,9 @@ export default function MuaTranhIn() {
               <div className="flex items-center gap-3">
                 <span className="text-3xl">🛒</span>
                 <div>
-                  <h2 className="text-xl font-bold text-white">Giỏ hàng của bạn</h2>
+                  <h2 className="text-xl font-bold text-white">
+                    Giỏ hàng của bạn
+                  </h2>
                   <p className="text-sm text-orange-100">
                     {getTotalItems()} sản phẩm
                   </p>
@@ -154,7 +168,9 @@ export default function MuaTranhIn() {
               {cart.length === 0 ? (
                 <div className="text-center py-16">
                   <div className="text-6xl mb-4">🛍️</div>
-                  <p className="text-gray-500 text-lg mb-4">Giỏ hàng của bạn đang trống</p>
+                  <p className="text-gray-500 text-lg mb-4">
+                    Giỏ hàng của bạn đang trống
+                  </p>
                   <button
                     onClick={() => setShowCart(false)}
                     className="px-6 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-lg font-medium hover:from-orange-600 hover:to-amber-600 transition"
@@ -193,11 +209,19 @@ export default function MuaTranhIn() {
                           </span>
                         </p>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-500">Số lượng:</span>
+                          <span className="text-xs text-gray-500">
+                            Số lượng:
+                          </span>
                           <div className="flex items-center bg-white rounded-lg border border-gray-200 overflow-hidden">
                             <button
                               className="px-3 py-1 hover:bg-gray-100 text-gray-600 transition"
-                              onClick={() => updateQuantity(item.id, item.selectedType, item.quantity - 1)}
+                              onClick={() =>
+                                updateQuantity(
+                                  item.id,
+                                  item.selectedType,
+                                  item.quantity - 1,
+                                )
+                              }
                               disabled={item.quantity <= 1}
                             >
                               −
@@ -207,7 +231,13 @@ export default function MuaTranhIn() {
                             </span>
                             <button
                               className="px-3 py-1 hover:bg-gray-100 text-gray-600 transition"
-                              onClick={() => updateQuantity(item.id, item.selectedType, item.quantity + 1)}
+                              onClick={() =>
+                                updateQuantity(
+                                  item.id,
+                                  item.selectedType,
+                                  item.quantity + 1,
+                                )
+                              }
                             >
                               +
                             </button>
@@ -222,7 +252,9 @@ export default function MuaTranhIn() {
                         </div>
                         <button
                           className="text-red-500 hover:text-red-700 text-sm font-medium flex items-center gap-1 transition"
-                          onClick={() => removeFromCart(item.id, item.selectedType)}
+                          onClick={() =>
+                            removeFromCart(item.id, item.selectedType)
+                          }
                         >
                           <span>🗑️</span> Xóa
                         </button>
@@ -270,7 +302,7 @@ export default function MuaTranhIn() {
         </div>
       )}
       <Toaster position="top-right" />
-      
+
       {/* Sidebar bộ lọc */}
       <aside className="w-72 bg-white shadow-md p-6 border-r hidden md:block">
         <h1 className="text-2xl font-bold text-orange-600 mb-6">
@@ -314,8 +346,21 @@ export default function MuaTranhIn() {
           </label>
           <input
             type="text"
-            placeholder={productTab === "tranh" ? "Tên tranh..." : "Tên đồ lưu niệm..."}
-            className="border rounded-md p-2 w-full"
+            placeholder={
+              productTab === "tranh" ? "Tên tranh..." : "Tên đồ lưu niệm..."
+            }
+            className="
+  w-full
+  border border-gray-200
+  rounded-lg
+  px-3 py-2
+  text-sm
+  focus:outline-none
+  focus:ring-2
+  focus:ring-orange-400
+  focus:border-orange-400
+  transition
+"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -325,7 +370,18 @@ export default function MuaTranhIn() {
         <div className="mb-6">
           <label className="block mb-2 font-medium text-gray-700">Chủ đề</label>
           <select
-            className="border rounded-md p-2 w-full"
+            className="
+  w-full
+  border border-gray-200
+  rounded-lg
+  px-3 py-2
+  text-sm
+  focus:outline-none
+  focus:ring-2
+  focus:ring-orange-400
+  focus:border-orange-400
+  transition
+"
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
           >
@@ -342,10 +398,24 @@ export default function MuaTranhIn() {
             {productTab === "tranh" ? "Chất liệu" : "Loại sản phẩm"}
           </label>
           <select
-            className="border rounded-md p-2 w-full"
+            className="
+  w-full
+  border border-gray-200
+  rounded-lg
+  px-3 py-2
+  text-sm
+  focus:outline-none
+  focus:ring-2
+  focus:ring-orange-400
+  focus:border-orange-400
+  transition
+"
             value={selectedTypes["filterMaterial"] || ""}
             onChange={(e) =>
-              setSelectedTypes((prev) => ({ ...prev, filterMaterial: e.target.value }))
+              setSelectedTypes((prev) => ({
+                ...prev,
+                filterMaterial: e.target.value,
+              }))
             }
           >
             <option value="">Tất cả</option>
@@ -371,12 +441,28 @@ export default function MuaTranhIn() {
 
         {/* Bộ lọc phong cách */}
         <div className="mb-6">
-          <label className="block mb-2 font-medium text-gray-700">Phong cách</label>
+          <label className="block mb-2 font-medium text-gray-700">
+            Phong cách
+          </label>
           <select
-            className="border rounded-md p-2 w-full"
+            className="
+  w-full
+  border border-gray-200
+  rounded-lg
+  px-3 py-2
+  text-sm
+  focus:outline-none
+  focus:ring-2
+  focus:ring-orange-400
+  focus:border-orange-400
+  transition
+"
             value={selectedTypes["filterStyle"] || ""}
             onChange={(e) =>
-              setSelectedTypes((prev) => ({ ...prev, filterStyle: e.target.value }))
+              setSelectedTypes((prev) => ({
+                ...prev,
+                filterStyle: e.target.value,
+              }))
             }
           >
             <option value="">Tất cả</option>
@@ -422,7 +508,18 @@ export default function MuaTranhIn() {
             Sắp xếp
           </label>
           <select
-            className="border rounded-md p-2 w-full"
+            className="
+  w-full
+  border border-gray-200
+  rounded-lg
+  px-3 py-2
+  text-sm
+  focus:outline-none
+  focus:ring-2
+  focus:ring-orange-400
+  focus:border-orange-400
+  transition
+"
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
           >
@@ -461,7 +558,16 @@ export default function MuaTranhIn() {
             animate={{ opacity: [1, 0.5, 1] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
-            Khi bạn mua {productTab === "tranh" ? "tranh" : "đồ lưu niệm"}, <span className="text-orange-600 font-bold">5% tổng số tiền bán ra</span> sẽ được dành tặng cho các <span className="font-semibold">Mẹ Việt Nam anh hùng</span> và <span className="font-semibold">Anh hùng lực lượng vũ trang nhân dân</span>.
+            Khi bạn mua {productTab === "tranh" ? "tranh" : "đồ lưu niệm"},{" "}
+            <span className="text-orange-600 font-bold">
+              5% tổng số tiền bán ra
+            </span>{" "}
+            sẽ được dành tặng cho các{" "}
+            <span className="font-semibold">Mẹ Việt Nam anh hùng</span> và{" "}
+            <span className="font-semibold">
+              Anh hùng lực lượng vũ trang nhân dân
+            </span>
+            .
           </motion.p>
         </motion.div>
 
@@ -469,7 +575,8 @@ export default function MuaTranhIn() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredProducts && filteredProducts.length > 0 ? (
             filteredProducts.map((product) => {
-              const selectedType = selectedTypes[product.id] || Object.keys(product.price)[0];
+              const selectedType =
+                selectedTypes[product.id] || Object.keys(product.price)[0];
               const price = product.price[selectedType];
               const imageUrl = product.images[selectedType];
 
@@ -525,9 +632,22 @@ export default function MuaTranhIn() {
                       {productTab === "tranh" ? "Loại tranh:" : "Tùy chọn:"}
                     </label>
                     <select
-                      className="border rounded-md p-2 w-full mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                      className="
+  w-full
+  border border-gray-200
+  rounded-lg
+  px-3 py-2
+  text-sm
+  focus:outline-none
+  focus:ring-2
+  focus:ring-orange-400
+  focus:border-orange-400
+  transition
+"
                       value={selectedType}
-                      onChange={(e) => handleTypeChange(product.id, e.target.value)}
+                      onChange={(e) =>
+                        handleTypeChange(product.id, e.target.value)
+                      }
                     >
                       {Object.keys(product.price).map((type) => (
                         <option key={type} value={type}>
@@ -554,7 +674,8 @@ export default function MuaTranhIn() {
             <div className="col-span-4 text-center py-20">
               <div className="text-6xl mb-4">📦</div>
               <p className="text-gray-500 text-lg italic">
-                Hiện chưa có {productTab === "tranh" ? "tranh" : "đồ lưu niệm"} nào phù hợp.
+                Hiện chưa có {productTab === "tranh" ? "tranh" : "đồ lưu niệm"}{" "}
+                nào phù hợp.
               </p>
               <button
                 onClick={resetFilters}

@@ -11,6 +11,8 @@ export default function AdminPurchaseHistory() {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [exportRange, setExportRange] = useState("all");
 
   useEffect(() => {
     loadVIPHistory();
@@ -91,26 +93,163 @@ export default function AdminPurchaseHistory() {
     setTimeout(() => setShowSuccessModal(false), 2000);
   };
 
-  const handleExportCSV = () => {
-    const headers = ["Mã đơn", "Người dùng", "Email", "Tên gói", "Giá (₫)", "Chu kỳ", "Ngày mua", "Ngày hết hạn", "Trạng thái", "Tự động gia hạn"];
-    const rows = filteredData.map((item) => [
-      item.id,
-      item.userName || "",
-      item.email || "",
-      item.packageName || "",
-      (item.packagePrice || 0).toLocaleString(),
-      item.billingCycle === "monthly" ? "Theo tháng" : "Theo năm",
-      item.purchaseDate || "",
-      item.expiryDate || "",
-      item.status === "active" ? "Còn hiệu lực" : "Hết hạn",
-      item.autoRenew ? "Bật" : "Tắt",
-    ]);
-    const csvContent = [headers.join(","), ...rows.map((row) => row.map((cell) => `"${cell}"`).join(","))].join("\n");
-    const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+  const openExportModal = () => {
+    setShowExportModal(true);
+    setExportRange("all");
+  };
+
+  const handleExportExcel = () => {
+    let dataToExport = exportRange === "all" 
+      ? filteredData 
+      : exportRange === "active"
+      ? filteredData.filter(item => item.status === "active")
+      : exportRange === "expired"
+      ? filteredData.filter(item => item.status === "expired")
+      : exportRange === "monthly"
+      ? filteredData.filter(item => item.billingCycle === "monthly")
+      : filteredData.filter(item => item.billingCycle === "yearly");
+
+    if (dataToExport.length === 0) {
+      alert("Không có dữ liệu để xuất!");
+      return;
+    }
+
+    // Tính toán thống kê
+    const totalRevenue = dataToExport.reduce((sum, item) => sum + (item.packagePrice || 0), 0);
+    const activeCount = dataToExport.filter(item => item.status === "active").length;
+    const expiredCount = dataToExport.filter(item => item.status === "expired").length;
+    
+    // Tìm khoảng thời gian
+    const dates = dataToExport.map(item => new Date(item.purchaseDate)).filter(d => !isNaN(d));
+    const minDate = dates.length > 0 ? new Date(Math.min(...dates)).toLocaleDateString("vi-VN") : "N/A";
+    const maxDate = dates.length > 0 ? new Date(Math.max(...dates)).toLocaleDateString("vi-VN") : "N/A";
+
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background: #f5f5f5; }
+        .header { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 30px; border-radius: 10px 10px 0 0; text-align: center; }
+        .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
+        .header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 14px; }
+        .summary { background: white; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; border-left: 3px solid #f59e0b; border-right: 3px solid #f59e0b; }
+        .summary-item { padding: 15px; background: #fff7ed; border-radius: 8px; border-left: 4px solid #f59e0b; }
+        .summary-label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+        .summary-value { font-size: 24px; font-weight: 700; color: #333; }
+        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 0 0 10px 10px; }
+        thead { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; }
+        th { padding: 15px 12px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 12px; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
+        tbody tr:hover { background: #fff7ed; }
+        tbody tr:nth-child(even) { background: #fafafa; }
+        .price { font-weight: 700; color: #059669; text-align: right; }
+        .status { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .status-active { background: #d4edda; color: #155724; }
+        .status-expired { background: #f8d7da; color: #721c24; }
+        .cycle-monthly { background: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+        .cycle-yearly { background: #fce7f3; color: #9f1239; padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+        .footer { margin-top: 30px; padding: 20px; background: white; border-radius: 10px; text-align: center; color: #666; font-size: 12px; border: 2px solid #e0e0e0; }
+        .footer-note { margin-top: 15px; padding: 15px; background: #fff7ed; border-left: 4px solid #f59e0b; border-radius: 5px; text-align: left; }
+        .footer-note strong { color: #d97706; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💎 BÁO CÁO LỊCH SỬ MUA GÓI VIP</h1>
+        <p>Heritage Art 4.0 - Quản Lý Gói Thành Viên Premium</p>
+        <p>Xuất ngày: ${new Date().toLocaleDateString("vi-VN", { 
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+        })}</p>
+    </div>
+    <div class="summary">
+        <div class="summary-item">
+            <div class="summary-label">Tổng giao dịch</div>
+            <div class="summary-value">${dataToExport.length}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Đang hoạt động</div>
+            <div class="summary-value">${activeCount}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Đã hết hạn</div>
+            <div class="summary-value">${expiredCount}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Tổng doanh thu</div>
+            <div class="summary-value">${totalRevenue.toLocaleString("vi-VN")}₫</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Khoảng thời gian</div>
+            <div class="summary-value" style="font-size: 14px;">${minDate} - ${maxDate}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-label">Loại xuất</div>
+            <div class="summary-value" style="font-size: 16px;">
+                ${exportRange === "all" ? "Toàn bộ" : exportRange === "active" ? "Đang hoạt động" : exportRange === "expired" ? "Đã hết hạn" : exportRange === "monthly" ? "Theo tháng" : "Theo năm"}
+            </div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã đơn</th>
+                <th>Người dùng</th>
+                <th>Email</th>
+                <th>Tên gói</th>
+                <th>Chu kỳ</th>
+                <th>Giá</th>
+                <th>Ngày mua</th>
+                <th>Ngày hết hạn</th>
+                <th>Trạng thái</th>
+                <th>Tự động gia hạn</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${dataToExport.map((item, i) => `
+            <tr>
+                <td>${i + 1}</td>
+                <td style="font-family: monospace; font-size: 11px; font-weight: 600;">${item.id}</td>
+                <td><strong>${item.userName || "—"}</strong></td>
+                <td style="font-size: 13px; color: #666;">${item.email || "—"}</td>
+                <td><strong>${item.packageName || "—"}</strong></td>
+                <td><span class="${item.billingCycle === 'monthly' ? 'cycle-monthly' : 'cycle-yearly'}">${item.billingCycle === 'monthly' ? '📅 Tháng' : '📆 Năm'}</span></td>
+                <td class="price">${(item.packagePrice || 0).toLocaleString("vi-VN")}₫</td>
+                <td>${item.purchaseDate ? new Date(item.purchaseDate).toLocaleDateString("vi-VN") : "—"}</td>
+                <td>${item.expiryDate ? new Date(item.expiryDate).toLocaleDateString("vi-VN") : "—"}</td>
+                <td><span class="status ${item.status === 'active' ? 'status-active' : 'status-expired'}">${item.status === 'active' ? '✓ Còn hiệu lực' : '✗ Hết hạn'}</span></td>
+                <td style="text-align: center;">${item.autoRenew ? '✓ Bật' : '✗ Tắt'}</td>
+            </tr>
+            `).join('')}
+        </tbody>
+    </table>
+    <div class="footer">
+        <p><strong>Heritage Art 4.0</strong> - Dự án Bảo Tồn và Phát Triển Nghệ Thuật Truyền Thống Việt Nam</p>
+        <p>Báo cáo được tạo tự động từ hệ thống quản lý gói thành viên</p>
+        <div class="footer-note">
+            <strong>📋 Lưu ý quan trọng:</strong>
+            <ul style="margin: 10px 0; padding-left: 20px; font-size: 13px; line-height: 1.6;">
+                <li>Báo cáo này có thể được sử dụng cho mục đích khai báo thuế và kế toán nội bộ</li>
+                <li>Tổng doanh thu được tính từ các gói đang hoạt động tại thời điểm xuất báo cáo</li>
+                <li>Vui lòng lưu trữ báo cáo này cùng với các chứng từ kế toán liên quan</li>
+                <li>Mọi thắc mắc xin liên hệ bộ phận kế toán của Heritage Art 4.0</li>
+            </ul>
+        </div>
+        <p style="margin-top: 15px; color: #999; font-size: 11px;">© ${new Date().getFullYear()} Heritage Art 4.0. All rights reserved.</p>
+    </div>
+</body>
+</html>`;
+
+    const blob = new Blob([html], { type: "application/vnd.ms-excel;charset=utf-8;" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `lich_su_mua_goi_${new Date().toISOString().split("T")[0]}.csv`;
+    link.download = `BaoCao_LichSuMuaGoi_${new Date().toISOString().split('T')[0]}.xls`;
     link.click();
+
+    setShowExportModal(false);
+    showSuccess(`✅ Đã xuất ${dataToExport.length} giao dịch thành công!`);
   };
 
   const overlayStyle = {
@@ -138,7 +277,10 @@ export default function AdminPurchaseHistory() {
           <h3>Lịch sử mua gói</h3>
           <p className="panel-description">Theo dõi lịch sử mua gói thành viên VIP / Premium tại cửa hàng</p>
         </div>
-        <button onClick={handleExportCSV} className="dashboard-btn-primary">Export CSV</button>
+        <button onClick={openExportModal} style={{
+          background: "#10b981", color: "#fff", border: "none", borderRadius: "8px",
+          padding: "8px 16px", cursor: "pointer", fontWeight: "600", fontSize: "14px"
+        }}>📊 Xuất Excel</button>
       </div>
 
       <div className="dashboard-stats-row">
@@ -296,6 +438,68 @@ export default function AdminPurchaseHistory() {
         )}
       </div>
 
+      {/* Modal Export */}
+      {showExportModal && (
+        <div style={overlayStyle} onClick={() => setShowExportModal(false)}>
+          <div style={{ ...modalBoxStyle, maxWidth: "450px" }} onClick={e => e.stopPropagation()}>
+            <h3 style={{ margin: "0 0 16px", fontSize: "20px", color: "#1e293b" }}>📊 Xuất báo cáo Excel</h3>
+            <p style={{ margin: "0 0 20px", color: "#64748b", fontSize: "14px" }}>Chọn loại giao dịch để xuất</p>
+            
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px" }}>
+              {[
+                { value: "all", label: "📦 Toàn bộ giao dịch", count: filteredData.length },
+                { value: "active", label: "✅ Đang hoạt động", count: filteredData.filter(item => item.status === "active").length },
+                { value: "expired", label: "⚠️ Đã hết hạn", count: filteredData.filter(item => item.status === "expired").length },
+                { value: "monthly", label: "📅 Gói theo tháng", count: filteredData.filter(item => item.billingCycle === "monthly").length },
+                { value: "yearly", label: "📆 Gói theo năm", count: filteredData.filter(item => item.billingCycle === "yearly").length }
+              ].map(option => (
+                <button
+                  key={option.value}
+                  onClick={() => setExportRange(option.value)}
+                  style={{
+                    padding: "12px 16px",
+                    border: exportRange === option.value ? "2px solid #2563eb" : "1px solid #e2e8f0",
+                    borderRadius: "8px",
+                    background: exportRange === option.value ? "#eff6ff" : "#fff",
+                    color: exportRange === option.value ? "#2563eb" : "#64748b",
+                    cursor: "pointer",
+                    fontWeight: exportRange === option.value ? "600" : "500",
+                    fontSize: "14px",
+                    textAlign: "left",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }}
+                >
+                  <span>{option.label}</span>
+                  <span style={{ 
+                    background: exportRange === option.value ? "#2563eb" : "#e2e8f0",
+                    color: exportRange === option.value ? "#fff" : "#64748b",
+                    padding: "2px 8px",
+                    borderRadius: "12px",
+                    fontSize: "12px",
+                    fontWeight: "700"
+                  }}>{option.count}</span>
+                </button>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: "12px" }}>
+              <button onClick={() => setShowExportModal(false)} style={{
+                flex: 1, padding: "10px 0", border: "none", borderRadius: "10px",
+                backgroundColor: "#f3f4f6", color: "#374151", fontWeight: "600", fontSize: "14px", cursor: "pointer"
+              }}>Hủy</button>
+              <button onClick={handleExportExcel} style={{
+                flex: 1, padding: "10px 0", border: "none", borderRadius: "10px",
+                background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                color: "#fff", fontWeight: "600", fontSize: "14px", cursor: "pointer"
+              }}>📥 Tải xuống</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Xóa */}
       {showDeleteModal && (
         <div style={overlayStyle} onClick={() => setShowDeleteModal(false)}>
           <div style={modalBoxStyle} onClick={(e) => e.stopPropagation()}>
