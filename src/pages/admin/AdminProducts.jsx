@@ -6,7 +6,7 @@ import imgHoankiem from "../../assets/hoankiem.jpg";
 import img123 from "../../assets/123.jpg";
 import imgBanner from "../../assets/banner.png";
 
-const STORAGE_KEY = "adminSouvenirs";
+const STORAGE_KEY = "souvenirs";
 const MOCK_IMAGES = [imgHalong, imgHue, imgHoankiem, img123, imgBanner];
 
 // Cấu hình cho đồ lưu niệm
@@ -20,10 +20,11 @@ const defaultProduct = () => ({
   price: {},
   images: {},
   description: "",
-  category: CATEGORIES[0],
+  category: TOPICS[0],
   type: "souvenir",
   souvenirType: CATEGORIES[0],
   style: STYLES[0],
+  shopeeLink: "", // ← THÊM FIELD MỚI
   details: {
     warrantyType: "Bảo hành 30 ngày",
     warrantyPeriod: "30 ngày",
@@ -67,68 +68,7 @@ export default function AdminProducts() {
       } catch {
         setProducts([]);
       }
-    } else {
-      // Mock data mẫu
-      const mock = [
-        {
-          id: 1001,
-          title: "Áo Thun In Hình Cố Đô Huế",
-          category: "Di tích lịch sử",
-          type: "souvenir",
-          souvenirType: "Áo Thun",
-          style: "Cổ điển",
-          description: "Áo thun cotton 100% in hình Cố Đô Huế với chất lượng cao, thiết kế độc đáo.",
-          price: {
-            "Size S": 250000,
-            "Size M": 250000,
-            "Size L": 280000,
-            "Size XL": 300000,
-          },
-          images: {
-            "Size S": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-            "Size M": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-            "Size L": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-            "Size XL": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-          },
-          details: {
-            warrantyType: "Bảo hành 30 ngày lỗi nhà sản xuất",
-            warrantyPeriod: "30 ngày",
-            style: "Cổ điển",
-            material: "Cotton 100%",
-            origin: "Việt Nam",
-            shipFrom: "Huế, Việt Nam"
-          }
-        },
-        {
-          id: 1002,
-          title: "Cốc Nghệ Thuật Chùa Một Cột",
-          category: "Văn hóa",
-          type: "souvenir",
-          souvenirType: "Cốc/Ly",
-          style: "Hiện đại",
-          description: "Cốc sứ cao cấp in hình Chùa Một Cột, thiết kế tinh tế, phù hợp làm quà tặng.",
-          price: {
-            "Cốc Nhỏ": 120000,
-            "Cốc Vừa": 150000,
-            "Cốc Lớn": 180000,
-          },
-          images: {
-            "Cốc Nhỏ": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=500",
-            "Cốc Vừa": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=500",
-            "Cốc Lớn": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=500",
-          },
-          details: {
-            warrantyType: "Bảo hành 60 ngày lỗi vỡ do nhà sản xuất",
-            warrantyPeriod: "60 ngày",
-            style: "Hiện đại",
-            material: "Sứ cao cấp",
-            origin: "Việt Nam",
-            shipFrom: "Hà Nội, Việt Nam"
-          }
-        },
-      ];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(mock));
-      setProducts(mock);
+    
     }
   };
 
@@ -148,7 +88,6 @@ export default function AdminProducts() {
   const stats = {
     total: products.length,
     categories: new Set(products.map(p => p.souvenirType)).size,
-    // Tính tổng giá trị của tất cả các tùy chọn giá trong tất cả sản phẩm
     totalValue: products.reduce((sum, p) => {
       const allPrices = Object.values(p.price);
       const productTotal = allPrices.reduce((pSum, price) => pSum + price, 0);
@@ -170,7 +109,6 @@ export default function AdminProducts() {
   const openEdit = (p) => {
     setEditingProduct(p);
     setForm({ ...p });
-    // Convert price object to array for editing
     const options = Object.entries(p.price).map(([key, value]) => ({ key, value }));
     setPriceOptions(options.length > 0 ? options : [{ key: "Size S", value: 0 }]);
     setShowModal(true);
@@ -182,7 +120,17 @@ export default function AdminProducts() {
       return;
     }
 
-    // Convert price options array back to object
+    if (!form.shopeeLink?.trim()) {
+      alert("⚠️ Vui lòng nhập link Shopee cho sản phẩm!");
+      return;
+    }
+
+    // Validate Shopee link
+    if (!form.shopeeLink.includes('shopee.vn')) {
+      alert("⚠️ Link phải là link Shopee (shopee.vn)!");
+      return;
+    }
+
     const priceObj = {};
     const imagesObj = {};
     priceOptions.forEach(opt => {
@@ -230,7 +178,6 @@ export default function AdminProducts() {
     setTimeout(() => setShowSuccessModal(false), 2000);
   };
 
-  // Price options handlers
   const addPriceOption = () => {
     setPriceOptions([...priceOptions, { key: "", value: 0 }]);
   };
@@ -247,7 +194,6 @@ export default function AdminProducts() {
     setPriceOptions(updated);
   };
 
-  // Export Excel
   const openExportModal = () => {
     setShowExportModal(true);
     setExportRange("all");
@@ -263,7 +209,6 @@ export default function AdminProducts() {
       return;
     }
 
-    // 🔹 TÍNH TỔNG CỘNG
     const totalSum = dataToExport.reduce((sum, p) => {
       const allPrices = Object.values(p.price);
       const productTotal = allPrices.reduce((pSum, price) => pSum + price, 0);
@@ -291,6 +236,7 @@ export default function AdminProducts() {
         tbody tr:hover { background: #faf5ff; }
         tbody tr:nth-child(even) { background: #fafafa; }
         .price { font-weight: 700; color: #9333ea; text-align: right; }
+        .link { color: #2563eb; font-size: 11px; word-break: break-all; }
         .total-row { background: #fef3c7 !important; font-weight: 700; border-top: 3px solid #9333ea; }
         .total-row td { font-size: 16px; padding: 18px 12px; }
         .footer { margin-top: 30px; padding: 20px; background: white; border-radius: 10px; text-align: center; color: #666; font-size: 12px; border: 2px solid #e0e0e0; }
@@ -331,30 +277,26 @@ export default function AdminProducts() {
                 <th>Tên sản phẩm</th>
                 <th>Loại</th>
                 <th>Chủ đề</th>
-                <th>Phong cách</th>
                 <th>Giá (từ)</th>
-                <th>Tùy chọn giá</th>
+                <th>Link Shopee</th>
             </tr>
         </thead>
         <tbody>
             ${dataToExport.map((p, i) => {
-              const priceEntries = Object.entries(p.price);
               const minPrice = Math.min(...Object.values(p.price));
-              const priceOptions = priceEntries.map(([k, v]) => `${k}: ${v.toLocaleString()}₫`).join(", ");
               return `
             <tr>
                 <td>${i + 1}</td>
                 <td><strong>${p.title || "—"}</strong></td>
                 <td>${p.souvenirType || "—"}</td>
                 <td>${p.category || "—"}</td>
-                <td>${p.style || "—"}</td>
                 <td class="price">${minPrice.toLocaleString()}₫</td>
-                <td style="font-size: 12px; color: #666;">${priceOptions}</td>
+                <td class="link">${p.shopeeLink || "Chưa có link"}</td>
             </tr>
             `;
             }).join('')}
             <tr class="total-row">
-                <td colspan="5" style="text-align: right;">🔸 TỔNG CỘNG</td>
+                <td colspan="4" style="text-align: right;">🔸 TỔNG CỘNG</td>
                 <td colspan="2" class="price" style="font-size: 18px; color: #9333ea;">${totalSum.toLocaleString()}₫</td>
             </tr>
         </tbody>
@@ -497,7 +439,7 @@ export default function AdminProducts() {
                   <th style={{ minWidth: "100px" }}>Loại</th>
                   <th style={{ minWidth: "100px" }}>Chủ đề</th>
                   <th style={{ minWidth: "100px" }}>Giá (từ)</th>
-                  <th style={{ minWidth: "200px" }}>Tùy chọn giá</th>
+                  <th style={{ minWidth: "250px" }}>Link Shopee</th>
                   <th style={{ minWidth: "120px" }}>Thao tác</th>
                 </tr>
               </thead>
@@ -505,7 +447,6 @@ export default function AdminProducts() {
                 {filteredData.map((p, index) => {
                   const firstImage = Object.values(p.images)[0] || MOCK_IMAGES[0];
                   const minPrice = Math.min(...Object.values(p.price));
-                  const priceOptions = Object.entries(p.price).map(([k, v]) => `${k}: ${v.toLocaleString()}₫`).join(", ");
                   
                   return (
                     <tr key={p.id}>
@@ -517,7 +458,20 @@ export default function AdminProducts() {
                       <td>{p.souvenirType || "—"}</td>
                       <td>{p.category || "—"}</td>
                       <td><span className="dashboard-price">{minPrice.toLocaleString()}₫</span></td>
-                      <td><span style={{ fontSize: "12px", color: "#666" }}>{priceOptions}</span></td>
+                      <td>
+                        {p.shopeeLink ? (
+                          <a 
+                            href={p.shopeeLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 text-xs break-all"
+                          >
+                            🔗 {p.shopeeLink.substring(0, 40)}...
+                          </a>
+                        ) : (
+                          <span className="text-red-500 text-xs">⚠️ Chưa có link</span>
+                        )}
+                      </td>
                       <td>
                         <div style={{ display: "flex", gap: "6px" }}>
                           <button onClick={() => openEdit(p)} className="dashboard-btn-edit">Sửa</button>
@@ -631,6 +585,24 @@ export default function AdminProducts() {
                   onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
                   placeholder="Nhập tên sản phẩm"
                 />
+              </div>
+
+              {/* FIELD MỚI: LINK SHOPEE */}
+              <div>
+                <label className="dashboard-input-label">
+                  🔗 Link Shopee * 
+                  <span className="text-xs text-gray-500 ml-2">(Bắt buộc - Link sản phẩm trên Shopee)</span>
+                </label>
+                <input
+                  className="dashboard-input"
+                  value={form.shopeeLink}
+                  onChange={(e) => setForm((f) => ({ ...f, shopeeLink: e.target.value }))}
+                  placeholder="https://shopee.vn/Ten-San-Pham-i.123456789.987654321"
+                  style={{ fontSize: "13px" }}
+                />
+                <div className="text-xs text-gray-500 mt-1">
+                  💡 Mẹo: Vào trang sản phẩm trên Shopee, copy URL từ thanh địa chỉ
+                </div>
               </div>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>

@@ -45,6 +45,7 @@ import AdminDonate from '../pages/admin/AdminDonate.jsx';
 import AdminVIP from '../pages/admin/AdminVIP.jsx';
 import AdminProducts from '../pages/admin/AdminProducts.jsx';
 import AdminPurchaseHistory from '../pages/admin/AdminPurchaseHistory.jsx';
+import DoLuuNiem from '../pages/Store/DoLuuNiem.jsx';
 
 
 const router = createBrowserRouter([
@@ -200,6 +201,10 @@ const router = createBrowserRouter([
           {
             path: 'mua-tranh-in',
             element: <MuaTranhIn />,
+          },
+          {
+            path: 'do-luu-niem',
+            element: <DoLuuNiem />,
           },
           {
             path: 'chi-tiet/:id',
