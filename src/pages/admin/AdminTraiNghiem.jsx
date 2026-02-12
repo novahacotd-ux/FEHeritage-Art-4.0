@@ -2500,198 +2500,751 @@ const initialData = [
 
 const ITEMS_PER_PAGE = 10;
 
-const AdminTraiNghiem = () => {
-    const [data, setData] = useState(initialData || []);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
-    const [isAdding, setIsAdding] = useState(false);
-    const [editingIndex, setEditingIndex] = useState(null);
+const statuses = [
+    { value: "published", label: "Đã duyệt" },
+    { value: "pending", label: "Chờ duyệt" },
+    { value: "rejected", label: "Từ chối" },
+];
 
-    const [formData, setFormData] = useState({
-        name: '',
+// Danh sách tỉnh/thành phố Việt Nam để dùng cho select box
+const provincesVN = [
+    "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh",
+    "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau",
+    "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên",
+    "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh",
+    "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa",
+    "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An",
+    "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình",
+    "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La",
+    "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang",
+    "TP. Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
+];
+
+// Định nghĩa các vùng (regions) và thời kỳ (periods) sử dụng trong select box
+const periods = ['Tiền sử', 'Nguyễn', 'Pháp thuộc', 'Hiện đại', 'Hùng Vương', 'Lý', 'Trần', 'Lê', 'Hồ'];
+const regions = ['Nam', 'Trung', 'Bắc'];
+
+// DI TÍCH
+const initialFormState = {
+    name: "",
+    description: "",
+    images: [],
+    period: "Hiện đại",
+    region: "Nam",
+    province: "",
+    type: "heritage",
+    status: "pending",
+    lat: '',
+    lng: '',
+};
+
+// ẨM THỰC
+const initialFoodFormState = {
+    name: "",
+    description: "",
+    images: [],
+    region: "Nam",
+    province: "",
+    type: "food",
+    status: "pending",
+    lat: '',
+    lng: '',
+};
+
+// DU LỊCH
+const initialTravelFormState = {
+    name: "",
+    description: "",
+    images: [],
+    region: "Nam",
+    province: "",
+    type: "travel",
+    status: "pending",
+    lat: '',
+    lng: '',
+};
+
+// KHÁCH SẠN
+const initialHotelFormState = {
+    name: "",
+    description: "",
+    images: [],
+    region: "Nam",
+    province: "",
+    type: "hotel",
+    status: "pending",
+    lat: '',
+    lng: '',
+};
+
+// --- mock dữ liệu Ẩm thực ---
+const mockFoodData = [
+    {
+        name: "Bánh xèo",
+        description: "Bánh xèo là món ăn dân dã miền Nam Việt Nam, có lớp vỏ giòn rụm vàng ươm, bên trong là tôm, thịt, giá đỗ, ăn kèm rau sống và nước mắm chua ngọt.",
+        images: [
+            "https://www.huongnghiepaau.com/wp-content/uploads/2017/02/cach-lam-banh-xeo-mien-trung.jpg"
+        ],
+        region: "Nam",
+        province: "TP. Hồ Chí Minh",
+        type: "food",
+        status: "published",
         lat: '',
         lng: '',
-        description: '',
-        images: [],
-        period: 'Hiện đại',
-        region: 'Nam',
-        province: '',
-    });
+    },
+    {
+        name: "Phở",
+        description: "Phở là món ăn truyền thống và nổi tiếng của Việt Nam, gồm bánh phở, thịt bò hoặc gà, nước dùng trong, thơm, ăn kèm rau thơm và giá.",
+        images: [
+            "https://i-giadinh.vnecdn.net/2025/11/17/Pho-bo-Ha-Noi-7-vnexpress-1763-7388-9585-1763372391.jpg"
+        ],
+        region: "Bắc",
+        province: "Hà Nội",
+        type: "food",
+        status: "published",
+        lat: '',
+        lng: '',
+    },
+    {
+        name: "Mì Quảng",
+        description: "Mì Quảng với sợi mì vàng óng, nước dùng đậm đà, ăn kèm tôm thịt, trứng cút, bánh tráng nướng và rau sống, là đặc sản miền Trung.",
+        images: [
+            "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2024_1_11_638405969591938048_mi-quang-da-lat_.jpg"
+        ],
+        region: "Trung",
+        province: "Quảng Nam",
+        type: "food",
+        status: "published",
+        lat: '',
+        lng: '',
+    }
+];
+// --- mock dữ liệu du lịch ---
+const mockTravelData = [
+    {
+        name: "Cầu Rồng Đà Nẵng",
+        description: "Điểm tham quan biểu tượng của Đà Nẵng, nổi bật với kiến trúc hình rồng bắc qua sông Hàn.",
+        images: [
+            "https://asiatours.travel/images/pages/thumbnails/da-nang-cau-rong-dragon-bridge.jpg"
+        ],
+        region: "Trung",
+        province: "Đà Nẵng",
+        type: "travel",
+        status: "published",
+        lat: '',
+        lng: ''
+    },
+    {
+        name: "Thác Datanla Đà Lạt",
+        description: "Khu du lịch nổi tiếng với cảnh quan rừng thông và dòng thác mạnh mẽ.",
+        images: [
+            "https://static.vinwonders.com/2023/01/thac-datanla-1.jpg"
+        ],
+        region: "Nam",
+        province: "Lâm Đồng",
+        type: "travel",
+        status: "published",
+        lat: '',
+        lng: ''
+    }
+];
 
-    const [imagePreview, setImagePreview] = useState('');
+// --- mock dữ liệu khách sạn ---
+const mockHotelData = [
+    {
+        name: "Hotel Continental Saigon",
+        description: "Khách sạn lâu đời, kiến trúc Pháp, nằm tại trung tâm Quận 1, TP. Hồ Chí Minh.",
+        images: [
+            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/51234090.jpg"
+        ],
+        region: "Nam",
+        province: "TP. Hồ Chí Minh",
+        type: "hotel",
+        status: "published",
+        lat: '',
+        lng: ''
+    },
+    {
+        name: "Silk Path Grand Resort & Spa Sa Pa",
+        description: "Khách sạn 5 sao đẳng cấp giữa rừng núi Sa Pa, view đẹp, tiện nghi hiện đại.",
+        images: [
+            "https://static.asiawebdirect.com/m/phuket/portals/hanoi-hotels-com-vn/homepage/vietnam-hotels/sapa/silk-path-grand-resort-and-spa-sapa/alllargeimage/silk-path-grand-resort-spa-sapa.jpg"
+        ],
+        region: "Bắc",
+        province: "Lào Cai",
+        type: "hotel",
+        status: "published",
+        lat: '',
+        lng: ''
+    }
+];
 
-    const periods = ['Tiền sử', 'Nguyễn', 'Pháp thuộc', 'Hiện đại', 'Hùng Vương', 'Lý', 'Trần', 'Lê', 'Hồ'];
-    const regions = ['Nam', 'Trung', 'Bắc'];
+const TABS = [
+    { key: "heritage", label: "Bài Viết Di Tích" },
+    { key: "food", label: "Bài Viết Ẩm Thực" },
+    { key: "travel", label: "Bài Viết Du Lịch" },
+    { key: "hotel", label: "Bài Viết Khách Sạn" },
+];
 
-    // Xử lý upload 1 ảnh
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            if (!file.type.startsWith('image/')) {
-                toast.error('Vui lòng chọn file ảnh hợp lệ (JPG, PNG, GIF)');
-                return;
+const EditPromptButton = ({ onClick }) => (
+    <button
+        className="w-9 h-9 flex items-center justify-center bg-yellow-50 border border-yellow-200 rounded-full shadow-md hover:bg-yellow-100 group/action transition"
+        title="Chỉnh sửa"
+        type="button"
+        onClick={onClick}
+    >
+        <svg
+            className="w-5 h-5 text-yellow-600"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.2}
+            viewBox="0 0 24 24"
+        >
+            <path
+                d="M15.232 5.232l3.536 3.536M9 13l6.207-6.207c.39-.39 1.024-.39 1.414 0l2.586 2.586c.39.39.39 1.024 0 1.414L13 17H9v-4z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    </button>
+);
+
+const AdminTraiNghiem = () => {
+    // Phân loại
+    const [tab, setTab] = useState("heritage");
+
+    // Di tích
+    const [data, setData] = useState(
+        (initialData || [])
+            .filter(item => item.type === "heritage" || !item.type)
+            .map(item =>
+                item.status
+                    ? item
+                    : { ...item, status: "pending" }
+            )
+    );
+
+    // Ẩm thực 
+    const [foodData, setFoodData] = useState(
+        [
+            ...mockFoodData,
+            ...((initialData || []).filter(item => item.type === "food")
+                .map(item =>
+                    item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
+        ]
+    );
+
+    // Du lịch
+    const [travelData, setTravelData] = useState(
+        [
+            ...mockTravelData,
+            ...((initialData || []).filter(item => item.type === "travel")
+                .map(item =>
+                    item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
+        ]
+    );
+
+    // Khách sạn
+    const [hotelData, setHotelData] = useState(
+        [
+            ...mockHotelData,
+            ...((initialData || []).filter(item => item.type === "hotel")
+                .map(item =>
+                    item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
+        ]
+    );
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // form Di tích
+    const [isAdding, setIsAdding] = useState(false);
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [formData, setFormData] = useState(initialFormState);
+    const [imagePreview, setImagePreview] = useState([]);
+
+    // form Ẩm thực
+    const [isAddingFood, setIsAddingFood] = useState(false);
+    const [editingFoodIndex, setEditingFoodIndex] = useState(null);
+    const [foodFormData, setFoodFormData] = useState(initialFoodFormState);
+    const [foodImagePreview, setFoodImagePreview] = useState([]);
+
+    // form Du lịch
+    const [isAddingTravel, setIsAddingTravel] = useState(false);
+    const [editingTravelIndex, setEditingTravelIndex] = useState(null);
+    const [travelFormData, setTravelFormData] = useState(initialTravelFormState);
+    const [travelImagePreview, setTravelImagePreview] = useState([]);
+
+    // form Khách sạn
+    const [isAddingHotel, setIsAddingHotel] = useState(false);
+    const [editingHotelIndex, setEditingHotelIndex] = useState(null);
+    const [hotelFormData, setHotelFormData] = useState(initialHotelFormState);
+    const [hotelImagePreview, setHotelImagePreview] = useState([]);
+
+    // ---------- HANDLE IMAGE UPLOAD (MULTI IMAGES) ----------
+    const handleImageUpload = (e, type = "heritage") => {
+        const files = Array.from(e.target.files);
+        const validFiles = files.filter((file) => file.type.startsWith("image/"));
+        if (validFiles.length !== files.length) {
+            toast.error("Vui lòng chọn file ảnh hợp lệ (JPG, PNG, GIF)");
+            return;
+        }
+        Promise.all(
+            validFiles.map((file) =>
+                new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (event) => resolve(event.target.result);
+                    reader.readAsDataURL(file);
+                })
+            )
+        ).then((imageUrls) => {
+            if (type === "food") {
+                setFoodFormData((prev) => ({ ...prev, images: imageUrls }));
+                setFoodImagePreview(imageUrls);
+            } else if (type === "travel") {
+                setTravelFormData((prev) => ({ ...prev, images: imageUrls }));
+                setTravelImagePreview(imageUrls);
+            } else if (type === "hotel") {
+                setHotelFormData((prev) => ({ ...prev, images: imageUrls }));
+                setHotelImagePreview(imageUrls);
+            } else {
+                setFormData((prev) => ({ ...prev, images: imageUrls }));
+                setImagePreview(imageUrls);
             }
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const result = event.target.result;
-                setFormData((prev) => ({ ...prev, images: [result] }));
-                setImagePreview(result);
-            };
-            reader.readAsDataURL(file);
+        });
+    };
+
+    const removeImage = (index, type = "heritage") => {
+        if (type === "food") {
+            const newImages = foodFormData.images.filter((_, i) => i !== index);
+            setFoodFormData((prev) => ({ ...prev, images: newImages }));
+            setFoodImagePreview(newImages);
+        } else if (type === "travel") {
+            const newImages = travelFormData.images.filter((_, i) => i !== index);
+            setTravelFormData((prev) => ({ ...prev, images: newImages }));
+            setTravelImagePreview(newImages);
+        } else if (type === "hotel") {
+            const newImages = hotelFormData.images.filter((_, i) => i !== index);
+            setHotelFormData((prev) => ({ ...prev, images: newImages }));
+            setHotelImagePreview(newImages);
+        } else {
+            const newImages = formData.images.filter((_, i) => i !== index);
+            setFormData((prev) => ({ ...prev, images: newImages }));
+            setImagePreview(newImages);
         }
     };
 
-    // Xóa ảnh
-    const removeImage = () => {
-        setFormData((prev) => ({ ...prev, images: [] }));
-        setImagePreview('');
-        const input = document.getElementById('image-upload');
-        if (input) input.value = '';
+    // FILTER & PAGINATION
+    const getFilteredData = () => {
+        let dataSet;
+        if (tab === "heritage") dataSet = data;
+        else if (tab === "food") dataSet = foodData;
+        else if (tab === "travel") dataSet = travelData;
+        else if (tab === "hotel") dataSet = hotelData;
+        else dataSet = [];
+        return dataSet.filter((item) => {
+            const isVisible = item.status !== "hidden";
+            const match =
+                (item.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+                (item.province || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+                (item.region || "").toLowerCase().includes(searchTerm.toLowerCase());
+            return isVisible && match;
+        });
     };
 
-    // Lọc dữ liệu
-    const filteredData = data.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.province.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.region.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredData = getFilteredData();
 
-    // Phân trang
     const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const currentData = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-    // Thêm hoặc Cập nhật
+    // --- Thêm/Sửa DI TÍCH ---
     const handleAddOrUpdate = () => {
-        // const requiredFields = [
-        //     { value: formData.name, name: 'Tên di tích' },
-        //     { value: formData.province, name: 'Tỉnh/Thành phố' },
-        //     { value: formData.lat, name: 'Vĩ độ (lat)' },
-        //     { value: formData.lng, name: 'Kinh độ (lng)' },
-        //     { value: formData.description, name: 'Mô tả' },
-        //     { value: formData.images, name: 'Hình ảnh' },
-        // ];
-
-        // const missingField = requiredFields.find((field) => !field.value?.trim());
-        // if (missingField) {
-        //     toast.error(`Vui lòng nhập đầy đủ: ${missingField.name}!`);
-        //     return;
-        // }
         if (!formData.name.trim()) {
-            toast.error('Vui lòng nhập: Tên di tích!');
+            toast.error("Vui lòng nhập: Tên di tích!");
             return;
         }
         if (!formData.province.trim()) {
-            toast.error('Vui lòng nhập: Tỉnh/Thành phố!');
-            return;
-        }
-        if (!formData.lat.trim() || isNaN(parseFloat(formData.lat))) {
-            toast.error('Vui lòng nhập đúng định dạng: Vĩ độ (lat)!');
-            return;
-        }
-        if (!formData.lng.trim() || isNaN(parseFloat(formData.lng))) {
-            toast.error('Vui lòng nhập đúng định dạng: Kinh độ (lng)!');
+            toast.error("Vui lòng nhập: Tỉnh/Thành phố!");
             return;
         }
         if (!formData.description.trim()) {
-            toast.error('Vui lòng nhập: Mô tả!');
+            toast.error("Vui lòng nhập: Mô tả di tích!");
             return;
         }
         if (!formData.images || formData.images.length === 0) {
-            toast.error('Vui lòng upload ít nhất một hình ảnh!');
+            toast.error("Vui lòng upload ít nhất một hình ảnh!");
+            return;
+        }
+        if (!formData.status) {
+            toast.error("Vui lòng chọn trạng thái bài viết!");
+            return;
+        }
+        if (!formData.lat.trim()) {
+            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
+            return;
+        }
+        if (!formData.lng.trim()) {
+            toast.error("Vui lòng nhập: Kinh độ (lng)!");
             return;
         }
         const newItem = {
             name: formData.name.trim(),
-            lat: parseFloat(formData.lat),
-            lng: parseFloat(formData.lng),
+            province: formData.province.trim(),
             description: formData.description.trim(),
             images: formData.images,
             period: formData.period,
             region: formData.region,
-            province: formData.province.trim(),
+            type: formData.type || "heritage",
+            status: formData.status,
+            lat: formData.lat.trim(),
+            lng: formData.lng.trim(),
         };
-
         if (editingIndex !== null) {
             const updated = [...data];
             updated[editingIndex] = newItem;
             setData(updated);
-            toast.success('Cập nhật di tích thành công!');
+            toast.success("Cập nhật bài viết thành công!");
         } else {
             setData([...data, newItem]);
-            toast.success('Thêm di tích mới thành công!');
+            toast.success("Thêm bài viết mới thành công!");
         }
-
         resetForm();
     };
 
-    // Xóa
+    // --- Thêm/Sửa ẨM THỰC ---
+    const handleAddOrUpdateFood = () => {
+        if (!foodFormData.name.trim()) {
+            toast.error("Vui lòng nhập: Tên món ăn!");
+            return;
+        }
+        if (!foodFormData.province.trim()) {
+            toast.error("Vui lòng nhập: Tỉnh/Thành phố!");
+            return;
+        }
+        if (!foodFormData.description.trim()) {
+            toast.error("Vui lòng nhập: Mô tả món ăn!");
+            return;
+        }
+        if (!foodFormData.images || foodFormData.images.length === 0) {
+            toast.error("Vui lòng upload ít nhất một hình ảnh!");
+            return;
+        }
+        if (!foodFormData.status) {
+            toast.error("Vui lòng chọn trạng thái bài viết!");
+            return;
+        }
+        if (!foodFormData.lat.trim()) {
+            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
+            return;
+        }
+        if (!foodFormData.lng.trim()) {
+            toast.error("Vui lòng nhập: Kinh độ (lng)!");
+            return;
+        }
+        const newItem = {
+            name: foodFormData.name.trim(),
+            province: foodFormData.province.trim(),
+            description: foodFormData.description.trim(),
+            images: foodFormData.images,
+            region: foodFormData.region,
+            type: "food",
+            status: foodFormData.status,
+            lat: foodFormData.lat.trim(),
+            lng: foodFormData.lng.trim(),
+        };
+        if (editingFoodIndex !== null) {
+            const updated = [...foodData];
+            updated[editingFoodIndex] = newItem;
+            setFoodData(updated);
+            toast.success("Cập nhật bài viết ẩm thực thành công!");
+        } else {
+            setFoodData([...foodData, newItem]);
+            toast.success("Thêm bài viết ẩm thực thành công!");
+        }
+        resetFoodForm();
+    };
+
+    // --- Thêm/Sửa DU LỊCH ---
+    const handleAddOrUpdateTravel = () => {
+        if (!travelFormData.name.trim()) {
+            toast.error("Vui lòng nhập: Tên điểm du lịch!");
+            return;
+        }
+        if (!travelFormData.province.trim()) {
+            toast.error("Vui lòng nhập: Tỉnh/Thành phố!");
+            return;
+        }
+        if (!travelFormData.description.trim()) {
+            toast.error("Vui lòng nhập: Mô tả điểm du lịch!");
+            return;
+        }
+        if (!travelFormData.images || travelFormData.images.length === 0) {
+            toast.error("Vui lòng upload ít nhất một hình ảnh!");
+            return;
+        }
+        if (!travelFormData.status) {
+            toast.error("Vui lòng chọn trạng thái bài viết!");
+            return;
+        }
+        if (!travelFormData.lat.trim()) {
+            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
+            return;
+        }
+        if (!travelFormData.lng.trim()) {
+            toast.error("Vui lòng nhập: Kinh độ (lng)!");
+            return;
+        }
+        const newItem = {
+            name: travelFormData.name.trim(),
+            province: travelFormData.province.trim(),
+            description: travelFormData.description.trim(),
+            images: travelFormData.images,
+            region: travelFormData.region,
+            type: "travel",
+            status: travelFormData.status,
+            lat: travelFormData.lat.trim(),
+            lng: travelFormData.lng.trim(),
+        };
+        if (editingTravelIndex !== null) {
+            const updated = [...travelData];
+            updated[editingTravelIndex] = newItem;
+            setTravelData(updated);
+            toast.success("Cập nhật bài viết du lịch thành công!");
+        } else {
+            setTravelData([...travelData, newItem]);
+            toast.success("Thêm bài viết du lịch thành công!");
+        }
+        resetTravelForm();
+    };
+
+    // --- Thêm/Sửa KHÁCH SẠN ---
+    const handleAddOrUpdateHotel = () => {
+        if (!hotelFormData.name.trim()) {
+            toast.error("Vui lòng nhập: Tên khách sạn!");
+            return;
+        }
+        if (!hotelFormData.province.trim()) {
+            toast.error("Vui lòng nhập: Tỉnh/Thành phố!");
+            return;
+        }
+        if (!hotelFormData.description.trim()) {
+            toast.error("Vui lòng nhập: Mô tả khách sạn!");
+            return;
+        }
+        if (!hotelFormData.images || hotelFormData.images.length === 0) {
+            toast.error("Vui lòng upload ít nhất một hình ảnh!");
+            return;
+        }
+        if (!hotelFormData.status) {
+            toast.error("Vui lòng chọn trạng thái bài viết!");
+            return;
+        }
+        if (!hotelFormData.lat.trim()) {
+            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
+            return;
+        }
+        if (!hotelFormData.lng.trim()) {
+            toast.error("Vui lòng nhập: Kinh độ (lng)!");
+            return;
+        }
+        const newItem = {
+            name: hotelFormData.name.trim(),
+            province: hotelFormData.province.trim(),
+            description: hotelFormData.description.trim(),
+            images: hotelFormData.images,
+            region: hotelFormData.region,
+            type: "hotel",
+            status: hotelFormData.status,
+            lat: hotelFormData.lat.trim(),
+            lng: hotelFormData.lng.trim(),
+        };
+        if (editingHotelIndex !== null) {
+            const updated = [...hotelData];
+            updated[editingHotelIndex] = newItem;
+            setHotelData(updated);
+            toast.success("Cập nhật bài viết khách sạn thành công!");
+        } else {
+            setHotelData([...hotelData, newItem]);
+            toast.success("Thêm bài viết khách sạn thành công!");
+        }
+        resetHotelForm();
+    };
+
+    // XÓA
     const handleDelete = (index) => {
-        if (window.confirm('Bạn có chắc muốn xóa di tích này không?')) {
-            setData(data.filter((_, i) => i !== index));
-            toast.success('Xóa di tích thành công!');
+        if (window.confirm("Bạn có chắc muốn xóa bài viết này không?")) {
+            if (tab === "heritage") {
+                setData(data.filter((_, i) => i !== index));
+            } else if (tab === "food") {
+                setFoodData(foodData.filter((_, i) => i !== index));
+            } else if (tab === "travel") {
+                setTravelData(travelData.filter((_, i) => i !== index));
+            } else if (tab === "hotel") {
+                setHotelData(hotelData.filter((_, i) => i !== index));
+            }
+            toast.success("Xóa bài viết thành công!");
             if (currentData.length === 1 && currentPage > 1) {
                 setCurrentPage(currentPage - 1);
             }
         }
     };
 
-    // Sửa
+    // SỬA
     const startEdit = (index) => {
-        const item = data[index];
-
-        setEditingIndex(index);
-        setFormData({
-            name: item.name,
-            lat: item.lat?.toString() || '',
-            lng: item.lng?.toString() || '',
-            description: item.description,
-            images: item.images || [],
-            period: item.period,
-            region: item.region,
-            province: item.province,
-        });
-        setImagePreview(item.images?.[0] || '');
-        setIsAdding(true);
+        if (tab === "heritage") {
+            const item = data[index];
+            setEditingIndex(index);
+            setFormData({
+                name: item.name || "",
+                description: item.description || "",
+                images: item.images || [],
+                period: item.period || "Hiện đại",
+                region: item.region || "Nam",
+                province: item.province || "",
+                type: item.type || "heritage",
+                status: item.status || "pending",
+                lat: item.lat || '',
+                lng: item.lng || '',
+            });
+            setImagePreview(item.images || []);
+            setIsAdding(true);
+        } else if (tab === "food") {
+            const item = foodData[index];
+            setEditingFoodIndex(index);
+            setFoodFormData({
+                name: item.name || "",
+                description: item.description || "",
+                images: item.images || [],
+                region: item.region || "Nam",
+                province: item.province || "",
+                type: item.type || "food",
+                status: item.status || "pending",
+                lat: item.lat || '',
+                lng: item.lng || '',
+            });
+            setFoodImagePreview(item.images || []);
+            setIsAddingFood(true);
+        } else if (tab === "travel") {
+            const item = travelData[index];
+            setEditingTravelIndex(index);
+            setTravelFormData({
+                name: item.name || "",
+                description: item.description || "",
+                images: item.images || [],
+                region: item.region || "Nam",
+                province: item.province || "",
+                type: item.type || "travel",
+                status: item.status || "pending",
+                lat: item.lat || '',
+                lng: item.lng || '',
+            });
+            setTravelImagePreview(item.images || []);
+            setIsAddingTravel(true);
+        } else if (tab === "hotel") {
+            const item = hotelData[index];
+            setEditingHotelIndex(index);
+            setHotelFormData({
+                name: item.name || "",
+                description: item.description || "",
+                images: item.images || [],
+                region: item.region || "Nam",
+                province: item.province || "",
+                type: item.type || "hotel",
+                status: item.status || "pending",
+                lat: item.lat || '',
+                lng: item.lng || '',
+            });
+            setHotelImagePreview(item.images || []);
+            setIsAddingHotel(true);
+        }
     };
 
-    // Reset form
+    // RESET FORMS
     const resetForm = () => {
         setIsAdding(false);
         setEditingIndex(null);
-        setFormData({
-            name: '',
-            lat: '',
-            lng: '',
-            description: '',
-            images: [],
-            period: 'Hiện đại',
-            region: 'Nam',
-            province: '',
-        });
-        setImagePreview('');
-        const input = document.getElementById('image-upload');
-        if (input) input.value = '';
+        setFormData({ ...initialFormState });
+        setImagePreview([]);
+        const input = document.getElementById("image-upload");
+        if (input) input.value = "";
     };
 
-    // Pagination thông minh
+    const resetFoodForm = () => {
+        setIsAddingFood(false);
+        setEditingFoodIndex(null);
+        setFoodFormData({ ...initialFoodFormState });
+        setFoodImagePreview([]);
+        const input = document.getElementById("food-image-upload");
+        if (input) input.value = "";
+    };
+
+    const resetTravelForm = () => {
+        setIsAddingTravel(false);
+        setEditingTravelIndex(null);
+        setTravelFormData({ ...initialTravelFormState });
+        setTravelImagePreview([]);
+        const input = document.getElementById("travel-image-upload");
+        if (input) input.value = "";
+    };
+
+    const resetHotelForm = () => {
+        setIsAddingHotel(false);
+        setEditingHotelIndex(null);
+        setHotelFormData({ ...initialHotelFormState });
+        setHotelImagePreview([]);
+        const input = document.getElementById("hotel-image-upload");
+        if (input) input.value = "";
+    };
+
+    // PAGINATION BUTTON NUMBERS
     const getPageNumbers = () => {
         if (totalPages <= 10) return Array.from({ length: totalPages }, (_, i) => i + 1);
         const pages = [];
         if (currentPage <= 6) {
             pages.push(1, 2, 3, 4, 5, 6, 7, 8, 9);
-            pages.push('...', totalPages);
+            pages.push("...", totalPages);
         } else if (currentPage >= totalPages - 5) {
-            pages.push(1, '...');
+            pages.push(1, "...");
             for (let i = totalPages - 8; i <= totalPages; i++) pages.push(i);
         } else {
-            pages.push(1, '...');
+            pages.push(1, "...");
             for (let i = currentPage - 3; i <= currentPage + 3; i++) pages.push(i);
-            pages.push('...', totalPages);
+            pages.push("...", totalPages);
         }
         return pages;
     };
 
+    // ----------- UI BẮT ĐẦU -------------
+    // Tên cột theo từng loại tab
+    const getNameColumnLabel = () => {
+        if (tab === "heritage") return "Tên bài viết";
+        if (tab === "food") return "Tên món ăn";
+        if (tab === "travel") return "Tên điểm du lịch";
+        if (tab === "hotel") return "Tên khách sạn";
+        return "Tên bài viết";
+    }
+    // Nút thêm mới theo loại tab
+    const getCreateButtonLabel = () => {
+        if (tab === "heritage") return "Thêm mới di tích";
+        if (tab === "food") return "Thêm mới ẩm thực";
+        if (tab === "travel") return "Thêm mới bài du lịch";
+        if (tab === "hotel") return "Thêm mới khách sạn";
+        return "Thêm mới";
+    }
+
+    // Placeholder search theo loại tab
+    const getSearchPlaceholder = () => {
+        if (tab === "heritage") return "🔎 Tìm theo tên di tích, tỉnh hoặc vùng...";
+        if (tab === "food") return "🔎 Tìm theo tên món ăn, tỉnh hoặc vùng...";
+        if (tab === "travel") return "🔎 Tìm điểm du lịch, tỉnh hoặc vùng...";
+        if (tab === "hotel") return "🔎 Tìm khách sạn, tỉnh hoặc vùng...";
+        return "🔎 Tìm kiếm...";
+    }
+
+ 
+
+    // --- JSX ---
     return (
         <>
             <Toaster
@@ -2700,93 +3253,205 @@ const AdminTraiNghiem = () => {
                 toastOptions={{
                     duration: 4000,
                     style: {
-                        background: '#333',
-                        color: '#fff',
+                        background: "#222",
+                        color: "#fff",
+                        borderRadius: "10px"
                     },
                     success: {
-                        icon: '✅',
-                        style: {
-                            background: '#10b981',
-                        },
+                        icon: "✅",
+                        style: { background: "#2bc75f", color: "#fff" },
                     },
                     error: {
-                        icon: '❌',
-                        style: {
-                            background: '#ef4444',
-                        },
+                        icon: "❌",
+                        style: { background: "#f87171", color: "#fff" },
                     },
                 }}
             />
 
-            <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+            <div>
                 <div className="max-w-7xl mx-auto">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-8">Admin Quản Lý Di Tích Lịch Sử</h1>
+                    <div className="flex items-center mb-8 gap-2">
+                        <span className="inline-block bg-gradient-to-tr from-blue-600 to-green-400 text-white px-3 py-[2px] rounded-lg text-lg font-bold shadow">
+                            Quản Lý Bài Viết Trải Nghiệm
+                        </span>
+                    </div>
+                    {/* Tabs */}
+                    <div className="flex gap-3 mb-8">
+                        {TABS.map(tabItem => (
+                            <button
+                                key={tabItem.key}
+                                className={`px-6 py-2 rounded-t-xl font-semibold text-lg shadow transition 
+                                    ${tab === tabItem.key
+                                        ? "bg-gradient-to-r from-blue-500 to-green-400 text-white"
+                                        : "bg-white text-blue-500 border-b-2 border-blue-300"
+                                    }`}
+                                onClick={() => {
+                                    setTab(tabItem.key);
+                                    setCurrentPage(1);
+                                    setSearchTerm("");
+                                }}
+                            >
+                                {tabItem.label}
+                            </button>
+                        ))}
+                    </div>
 
                     {/* Toolbar */}
-                    <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-                        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-                            <div className="relative w-full sm:max-w-md">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <div className="bg-white rounded-2xl shadow-md p-6 mb-8 border border-blue-100">
+                        <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+                            <div className="relative w-full md:max-w-md">
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-400 w-5 h-5" />
                                 <input
                                     type="text"
-                                    placeholder="Tìm kiếm theo tên, tỉnh hoặc vùng..."
+                                    placeholder={getSearchPlaceholder()}
                                     value={searchTerm}
-                                    onChange={(e) => {
-                                        setSearchTerm(e.target.value);
-                                        setCurrentPage(1);
-                                    }}
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                                    onChange={e => { setSearchTerm(e.target.value); setCurrentPage(1); }}
+                                    className="w-full pl-10 pr-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 text-gray-800 bg-blue-50 transition"
                                 />
                             </div>
                             <button
-                                onClick={() => setIsAdding(true)}
-                                className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md"
+                                onClick={() => {
+                                    if (tab === "heritage") {
+                                        resetForm();
+                                        setIsAdding(true);
+                                    } else if (tab === "food") {
+                                        resetFoodForm();
+                                        setIsAddingFood(true);
+                                    } else if (tab === "travel") {
+                                        resetTravelForm();
+                                        setIsAddingTravel(true);
+                                    } else if (tab === "hotel") {
+                                        resetHotelForm();
+                                        setIsAddingHotel(true);
+                                    }
+                                }}
+                                className="flex items-center gap-2 bg-gradient-to-tr from-green-500 to-blue-500 text-white px-6 py-3 rounded-xl hover:shadow-xl hover:brightness-110 font-semibold shadow-md transition"
                             >
                                 <Plus className="w-5 h-5" />
-                                Thêm mới
+                                {getCreateButtonLabel()}
                             </button>
                         </div>
                     </div>
-
                     {/* Bảng danh sách */}
-                    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div className="bg-white rounded-2xl shadow-md border border-blue-100 overflow-hidden">
                         <div className="overflow-x-auto">
                             <table className="w-full">
-                                <thead className="bg-gray-50 border-b border-gray-200">
+                                <thead className="bg-gradient-to-tr from-blue-100 to-green-100 border-b border-blue-200">
                                     <tr>
-                                        <th className="text-center px-4 py-4 text-sm font-semibold text-gray-700 w-16">STT</th>
-                                        <th className="text-left px-6 py-4 text-sm font-semibold text-gray-700">Tên di tích</th>
-                                        <th className="text-left px-6 py-4 text-sm font-semibold text-gray-700 w-32">Thời kỳ</th>
-                                        <th className="text-left px-6 py-4 text-sm font-semibold text-gray-700 w-40">Vùng</th>
-                                        <th className="text-left px-6 py-4 text-sm font-semibold text-gray-700 w-56">Tỉnh/TP</th>
-                                        <th className="text-center px-6 py-4 text-sm font-semibold text-gray-700 w-32">Hình ảnh</th>
-                                        <th className="text-center px-6 py-4 text-sm font-semibold text-gray-700 w-32">Hành động</th>
+                                        <th className="text-center px-4 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-12">
+                                            STT
+                                        </th>
+                                        <th className="text-left px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase">
+                                            {getNameColumnLabel()}
+                                        </th>
+                                        {/* Thời kỳ chỉ hiển thị cho di tích */}
+                                        {tab === "heritage" && (
+                                            <th className="text-left px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-32">
+                                                Thời kỳ
+                                            </th>
+                                        )}
+                                        <th className="text-left px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-40">
+                                            Vùng
+                                        </th>
+                                        <th className="text-left px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-56">
+                                            Tỉnh/TP
+                                        </th>
+                                        <th className="text-center px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-32">
+                                            Hình ảnh
+                                        </th>
+                                        <th className="text-center px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-36">
+                                            Trạng thái
+                                        </th>
+                                        <th className="text-center px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-40">
+                                            Hành động
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-200">
+                                <tbody className="divide-y divide-blue-100">
                                     {currentData.map((item, idx) => {
-                                        const globalIndex = data.indexOf(item);
+                                        let globalIndex;
+                                        if (tab === "heritage") {
+                                            globalIndex = data.indexOf(item);
+                                        } else if (tab === "food") {
+                                            globalIndex = foodData.indexOf(item);
+                                        } else if (tab === "travel") {
+                                            globalIndex = travelData.indexOf(item);
+                                        } else if (tab === "hotel") {
+                                            globalIndex = hotelData.indexOf(item);
+                                        }
                                         return (
-                                            <tr key={globalIndex} className="hover:bg-gray-50 transition">
-                                                <td className="text-center px-4 py-4 text-sm text-gray-900">{startIndex + idx + 1}</td>
-                                                <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.name}</td>
-                                                <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                                                    {item.period}
+                                            <tr key={globalIndex} className="col-span-1 text-center">
+                                                <td className="text-center align-middle">
+                                                    <span className="inline-block px-2 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded-md tracking-wide">
+                                                        {startIndex + idx + 1}
+                                                    </span>
                                                 </td>
-                                                <td className="px-6 py-4 text-sm text-gray-700">{item.region}</td>
-                                                <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.province}</td>
+
+                                                <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                                                    {item.name}
+                                                </td>
+                                                {tab === "heritage" && (
+                                                    <td className="px-6 py-4 text-sm font-medium text-blue-700">
+                                                        <span className="px-2 py-1 rounded-md bg-blue-100">{item.period}</span>
+                                                    </td>
+                                                )}
+                                                <td className="px-6 py-4 text-sm text-green-900">
+                                                    <span className="px-2 py-1 rounded-md bg-green-100">{item.region}</span>
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                                                    {item.province}
+                                                </td>
                                                 <td className="px-6 py-4 text-center">
-                                                    <div className="flex items-center justify-center gap-1 text-gray-600">
-                                                        <ImageIcon className="w-4 h-4" />
-                                                        <img src={item.images[0]} alt={item.name} />
+                                                    <div className="flex items-center justify-center gap-2 text-gray-700">
+                                                        <ImageIcon className="w-4 h-4 text-blue-400" />
+                                                        {item.images && Array.isArray(item.images) && item.images.length > 0 ? (
+                                                            <img
+                                                                src={item.images[0]}
+                                                                alt={item.name}
+                                                                style={{
+                                                                    maxWidth: 56,
+                                                                    maxHeight: 56,
+                                                                    borderRadius: "8px",
+                                                                    boxShadow: "0 2px 12px rgba(0,0,0,0.12)"
+                                                                }}
+                                                            />
+                                                        ) : (
+                                                            <span className="italic text-gray-400">(không có)</span>
+                                                        )}
                                                     </div>
                                                 </td>
+                                                {/* Cột cập nhật trạng thái */}
                                                 <td className="px-6 py-4 text-center">
-                                                    <div className="flex justify-center gap-4">
-                                                        <button onClick={() => startEdit(globalIndex)} className="text-blue-600 hover:text-blue-800 transition">
-                                                            <Edit2 className="w-5 h-5" />
-                                                        </button>
-                                                        <button onClick={() => handleDelete(globalIndex)} className="text-red-600 hover:text-red-800 transition">
+                                                    <span
+                                                        className={`
+                                                        inline-flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-lg border
+                                                        ${
+                                                            item.status === "published"
+                                                                ? "bg-green-100 border-green-300 text-green-700"
+                                                                : item.status === "pending"
+                                                                ? "bg-yellow-100 border-yellow-300 text-yellow-800"
+                                                                : item.status === "rejected"
+                                                                ? "bg-red-100 border-red-300 text-red-700"
+                                                                : "bg-gray-200 border-gray-400 text-gray-600"
+                                                        }
+                                                        `}
+                                                    >
+                                                        {/* Icon trạng thái */}
+                                                        {item.status === "published" && <span className="w-2.5 h-2.5 inline-block rounded-full bg-green-500" />}
+                                                        {item.status === "pending" && <span className="w-2.5 h-2.5 inline-block rounded-full bg-yellow-400" />}
+                                                        {item.status === "rejected" && <span className="w-2.5 h-2.5 inline-block rounded-full bg-red-500" />}
+                                                        {item.status === "hidden" && <span className="w-2.5 h-2.5 inline-block rounded-full bg-gray-400" />}
+                                                        {statuses.find(s => s.value === item.status)?.label || "Trạng thái?"}
+                                                    </span>
+                                                </td>
+                                                <td className="px-6 py-4 text-center">
+                                                    <div className="flex justify-center gap-2">
+                                                        <EditPromptButton onClick={() => startEdit(globalIndex)} />
+                                                        <button
+                                                            onClick={() => handleDelete(globalIndex)}
+                                                            title="Xóa"
+                                                            className="rounded-full p-2 bg-red-50 hover:bg-red-100 text-red-500 hover:text-red-700 shadow transition"
+                                                        >
                                                             <Trash2 className="w-5 h-5" />
                                                         </button>
                                                     </div>
@@ -2800,15 +3465,23 @@ const AdminTraiNghiem = () => {
 
                         {/* Pagination */}
                         {totalPages > 1 && (
-                            <div className="flex flex-col sm:flex-row items-center justify-between px-6 py-5 bg-gray-50 border-t border-gray-200">
-                                <div className="text-sm text-gray-600 mb-4 sm:mb-0">
-                                    Hiển thị {startIndex + 1} - {Math.min(startIndex + ITEMS_PER_PAGE, filteredData.length)} trên {filteredData.length} di tích
+                            <div className="flex flex-col md:flex-row items-center justify-between px-6 py-5 bg-gradient-to-r from-blue-50 to-green-50 border-t border-blue-100">
+                                <div className="text-sm text-gray-700 mb-3 md:mb-0 font-medium">
+                                    Hiển thị <span className="font-semibold">{startIndex + 1}</span> -{" "}
+                                    <span className="font-semibold">
+                                        {Math.min(startIndex + ITEMS_PER_PAGE, filteredData.length)}
+                                    </span>{" "}
+                                    trên <span className="font-semibold">{filteredData.length}</span> bài viết
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <button
-                                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                                        onClick={() =>
+                                            setCurrentPage((prev) =>
+                                                Math.max(prev - 1, 1)
+                                            )
+                                        }
                                         disabled={currentPage === 1}
-                                        className="p-2 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                                        className="p-2 rounded-lg hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
                                     >
                                         <ChevronLeft className="w-5 h-5" />
                                     </button>
@@ -2816,13 +3489,18 @@ const AdminTraiNghiem = () => {
                                     {getPageNumbers().map((page, i) => (
                                         <button
                                             key={i}
-                                            onClick={() => typeof page === 'number' && setCurrentPage(page)}
-                                            disabled={page === '...'}
-                                            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${page === currentPage
-                                                ? 'bg-blue-600 text-white'
-                                                : page === '...'
-                                                    ? 'cursor-default text-gray-500'
-                                                    : 'hover:bg-gray-200 text-gray-700'
+                                            onClick={() =>
+                                                typeof page === "number" &&
+                                                setCurrentPage(page)
+                                            }
+                                            disabled={page === "..."}
+                                            className={`px-4 py-2 rounded-lg text-sm font-medium transition shadow
+                                                ${
+                                                    page === currentPage
+                                                        ? "bg-gradient-to-tr from-blue-600 to-green-500 text-white"
+                                                        : page === "..."
+                                                        ? "cursor-default text-gray-400 bg-transparent"
+                                                        : "hover:bg-green-100 text-gray-700"
                                                 }`}
                                         >
                                             {page}
@@ -2830,9 +3508,16 @@ const AdminTraiNghiem = () => {
                                     ))}
 
                                     <button
-                                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                                        onClick={() =>
+                                            setCurrentPage((prev) =>
+                                                Math.min(
+                                                    prev + 1,
+                                                    totalPages
+                                                )
+                                            )
+                                        }
                                         disabled={currentPage === totalPages}
-                                        className="p-2 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                                        className="p-2 rounded-lg hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
                                     >
                                         <ChevronRight className="w-5 h-5" />
                                     </button>
@@ -2841,169 +3526,972 @@ const AdminTraiNghiem = () => {
                         )}
                     </div>
 
-                    {/* Modal Thêm/Sửa */}
+                    {/* Modal Thêm/Sửa Monument */}
                     {isAdding && (
-                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                            <div className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
-                                {/* Header */}
-                                <div className="flex justify-between items-center p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
-                                    <h2 className="text-2xl font-bold text-gray-900">
-                                        {editingIndex !== null ? 'Sửa di tích' : 'Thêm di tích mới'}
-                                    </h2>
-                                    <button onClick={resetForm} className="text-gray-500 hover:text-gray-700 transition">
-                                        <X className="w-7 h-7" />
-                                    </button>
-                                </div>
+                        <ModalFormMonument
+                            {...{
+                                editingIndex,
+                                resetForm,
+                                formData,
+                                setFormData,
+                                imagePreview,
+                                removeImage,
+                                handleImageUpload,
+                                handleAddOrUpdate
+                            }}
+                        />
+                    )}
 
-                                {/* Nội dung modal - scrollable */}
-                                <div className="p-6 space-y-8">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                Tên di tích <span className="text-red-500">*</span>
-                                            </label>
-                                            <input
-                                                type="text"
-                                                value={formData.name}
-                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                                                placeholder="Dinh Độc Lập"
-                                            />
-                                        </div>
+                    {/* Modal Thêm/Sửa Ẩm thực */}
+                    {isAddingFood && (
+                        <ModalFormFood
+                            {...{
+                                editingFoodIndex,
+                                resetFoodForm,
+                                foodFormData,
+                                setFoodFormData,
+                                foodImagePreview,
+                                removeImage,
+                                handleImageUpload,
+                                handleAddOrUpdateFood
+                            }}
+                        />
+                    )}
 
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                Tỉnh/Thành phố <span className="text-red-500">*</span>
-                                            </label>
-                                            <input
-                                                type="text"
-                                                value={formData.province}
-                                                onChange={(e) => setFormData({ ...formData, province: e.target.value })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                                                placeholder="TP. Hồ Chí Minh"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">Vùng <span className="text-red-500">*</span></label>
-                                            <select
-                                                value={formData.region}
-                                                onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                                            >
-                                                {regions.map(r => <option key={r} value={r}>{r}</option>)}
-                                            </select>
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">Thời kỳ <span className="text-red-500">*</span></label>
-                                            <select
-                                                value={formData.period}
-                                                onChange={(e) => setFormData({ ...formData, period: e.target.value })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                                            >
-                                                {periods.map(p => <option key={p} value={p}>{p}</option>)}
-                                            </select>
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">Vĩ độ (lat) <span className="text-red-500">*</span></label>
-                                            <input
-                                                type="text"
-                                                value={formData.lat}
-                                                onChange={(e) => setFormData({ ...formData, lat: e.target.value })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                                                placeholder="10.777141734059974"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">Kinh độ (lng) <span className="text-red-500">*</span></label>
-                                            <input
-                                                type="text"
-                                                value={formData.lng}
-                                                onChange={(e) => setFormData({ ...formData, lng: e.target.value })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                                                placeholder="106.69522699878702"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    {/* Upload ảnh */}
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Upload hình ảnh đại diện <span className="text-red-500">*</span>
-                                        </label>
-                                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                onChange={handleImageUpload}
-                                                className="hidden"
-                                                id="image-upload"
-                                            />
-                                            <label
-                                                htmlFor="image-upload"
-                                                className="cursor-pointer flex flex-col items-center gap-3"
-                                            >
-                                                <Upload className="w-12 h-12 text-gray-400" />
-                                                <span className="text-sm text-gray-600">Click để chọn ảnh</span>
-                                                <span className="text-xs text-gray-500">JPG, PNG, GIF (tối đa 5MB)</span>
-                                            </label>
-                                        </div>
-
-                                        {/* Preview ảnh - giới hạn chiều cao */}
-                                        {imagePreview && (
-                                            <div className="mt-6 flex justify-center">
-                                                <div className="relative group max-w-full">
-                                                    <img
-                                                        src={imagePreview}
-                                                        alt="Preview"
-                                                        className="max-w-full max-h-64 object-contain rounded-lg shadow-lg"
-                                                    />
-                                                    <button
-                                                        onClick={removeImage}
-                                                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
-                                                    >
-                                                        <X className="w-5 h-5" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* Mô tả */}
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Mô tả <span className="text-red-500">*</span>
-                                        </label>
-                                        <textarea
-                                            rows={5}
-                                            value={formData.description}
-                                            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none"
-                                            placeholder="Nhập mô tả chi tiết..."
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Footer modal */}
-                                <div className="flex justify-end gap-4 p-6 border-t border-gray-200 sticky bottom-0 bg-white">
-                                    <button onClick={resetForm} className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition">
-                                        Hủy
-                                    </button>
-                                    <button onClick={handleAddOrUpdate} className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md">
-                                        <Save className="w-5 h-5" />
-                                        {editingIndex !== null ? 'Cập nhật' : 'Thêm mới'}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    {/* Modal Thêm/Sửa DU LỊCH */}
+                    {isAddingTravel && (
+                        <ModalFormTravel
+                            {...{
+                                editingTravelIndex,
+                                resetTravelForm,
+                                travelFormData,
+                                setTravelFormData,
+                                travelImagePreview,
+                                removeImage,
+                                handleImageUpload,
+                                handleAddOrUpdateTravel
+                            }}
+                        />
+                    )}
+                    {/* Modal Thêm/Sửa KHÁCH SẠN */}
+                    {isAddingHotel && (
+                        <ModalFormHotel
+                            {...{
+                                editingHotelIndex,
+                                resetHotelForm,
+                                hotelFormData,
+                                setHotelFormData,
+                                hotelImagePreview,
+                                removeImage,
+                                handleImageUpload,
+                                handleAddOrUpdateHotel
+                            }}
+                        />
                     )}
                 </div>
             </div>
         </>
     );
 };
+
+// -------------- Các Modal Form -----------------
+// Reuse UI for each modal, but customize input & handler props
+
+// Modal Di tích
+function ModalFormMonument({
+    editingIndex, resetForm, formData, setFormData, imagePreview, removeImage, handleImageUpload, handleAddOrUpdate
+}) {
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
+            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
+                {/* Header */}
+                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
+                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
+                        {editingIndex !== null ? "Sửa bài viết" : "Thêm bài viết mới"}
+                    </h2>
+                    <button
+                        onClick={resetForm}
+                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
+                    >
+                        <X className="w-7 h-7" />
+                    </button>
+                </div>
+                {/* Nội dung modal */}
+                <div className="p-6 space-y-7">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tên bài viết <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={formData.name}
+                                onChange={(e) =>
+                                    setFormData({
+                                        ...formData,
+                                        name: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                placeholder="Dinh Độc Lập"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tỉnh/Thành phố <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={formData.province}
+                                onChange={(e) =>
+                                    setFormData({
+                                        ...formData,
+                                        province: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                            >
+                                <option value="">--Chọn tỉnh/thành--</option>
+                                {provincesVN.map((p) => (
+                                    <option key={p} value={p}>{p}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={formData.lat}
+                                onChange={(e) => setFormData({ ...formData, lat: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="10.777141734059974"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Kinh độ (lng) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={formData.lng}
+                                onChange={(e) => setFormData({ ...formData, lng: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="106.69522699878702"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Vùng <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={formData.region}
+                                onChange={(e) =>
+                                    setFormData({
+                                        ...formData,
+                                        region: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
+                            >
+                                {regions.map((r) => (
+                                    <option key={r} value={r}>
+                                        {r}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Thời kỳ <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={formData.period}
+                                onChange={(e) =>
+                                    setFormData({
+                                        ...formData,
+                                        period: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                            >
+                                {periods.map((p) => (
+                                    <option key={p} value={p}>
+                                        {p}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        {/* Chọn trạng thái bài viết khi thêm/sửa */}
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Trạng thái <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={formData.status}
+                                onChange={(e) =>
+                                    setFormData({
+                                        ...formData,
+                                        status: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
+                            >
+                                {statuses.map((st) => (
+                                    <option key={st.value} value={st.value}>
+                                        {st.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    {/* Upload ảnh */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Upload hình ảnh đại diện <span className="text-red-500">*</span>
+                        </label>
+                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={e => handleImageUpload(e, "heritage")}
+                                className="hidden"
+                                id="image-upload"
+                                multiple
+                            />
+                            <label
+                                htmlFor="image-upload"
+                                className="cursor-pointer flex flex-col items-center gap-3"
+                            >
+                                <Upload className="w-12 h-12 text-blue-400" />
+                                <span className="text-sm text-gray-700 font-medium">
+                                    Nhấn để chọn ảnh
+                                </span>
+                                <span className="text-xs text-gray-500">
+                                    JPG, PNG, GIF (tối đa 5MB)
+                                </span>
+                            </label>
+                        </div>
+                        {/* Preview nhiều ảnh */}
+                        {imagePreview && imagePreview.length > 0 && (
+                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
+                                {imagePreview.map((img, idx) => (
+                                    <div key={idx} className="relative group">
+                                        <img
+                                            src={img}
+                                            alt={`Preview ${idx}`}
+                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
+                                        />
+                                        <button
+                                            onClick={() => removeImage(idx, "heritage")}
+                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
+                                            type="button"
+                                        >
+                                            <X className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {/* Mô tả */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Mô tả <span className="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            rows={5}
+                            value={formData.description}
+                            onChange={(e) =>
+                                setFormData({
+                                    ...formData,
+                                    description: e.target.value,
+                                })
+                            }
+                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
+                            placeholder="Nhập mô tả chi tiết..."
+                        />
+                    </div>
+                </div>
+                {/* Footer modal */}
+                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
+                    <button
+                        onClick={resetForm}
+                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
+                    >
+                        Hủy
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleAddOrUpdate}
+                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
+                    >
+                        <Save className="w-5 h-5" />
+                        {editingIndex !== null ? "Cập nhật" : "Thêm mới"}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// Modal Ẩm thực
+function ModalFormFood({
+    editingFoodIndex, resetFoodForm, foodFormData, setFoodFormData, foodImagePreview, removeImage, handleImageUpload, handleAddOrUpdateFood
+}) {
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
+            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
+                {/* Header */}
+                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
+                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
+                        {editingFoodIndex !== null ? "Sửa bài viết ẩm thực" : "Thêm bài viết ẩm thực mới"}
+                    </h2>
+                    <button
+                        onClick={resetFoodForm}
+                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
+                    >
+                        <X className="w-7 h-7" />
+                    </button>
+                </div>
+                {/* Nội dung modal FOOD */}
+                <div className="p-6 space-y-7">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tên món ăn <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={foodFormData.name}
+                                onChange={(e) =>
+                                    setFoodFormData({
+                                        ...foodFormData,
+                                        name: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                placeholder="Bánh xèo"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tỉnh/Thành phố <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={foodFormData.province}
+                                onChange={(e) =>
+                                    setFoodFormData({
+                                        ...foodFormData,
+                                        province: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                            >
+                                <option value="">--Chọn tỉnh/thành--</option>
+                                {provincesVN.map((p) => (
+                                    <option key={p} value={p}>{p}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={foodFormData.lat}
+                                onChange={(e) => setFoodFormData({ ...foodFormData, lat: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="10.777141734059974"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Kinh độ (lng) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={foodFormData.lng}
+                                onChange={(e) => setFoodFormData({ ...foodFormData, lng: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="106.69522699878702"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Vùng <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={foodFormData.region}
+                                onChange={(e) =>
+                                    setFoodFormData({
+                                        ...foodFormData,
+                                        region: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
+                            >
+                                {regions.map((r) => (
+                                    <option key={r} value={r}>
+                                        {r}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        {/* Trạng thái bài viết */}
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Trạng thái <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={foodFormData.status}
+                                onChange={(e) =>
+                                    setFoodFormData({
+                                        ...foodFormData,
+                                        status: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
+                            >
+                                {statuses.map((st) => (
+                                    <option key={st.value} value={st.value}>
+                                        {st.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    {/* Upload ảnh */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Upload hình ảnh món ăn <span className="text-red-500">*</span>
+                        </label>
+                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={e => handleImageUpload(e, "food")}
+                                className="hidden"
+                                id="food-image-upload"
+                                multiple
+                            />
+                            <label
+                                htmlFor="food-image-upload"
+                                className="cursor-pointer flex flex-col items-center gap-3"
+                            >
+                                <Upload className="w-12 h-12 text-blue-400" />
+                                <span className="text-sm text-gray-700 font-medium">
+                                    Nhấn để chọn ảnh
+                                </span>
+                                <span className="text-xs text-gray-500">
+                                    JPG, PNG, GIF (tối đa 5MB)
+                                </span>
+                            </label>
+                        </div>
+                        {/* Preview nhiều ảnh */}
+                        {foodImagePreview && foodImagePreview.length > 0 && (
+                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
+                                {foodImagePreview.map((img, idx) => (
+                                    <div key={idx} className="relative group">
+                                        <img
+                                            src={img}
+                                            alt={`Preview ${idx}`}
+                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
+                                        />
+                                        <button
+                                            onClick={() => removeImage(idx, "food")}
+                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
+                                            type="button"
+                                        >
+                                            <X className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {/* Mô tả */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Mô tả <span className="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            rows={5}
+                            value={foodFormData.description}
+                            onChange={(e) =>
+                                setFoodFormData({
+                                    ...foodFormData,
+                                    description: e.target.value,
+                                })
+                            }
+                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
+                            placeholder="Thông tin món ăn đặc sản..."
+                        />
+                    </div>
+                </div>
+                {/* Footer modal */}
+                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
+                    <button
+                        onClick={resetFoodForm}
+                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
+                    >
+                        Hủy
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleAddOrUpdateFood}
+                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
+                    >
+                        <Save className="w-5 h-5" />
+                        {editingFoodIndex !== null ? "Cập nhật" : "Thêm mới"}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// Modal DU LỊCH
+function ModalFormTravel({
+    editingTravelIndex, resetTravelForm, travelFormData, setTravelFormData, travelImagePreview, removeImage, handleImageUpload, handleAddOrUpdateTravel
+}) {
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
+            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
+                {/* Header */}
+                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
+                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
+                        {editingTravelIndex !== null ? "Sửa bài viết du lịch" : "Thêm bài viết du lịch mới"}
+                    </h2>
+                    <button
+                        onClick={resetTravelForm}
+                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
+                    >
+                        <X className="w-7 h-7" />
+                    </button>
+                </div>
+                {/* Nội dung modal */}
+                <div className="p-6 space-y-7">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tên điểm du lịch <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={travelFormData.name}
+                                onChange={(e) =>
+                                    setTravelFormData({
+                                        ...travelFormData,
+                                        name: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                placeholder="Tên điểm du lịch"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tỉnh/Thành phố <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={travelFormData.province}
+                                onChange={(e) =>
+                                    setTravelFormData({
+                                        ...travelFormData,
+                                        province: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                            >
+                                <option value="">--Chọn tỉnh/thành--</option>
+                                {provincesVN.map((p) => (
+                                    <option key={p} value={p}>{p}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={travelFormData.lat}
+                                onChange={(e) => setTravelFormData({ ...travelFormData, lat: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="10.777141734059974"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Kinh độ (lng) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={travelFormData.lng}
+                                onChange={(e) => setTravelFormData({ ...travelFormData, lng: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="106.69522699878702"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Vùng <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={travelFormData.region}
+                                onChange={(e) =>
+                                    setTravelFormData({
+                                        ...travelFormData,
+                                        region: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
+                            >
+                                {regions.map((r) => (
+                                    <option key={r} value={r}>
+                                        {r}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        {/* Trạng thái bài viết */}
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Trạng thái <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={travelFormData.status}
+                                onChange={(e) =>
+                                    setTravelFormData({
+                                        ...travelFormData,
+                                        status: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
+                            >
+                                {statuses.map((st) => (
+                                    <option key={st.value} value={st.value}>
+                                        {st.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    {/* Upload ảnh */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Upload hình ảnh điểm du lịch <span className="text-red-500">*</span>
+                        </label>
+                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={e => handleImageUpload(e, "travel")}
+                                className="hidden"
+                                id="travel-image-upload"
+                                multiple
+                            />
+                            <label
+                                htmlFor="travel-image-upload"
+                                className="cursor-pointer flex flex-col items-center gap-3"
+                            >
+                                <Upload className="w-12 h-12 text-blue-400" />
+                                <span className="text-sm text-gray-700 font-medium">
+                                    Nhấn để chọn ảnh
+                                </span>
+                                <span className="text-xs text-gray-500">
+                                    JPG, PNG, GIF (tối đa 5MB)
+                                </span>
+                            </label>
+                        </div>
+                        {/* Preview nhiều ảnh */}
+                        {travelImagePreview && travelImagePreview.length > 0 && (
+                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
+                                {travelImagePreview.map((img, idx) => (
+                                    <div key={idx} className="relative group">
+                                        <img
+                                            src={img}
+                                            alt={`Preview ${idx}`}
+                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
+                                        />
+                                        <button
+                                            onClick={() => removeImage(idx, "travel")}
+                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
+                                            type="button"
+                                        >
+                                            <X className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {/* Mô tả */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Mô tả <span className="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            rows={5}
+                            value={travelFormData.description}
+                            onChange={(e) =>
+                                setTravelFormData({
+                                    ...travelFormData,
+                                    description: e.target.value,
+                                })
+                            }
+                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
+                            placeholder="Thông tin điểm du lịch..."
+                        />
+                    </div>
+                </div>
+                {/* Footer modal */}
+                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
+                    <button
+                        onClick={resetTravelForm}
+                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
+                    >
+                        Hủy
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleAddOrUpdateTravel}
+                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
+                    >
+                        <Save className="w-5 h-5" />
+                        {editingTravelIndex !== null ? "Cập nhật" : "Thêm mới"}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// Modal KHÁCH SẠN
+function ModalFormHotel({
+    editingHotelIndex, resetHotelForm, hotelFormData, setHotelFormData, hotelImagePreview, removeImage, handleImageUpload, handleAddOrUpdateHotel
+}) {
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
+            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
+                {/* Header */}
+                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
+                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
+                        {editingHotelIndex !== null ? "Sửa bài viết khách sạn" : "Thêm bài viết khách sạn mới"}
+                    </h2>
+                    <button
+                        onClick={resetHotelForm}
+                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
+                    >
+                        <X className="w-7 h-7" />
+                    </button>
+                </div>
+                {/* Nội dung modal */}
+                <div className="p-6 space-y-7">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tên khách sạn <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={hotelFormData.name}
+                                onChange={(e) =>
+                                    setHotelFormData({
+                                        ...hotelFormData,
+                                        name: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                placeholder="Tên khách sạn"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Tỉnh/Thành phố <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={hotelFormData.province}
+                                onChange={(e) =>
+                                    setHotelFormData({
+                                        ...hotelFormData,
+                                        province: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                            >
+                                <option value="">--Chọn tỉnh/thành--</option>
+                                {provincesVN.map((p) => (
+                                    <option key={p} value={p}>{p}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={hotelFormData.lat}
+                                onChange={(e) => setHotelFormData({ ...hotelFormData, lat: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="10.777141734059974"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Kinh độ (lng) <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={hotelFormData.lng}
+                                onChange={(e) => setHotelFormData({ ...hotelFormData, lng: e.target.value })}
+                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                placeholder="106.69522699878702"
+                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Vùng <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={hotelFormData.region}
+                                onChange={(e) =>
+                                    setHotelFormData({
+                                        ...hotelFormData,
+                                        region: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
+                            >
+                                {regions.map((r) => (
+                                    <option key={r} value={r}>
+                                        {r}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        {/* Trạng thái bài viết */}
+                        <div>
+                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                Trạng thái <span className="text-red-500">*</span>
+                            </label>
+                            <select
+                                value={hotelFormData.status}
+                                onChange={(e) =>
+                                    setHotelFormData({
+                                        ...hotelFormData,
+                                        status: e.target.value,
+                                    })
+                                }
+                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
+                            >
+                                {statuses.map((st) => (
+                                    <option key={st.value} value={st.value}>
+                                        {st.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    {/* Upload ảnh */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Upload hình ảnh khách sạn <span className="text-red-500">*</span>
+                        </label>
+                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={e => handleImageUpload(e, "hotel")}
+                                className="hidden"
+                                id="hotel-image-upload"
+                                multiple
+                            />
+                            <label
+                                htmlFor="hotel-image-upload"
+                                className="cursor-pointer flex flex-col items-center gap-3"
+                            >
+                                <Upload className="w-12 h-12 text-blue-400" />
+                                <span className="text-sm text-gray-700 font-medium">
+                                    Nhấn để chọn ảnh
+                                </span>
+                                <span className="text-xs text-gray-500">
+                                    JPG, PNG, GIF (tối đa 5MB)
+                                </span>
+                            </label>
+                        </div>
+                        {/* Preview nhiều ảnh */}
+                        {hotelImagePreview && hotelImagePreview.length > 0 && (
+                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
+                                {hotelImagePreview.map((img, idx) => (
+                                    <div key={idx} className="relative group">
+                                        <img
+                                            src={img}
+                                            alt={`Preview ${idx}`}
+                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
+                                        />
+                                        <button
+                                            onClick={() => removeImage(idx, "hotel")}
+                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
+                                            type="button"
+                                        >
+                                            <X className="w-5 h-5" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {/* Mô tả */}
+                    <div>
+                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                            Mô tả <span className="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            rows={5}
+                            value={hotelFormData.description}
+                            onChange={(e) =>
+                                setHotelFormData({
+                                    ...hotelFormData,
+                                    description: e.target.value,
+                                })
+                            }
+                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
+                            placeholder="Thông tin khách sạn..."
+                        />
+                    </div>
+                </div>
+                {/* Footer modal */}
+                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
+                    <button
+                        onClick={resetHotelForm}
+                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
+                    >
+                        Hủy
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleAddOrUpdateHotel}
+                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
+                    >
+                        <Save className="w-5 h-5" />
+                        {editingHotelIndex !== null ? "Cập nhật" : "Thêm mới"}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 export default AdminTraiNghiem;

@@ -27,17 +27,14 @@ export function UserProvider({ children }) {
   }, [user]);
 
   // 🔄 Load user profile khi app khởi động (nếu có token)
-  // IMPORTANT: Only load profile if we have a saved user in localStorage
-  // This avoids unnecessary API calls on public pages
   useEffect(() => {
     const loadUserProfile = async () => {
-      // Only load if we DON'T have user in localStorage but authService says we're authenticated
-      if (authService.isAuthenticated() && !user) {
+      if (authService.isAuthenticated()) {
         try {
           setLoading(true);
           const response = await authService.getProfile();
           console.log('📥 [UserContext] Profile loaded:', response.data?.user);
-
+          
           if (response.success && response.data.user) {
             setUser(response.data.user);
             setIsLoggedIn(true);
@@ -50,7 +47,6 @@ export function UserProvider({ children }) {
           console.error("Failed to load user profile:", error);
           // Token có thể đã hết hạn, clear storage
           authService.logout();
-          setUser(null);
           setIsLoggedIn(false);
         } finally {
           setLoading(false);
@@ -58,16 +54,18 @@ export function UserProvider({ children }) {
       }
     };
 
-    // Connect socket if user already exists in localStorage
-    if (user && user.id) {
-      console.log('🔌 [UserContext] User exists from localStorage, connecting socket:', user.id);
-      socketService.connect(user.id);
-      setIsLoggedIn(true);
-    } else if (authService.isAuthenticated()) {
-      // Only load profile if authenticated but no user in localStorage
-      loadUserProfile();
+    // Nếu có token, luôn load profile và connect socket
+    if (authService.isAuthenticated()) {
+      // Nếu đã có user trong localStorage (reload page), connect socket ngay
+      if (user) {
+        console.log('🔌 [UserContext] User exists from localStorage, connecting socket:', user.id);
+        socketService.connect(user.id);
+      } else {
+        // Nếu chưa có user, load profile từ server
+        loadUserProfile();
+      }
     }
-  }, []); // Empty dependency array - only run once on mount
+  }, []);
 
   // Disconnect socket only when explicitly logging out
   useEffect(() => {
@@ -148,8 +146,6 @@ export function UserProvider({ children }) {
       setUser(null);
       setIsLoggedIn(false);
       localStorage.removeItem("userProfile");
-      // IMPORTANT: Clear guest cart when logging out
-      localStorage.removeItem("guestCart");
       setLoading(false);
     }
   };

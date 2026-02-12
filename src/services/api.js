@@ -57,10 +57,6 @@ api.interceptors.response.use(
               // Refresh failed, redirect to login
               console.error('Token refresh failed, redirecting to login');
 
-              // Clear user data to prevent login loop
-              localStorage.removeItem('userProfile');
-              localStorage.removeItem('isLoggedIn');
-
               // Redirect to login nếu không phải trang public
               if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
                 window.location.href = '/login';

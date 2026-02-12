@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import drumBgMusic from '../../assets/Audio/drum_s.mp3';
+
 import { Link } from 'react-router-dom';
 import { Palette, Paintbrush, BookOpen, Check } from 'lucide-react';
 import './Home.css';
@@ -14,7 +14,7 @@ import benCangImg from '../../assets/bencang.png';
 import designerImg from '../../assets/Designer.png';
 import ceoImg from '../../assets/ceo.jpg';
 import creativeHubImg from '../../assets/home.png';
-import vanMieuAudio from '../../assets/Audio/vanmieu.mp3';
+
 
 const FEATURED_ITEMS = [
   {
@@ -24,7 +24,7 @@ const FEATURED_ITEMS = [
       'Nhà thờ Đức Bà Sài Gòn, tên chính thức là Vương cung thánh đường Chính tòa Đức Bà Sài Gòn, là một trong những công trình kiến trúc biểu tượng và lâu đời nhất tại Thành phố Hồ Chí Minh. Nằm ở trung tâm Quận 1, tại số 01 Công xã Paris, công trình này thu hút đông đảo du khách và người dân địa phương bởi vẻ đẹp cổ kính và giá trị lịch sử.',
     image: nhaThoImg,
     alt: 'Nhà thờ Đức Bà Sài Gòn',
-    audioSrc: vanMieuAudio,
+
   },
   {
     id: 'bao-tang-chien-tranh',
@@ -33,7 +33,7 @@ const FEATURED_ITEMS = [
       'Bảo tàng Chứng tích Chiến tranh là một trong những bảo tàng nổi tiếng và quan trọng nhất tại Thành phố Hồ Chí Minh, tọa lạc tại địa chỉ 28 Võ Văn Tần, Phường Võ Thị Sáu, Quận 3. Bảo tàng chuyên trưng bày những tư liệu, hình ảnh và hiện vật liên quan đến cuộc Chiến tranh Việt Nam và những hậu quả mà nó gây ra.',
     image: baoTangImg,
     alt: 'Bảo tàng Chứng tích Chiến tranh',
-    audioSrc: vanMieuAudio,
+
   },
   {
     id: 'dia-dao-cu-chi',
@@ -42,7 +42,7 @@ const FEATURED_ITEMS = [
       'Địa đạo Củ Chi là một hệ thống đường hầm ngầm khổng lồ nằm ở huyện Củ Chi, cách trung tâm Thành phố Hồ Chí Minh khoảng 70 km về phía Tây Bắc. Đây là một di tích lịch sử quốc gia đặc biệt, đóng vai trò quan trọng trong cuộc kháng chiến chống Mỹ của quân và dân Việt Nam.',
     image: diaDaoImg,
     alt: 'Địa đạo Củ Chi',
-    audioSrc: vanMieuAudio,
+
   },
   {
     id: 'ben-cang-nha-rong',
@@ -51,7 +51,7 @@ const FEATURED_ITEMS = [
       'Bến cảng Nhà Rồng, hay còn gọi là Bảo tàng Hồ Chí Minh – Chi nhánh Thành phố Hồ Chí Minh, là một di tích lịch sử quan trọng nằm tại số 1 Nguyễn Tất Thành, Phường 12, Quận 4, Thành phố Hồ Chí Minh.',
     image: benCangImg,
     alt: 'Bến cảng Nhà Rồng',
-    audioSrc: vanMieuAudio,
+
   },
 ];
 
@@ -67,8 +67,8 @@ const COLLAB_SECTIONS = [
       'Dự án “Âm vang di sản” với trải nghiệm âm thanh tương tác theo vùng địa lý',
       'Hợp tác cùng bảo tàng địa phương để số hóa hiện vật đặc sắc',
     ],
-  ctaLabel: 'Xem dự án chi tiết',
-  ctaHref: '#featured-projects',
+    ctaLabel: 'Xem dự án chi tiết',
+    ctaHref: '#featured-projects',
     image: designerImg,
   },
   {
@@ -82,11 +82,11 @@ const COLLAB_SECTIONS = [
       'Cuộc thi sáng tác poster số với sự cố vấn của nghệ sĩ trẻ',
       'Thư viện dữ liệu mở hóa dành cho nhà nghiên cứu độc lập',
     ],
-  ctaLabel: 'Tham gia cộng đồng',
-  ctaHref: '#community-programs',
+    ctaLabel: 'Tham gia cộng đồng',
+    ctaHref: '#community-programs',
     image: creativeHubImg,
   },
-    {
+  {
     id: 'collaboration-contact',
     eyebrow: 'Liên hệ hợp tác',
     title: 'Kết nối để cùng lan tỏa giá trị di sản',
@@ -97,8 +97,8 @@ const COLLAB_SECTIONS = [
       'Tư vấn triển khai không gian trải nghiệm AI – XR cho bảo tàng',
       'Xây dựng chương trình giáo dục lịch sử tương tác theo yêu cầu',
     ],
-  ctaLabel: 'Đặt lịch trao đổi',
-  ctaHref: '#lienhe',
+    ctaLabel: 'Đặt lịch trao đổi',
+    ctaHref: '#lienhe',
     image: ceoImg,
   },
 ];
@@ -106,96 +106,26 @@ const COLLAB_SECTIONS = [
 const Home = () => {
   const [userEmail, setUserEmail] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [collabEmail, setCollabEmail] = useState('');
   const [collabError, setCollabError] = useState('');
   const [collabStatus, setCollabStatus] = useState('');
-  const audioRef = useRef(null);
+
   const autoSlideRef = useRef(null);
-  const isAudioPlayingRef = useRef(false);
   const isHoveringRef = useRef(false);
   const totalSlides = FEATURED_ITEMS.length;
   const activeItem = FEATURED_ITEMS[currentSlide] ?? null;
 
-  // --- Background music state ---
-  const BG_MUSIC_KEY = 'bgMusicEnabled';
-  const bgAudioRef = useRef(null);
-  const [isBgMusicPlaying, setIsBgMusicPlaying] = useState(true); // default true, persisted below
 
-  // Handle background music play/pause
-  useEffect(() => {
-    const bgAudio = bgAudioRef.current;
-    if (!bgAudio) return;
-    if (isBgMusicPlaying) {
-      bgAudio.volume = 0.5;
-      const playPromise = bgAudio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    } else {
-      bgAudio.pause();
-    }
-  }, [isBgMusicPlaying]);
 
-  // Initialize from localStorage and setup interaction-based autoplay retries
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(BG_MUSIC_KEY);
-      if (saved !== null) {
-        setIsBgMusicPlaying(saved === 'true');
-      }
-    } catch {}
 
-    const attemptPlay = () => {
-      if (!isBgMusicPlaying) return;
-      const el = bgAudioRef.current;
-      if (!el) return;
-      el.volume = 0.5;
-      const p = el.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(() => {});
-      }
-    };
 
-    const onVisibility = () => {
-      if (document.visibilityState === 'visible') attemptPlay();
-    };
-
-    // Retry on common user interactions to satisfy autoplay policies
-    document.addEventListener('click', attemptPlay);
-    document.addEventListener('keydown', attemptPlay);
-    document.addEventListener('touchstart', attemptPlay, { passive: true });
-    document.addEventListener('pointerdown', attemptPlay);
-    document.addEventListener('visibilitychange', onVisibility);
-
-    // Initial deferred attempt
-    const t = setTimeout(attemptPlay, 0);
-
-    return () => {
-      clearTimeout(t);
-      document.removeEventListener('click', attemptPlay);
-      document.removeEventListener('keydown', attemptPlay);
-      document.removeEventListener('touchstart', attemptPlay);
-      document.removeEventListener('pointerdown', attemptPlay);
-      document.removeEventListener('visibilitychange', onVisibility);
-    };
-  }, [isBgMusicPlaying]);
-
-  const handleBgMusicToggle = () => {
-    setIsBgMusicPlaying((prev) => {
-      const next = !prev;
-      try { localStorage.setItem(BG_MUSIC_KEY, String(next)); } catch {}
-      return next;
-    });
-  };
-  
   const startAutoSlide = useCallback(() => {
     if (autoSlideRef.current || totalSlides <= 1) {
       return;
     }
 
     autoSlideRef.current = setInterval(() => {
-      if (totalSlides === 0 || isAudioPlayingRef.current) {
+      if (totalSlides === 0) {
         return;
       }
 
@@ -270,53 +200,7 @@ const Home = () => {
     };
   }, [startAutoSlide, stopAutoSlide]);
 
-  useEffect(() => {
-    if (!audioRef.current) {
-      return undefined;
-    }
 
-    audioRef.current.pause();
-    audioRef.current.currentTime = 0;
-    setIsAudioPlaying(false);
-    isAudioPlayingRef.current = false;
-
-    return undefined;
-  }, [currentSlide]);
-
-  useEffect(() => {
-    const audioElement = audioRef.current;
-
-    if (!audioElement) {
-      return undefined;
-    }
-
-    const handleEnded = () => {
-      setIsAudioPlaying(false);
-      isAudioPlayingRef.current = false;
-    };
-
-    const handlePlay = () => {
-      setIsAudioPlaying(true);
-      isAudioPlayingRef.current = true;
-    };
-
-    const handlePause = () => {
-      if (audioElement.currentTime === 0 || audioElement.ended) {
-        setIsAudioPlaying(false);
-        isAudioPlayingRef.current = false;
-      }
-    };
-
-    audioElement.addEventListener('ended', handleEnded);
-    audioElement.addEventListener('play', handlePlay);
-    audioElement.addEventListener('pause', handlePause);
-
-    return () => {
-      audioElement.removeEventListener('ended', handleEnded);
-      audioElement.removeEventListener('play', handlePlay);
-      audioElement.removeEventListener('pause', handlePause);
-    };
-  }, [currentSlide]);
 
   const handleLogout = (event) => {
     event.preventDefault();
@@ -343,29 +227,7 @@ const Home = () => {
     [currentSlide, goToSlide],
   );
 
-  const handleAudioToggle = () => {
-    const target = audioRef.current;
 
-    if (!target) {
-      return;
-    }
-
-    if (target.paused) {
-      isAudioPlayingRef.current = true;
-      setIsAudioPlaying(true);
-      target
-        .play()
-        .catch(() => {
-          isAudioPlayingRef.current = false;
-          setIsAudioPlaying(false);
-        });
-    } else {
-      target.pause();
-      target.currentTime = 0;
-      isAudioPlayingRef.current = false;
-      setIsAudioPlaying(false);
-    }
-  };
 
   const handleCollabEmailChange = useCallback((event) => {
     setCollabEmail(event.target.value);
@@ -398,22 +260,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      {/* Background music audio element and toggle button */}
-      <audio
-        ref={bgAudioRef}
-        src={drumBgMusic}
-        loop
-        autoPlay
-        style={{ display: 'none' }}
-      />
-      <button
-        className={`btn-bg-music-toggle${isBgMusicPlaying ? ' is-playing' : ''}`}
-        onClick={handleBgMusicToggle}
-        style={{ position: 'fixed', top: 16, right: 16, zIndex: 1000 }}
-        aria-label={isBgMusicPlaying ? 'Tắt nhạc nền' : 'Bật nhạc nền'}
-      >
-        {isBgMusicPlaying ? '🔊 Đang phát nhạc nền' : '🔇 Bật nhạc nền'}
-      </button>
+
 
       <main className="hero">
         <img
@@ -622,24 +469,10 @@ const Home = () => {
                           </button>
                         </div>
                       )}
-                      <button
-                        type="button"
-                        className={`btn-audio${isAudioPlaying ? ' is-playing' : ''}`}
-                        onClick={handleAudioToggle}
-                        disabled={!activeItem.audioSrc}
-                      >
-                        {isAudioPlaying ? '⏹ Dừng mô tả' : '🔊 Nghe mô tả'}
-                      </button>
+
                     </div>
                   </div>
-                  {activeItem.audioSrc && (
-                    <audio
-                      src={activeItem.audioSrc}
-                      ref={(element) => {
-                        audioRef.current = element;
-                      }}
-                    />
-                  )}
+
                 </article>
 
                 <div className="featured-thumbs">
@@ -677,15 +510,15 @@ const Home = () => {
 
       {/* Section 1: Featured Projects */}
       <section className="collab-section featured-projects-section" id="featured-projects">
-        <div className="section-header">
+        <div className="section-header featured-projects-header">
           <span className="section-tag">Dự án tiêu biểu</span>
           <h2 className="section-title">Những dự án tạo dấu ấn công nghệ & văn hóa</h2>
           <p className="section-subtitle">
             Khám phá những hành trình tiêu biểu nơi AI đồng hành cùng các nhà nghiên cứu, nghệ sĩ và cộng đồng địa phương để tái hiện di sản Việt Nam bằng góc nhìn mới mẻ.
           </p>
         </div>
-        <div className="collab-content">
-          <div className="collab-text-block">
+        <div className="featured-projects-body">
+          <div className="featured-intro">
             <div className="highlights-grid">
               {COLLAB_SECTIONS[0].highlights.map((highlight, idx) => (
                 <div key={idx} className="highlight-card">
@@ -694,12 +527,8 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <a className="btn-collab primary" href={COLLAB_SECTIONS[0].ctaHref}>
-              <span>{COLLAB_SECTIONS[0].ctaLabel}</span>
-              <span className="arrow">→</span>
-            </a>
           </div>
-          <div className="collab-media-block">
+          <div className="featured-media">
             <div className="media-frame-enhanced">
               <img src={COLLAB_SECTIONS[0].image} alt={`${COLLAB_SECTIONS[0].eyebrow} minh họa`} />
               <div className="media-overlay">
@@ -708,21 +537,27 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div className="featured-projects-cta">
+          <a className="btn-collab primary" href={COLLAB_SECTIONS[0].ctaHref}>
+            <span>{COLLAB_SECTIONS[0].ctaLabel}</span>
+            <span className="arrow">→</span>
+          </a>
+        </div>
       </section>
 
       <img className="spacer-image" src={bannerImg} alt="Trang trí kết nối" />
 
-      {/* Section 2: Community Programs */}
+      {/* Section 2: Community Programs - layout giống Dự án tiêu biểu, 3 option bên phải */}
       <section className="collab-section community-section" id="community-programs">
-        <div className="section-header centered">
+        <div className="section-header community-section-header">
           <span className="section-tag">Cộng đồng sáng tạo</span>
           <h2 className="section-title">Nuôi dưỡng hệ sinh thái nhà sáng tạo trẻ</h2>
           <p className="section-subtitle">
             Từ workshop thực hành, hackathon chủ đề di sản đến thư viện dữ liệu mở, chúng tôi xây dựng cộng đồng giúp thế hệ trẻ khám phá lịch sử theo cách rất riêng.
           </p>
         </div>
-        <div className="collab-content reversed">
-          <div className="collab-media-block">
+        <div className="community-body">
+          <div className="community-media">
             <div className="media-frame-enhanced">
               <img src={COLLAB_SECTIONS[1].image} alt={`${COLLAB_SECTIONS[1].eyebrow} minh họa`} />
               <div className="media-overlay">
@@ -730,7 +565,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="collab-text-block">
+          <div className="community-intro">
             <div className="highlights-grid">
               {COLLAB_SECTIONS[1].highlights.map((highlight, idx) => (
                 <div key={idx} className="highlight-card">
@@ -739,27 +574,29 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <a className="btn-collab secondary" href={COLLAB_SECTIONS[1].ctaHref}>
-              <span>{COLLAB_SECTIONS[1].ctaLabel}</span>
-              <span className="arrow">→</span>
-            </a>
           </div>
+        </div>
+        <div className="community-cta">
+          <a className="btn-collab secondary" href={COLLAB_SECTIONS[1].ctaHref}>
+            <span>{COLLAB_SECTIONS[1].ctaLabel}</span>
+            <span className="arrow">→</span>
+          </a>
         </div>
       </section>
 
       <img className="spacer-image" src={bannerImg} alt="Trang trí kết nối" />
 
-      {/* Section 3: Collaboration Contact */}
+      {/* Section 3: Collaboration Contact - layout giống Dự án tiêu biểu, 3 option + form trái, ảnh phải */}
       <section className="collab-section contact-section" id="collaboration-contact">
-        <div className="section-header">
+        <div className="section-header contact-section-header">
           <span className="section-tag">Liên hệ hợp tác</span>
           <h2 className="section-title">Kết nối để cùng lan tỏa giá trị di sản</h2>
           <p className="section-subtitle">
             Chúng tôi mong muốn hợp tác cùng các tổ chức văn hoá, doanh nghiệp, đơn vị giáo dục và đối tác công nghệ để mở rộng tác động xã hội của triển lãm.
           </p>
         </div>
-        <div className="collab-content contact-layout">
-          <div className="collab-text-block">
+        <div className="contact-body">
+          <div className="contact-intro">
             <div className="highlights-grid">
               {COLLAB_SECTIONS[2].highlights.map((highlight, idx) => (
                 <div key={idx} className="highlight-card">
@@ -768,38 +605,8 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <div className="contact-form-wrapper">
-              <h3 className="form-title">Đăng ký nhận tư vấn</h3>
-              <form className="collab-form enhanced" onSubmit={handleCollabSubmit} noValidate>
-                <label className="sr-only" htmlFor="collab-email">
-                  Email liên hệ
-                </label>
-                <div className="collab-form-row">
-                  <input
-                    id="collab-email"
-                    type="email"
-                    name="email"
-                    placeholder="Nhập email của bạn"
-                    value={collabEmail}
-                    onChange={handleCollabEmailChange}
-                    autoComplete="email"
-                    aria-describedby="collab-email-help"
-                    aria-invalid={collabError ? 'true' : 'false'}
-                    required
-                  />
-                  <button type="submit" className="btn-collab submit">
-                    <span>Gửi liên hệ</span>
-                    <span className="arrow">✉</span>
-                  </button>
-                </div>
-                <div className="collab-form-feedback" id="collab-email-help" aria-live="polite">
-                  {collabError && <span className="error-message">⚠ {collabError}</span>}
-                  {!collabError && collabStatus && <span className="success-message">✓ {collabStatus}</span>}
-                </div>
-              </form>
-            </div>
           </div>
-          <div className="collab-media-block">
+          <div className="contact-media">
             <div className="media-frame-enhanced">
               <img src={COLLAB_SECTIONS[2].image} alt={`${COLLAB_SECTIONS[2].eyebrow} minh họa`} />
               <div className="media-overlay">
@@ -807,6 +614,33 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="contact-cta">
+          <form className="contact-cta-form" onSubmit={handleCollabSubmit} noValidate>
+            <label className="sr-only" htmlFor="collab-email">
+              Email liên hệ
+            </label>
+            <input
+              id="collab-email"
+              type="email"
+              name="email"
+              placeholder="Nhập email của bạn"
+              value={collabEmail}
+              onChange={handleCollabEmailChange}
+              autoComplete="email"
+              aria-describedby="collab-email-help"
+              aria-invalid={collabError ? 'true' : 'false'}
+              required
+            />
+            <button type="submit" className="btn-collab submit">
+              <span>Gửi liên hệ</span>
+              <span className="arrow">✉</span>
+            </button>
+            <div className="collab-form-feedback" id="collab-email-help" aria-live="polite">
+              {collabError && <span className="error-message">⚠ {collabError}</span>}
+              {!collabError && collabStatus && <span className="success-message">✓ {collabStatus}</span>}
+            </div>
+          </form>
         </div>
       </section>
 

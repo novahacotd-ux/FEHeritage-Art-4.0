@@ -1,4 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Be Vietnam Pro: @font-face trực tiếp để font chắc chắn tải (cho "Thành tựu nổi bật" và toàn trang) */
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw4BXoKZA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw3BXo.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSQI286Rb0bcw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSQI281Rb0.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ===== VARIABLES ===== */
 :root {
   --primary-gold: #d4a574;
@@ -12,7 +47,7 @@
   --accent-brown: #8b5a3c;
   --soft-shadow: rgba(61, 40, 25, 0.08);
   --transition: 0.3s ease;
-  --max-width: 1200px;
+  --max-width: 2000px;
 }
 
 /* ===== GSAP ANIMATION STYLES ===== */
@@ -21,6 +56,8 @@
 .split-char {
   display: inline-block;
   will-change: transform, opacity;
+  line-height: 1.5;
+  vertical-align: baseline;
 }
 
 /* Word wrapper for split text */
@@ -47,6 +84,9 @@
 }
 
 .hero-title-gsap .split-char {
+  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
+  line-height: 1.5 !important;
+  vertical-align: baseline !important;
   filter: none !important;
   -webkit-filter: none !important;
 }
@@ -54,7 +94,6 @@
 /* Scroll reveal base states - handled by GSAP */
 .gt-stats-card,
 .gt-feature-item,
-.gt-mission-card,
 .gt-vision-card,
 .gt-impact-item {
   will-change: transform, opacity, filter;
@@ -83,7 +122,7 @@
   animation: none;
 }
 
-.gioithieu-page .gt-mission-grid {
+.gioithieu-page .gt-mission-slideshow {
   opacity: 1;
   animation: none;
 }
@@ -94,13 +133,19 @@
 }
 
 /* ===== GENERAL STYLES ===== */
+/* Một font duy nhất cho toàn bộ trang Giới thiệu, dùng !important để ghi đè mọi chỗ khác */
+.gioithieu-page,
+.gioithieu-page * {
+  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Layout tổng thể: chiều ngang rộng hơn - chỉnh 2 biến này */
 .gioithieu-page {
+  --gioithieu-content-max: 1440px;
+  --gioithieu-padding-x: 1.5rem;
   min-height: 100vh;
   background: #f6eadf;
   color: var(--text-dark);
-  /* Use Poppins as primary font for stronger appearance; fallbacks kept */
-  font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  /* Use a slightly heavier base weight so body text doesn't feel too thin */
   font-weight: 500;
   line-height: 1.6;
   scroll-behavior: smooth;
@@ -329,7 +374,7 @@
   font-size: clamp(2.8rem, 8vw, 5rem);
   font-weight: 800;
   margin-bottom: 2.5rem;
-  line-height: 1.15;
+  line-height: 1.5;
   background: linear-gradient(135deg, #8b5a3c 0%, #c17d4d 50%, #d4a574 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -348,6 +393,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1.5 !important;
+  vertical-align: baseline !important;
   filter: none !important;
 }
 
@@ -372,7 +419,7 @@
 
 .gioithieu-page .gt-hero-action {
   padding: 1.25rem 3rem;
-  border-radius: 50px;
+  border-radius: 15px;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -442,7 +489,7 @@
     ),
     radial-gradient(ellipse at 20% 30%, rgba(212, 165, 116, 0.1), transparent 50%),
     radial-gradient(ellipse at 80% 70%, rgba(193, 125, 77, 0.08), transparent 50%);
-  padding: 8rem 2rem;
+  padding: 8rem var(--gioithieu-padding-x, 1.5rem);
   margin: 0;
   position: relative;
   overflow: hidden;
@@ -480,22 +527,26 @@
   animation: fadeInUp 0.8s ease-out;
 }
 
-.gioithieu-page .gt-stats-header h2 {
+.gioithieu-page .gt-stats-header h2,
+.gioithieu-page .gt-stats-header--top h2 {
   font-size: clamp(2.3rem, 5vw, 3.5rem);
   font-weight: 800;
-  
+  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
   background: linear-gradient(135deg, #8b5a3c 0%, #c17d4d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
-.gioithieu-page .gt-stats-header p {
-  font-size: 1.35rem;
+.gioithieu-page .gt-stats-header p,
+.gioithieu-page .gt-stats-header--top p {
+  font-size: 1.7rem;
   color: var(--text-muted);
   font-weight: 400;
+  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 .gioithieu-page .gioithieu-stats {
@@ -559,9 +610,91 @@
   letter-spacing: 0.5px;
 }
 
+/* Stats layout: title giữa trên, 4 cards trái + 1 ảnh phải – cùng chiều cao, đáy bằng nhau */
+.gioithieu-page .gt-stats-container.gt-stats-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto minmax(420px, 1fr);
+  gap: 0 4rem;
+  row-gap: 4rem;
+  align-items: stretch;
+  max-width: var(--gioithieu-content-max, 1440px);
+}
+
+/* Title + subtitle: full width, centered, trên cùng */
+.gioithieu-page .gt-stats-header.gt-stats-header--top {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.gioithieu-page .gt-stats-header.gt-stats-header--top h2,
+.gioithieu-page .gt-stats-header.gt-stats-header--top p {
+  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.gioithieu-page .gt-stats-left {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.gioithieu-page .gt-stats-left .gt-stats-header {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+/* 4 thẻ số: 2 hàng bằng nhau, fill hết chiều cao cột = bằng chiều cao ảnh */
+.gioithieu-page .gioithieu-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.gioithieu-page .gt-stats-right {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+/* Giống các ảnh khác: hover phóng to cả div (wrap), không chỉ ảnh bên trong */
+.gioithieu-page .gt-stats-image-wrap {
+  width: 100%;
+  height: 100%;
+  max-width: auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(61, 40, 25, 0.2), 0 8px 30px rgba(193, 125, 77, 0.15);
+  border: 1px solid rgba(193, 125, 77, 0.2);
+  transition: transform 0.35s ease;
+  transform-origin: center center;
+}
+
+.gioithieu-page .gt-stats-image-wrap:hover {
+  transform: scale(1.03);
+}
+
+.gioithieu-page .gt-stats-image-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.gioithieu-page .gt-stats-hero-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
 /* ===== SECTIONS ===== */
 .gioithieu-page .gioithieu-section {
-  padding: 10rem 2rem;
+  padding: 10rem var(--gioithieu-padding-x, 1.5rem);
   margin: 0 auto;
   position: relative;
   /* Removed animation - handled by GSAP */
@@ -656,6 +789,8 @@
   text-align: center;
   max-width: 900px;
   margin: 0 auto 6rem;
+  padding-top: 5rem;
+  /* Chừa khoảng cho đường dọc + chấm cột mốc (::before/::after) không trùng nội dung */
   /* Animation handled by GSAP */
 }
 
@@ -734,11 +869,242 @@
   margin: 0 auto;
 }
 
-/* ===== OVERVIEW SECTION ===== */
-.gioithieu-page .gt-overview-content {
-  max-width: var(--max-width);
+/* ===== OVERVIEW SECTION (một section: heading + mockup & 3 thẻ + 3 thẻ ảnh) ===== */
+.gioithieu-page .gt-overview.gt-overview-unified {
+  padding: 10rem clamp(var(--gioithieu-padding-x, 1.5rem), 4vw, 2.5rem);
+}
+
+.gioithieu-page .gt-overview-container {
+  max-width: var(--gioithieu-content-max, 1440px);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: stretch;
+}
+
+.gioithieu-page .gt-overview-content {
+  max-width: 100%;
+  margin: 0;
   /* Animation handled by GSAP */
+}
+
+/* Overview layout: ảnh trái (mockup) + 3 thẻ feature phải. Gap/căn lề tính từ mép phải ảnh dọc. */
+.gioithieu-page .gt-overview-content.gt-overview-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: end;
+  width: 100%;
+}
+
+.gioithieu-page .gt-overview-visual {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-width: 0;
+}
+
+/* Wrapper bọc cả 2 ảnh: width tính đến mép phải ảnh dọc (mockup + spacer), responsive không lòi ra ngoài */
+.gioithieu-page .gt-overview-mockup-wrap {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: min(796px, 100%); /* 680 + ~17% overflow ảnh dọc */
+  min-width: 0;
+}
+
+.gioithieu-page .gt-overview-mockup {
+  --gt-mockup-desktop-aspect: 16 / 11.5;
+  --gt-mockup-max-height: none;
+  position: relative;
+  flex: 0 0 85.5%;
+  width: 100%;
+  transition: transform 0.35s ease;
+}
+
+.gioithieu-page .gt-mockup-spacer {
+  flex: 0 0 14.5%;
+  min-width: 0;
+  height: 1px;
+  pointer-events: none;
+}
+
+.gioithieu-page .gt-overview-mockup:hover {
+  transform: scale(1.03);
+}
+
+.gioithieu-page .gt-mockup-screen {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(61, 40, 25, 0.25), 0 10px 30px rgba(193, 125, 77, 0.12);
+  border: 2px solid rgba(193, 125, 77, 0.25);
+  background: #fff;
+}
+
+.gioithieu-page .gt-mockup-desktop {
+  width: 100%;
+  aspect-ratio: var(--gt-mockup-desktop-aspect);
+  max-height: var(--gt-mockup-max-height);
+  position: relative;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-mockup-desktop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gioithieu-page .gt-mockup-mobile {
+  --gt-mockup-mobile-width: 25%;
+  --gt-mockup-mobile-max-height: 85%;
+  --gt-mockup-mobile-aspect: 9 / 16;
+  --gt-mockup-mobile-bg: transparent;
+  --gt-mockup-mobile-right: -8%;
+  position: absolute;
+  right: var(--gt-mockup-mobile-right);
+  bottom: 0;
+  width: var(--gt-mockup-mobile-width);
+  height: auto;
+  aspect-ratio: var(--gt-mockup-mobile-aspect);
+  max-height: var(--gt-mockup-mobile-max-height);
+  z-index: 2;
+  background: var(--gt-mockup-mobile-bg);
+}
+
+.gioithieu-page .gt-mockup-mobile img {
+  --gt-mockup-mobile-object-fit: cover;
+  --gt-mockup-mobile-object-position: center;
+  width: 100%;
+  height: 100%;
+  
+  object-position: var(--gt-mockup-mobile-object-position);
+  display: block;
+}
+
+/* Khoảng cách từ mép phải ảnh dọc tới nội dung thẻ: gap + padding-left */
+.gioithieu-page .gt-overview-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  padding-left: clamp(1rem, 2.5vw, 2rem);
+  min-width: 0;
+}
+
+.gioithieu-page .gt-overview-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.7));
+  border: 1.5px solid rgba(193, 125, 77, 0.2);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.gioithieu-page .gt-overview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(193, 125, 77, 0.15);
+  border-color: rgba(193, 125, 77, 0.35);
+}
+
+.gioithieu-page .gt-overview-card .gt-feature-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(193, 125, 77, 0.2);
+}
+
+.gioithieu-page .gt-overview-feature-icon--pink { color: #e91e63; }
+.gioithieu-page .gt-overview-feature-icon--brown { color: #8b5a3c; }
+.gioithieu-page .gt-overview-feature-icon--gold { color: #c17d4d; }
+
+.gioithieu-page .gt-overview-card-text {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* 3 thẻ full-bleed image (nằm trong cùng section, dưới mockup & 3 thẻ) */
+.gioithieu-page .gt-overview-unified .gt-feature-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+.gioithieu-page .gt-overview-unified .gt-feature-image-card {
+  min-height: 360px;
+}
+
+/* Giống ảnh Thành tựu nổi bật: hover phóng to cả div (card), không chỉ ảnh bên trong */
+.gioithieu-page .gt-feature-image-card {
+  position: relative;
+  min-height: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  transform-origin: center center;
+}
+
+.gioithieu-page .gt-feature-image-card:hover {
+  transform: scale(1.03);
+}
+
+.gioithieu-page .gt-feature-image-card-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gioithieu-page .gt-feature-image-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  border-radius: 24px;
+}
+
+.gioithieu-page .gt-feature-image-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.75rem;
+  z-index: 1;
+}
+
+.gioithieu-page .gt-feature-image-card-content h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.gioithieu-page .gt-feature-image-card-content p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
 .gioithieu-page .gt-overview-main {
@@ -794,8 +1160,8 @@
 
 .gioithieu-page .gt-overview-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
   margin-top: 4rem;
 }
 
@@ -804,7 +1170,7 @@
   backdrop-filter: blur(10px);
   border: 1.5px solid rgba(193, 125, 77, 0.18);
   border-radius: 24px;
-  padding: 3.5rem 3rem;
+  padding:1.5rem 1rem;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -863,122 +1229,124 @@
 .gioithieu-page .gt-feature-item p {
   color: var(--text-muted);
   line-height: 1.9;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   position: relative;
   z-index: 1;
 }
 
 /* ===== MISSION SECTION ===== */
-/* Giảm padding-top cho section Mission */
 .gioithieu-page .gioithieu-section.gt-mission {
   padding-top: 4rem;
 }
-.gioithieu-page .gt-mission-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-  /* Animation handled by GSAP */
-}
 
-.gioithieu-page .gt-mission-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.65));
-  backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(193, 125, 77, 0.18);
-  border-radius: 24px;
-  padding: 3.5rem 3rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* Slideshow 5 ảnh cam kết – chữ đè trên ảnh */
+.gioithieu-page .gt-mission-slideshow {
   position: relative;
+  margin-top: 4rem;
+  border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(61, 40, 25, 0.2), 0 10px 30px rgba(193, 125, 77, 0.12);
+  border: 1px solid rgba(193, 125, 77, 0.2);
 }
 
-.gioithieu-page .gt-mission-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 0;
-  background: linear-gradient(to bottom, #c17d4d, #d4a574, #a85637);
-  transition: height 0.4s ease;
-  border-radius: 24px 0 0 24px;
+.gioithieu-page .gt-mission-slideshow-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21/9;
+  min-height: 380px;
 }
 
-.gioithieu-page .gt-mission-card::after {
-  content: '';
+.gioithieu-page .gt-mission-slide {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(212, 165, 116, 0.1), transparent 50%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
+  z-index: 0;
 }
 
-.gioithieu-page .gt-mission-card:hover::before {
-  height: 100%;
-}
-
-.gioithieu-page .gt-mission-card:hover::after {
+.gioithieu-page .gt-mission-slide.gt-mission-slide--active {
   opacity: 1;
-}
-
-.gioithieu-page .gt-mission-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(193, 125, 77, 0.35);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-  box-shadow: 0 20px 50px rgba(193, 125, 77, 0.18), 0 10px 20px var(--soft-shadow);
-}
-
-.gioithieu-page .gt-mission-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2.5rem;
-  position: relative;
   z-index: 1;
 }
 
-.gioithieu-page .gt-mission-icon {
-  font-size: 4rem;
+.gioithieu-page .gt-mission-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(61, 40, 25, 0.85) 0%, rgba(61, 40, 25, 0.5) 45%, transparent 75%);
+  z-index: 1;
+}
+
+.gioithieu-page .gt-mission-slide-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 560px;
+  padding: 3rem 3.5rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(193, 125, 77, 0.1));
-  border-radius: 20px;
-  filter: drop-shadow(0 4px 15px rgba(212, 165, 116, 0.3));
-  transition: transform 0.3s ease;
+  z-index: 2;
 }
 
-.gioithieu-page .gt-mission-card:hover .gt-mission-icon {
-  transform: scale(1.1) rotate(5deg);
-}
-
-.gioithieu-page .gt-mission-number {
-  font-size: 2.25rem;
+.gioithieu-page .gt-mission-slide-number {
+  display: inline-block;
+  font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, rgba(193, 125, 77, 0.5), rgba(212, 165, 116, 0.4));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: rgba(212, 165, 116, 0.95);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
 }
 
-.gioithieu-page .gt-mission-title {
-  font-size: 1.75rem;
-  color: var(--text-dark);
-  margin-bottom: 1.5rem;
+.gioithieu-page .gt-mission-slide-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
-  line-height: 1.4;
-  position: relative;
-  z-index: 1;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
-.gioithieu-page .gt-mission-description {
-  color: var(--text-muted);
-  line-height: 1.9;
-  font-size: 1.3rem;
-  position: relative;
-  z-index: 1;
+.gioithieu-page .gt-mission-slide-desc {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.65;
+  margin: 0;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.gioithieu-page .gt-mission-slideshow-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+  z-index: 3;
+}
+
+.gioithieu-page .gt-mission-slide-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.gioithieu-page .gt-mission-slide-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.gioithieu-page .gt-mission-slide-dot.gt-mission-slide-dot--active {
+  background: rgba(255, 255, 255, 0.95);
+  transform: scale(1.15);
 }
 
 .gioithieu-page .gt-mission-summary {
@@ -1306,7 +1674,7 @@
 
 .gioithieu-page .gt-cta-button {
   padding: 1.4rem 3.5rem;
-  border-radius: 50px;
+  border-radius: 15px;
   font-weight: 700;
   font-size: 1.25rem;
   text-decoration: none;
@@ -1366,6 +1734,58 @@
 }
 
 /* ===== RESPONSIVE ===== */
+/* Từ 1520px trở xuống: overview chuyển từ ngang (2 cột) sang dọc, độ ngang full */
+@media (max-width: 1520px) {
+  .gioithieu-page .gt-overview.gt-overview-unified {
+    padding-left: clamp(var(--gioithieu-padding-x, 1.5rem), 3vw, 2rem);
+    padding-right: clamp(var(--gioithieu-padding-x, 1.5rem), 3vw, 2rem);
+  }
+
+  .gioithieu-page .gt-overview-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .gioithieu-page .gt-overview-content.gt-overview-layout {
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 3.5rem);
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .gioithieu-page .gt-overview-visual {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Responsive: căn giữa mockup trên tablet/mobile */
+  .gioithieu-page .gt-overview-mockup-wrap {
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .gioithieu-page .gt-overview-mockup {
+    margin: 0;
+    flex: 0 0 auto;
+    max-width: min(90%, 420px);
+  }
+
+  .gioithieu-page .gt-mockup-spacer {
+    flex: 0 0 0;
+    min-width: 0;
+    width: 0;
+    overflow: hidden;
+  }
+
+  .gioithieu-page .gt-overview-cards {
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .gioithieu-page .gioithieu-hero {
     min-height: 70vh;
@@ -1378,6 +1798,21 @@
 
   .gioithieu-page .gioithieu-stats-section {
     padding: 4rem 1.5rem;
+  }
+
+  .gioithieu-page .gt-stats-container.gt-stats-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .gioithieu-page .gt-stats-left .gt-stats-header {
+    text-align: center;
+  }
+
+  .gioithieu-page .gioithieu-stats-grid {
+    max-width: none;
+    margin: 0 auto;
   }
 
   .gioithieu-page .gioithieu-stats {
@@ -1393,6 +1828,60 @@
     font-size: 2.5rem;
   }
 
+  .gioithieu-page .gt-overview-content.gt-overview-layout {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .gioithieu-page .gt-overview.gt-overview-unified {
+    padding: 4rem clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .gioithieu-page .gt-overview-container {
+    gap: 2.5rem;
+  }
+
+  .gioithieu-page .gt-overview-mockup-wrap {
+    justify-content: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .gioithieu-page .gt-overview-mockup {
+    margin: 0;
+    flex: 0 0 auto;
+    max-width: min(92%, 380px);
+  }
+
+  .gioithieu-page .gt-mockup-spacer {
+    flex: 0 0 0;
+    min-width: 0;
+    width: 0;
+    overflow: hidden;
+  }
+
+  .gioithieu-page .gt-mockup-mobile {
+    right: -3%;
+    bottom: 0;
+    width: 30%;
+    height: 100%;
+  }
+
+  .gioithieu-page .gt-overview-cards {
+    padding-left: 0;
+  }
+
+  .gioithieu-page .gt-feature-cards,
+  .gioithieu-page .gt-overview-unified .gt-feature-cards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .gioithieu-page .gt-feature-image-card {
+    min-height: 320px;
+  }
+
   .gioithieu-page .gt-section-heading {
     margin-bottom: 3rem;
   }
@@ -1406,10 +1895,17 @@
     padding: 2rem;
   }
 
-  .gioithieu-page .gt-mission-grid,
   .gioithieu-page .gt-vision-highlights-grid,
   .gioithieu-page .gt-impact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gioithieu-page .gt-mission-slideshow-inner {
+    min-height: 320px;
+  }
+
+  .gioithieu-page .gt-mission-slide-content {
+    padding: 2rem 2rem;
   }
 
   .gioithieu-page .gt-overview-features {
@@ -1453,14 +1949,13 @@
 }
 
 /* Smooth perspective for 3D effects */
-.gt-mission-grid,
+.gt-mission-slideshow,
 .gt-vision-highlights-grid,
 .gt-overview-features {
   perspective: 1000px;
 }
 
 /* Card 3D transform origin */
-.gt-mission-card,
 .gt-vision-card,
 .gt-feature-item {
   transform-style: preserve-3d;
@@ -1481,9 +1976,9 @@
   opacity: 1;
 }
 
-/* Ensure mission title text is visible */
-.gioithieu-page .gt-mission-title {
-  min-height: 1.4em;
+/* Mission slide title visibility */
+.gioithieu-page .gt-mission-slide-title {
+  min-height: 1.3em;
 }
 
 /* Smooth scroll indicator */

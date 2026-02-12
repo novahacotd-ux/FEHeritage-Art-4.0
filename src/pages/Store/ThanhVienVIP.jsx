@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import PaymentMethods from "../../components/PaymentMethods";
 
 export default function ThanhVienVIP() {
+  const navigate = useNavigate();
+  
   // State cho gói chọn, chu kỳ, tự động gia hạn
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [billingCycle, setBillingCycle] = useState("monthly");
   const [autoRenew, setAutoRenew] = useState(false);
+  
+  // State cho thông tin người dùng
+  const [userInfo, setUserInfo] = useState({
+    userName: "",
+    email: "",
+  });
+  
   const discountRate = 0.2;
 
-  // Danh sách gói hội viên
+  // Danh sách gói hội viên - THÊM TIER
   const vipPlans = [
     {
       title: "Miễn Phí (Freemium)",
+      tier: "free",
       priceMonthly: 0,
       benefits: [
         { text: "Tạo ảnh AI giới hạn lượt/ngày", tooltip: "Giới hạn số lượt tạo ảnh mỗi ngày" },
@@ -24,6 +35,7 @@ export default function ThanhVienVIP() {
     },
     {
       title: "Premium Cá Nhân",
+      tier: "premium",
       priceMonthly: 149000,
       benefits: [
         { text: "Tạo ảnh AI không giới hạn", tooltip: "Không giới hạn số lượt tạo ảnh mỗi ngày" },
@@ -36,6 +48,7 @@ export default function ThanhVienVIP() {
     },
     {
       title: "Nhà Bảo Trợ Nghệ Thuật",
+      tier: "patron",
       priceMonthly: 499000,
       benefits: [
         { text: "Tất cả quyền lợi gói Premium", tooltip: "Bao gồm mọi quyền lợi của gói Premium" },
@@ -46,6 +59,7 @@ export default function ThanhVienVIP() {
       color: "from-red-500 to-orange-500",
     },
   ];
+
   // Tổng hợp quyền lợi
   const allBenefits = [
     "Tạo ảnh AI giới hạn lượt/ngày",
@@ -68,6 +82,30 @@ export default function ThanhVienVIP() {
     return plan.priceMonthly * 12 * (1 - discountRate);
   };
 
+  // Hàm tính ngày hết hạn
+  const calculateExpiryDate = (cycle) => {
+    const today = new Date();
+    if (cycle === "monthly") {
+      today.setMonth(today.getMonth() + 1);
+    } else {
+      today.setFullYear(today.getFullYear() + 1);
+    }
+    return today.toISOString().split('T')[0];
+  };
+
+  // Hàm lấy ID tiếp theo
+  const getNextSubscriptionId = () => {
+    const subscriptions = JSON.parse(localStorage.getItem("subscriptions") || "[]");
+    if (subscriptions.length === 0) return 1;
+    const maxId = Math.max(...subscriptions.map(sub => sub.id));
+    return maxId + 1;
+  };
+
+  // Hàm tạo user_id ngẫu nhiên
+  const generateUserId = () => {
+    return Math.floor(1000 + Math.random() * 9000);
+  };
+
   // Chọn gói
   const handleSelectPlan = (plan) => {
     if (plan.priceMonthly === 0) {
@@ -76,14 +114,95 @@ export default function ThanhVienVIP() {
     }
     setSelectedPlan(plan);
     setAutoRenew(false);
+    // Reset thông tin người dùng
+    setUserInfo({ userName: "", email: "" });
   };
 
-  // Thanh toán
+  // Validate thông tin người dùng
+  const validateUserInfo = () => {
+    if (!userInfo.userName.trim()) {
+      alert("⚠️ Vui lòng nhập họ tên!");
+      return false;
+    }
+    if (!userInfo.email.trim()) {
+      alert("⚠️ Vui lòng nhập email!");
+      return false;
+    }
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userInfo.email)) {
+      alert("⚠️ Email không hợp lệ!");
+      return false;
+    }
+    return true;
+  };
+
+  // Thanh toán - LƯU VÀO SUBSCRIPTIONS và CHUYỂN HƯỚNG
   const handlePayment = (method, details) => {
-    alert(
-      `🎉 Cảm ơn bạn đã đăng ký gói "${selectedPlan.title}" (${billingCycle === "monthly" ? "theo tháng" : "theo năm"}) với giá ${details.amount.toLocaleString()}₫ bằng ${method}!\n🔄 Tự động gia hạn: ${autoRenew ? "Bật ✅" : "Tắt ❌"}`
-    );
-    setSelectedPlan(null);
+    // Validate thông tin trước khi thanh toán
+    if (!validateUserInfo()) {
+      return;
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    const expiryDate = calculateExpiryDate(billingCycle);
+
+    // Tạo bản ghi theo cấu trúc AdminVIP
+    const newSubscription = {
+      id: getNextSubscriptionId(),
+      user_id: generateUserId(),
+      userName: userInfo.userName.trim(),
+      userEmail: userInfo.email.trim(),
+      tier: selectedPlan.tier, // "free", "premium", "patron"
+      assignDate: today,
+      expirationDate: expiryDate,
+      cancelled_at: null,
+      next_billing_date: expiryDate,
+      payment_method: method,
+      ai_generation_limit: selectedPlan.tier === "free" ? 10 : -1,
+      ai_generations_used: 0,
+      limit_reset_at: expiryDate,
+      status: "active"
+    };
+
+    // Lấy dữ liệu subscriptions hiện tại
+    const subscriptions = JSON.parse(localStorage.getItem("subscriptions") || "[]");
+    
+    // Thêm subscription mới
+    subscriptions.push(newSubscription);
+    
+    // Lưu lại vào localStorage
+    localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
+
+    // Lưu thông tin VIP vào lastOrder để hiển thị ở Thank You page
+    const vipOrder = {
+      id: `VIP-${Date.now()}`,
+      type: "vip-subscription", // Đánh dấu đây là đơn VIP
+      createdAt: new Date().toISOString(),
+      packageName: selectedPlan.title,
+      packageTier: selectedPlan.tier,
+      billingCycle: billingCycle,
+      customer: {
+        name: userInfo.userName.trim(),
+        email: userInfo.email.trim(),
+      },
+      payment: {
+        amount: getPrice(selectedPlan),
+        method: method,
+        status: "success",
+      },
+      subscription: {
+        assignDate: today,
+        expirationDate: expiryDate,
+        autoRenew: autoRenew,
+      }
+    };
+
+    // Lưu vào lastOrder
+    localStorage.setItem("lastOrder", JSON.stringify(vipOrder));
+
+    // CHUYỂN HƯỚNG THẲNG SANG THANK YOU (không có modal)
+    navigate("/thank-you");
   };
 
   return (
@@ -94,6 +213,7 @@ export default function ThanhVienVIP() {
           Trải nghiệm sáng tạo không giới hạn với hội viên VIP & Premium! 
           Bắt đầu với gói miễn phí, nâng cấp để mở khóa tính năng sáng tạo và quyền thương mại hóa.
         </p>
+        
         {/* Bộ chọn chu kỳ thanh toán */}
         <div className="flex justify-center mb-12">
           <div className="bg-gray-100 p-2 rounded-lg flex">
@@ -111,6 +231,7 @@ export default function ThanhVienVIP() {
             </button>
           </div>
         </div>
+
         {/* Danh sách gói */}
         {!selectedPlan && (
           <>
@@ -126,7 +247,7 @@ export default function ThanhVienVIP() {
                 return (
                   <motion.div
                     key={idx}
-                    className={`relative bg-gradient-to-br ${plan.color} rounded-2xl shadow-lg p-8 text-white transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col h-full`}
+                    className={`relative bg-gradient-to-br ${plan.color} rounded-2xl shadow-lg p-8 text-white transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer`}
                     whileHover={{ scale: 1.03 }}
                     onClick={() => handleSelectPlan(plan)}
                   >
@@ -150,6 +271,7 @@ export default function ThanhVienVIP() {
                 );
               })}
             </div>
+
             {/* Bảng so sánh quyền lợi */}
             <div className="mt-16 overflow-x-auto">
               <table className="min-w-full bg-white rounded-xl shadow-lg border border-gray-200">
@@ -186,23 +308,68 @@ export default function ThanhVienVIP() {
             </div>
           </>
         )}
+
         {/* Giao diện thanh toán */}
         {selectedPlan && selectedPlan.priceMonthly > 0 && (
-          <motion.div className="mt-12 bg-white rounded-xl shadow-lg p-8 text-center max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          <motion.div className="mt-12 bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
               Thanh toán gói <span className="text-orange-600">{selectedPlan.title}</span>
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 mb-6 text-center">
               {billingCycle === "monthly"
                 ? `${selectedPlan.priceMonthly.toLocaleString()}₫ / tháng`
                 : `${getPrice(selectedPlan).toLocaleString()}₫ / năm`}
             </p>
-            <div className="flex items-center justify-center mb-4">
-              <input type="checkbox" id="autoRenew" checked={autoRenew} onChange={(e) => setAutoRenew(e.target.checked)} className="mr-2 w-4 h-4" />
-              <label htmlFor="autoRenew" className="text-gray-700 text-sm">🔄 Gia hạn tự động mỗi kỳ thanh toán</label>
+
+            {/* Form thông tin người dùng */}
+            <div className="mb-6 space-y-4">
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2">
+                  👤 Họ và tên <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Nhập họ và tên của bạn"
+                  value={userInfo.userName}
+                  onChange={(e) => setUserInfo({ ...userInfo, userName: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-2">
+                  📧 Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Nhập email của bạn"
+                  value={userInfo.email}
+                  onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
             </div>
+
+            <div className="flex items-center justify-center mb-6">
+              <input 
+                type="checkbox" 
+                id="autoRenew" 
+                checked={autoRenew} 
+                onChange={(e) => setAutoRenew(e.target.checked)} 
+                className="mr-2 w-4 h-4" 
+              />
+              <label htmlFor="autoRenew" className="text-gray-700 text-sm">
+                🔄 Gia hạn tự động mỗi kỳ thanh toán
+              </label>
+            </div>
+
             <PaymentMethods total={getPrice(selectedPlan)} onPay={handlePayment} />
-            <button onClick={() => setSelectedPlan(null)} className="mt-6 px-6 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition-all">⬅ Quay lại chọn gói</button>
+
+            <button 
+              onClick={() => setSelectedPlan(null)} 
+              className="mt-6 w-full px-6 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition-all"
+            >
+              ⬅ Quay lại chọn gói
+            </button>
           </motion.div>
         )}
       </div>

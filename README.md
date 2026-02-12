@@ -1,16 +1,98 @@
-# React + Vite
+# HA4 - Nền Tảng Văn Hóa & Giáo Dục Việt Nam
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dự án **HA4_FE** là một nền tảng web tương tác, kết hợp công nghệ hiện đại để tôn vinh và giáo dục về văn hóa, lịch sử Việt Nam. Nền tảng cung cấp trải nghiệm đa chiều từ bản đồ di tích lịch sử, công cụ AI sáng tạo nghệ thuật, đến hệ thống quản lý học tập (LMS) và thương mại điện tử.
 
-Currently, two official plugins are available:
+## 🌟 Tính Năng Nổi Bật
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Trải Nghiệm Văn Hóa Số (`/trainghiem`)
 
-## React Compiler
+- **Bản Đồ Di Tích**: Khám phá các địa danh lịch sử (Dinh Độc Lập, Địa đạo Củ Chi, các chùa chiền...) trên bản đồ tương tác.
+- **Thông Tin Chi Tiết**: Cung cấp hình ảnh, mô tả lịch sử, và vị trí địa lý của từng di tích.
+- **Bộ Lọc Thông Minh**: Tìm kiếm địa danh theo thời kỳ (Nguyễn, Pháp thuộc, Hiện đại...) hoặc khu vực.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. AI Sáng Tạo Nghệ Thuật (`/taotranh`)
 
-## Expanding the ESLint configuration
+- **Biến Ảnh Thành Tranh**: Sử dụng công nghệ AI để chuyển đổi ảnh chụp thành các tác phẩm nghệ thuật với nhiều phong cách khác nhau.
+- **Tích Hợp Đa Nền Tảng**: Giới thiệu và liên kết tới các công cụ AI hàng đầu như Midjourney, Stable Diffusion, Bing Image Creator.
+- **Giao Diện Tương Tác**: Thiết kế đẹp mắt với hiệu ứng chuyển động (animations) mượt mà.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 3. Giáo Dục & LMS
+
+- Hệ thống quản lý học tập hỗ trợ giáo dục trực tuyến.
+- Tài liệu và bài học về văn hóa, lịch sử.
+
+### 4. Cửa Hàng & Dịch Vụ
+
+- Tính năng thương mại điện tử để mua sắm các sản phẩm văn hóa, nghệ thuật.
+
+## 🛠️ Công Nghệ Sử Dụng
+
+Dự án được xây dựng trên nền tảng **React** và **Vite**, sử dụng các thư viện hiện đại:
+
+- **Core**: React 19, Vite 7
+- **Styling**: Tailwind CSS 4, CSS Modules
+- **Animations**: Framer Motion, GSAP, AOS (Animate On Scroll)
+- **Routing**: React Router DOM 7
+- **State Management**: React Context API
+- **AI Integration**: OpenAI API, Google GenAI
+- **UI Components**: Lucide React, React Icons, CoreUI
+- **File Handling**: Mammoth (Word), XLSX (Excel)
+
+## 🚀 Cài Đặt & Chạy Dự Án
+
+### Yêu Cầu
+
+- [Node.js](https://nodejs.org/) (Khuyên dùng phiên bản LTS mới nhất)
+
+### Các Bước Cài Đặt
+
+1.  **Clone dự án**
+
+    ```bash
+    git clone <repository-url>
+    cd HA4_FE
+    ```
+
+2.  **Cài đặt dependencies**
+
+    ```bash
+    npm install
+    # hoặc
+    yarn
+    ```
+
+3.  **Chạy môi trường phát triển (Development)**
+
+    ```bash
+    npm run dev
+    ```
+
+    Truy cập vào địa chỉ được cung cấp (thường là `http://localhost:5173`).
+
+4.  **Build cho môi trường sản xuất (Production)**
+    ```bash
+    npm run build
+    ```
+
+## 📂 Cấu Trúc Dự Án
+
+```
+src/
+├── assets/         # Tài nguyên hình ảnh, fonts, icons
+├── components/     # Các component tái sử dụng (Header, Footer, Cards...)
+├── context/        # React Context (Auth, Cart, Settings...)
+├── data/           # Dữ liệu tĩnh (địa danh, danh sách tool AI...)
+├── pages/          # Các trang chính (Home, TraiNghiem, TaoTranh...)
+├── routes/         # Cấu hình routing
+├── services/       # Xử lý gọi API
+├── styles/         # Global styles
+└── utils/          # Các hàm tiện ích
+```
+
+## 🤝 Đóng Góp
+
+Mọi đóng góp đều được hoan nghênh. Vui lòng tạo Pull Request hoặc mở Issue nếu bạn tìm thấy lỗi hoặc muốn đề xuất tính năng mới.
+
+---
+
+_Dự án được phát triển với niềm đam mê văn hóa và công nghệ._
