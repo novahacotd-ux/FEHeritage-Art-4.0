@@ -67,8 +67,7 @@ export const getCommentsByPost = (postId) =>
 export const getCommentById = (commentId) =>
   api.get(`/experience-comments/${commentId}`);
 
-export const getCommentReplies = (commentId) =>
-  api.get(`/experience-comments/${commentId}/replies`);
+
 
 export const createPostComment = (postId, data) => {
   const payload = typeof data === "string" ? { content: data } : data;
@@ -81,8 +80,14 @@ export const updateComment = (commentId, content) =>
 export const deleteComment = (commentId) =>
   api.delete(`/experience-comments/${commentId}`);
 
-export const likeComment = (commentId, action = "like") =>
-  api.post(`/experience-comments/${commentId}/like`, { action });
+// ==================== LIKES ====================
+
+
+export const likeComment = (commentId) => 
+  api.post(`/experience-comments/${commentId}/like`, { action: "like" });
+
+export const unlikeComment = (commentId) => 
+  api.post(`/experience-comments/${commentId}/like`, { action: "unlike" });
 
 // ==================== HISTORICAL PERIODS ====================
 export const getPeriods = () => api.get("/periods");
