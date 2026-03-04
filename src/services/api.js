@@ -54,11 +54,15 @@ api.interceptors.response.use(
               // Retry original request
               return api(originalRequest);
             } catch (refreshError) {
-              // Refresh failed, redirect to login
+              // Refresh failed, clear local auth state
               console.error('Token refresh failed, redirecting to login');
 
-              // Redirect to login nếu không phải trang public
-              if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
+              const wasLoggedIn = !!localStorage.getItem('userProfile');
+              localStorage.removeItem('userProfile');
+              localStorage.removeItem('isLoggedIn');
+
+              // Only redirect to login automatically if the user was previously logged in
+              if (wasLoggedIn && window.location.pathname !== '/login' && window.location.pathname !== '/register') {
                 window.location.href = '/login';
               }
 
