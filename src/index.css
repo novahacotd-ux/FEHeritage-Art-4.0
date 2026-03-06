@@ -12,35 +12,8 @@
   --brand-brown-950: #2e1e10;
 }
 
-* {
-  font-family: "Roboto", sans-serif !important;
-}
-
-/* Trang Giới thiệu: dùng Be Vietnam Pro, ghi đè Roboto toàn cục (dùng id để specificity cao hơn *) */
-#gioithieu-page,
-#gioithieu-page * {
-  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
-}
-
-/* Riêng class chứa "Thành tựu nổi bật" + phụ đề: áp font trực tiếp vào class, gắn !important */
-#gioithieu-page .gt-stats-header.gt-stats-header--top,
-#gioithieu-page .gt-stats-header.gt-stats-header--top * {
-  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
-}
-#gioithieu-page .gt-stats-header.gt-stats-header--top h2 {
-  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
-}
-#gioithieu-page .gt-stats-header.gt-stats-header--top p {
-  font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif !important;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+*{
+  font-family: 'Roboto', sans-serif !important;
 }
 
 /* LMS Input Styling */
@@ -239,6 +212,7 @@
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;

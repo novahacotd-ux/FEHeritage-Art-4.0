@@ -53,141 +53,25 @@ body {
   z-index: -1;
 }
 
-/* ===== CHỈ SỬA PHẦN .content, .content h1 VÀ .subheading ===== */
-
 .content {
   position: relative;
   z-index: 2;
-  padding: 0 20px;
-  max-width: 1400px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
 }
 
-/* ===== FIX H1 - LUÔN XUỐNG DÒNG, KHÔNG BAO GIỜ BỊ GOM VỚI P ===== */
 .content h1 {
-  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 3rem);
-  margin: 0;
+  /* smaller, responsive sizing so the hero heading fits on one line */
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 1rem;
   font-weight: 800;
-  line-height: 1.4;
+  line-height: 1.55;
   color: #ffe5b3;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.342), 0 2px 8px rgba(0, 0, 0, 0.5);
   letter-spacing: 0.01em;
-  max-width: 95%;
+  white-space: nowrap; /* keep text on a single line */
+  overflow: hidden;
+  text-overflow: clip;
+  max-width: 95vw; /* avoid overflowing the viewport */
   font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, Helvetica, Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
-  display: block;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  white-space: normal;
-  text-align: center;
-}
-
-.content h1::before {
-  content: '';
-  position: absolute;
-  padding: 50px 600px;    
-  background-color: rgba(56, 25, 25, 0.112);
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -4;
-  border-radius: 100px;
-}
-
-/* ===== FIX P (SUBHEADING) - LUÔN Ở DƯỚI H1 ===== */
-.subheading {
-  font-size: clamp(1rem, 2vw + 0.2rem, 1.6rem);
-  margin: 0;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #ffe5b3;
-  letter-spacing: 0.03em;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-  display: block;
-  padding: 12px 28px;
-  background: rgba(64, 39, 9, 0.652);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 50px;
-  border: 1px solid rgba(255, 221, 0, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  max-width: 90%;
-  word-wrap: break-word;
-  white-space: normal;
-  text-align: center;
-}
-
-/* ===== RESPONSIVE BREAKPOINTS ===== */
-@media (max-width: 1400px) {
-  .content h1 {
-    font-size: clamp(1.4rem, 2.2vw + 0.5rem, 2.6rem);
-  }
-  .content h1::before {
-    padding: 40px 500px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .content h1 {
-    font-size: clamp(1.3rem, 2vw + 0.5rem, 2.4rem);
-  }
-  .content h1::before {
-    padding: 35px 400px;
-  }
-}
-
-@media (max-width: 992px) {
-  .content h1 {
-    font-size: clamp(1.25rem, 1.8vw + 0.5rem, 2.2rem);
-  }
-  .content h1::before {
-    padding: 30px 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .content h1 {
-    font-size: clamp(1.2rem, 3.5vw, 1.9rem);
-    line-height: 1.5;
-  }
-  .content h1::before {
-    padding: 25px 200px;
-  }
-  
-  .subheading {
-    font-size: clamp(0.95rem, 2.5vw, 1.3rem);
-    padding: 10px 20px;
-  }
-}
-
-@media (max-width: 576px) {
-  .content h1 {
-    font-size: clamp(1.1rem, 4vw, 1.6rem);
-    line-height: 1.6;
-    letter-spacing: 0.005em;
-  }
-  .content h1::before {
-    padding: 20px 150px;
-  }
-  
-  .subheading {
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-    padding: 8px 16px;
-  }
-}
-
-@media (max-width: 400px) {
-  .content h1 {
-    font-size: clamp(1rem, 4.5vw, 1.4rem);
-  }
-  .content h1::before {
-    padding: 15px 100px;
-  }
 }
 
 .subheading {
@@ -198,14 +82,18 @@ body {
   color: #ffe5b3;
   letter-spacing: 0.03em;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.subheading-blur {
   display: inline-block;
   padding: 12px 28px;
-  background: rgba(64, 39, 9, 0.652);
+  background: rgba(28, 18, 8, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 50px;
-  border: 1px solid rgba(255, 221, 0, 0.25);
+  border: 1px solid rgba(255, 215, 0, 0.25);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #ffe5b3;
 }
 
 /* Old generic button (kept for compatibility but not used in hero) */
@@ -1130,318 +1018,18 @@ body {
 
 /* Different background patterns for each section */
 .featured-projects-section {
-  background: linear-gradient(135deg, 
-    rgba(88, 59, 19, 1) 0%, 
-    rgba(102, 67, 32, 0.95) 30%,
-    rgba(115, 74, 45, 0.90) 60%, 
-    rgba(130, 85, 55, 0.85) 100%
-  );
-}
-
-/* Featured Projects: title giữa, 2 cột (chữ | ảnh), nút ở cuối */
-.featured-projects-header {
-  text-align: center;
-  margin-bottom: clamp(40px, 5vw, 56px);
-}
-
-.featured-projects-header .section-tag {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.featured-projects-header .section-subtitle {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.featured-projects-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(40px, 5vw, 72px);
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  align-items: stretch;
-  box-sizing: border-box;
-}
-
-.featured-intro {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-.featured-intro .highlights-grid {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: clamp(16px, 2vw, 24px);
-  flex: 1;
-  min-height: 0;
-}
-
-.featured-media {
-  position: relative;
-  min-width: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-.featured-media .media-frame-enhanced {
-  width: 100%;
-  height: 100%;
-  min-height: 340px;
-  aspect-ratio: 4 / 3;
-}
-
-.featured-media .media-frame-enhanced img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.featured-projects-cta {
-  text-align: center;
-  margin-top: clamp(40px, 5vw, 56px);
-  padding: 0 20px;
-}
-
-.featured-projects-cta .btn-collab {
-  align-self: center;
+  background: linear-gradient(135deg, rgba(28, 18, 8, 0.98) 0%, rgba(52, 35, 20, 0.85) 100%);
+  
 }
 
 .community-section {
-  background: linear-gradient(135deg, 
-    rgba(151, 119, 77, 1) 0%, 
-    rgba(118, 87, 55, 0.92) 50%,
-    rgba(86, 54, 32, 0.85) 100%
-  );
-}
-
-/* Cộng đồng sáng tạo: layout giống Dự án tiêu biểu, ảnh trái – 3 option phải, nút cuối */
-.community-section .section-header {
-  text-align: center;
-}
-
-.community-section-header .section-tag {
-  display: inline-block;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.community-section-header .section-title {
-  text-align: center;
-}
-
-.community-section-header .section-subtitle {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.community-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(40px, 5vw, 72px);
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  align-items: stretch;
-  box-sizing: border-box;
-}
-
-.community-intro {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-.community-intro .highlights-grid {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: clamp(16px, 2vw, 24px);
-  flex: 1;
-  min-height: 0;
-}
-
-.community-media {
-  position: relative;
-  min-width: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-.community-media .media-frame-enhanced {
-  width: 100%;
-  height: 100%;
-  min-height: 340px;
-  aspect-ratio: 4 / 3;
-}
-
-.community-media .media-frame-enhanced img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.community-cta {
-  text-align: center;
-  margin-top: clamp(40px, 5vw, 56px);
-  padding: 0 20px;
-}
-
-.community-cta .btn-collab {
-  align-self: center;
+  background: linear-gradient(225deg, rgba(18, 25, 28, 0.95) 0%, rgba(38, 30, 22, 0.88) 100%);
 }
 
 .contact-section {
-  background: linear-gradient(315deg, rgba(70, 50, 30, 0.96) 0%, rgba(95, 68, 45, 0.90) 100%);
+  background: linear-gradient(315deg, rgba(30, 18, 28, 0.96) 0%, rgba(45, 28, 18, 0.90) 100%);
 }
 
-/* Liên hệ hợp tác: layout giống trên, title giữa, 2 cột (3 option + form | ảnh), đáy bằng nhau */
-.contact-section .section-header {
-  text-align: center;
-}
-
-.contact-section-header .section-tag {
-  display: inline-block;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-section-header .section-title {
-  text-align: center;
-}
-
-.contact-section-header .section-subtitle {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.contact-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(40px, 5vw, 72px);
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
-  align-items: stretch;
-  box-sizing: border-box;
-}
-
-.contact-intro {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-.contact-intro .highlights-grid {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: clamp(16px, 2vw, 24px);
-  flex: 1;
-  min-height: 0;
-}
-
-.contact-media {
-  position: relative;
-  min-width: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-.contact-media .media-frame-enhanced {
-  width: 100%;
-  height: 100%;
-  min-height: 340px;
-  aspect-ratio: 4 / 3;
-}
-
-.contact-media .media-frame-enhanced img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Liên hệ: form đăng ký đặt dưới như nút CTA các section trên */
-.contact-cta {
-  text-align: center;
-  margin-top: clamp(40px, 5vw, 56px);
-  padding: 0 20px;
-}
-
-.contact-cta-form {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.contact-cta-form input {
-  flex: 1 1 260px;
-  min-width: 0;
-  height: 56px;
-  padding: 0 24px;
-  border-radius: 50px;
-  border: 2px solid rgba(255, 215, 0, 0.35);
-  background: rgba(12, 7, 4, 0.85);
-  color: #fff8e1;
-  font-size: 1.05rem;
-  transition: all 0.3s ease;
-}
-
-.contact-cta-form input::placeholder {
-  color: rgba(255, 248, 225, 0.5);
-}
-
-.contact-cta-form input:focus {
-  outline: none;
-  border-color: rgba(255, 215, 0, 0.8);
-  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
-}
-
-.contact-cta-form input[aria-invalid='true'] {
-  border-color: #f87171;
-}
-
-.contact-cta-form .btn-collab.submit {
-  height: 56px;
-  padding: 0 32px;
-  flex-shrink: 0;
-}
-
-.contact-cta-form .collab-form-feedback {
-  width: 100%;
-  text-align: center;
-  margin-top: 8px;
-}
 
 .section-header {
   text-align: left;
@@ -1457,27 +1045,8 @@ body {
   text-align: center;
 }
 
-/* Featured Projects: ép title + heading + mô tả ra giữa (override .section-header) */
-.featured-projects-section .section-header {
-  text-align: center;
-}
-
-.featured-projects-section .section-header .section-tag {
-  display: inline-block;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.featured-projects-section .section-header .section-title {
-  text-align: center;
-}
-
-.featured-projects-section .section-header .section-subtitle {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+.community-section .section-header {
+  text-align: right;
 }
 
 .section-tag {
@@ -1489,22 +1058,19 @@ body {
   color: rgba(255, 237, 153, 0.95);
   margin-bottom: 18px;
   padding: 10px 22px;
-  background: rgba(255, 217, 1, 0.466);
+  background: rgba(255, 215, 0, 0.1);
   border-radius: 20px;
-  border: 1px solid rgba(255, 219, 14, 0.737);
+  border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .section-title {
   font-size: clamp(2.4rem, 5vw, 3.5rem);
   font-weight: 800;
-  background: rgba(238, 219, 140);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffed99;
   letter-spacing: 0.02em;
   margin: 0 0 22px;
   line-height: 1.25;
-  text-shadow: none; /* Remove text-shadow vì nó không hoạt động với gradient text */
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .section-subtitle {
@@ -1525,7 +1091,12 @@ body {
   text-align: right;
 }
 
-/* Community section: subtitle đã căn giữa trong .community-section-header .section-subtitle */
+/* Community section header is right-aligned; subtitle should align to the right but keep compact */
+.community-section .section-subtitle {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
 
 /* Content Layout */
 .collab-content {
@@ -1536,9 +1107,7 @@ body {
   gap: clamp(40px, 5vw, 80px);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 20px;
-  align-items: start;
-  box-sizing: border-box;
+  align-items: stretch;
 }
 
 .collab-content.reversed {
@@ -1786,15 +1355,15 @@ body {
 .collab-media-block {
   position: relative;
   display: flex;
-  align-items: flex-start;
-  width: 100%;
+  align-items: center;
+  height: 100%;
 }
 
 .media-frame-enhanced {
   position: relative;
   width: 100%;
-  min-height: 420px;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  min-height: 400px;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4);
@@ -1850,62 +1419,6 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
-  .featured-projects-body {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .community-body {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .community-media .media-frame-enhanced {
-    min-height: 320px;
-  }
-
-  .community-cta {
-    margin-top: 40px;
-  }
-
-  .contact-body {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .contact-media .media-frame-enhanced {
-    min-height: 320px;
-  }
-
-  .contact-cta-form {
-    flex-direction: column;
-    width: 100%;
-    max-width: 340px;
-  }
-
-  .contact-cta-form input,
-  .contact-cta-form .btn-collab.submit {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .featured-media .media-frame-enhanced {
-    min-height: 320px;
-  }
-
-  .featured-projects-cta {
-    margin-top: 40px;
-  }
-
   .collab-content,
   .collab-content.reversed,
   .collab-content.contact-layout {
@@ -1978,10 +1491,6 @@ body {
     padding: 14px 24px;
   }
 
-  .contact-cta-form {
-    max-width: 320px;
-  }
-
   .contact-form-wrapper {
     padding: 24px;
   }
@@ -2050,20 +1559,5 @@ body {
 
   .form-title {
     font-size: 1.45rem;
-  }
-
-  .contact-cta-form {
-    max-width: 280px;
-  }
-
-  .contact-cta-form input {
-    height: 48px;
-    padding: 0 20px;
-    font-size: 1rem;
-  }
-
-  .contact-cta-form .btn-collab.submit {
-    height: 48px;
-    padding: 0 24px;
   }
 }

@@ -9,6 +9,7 @@ import tuivaicanvas from '../assets/tuivaicanvas.jpeg';
 import aothunhue from '../assets/aothunhue.jpeg';
 import tranhmini from '../assets/tranhmini.jpg';
 import balocanvas from '../assets/balocanvas.jpg';
+import fileanh from '../assets/fileanh.jpg';
 
 export const souvenirSamples = [
   {
@@ -82,9 +83,9 @@ export const souvenirSamples = [
       "File PSD": 150000,
     },
     images: {
-      "File JPG": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=500",
-      "File PNG": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=500",
-      "File PSD": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=500",
+      "File JPG": fileanh,
+      "File PNG": fileanh,
+      "File PSD": fileanh,
     },
     details: {
       warrantyType: "Không áp dụng",

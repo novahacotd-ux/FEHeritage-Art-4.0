@@ -1,64 +1,34 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import {
-  Home,
-  HomeEvent,
-  Events,
-  News,
-  EventDetail,
-  NewsDetail,
-  EventRegistration,
-  VanHoaLichSu,
-  PhanTichGocNhin,
-  Forum,
-  TraiNghiem,
-  TaoTranh,
-  CongNghe,
-  GiaoDuc,
-  BaiGiangMinhHoa,
-  BaiGiangDetail,
-  TaiLieuBaiGiang,
-  TaiLieuDetail,
-  BaiHocMinhHoaDetail,
-  VirtualChronicle,
-  InfoPage,
-  FriendsPage,
-  ContactPage,
-  Settings,
-  Guides,
-  Contact,
-  LoginPage,
-  RegisterPage,
-} from "../pages";
-import AppLayout from "../components/layouts/AppLayout.jsx";
-import MainLayout from "../components/layouts/MainLayout.jsx";
-import Cart from "../components/Cart.jsx";
-import Checkout from "../pages/Store/Checkout.jsx";
-import MuaTranhIn from "../pages/Store/MuaTranhIn.jsx";
-import ChiTietTranh from "../pages/Store/ChiTietTranh.jsx";
-import DonatUngHo from "../pages/Store/DonatUngHo.jsx";
-import ThanhVienVIP from "../pages/Store/ThanhVienVIP.jsx";
-import ThankYou from "../pages/Store/ThankYou.jsx";
-import HeroesList from "../pages/Events-News/HeroesList.jsx";
-import SurveyPage from "../pages/SurveyPage";
-import TrangChu from "../pages/Home/Home.jsx";
-import GioiThieu from "../pages/GioiThieu/GioiThieu.jsx";
-import TrienLam from "../pages/TrienLam/TrienLam.jsx";
+import { Home, HomeEvent, Events, News, EventDetail, NewsDetail, EventRegistration, VanHoaLichSu, PhanTichGocNhin, Forum, TraiNghiem, TaoTranh, CongNghe, GiaoDuc, BaiGiangMinhHoa, BaiGiangDetail, TaiLieuBaiGiang, TaiLieuDetail, BaiHocMinhHoaDetail, VirtualChronicle, InfoPage, FriendsPage, ContactPage, Settings, Guides, Contact, LoginPage, RegisterPage } from '../pages'
+import AppLayout from '../components/layouts/AppLayout.jsx';
+import MainLayout from '../components/layouts/MainLayout.jsx';
+import Cart from '../components/Cart.jsx';
+import Checkout from '../pages/Store/Checkout.jsx';
+import MuaTranhIn from '../pages/Store/MuaTranhIn.jsx';
+import ChiTietTranh from '../pages/Store/ChiTietTranh.jsx';
+import DonatUngHo from '../pages/Store/DonatUngHo.jsx';
+import ThanhVienVIP from '../pages/Store/ThanhVienVIP.jsx';
+import ThankYou from '../pages/Store/ThankYou.jsx';
+import HeroesList from '../pages/Events-News/HeroesList.jsx';
+import SurveyPage from '../pages/SurveyPage';
+import TrangChu from '../pages/Home/Home.jsx';
+import GioiThieu from '../pages/GioiThieu/GioiThieu.jsx';
 
 // LMS Components
-import TeacherDashboard from "../pages/LMS/Teacher/TeacherDashboard";
-import AssignmentCreator from "../pages/LMS/Teacher/AssignmentCreator";
-import CourseCreator from "../pages/LMS/Teacher/CourseCreator";
-import CourseDetail from "../pages/LMS/Teacher/CourseDetail";
-import LessonCreator from "../pages/LMS/Teacher/LessonCreator";
-import StudentDashboard from "../pages/LMS/Student/StudentDashboard";
-import StudentAssignmentView from "../pages/LMS/Student/StudentAssignmentViewNew";
-import StudentCourseView from "../pages/LMS/Student/StudentCourseView";
-import StudentLessonView from "../pages/LMS/Student/StudentLessonView";
-import StudentAssignmentDetail from "../pages/LMS/Student/StudentAssignmentDetail";
-import TeacherLessonDetail from "../pages/LMS/Teacher/TeacherLessonDetail";
-import TeacherAssignmentDetail from "../pages/LMS/Teacher/TeacherAssignmentDetail";
-import UploadTaiLieu from "../pages/giaoDuc/UploadTaiLieu.jsx";
+import TeacherDashboard from '../pages/LMS/Teacher/TeacherDashboard';
+import AssignmentCreator from '../pages/LMS/Teacher/AssignmentCreator';
+import CourseCreator from '../pages/LMS/Teacher/CourseCreator';
+import CourseDetail from '../pages/LMS/Teacher/CourseDetail';
+import LessonCreator from '../pages/LMS/Teacher/LessonCreator';
+import StudentDashboard from '../pages/LMS/Student/StudentDashboard';
+import StudentAssignmentView from '../pages/LMS/Student/StudentAssignmentViewNew';
+import StudentCourseView from '../pages/LMS/Student/StudentCourseView';
+import StudentLessonView from '../pages/LMS/Student/StudentLessonView';
+import StudentAssignmentDetail from '../pages/LMS/Student/StudentAssignmentDetail';
+import TeacherLessonDetail from '../pages/LMS/Teacher/TeacherLessonDetail';
+import TeacherAssignmentDetail from '../pages/LMS/Teacher/TeacherAssignmentDetail';
+import UploadTaiLieu from '../pages/giaoDuc/UploadTaiLieu.jsx';
 
 //Admin Components
 import AdminLayout from '../components/layouts/AdminLayout.jsx';
@@ -75,6 +45,7 @@ import AdminDonate from '../pages/admin/AdminDonate.jsx';
 import AdminVIP from '../pages/admin/AdminVIP.jsx';
 import AdminProducts from '../pages/admin/AdminProducts.jsx';
 import AdminPurchaseHistory from '../pages/admin/AdminPurchaseHistory.jsx';
+import DoLuuNiem from '../pages/Store/DoLuuNiem.jsx';
 
 
 const router = createBrowserRouter([
@@ -89,207 +60,207 @@ const router = createBrowserRouter([
             element: <TrangChu />,
           },
           {
-            path: "events-news",
+            path: 'events-news',
             element: <HomeEvent />,
           },
           {
-            path: "gioithieu",
+            path: 'gioithieu',
             element: <GioiThieu />,
           },
           {
-            path: "events/:eventId",
+            path: 'events/:eventId',
             element: <EventDetail />,
           },
           {
-            path: "events/:eventId/register",
+            path: 'events/:eventId/register',
             element: <EventRegistration />,
           },
           {
-            path: "news",
+            path: 'news',
             element: <News />,
           },
           {
-            path: "news/:newsId",
+            path: 'news/:newsId',
             element: <NewsDetail />,
           },
           {
-            path: "vanhoalichsu",
+            path: 'vanhoalichsu',
             element: <VanHoaLichSu />,
           },
           {
-            path: "heroes",
+            path: 'heroes',
             element: <HeroesList />,
           },
           {
-            path: "phantichgocnhin",
+            path: 'phantichgocnhin',
             element: <PhanTichGocNhin />,
           },
           {
-            path: "forum",
+            path: 'forum',
             element: <Forum />,
           },
           {
-            path: "giaoduc",
+            path: 'giaoduc',
             element: <GiaoDuc />,
           },
           {
-            path: "bai-giang-minh-hoa",
+            path: 'bai-giang-minh-hoa',
             element: <BaiGiangMinhHoa />,
           },
           {
-            path: "tai-lieu-bai-giang",
+            path: 'tai-lieu-bai-giang',
             element: <TaiLieuBaiGiang />,
           },
           {
-            path: "bai-giang/:id",
+            path: 'bai-giang/:id',
             element: <BaiGiangDetail />,
           },
           {
-            path: "tai-lieu/:id",
+            path: 'tai-lieu/:id',
             element: <TaiLieuDetail />,
           },
           {
-            path: "bai-hoc-minh-hoa/:id",
+            path: 'bai-hoc-minh-hoa/:id',
             element: <BaiHocMinhHoaDetail />,
           },
           {
-            path: "virtual-chronicle",
+            path: 'virtual-chronicle',
             element: <VirtualChronicle />,
           },
           // LMS Routes - Teacher
           {
-            path: "lms/teacher/dashboard",
+            path: 'lms/teacher/dashboard',
             element: <TeacherDashboard />,
           },
           {
-            path: "lms/teacher/assignments/new",
+            path: 'lms/teacher/assignments/new',
             element: <AssignmentCreator />,
           },
           {
-            path: "lms/teacher/courses/new",
+            path: 'lms/teacher/courses/new',
             element: <CourseCreator />,
           },
           {
-            path: "lms/teacher/courses/:courseId",
+            path: 'lms/teacher/courses/:courseId',
             element: <CourseDetail />,
           },
           {
-            path: "lms/teacher/courses/:courseId/lessons/new",
+            path: 'lms/teacher/courses/:courseId/lessons/new',
             element: <LessonCreator />,
           },
           {
-            path: "lms/teacher/courses/:courseId/lessons/:lessonId",
+            path: 'lms/teacher/courses/:courseId/lessons/:lessonId',
             element: <TeacherLessonDetail />,
           },
           {
-            path: "lms/teacher/assignments/:assignmentId",
+            path: 'lms/teacher/assignments/:assignmentId',
             element: <TeacherAssignmentDetail />,
           },
           // LMS Routes - Student
           {
-            path: "lms/student/dashboard",
+            path: 'lms/student/dashboard',
             element: <StudentDashboard />,
           },
           {
-            path: "lms/student/assignments/:assignmentId/detail",
+            path: 'lms/student/assignments/:assignmentId/detail',
             element: <StudentAssignmentDetail />,
           },
           {
-            path: "lms/student/assignments/:assignmentId",
+            path: 'lms/student/assignments/:assignmentId',
             element: <StudentAssignmentView />,
           },
           {
-            path: "lms/student/courses/:courseId",
+            path: 'lms/student/courses/:courseId',
             element: <StudentCourseView />,
           },
           {
-            path: "lms/student/courses/:courseId/lessons/:lessonId",
+            path: 'lms/student/courses/:courseId/lessons/:lessonId',
             element: <StudentLessonView />,
           },
           {
-            path: "survey/:courseId",
+            path: 'survey/:courseId',
             element: <SurveyPage />,
           },
           {
-            path: "upload-tai-lieu",
+            path: 'upload-tai-lieu',
             element: <UploadTaiLieu />,
           },
           {
-            path: "trainghiem",
+            path: 'trainghiem',
             element: <TraiNghiem />,
           },
           {
-            path: "trienlam",
-            element: <TrienLam />,
-          },
-          {
-            path: "taotranh",
+            path: 'taotranh',
             element: <TaoTranh />,
           },
           {
-            path: "congngheai",
+            path: 'congngheai',
             element: <CongNghe />,
           },
           // Store Routes
           {
-            path: "mua-tranh-in",
+            path: 'mua-tranh-in',
             element: <MuaTranhIn />,
           },
           {
-            path: "chi-tiet/:id",
+            path: 'do-luu-niem',
+            element: <DoLuuNiem />,
+          },
+          {
+            path: 'chi-tiet/:id',
             element: <ChiTietTranh />,
           },
           {
-            path: "cart",
+            path: 'cart',
             element: <Cart />,
           },
           {
-            path: "donat-ung-ho",
+            path: 'donat-ung-ho',
             element: <DonatUngHo />,
           },
           {
-            path: "thanh-vien-vip",
+            path: 'thanh-vien-vip',
             element: <ThanhVienVIP />,
           },
           {
-            path: "checkout",
+            path: 'checkout',
             element: <Checkout />,
           },
           {
-            path: "thank-you",
+            path: 'thank-you',
             element: <ThankYou />,
           },
           // Account & Support Pages
           {
-            path: "info",
+            path: 'info',
             element: <InfoPage />,
           },
           {
-            path: "friends",
+            path: 'friends',
             element: <FriendsPage />,
           },
           {
-            path: "contact-page",
+            path: 'contact-page',
             element: <ContactPage />,
           },
           {
-            path: "settings",
+            path: 'settings',
             element: <Settings />,
           },
           {
-            path: "guides",
+            path: 'guides',
             element: <Guides />,
           },
           {
-            path: "contact",
+            path: 'contact',
             element: <Contact />,
           },
           {
-            path: "login",
+            path: 'login',
             element: <LoginPage />,
           },
           {
-            path: "register",
+            path: 'register',
             element: <RegisterPage />,
           },
         ],
@@ -297,7 +268,7 @@ const router = createBrowserRouter([
 
       // Admin Routes
       {
-        path: "admin",
+        path: 'admin',
         element: <AdminLayout />,
         children: [
           {
@@ -334,7 +305,7 @@ const router = createBrowserRouter([
           { path: 'viewpoint',
              element: <AdminGocNhin /> },
           {
-            path: "forum",
+            path: 'forum',
             element: <AdminForum />,
           },
           {
@@ -357,15 +328,11 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "*",
+        path: '*',
         element: (
           <div className="mx-auto max-w-6xl px-4 py-24 text-center">
-            <h1 className="text-4xl font-serif font-semibold text-brand-brown-900">
-              404 - Không tìm thấy trang
-            </h1>
-            <p className="mt-4 text-brand-brown-600">
-              Trang bạn đang tìm kiếm không tồn tại.
-            </p>
+            <h1 className="text-4xl font-serif font-semibold text-brand-brown-900">404 - Không tìm thấy trang</h1>
+            <p className="mt-4 text-brand-brown-600">Trang bạn đang tìm kiếm không tồn tại.</p>
           </div>
         ),
       },

@@ -2500,6 +2500,7 @@ const initialData = [
 
 const ITEMS_PER_PAGE = 10;
 
+
 const statuses = [
     { value: "published", label: "Đã duyệt" },
     { value: "pending", label: "Chờ duyệt" },
@@ -2524,7 +2525,6 @@ const provincesVN = [
 const periods = ['Tiền sử', 'Nguyễn', 'Pháp thuộc', 'Hiện đại', 'Hùng Vương', 'Lý', 'Trần', 'Lê', 'Hồ'];
 const regions = ['Nam', 'Trung', 'Bắc'];
 
-// DI TÍCH
 const initialFormState = {
     name: "",
     description: "",
@@ -2538,7 +2538,7 @@ const initialFormState = {
     lng: '',
 };
 
-// ẨM THỰC
+// cho tab ẩm thực
 const initialFoodFormState = {
     name: "",
     description: "",
@@ -2551,33 +2551,7 @@ const initialFoodFormState = {
     lng: '',
 };
 
-// DU LỊCH
-const initialTravelFormState = {
-    name: "",
-    description: "",
-    images: [],
-    region: "Nam",
-    province: "",
-    type: "travel",
-    status: "pending",
-    lat: '',
-    lng: '',
-};
-
-// KHÁCH SẠN
-const initialHotelFormState = {
-    name: "",
-    description: "",
-    images: [],
-    region: "Nam",
-    province: "",
-    type: "hotel",
-    status: "pending",
-    lat: '',
-    lng: '',
-};
-
-// --- mock dữ liệu Ẩm thực ---
+// ---  mock ẩm thực ---
 const mockFoodData = [
     {
         name: "Bánh xèo",
@@ -2619,170 +2593,49 @@ const mockFoodData = [
         lng: '',
     }
 ];
-// --- mock dữ liệu du lịch ---
-const mockTravelData = [
-    {
-        name: "Cầu Rồng Đà Nẵng",
-        description: "Điểm tham quan biểu tượng của Đà Nẵng, nổi bật với kiến trúc hình rồng bắc qua sông Hàn.",
-        images: [
-            "https://asiatours.travel/images/pages/thumbnails/da-nang-cau-rong-dragon-bridge.jpg"
-        ],
-        region: "Trung",
-        province: "Đà Nẵng",
-        type: "travel",
-        status: "published",
-        lat: '',
-        lng: ''
-    },
-    {
-        name: "Thác Datanla Đà Lạt",
-        description: "Khu du lịch nổi tiếng với cảnh quan rừng thông và dòng thác mạnh mẽ.",
-        images: [
-            "https://static.vinwonders.com/2023/01/thac-datanla-1.jpg"
-        ],
-        region: "Nam",
-        province: "Lâm Đồng",
-        type: "travel",
-        status: "published",
-        lat: '',
-        lng: ''
-    }
-];
-
-// --- mock dữ liệu khách sạn ---
-const mockHotelData = [
-    {
-        name: "Hotel Continental Saigon",
-        description: "Khách sạn lâu đời, kiến trúc Pháp, nằm tại trung tâm Quận 1, TP. Hồ Chí Minh.",
-        images: [
-            "https://cf.bstatic.com/xdata/images/hotel/max1024x768/51234090.jpg"
-        ],
-        region: "Nam",
-        province: "TP. Hồ Chí Minh",
-        type: "hotel",
-        status: "published",
-        lat: '',
-        lng: ''
-    },
-    {
-        name: "Silk Path Grand Resort & Spa Sa Pa",
-        description: "Khách sạn 5 sao đẳng cấp giữa rừng núi Sa Pa, view đẹp, tiện nghi hiện đại.",
-        images: [
-            "https://static.asiawebdirect.com/m/phuket/portals/hanoi-hotels-com-vn/homepage/vietnam-hotels/sapa/silk-path-grand-resort-and-spa-sapa/alllargeimage/silk-path-grand-resort-spa-sapa.jpg"
-        ],
-        region: "Bắc",
-        province: "Lào Cai",
-        type: "hotel",
-        status: "published",
-        lat: '',
-        lng: ''
-    }
-];
 
 const TABS = [
     { key: "heritage", label: "Bài Viết Di Tích" },
-    { key: "food", label: "Bài Viết Ẩm Thực" },
-    { key: "travel", label: "Bài Viết Du Lịch" },
-    { key: "hotel", label: "Bài Viết Khách Sạn" },
+    { key: "food", label: "Bài Viết Ẩm Thực" }
 ];
 
-const EditPromptButton = ({ onClick }) => (
-    <button
-        className="w-9 h-9 flex items-center justify-center bg-yellow-50 border border-yellow-200 rounded-full shadow-md hover:bg-yellow-100 group/action transition"
-        title="Chỉnh sửa"
-        type="button"
-        onClick={onClick}
-    >
-        <svg
-            className="w-5 h-5 text-yellow-600"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2.2}
-            viewBox="0 0 24 24"
-        >
-            <path
-                d="M15.232 5.232l3.536 3.536M9 13l6.207-6.207c.39-.39 1.024-.39 1.414 0l2.586 2.586c.39.39.39 1.024 0 1.414L13 17H9v-4z"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
-    </button>
-);
-
 const AdminTraiNghiem = () => {
-    // Phân loại
-    const [tab, setTab] = useState("heritage");
-
     // Di tích
+    const [tab, setTab] = useState("heritage");
     const [data, setData] = useState(
         (initialData || [])
-            .filter(item => item.type === "heritage" || !item.type)
+            .filter(item => item.type !== "food") // Loại bỏ ẩm thực ra khỏi tab di tích
             .map(item =>
                 item.status
                     ? item
                     : { ...item, status: "pending" }
             )
     );
-
     // Ẩm thực 
     const [foodData, setFoodData] = useState(
         [
             ...mockFoodData,
-            ...((initialData || []).filter(item => item.type === "food")
-                .map(item =>
-                    item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
+            ...((initialData || []).filter(item => item.type === "food").map(item =>
+                item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
         ]
     );
-
-    // Du lịch
-    const [travelData, setTravelData] = useState(
-        [
-            ...mockTravelData,
-            ...((initialData || []).filter(item => item.type === "travel")
-                .map(item =>
-                    item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
-        ]
-    );
-
-    // Khách sạn
-    const [hotelData, setHotelData] = useState(
-        [
-            ...mockHotelData,
-            ...((initialData || []).filter(item => item.type === "hotel")
-                .map(item =>
-                    item.status ? item : { ...item, status: "pending", lat: '', lng: '' }))
-        ]
-    );
-
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
 
-    // form Di tích
+    // for monument
     const [isAdding, setIsAdding] = useState(false);
     const [editingIndex, setEditingIndex] = useState(null);
     const [formData, setFormData] = useState(initialFormState);
     const [imagePreview, setImagePreview] = useState([]);
 
-    // form Ẩm thực
+    // for food
     const [isAddingFood, setIsAddingFood] = useState(false);
     const [editingFoodIndex, setEditingFoodIndex] = useState(null);
     const [foodFormData, setFoodFormData] = useState(initialFoodFormState);
     const [foodImagePreview, setFoodImagePreview] = useState([]);
 
-    // form Du lịch
-    const [isAddingTravel, setIsAddingTravel] = useState(false);
-    const [editingTravelIndex, setEditingTravelIndex] = useState(null);
-    const [travelFormData, setTravelFormData] = useState(initialTravelFormState);
-    const [travelImagePreview, setTravelImagePreview] = useState([]);
-
-    // form Khách sạn
-    const [isAddingHotel, setIsAddingHotel] = useState(false);
-    const [editingHotelIndex, setEditingHotelIndex] = useState(null);
-    const [hotelFormData, setHotelFormData] = useState(initialHotelFormState);
-    const [hotelImagePreview, setHotelImagePreview] = useState([]);
-
     // ---------- HANDLE IMAGE UPLOAD (MULTI IMAGES) ----------
-    const handleImageUpload = (e, type = "heritage") => {
+    const handleImageUpload = (e, isFood = false) => {
         const files = Array.from(e.target.files);
         const validFiles = files.filter((file) => file.type.startsWith("image/"));
         if (validFiles.length !== files.length) {
@@ -2798,15 +2651,9 @@ const AdminTraiNghiem = () => {
                 })
             )
         ).then((imageUrls) => {
-            if (type === "food") {
+            if (isFood) {
                 setFoodFormData((prev) => ({ ...prev, images: imageUrls }));
                 setFoodImagePreview(imageUrls);
-            } else if (type === "travel") {
-                setTravelFormData((prev) => ({ ...prev, images: imageUrls }));
-                setTravelImagePreview(imageUrls);
-            } else if (type === "hotel") {
-                setHotelFormData((prev) => ({ ...prev, images: imageUrls }));
-                setHotelImagePreview(imageUrls);
             } else {
                 setFormData((prev) => ({ ...prev, images: imageUrls }));
                 setImagePreview(imageUrls);
@@ -2814,19 +2661,11 @@ const AdminTraiNghiem = () => {
         });
     };
 
-    const removeImage = (index, type = "heritage") => {
-        if (type === "food") {
+    const removeImage = (index, isFood = false) => {
+        if (isFood) {
             const newImages = foodFormData.images.filter((_, i) => i !== index);
             setFoodFormData((prev) => ({ ...prev, images: newImages }));
             setFoodImagePreview(newImages);
-        } else if (type === "travel") {
-            const newImages = travelFormData.images.filter((_, i) => i !== index);
-            setTravelFormData((prev) => ({ ...prev, images: newImages }));
-            setTravelImagePreview(newImages);
-        } else if (type === "hotel") {
-            const newImages = hotelFormData.images.filter((_, i) => i !== index);
-            setHotelFormData((prev) => ({ ...prev, images: newImages }));
-            setHotelImagePreview(newImages);
         } else {
             const newImages = formData.images.filter((_, i) => i !== index);
             setFormData((prev) => ({ ...prev, images: newImages }));
@@ -2834,22 +2673,42 @@ const AdminTraiNghiem = () => {
         }
     };
 
-    // FILTER & PAGINATION
+    // FILTER & PAGINATION 
+  
     const getFilteredData = () => {
-        let dataSet;
-        if (tab === "heritage") dataSet = data;
-        else if (tab === "food") dataSet = foodData;
-        else if (tab === "travel") dataSet = travelData;
-        else if (tab === "hotel") dataSet = hotelData;
-        else dataSet = [];
-        return dataSet.filter((item) => {
-            const isVisible = item.status !== "hidden";
-            const match =
-                (item.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
-                (item.province || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
-                (item.region || "").toLowerCase().includes(searchTerm.toLowerCase());
-            return isVisible && match;
-        });
+        if (tab === "heritage") {
+            
+            return data.filter((item) => {
+                const isVisible = item.status !== "hidden";
+                const match =
+                    (item.name || "")
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                    (item.province || "")
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                    (item.region || "")
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase());
+                return isVisible && match;
+            });
+        } else {
+            // Ẩm thực: search đúng trên foodData
+            return foodData.filter((item) => {
+                const isVisible = item.status !== "hidden";
+                const match =
+                    (item.name || "")
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                    (item.province || "")
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                    (item.region || "")
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase());
+                return isVisible && match;
+            });
+        }
     };
 
     const filteredData = getFilteredData();
@@ -2858,7 +2717,7 @@ const AdminTraiNghiem = () => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const currentData = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-    // --- Thêm/Sửa DI TÍCH ---
+    // ADD OR UPDATE HANDLER
     const handleAddOrUpdate = () => {
         if (!formData.name.trim()) {
             toast.error("Vui lòng nhập: Tên di tích!");
@@ -2912,7 +2771,7 @@ const AdminTraiNghiem = () => {
         resetForm();
     };
 
-    // --- Thêm/Sửa ẨM THỰC ---
+    // ADD OR UPDATE HANDLER FOOD
     const handleAddOrUpdateFood = () => {
         if (!foodFormData.name.trim()) {
             toast.error("Vui lòng nhập: Tên món ăn!");
@@ -2965,123 +2824,13 @@ const AdminTraiNghiem = () => {
         resetFoodForm();
     };
 
-    // --- Thêm/Sửa DU LỊCH ---
-    const handleAddOrUpdateTravel = () => {
-        if (!travelFormData.name.trim()) {
-            toast.error("Vui lòng nhập: Tên điểm du lịch!");
-            return;
-        }
-        if (!travelFormData.province.trim()) {
-            toast.error("Vui lòng nhập: Tỉnh/Thành phố!");
-            return;
-        }
-        if (!travelFormData.description.trim()) {
-            toast.error("Vui lòng nhập: Mô tả điểm du lịch!");
-            return;
-        }
-        if (!travelFormData.images || travelFormData.images.length === 0) {
-            toast.error("Vui lòng upload ít nhất một hình ảnh!");
-            return;
-        }
-        if (!travelFormData.status) {
-            toast.error("Vui lòng chọn trạng thái bài viết!");
-            return;
-        }
-        if (!travelFormData.lat.trim()) {
-            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
-            return;
-        }
-        if (!travelFormData.lng.trim()) {
-            toast.error("Vui lòng nhập: Kinh độ (lng)!");
-            return;
-        }
-        const newItem = {
-            name: travelFormData.name.trim(),
-            province: travelFormData.province.trim(),
-            description: travelFormData.description.trim(),
-            images: travelFormData.images,
-            region: travelFormData.region,
-            type: "travel",
-            status: travelFormData.status,
-            lat: travelFormData.lat.trim(),
-            lng: travelFormData.lng.trim(),
-        };
-        if (editingTravelIndex !== null) {
-            const updated = [...travelData];
-            updated[editingTravelIndex] = newItem;
-            setTravelData(updated);
-            toast.success("Cập nhật bài viết du lịch thành công!");
-        } else {
-            setTravelData([...travelData, newItem]);
-            toast.success("Thêm bài viết du lịch thành công!");
-        }
-        resetTravelForm();
-    };
-
-    // --- Thêm/Sửa KHÁCH SẠN ---
-    const handleAddOrUpdateHotel = () => {
-        if (!hotelFormData.name.trim()) {
-            toast.error("Vui lòng nhập: Tên khách sạn!");
-            return;
-        }
-        if (!hotelFormData.province.trim()) {
-            toast.error("Vui lòng nhập: Tỉnh/Thành phố!");
-            return;
-        }
-        if (!hotelFormData.description.trim()) {
-            toast.error("Vui lòng nhập: Mô tả khách sạn!");
-            return;
-        }
-        if (!hotelFormData.images || hotelFormData.images.length === 0) {
-            toast.error("Vui lòng upload ít nhất một hình ảnh!");
-            return;
-        }
-        if (!hotelFormData.status) {
-            toast.error("Vui lòng chọn trạng thái bài viết!");
-            return;
-        }
-        if (!hotelFormData.lat.trim()) {
-            toast.error("Vui lòng nhập: Vĩ độ (lat)!");
-            return;
-        }
-        if (!hotelFormData.lng.trim()) {
-            toast.error("Vui lòng nhập: Kinh độ (lng)!");
-            return;
-        }
-        const newItem = {
-            name: hotelFormData.name.trim(),
-            province: hotelFormData.province.trim(),
-            description: hotelFormData.description.trim(),
-            images: hotelFormData.images,
-            region: hotelFormData.region,
-            type: "hotel",
-            status: hotelFormData.status,
-            lat: hotelFormData.lat.trim(),
-            lng: hotelFormData.lng.trim(),
-        };
-        if (editingHotelIndex !== null) {
-            const updated = [...hotelData];
-            updated[editingHotelIndex] = newItem;
-            setHotelData(updated);
-            toast.success("Cập nhật bài viết khách sạn thành công!");
-        } else {
-            setHotelData([...hotelData, newItem]);
-            toast.success("Thêm bài viết khách sạn thành công!");
-        }
-        resetHotelForm();
-    };
-
-    // XÓA
+    // DELETE HANDLER
     const handleDelete = (index) => {
         if (window.confirm("Bạn có chắc muốn xóa bài viết này không?")) {
             if (tab === "heritage") {
                 setData(data.filter((_, i) => i !== index));
-            } else if (tab === "food") {
+            } else {
                 setFoodData(foodData.filter((_, i) => i !== index));
-            } else if (tab === "travel") {
-                setTravelData(travelData.filter((_, i) => i !== index));
-            } else if (tab === "hotel") {
-                setHotelData(hotelData.filter((_, i) => i !== index));
             }
             toast.success("Xóa bài viết thành công!");
             if (currentData.length === 1 && currentPage > 1) {
@@ -3090,7 +2839,7 @@ const AdminTraiNghiem = () => {
         }
     };
 
-    // SỬA
+    // EDIT HANDLER
     const startEdit = (index) => {
         if (tab === "heritage") {
             const item = data[index];
@@ -3109,7 +2858,7 @@ const AdminTraiNghiem = () => {
             });
             setImagePreview(item.images || []);
             setIsAdding(true);
-        } else if (tab === "food") {
+        } else {
             const item = foodData[index];
             setEditingFoodIndex(index);
             setFoodFormData({
@@ -3125,75 +2874,30 @@ const AdminTraiNghiem = () => {
             });
             setFoodImagePreview(item.images || []);
             setIsAddingFood(true);
-        } else if (tab === "travel") {
-            const item = travelData[index];
-            setEditingTravelIndex(index);
-            setTravelFormData({
-                name: item.name || "",
-                description: item.description || "",
-                images: item.images || [],
-                region: item.region || "Nam",
-                province: item.province || "",
-                type: item.type || "travel",
-                status: item.status || "pending",
-                lat: item.lat || '',
-                lng: item.lng || '',
-            });
-            setTravelImagePreview(item.images || []);
-            setIsAddingTravel(true);
-        } else if (tab === "hotel") {
-            const item = hotelData[index];
-            setEditingHotelIndex(index);
-            setHotelFormData({
-                name: item.name || "",
-                description: item.description || "",
-                images: item.images || [],
-                region: item.region || "Nam",
-                province: item.province || "",
-                type: item.type || "hotel",
-                status: item.status || "pending",
-                lat: item.lat || '',
-                lng: item.lng || '',
-            });
-            setHotelImagePreview(item.images || []);
-            setIsAddingHotel(true);
         }
     };
 
-    // RESET FORMS
+    /// RESET FORM DI TÍCH
     const resetForm = () => {
         setIsAdding(false);
         setEditingIndex(null);
-        setFormData({ ...initialFormState });
+        setFormData({
+            ...initialFormState,
+        });
         setImagePreview([]);
         const input = document.getElementById("image-upload");
         if (input) input.value = "";
     };
 
+    /// RESET FORM ẨM THỰC
     const resetFoodForm = () => {
         setIsAddingFood(false);
         setEditingFoodIndex(null);
-        setFoodFormData({ ...initialFoodFormState });
+        setFoodFormData({
+            ...initialFoodFormState,
+        });
         setFoodImagePreview([]);
         const input = document.getElementById("food-image-upload");
-        if (input) input.value = "";
-    };
-
-    const resetTravelForm = () => {
-        setIsAddingTravel(false);
-        setEditingTravelIndex(null);
-        setTravelFormData({ ...initialTravelFormState });
-        setTravelImagePreview([]);
-        const input = document.getElementById("travel-image-upload");
-        if (input) input.value = "";
-    };
-
-    const resetHotelForm = () => {
-        setIsAddingHotel(false);
-        setEditingHotelIndex(null);
-        setHotelFormData({ ...initialHotelFormState });
-        setHotelImagePreview([]);
-        const input = document.getElementById("hotel-image-upload");
         if (input) input.value = "";
     };
 
@@ -3216,35 +2920,6 @@ const AdminTraiNghiem = () => {
     };
 
     // ----------- UI BẮT ĐẦU -------------
-    // Tên cột theo từng loại tab
-    const getNameColumnLabel = () => {
-        if (tab === "heritage") return "Tên bài viết";
-        if (tab === "food") return "Tên món ăn";
-        if (tab === "travel") return "Tên điểm du lịch";
-        if (tab === "hotel") return "Tên khách sạn";
-        return "Tên bài viết";
-    }
-    // Nút thêm mới theo loại tab
-    const getCreateButtonLabel = () => {
-        if (tab === "heritage") return "Thêm mới di tích";
-        if (tab === "food") return "Thêm mới ẩm thực";
-        if (tab === "travel") return "Thêm mới bài du lịch";
-        if (tab === "hotel") return "Thêm mới khách sạn";
-        return "Thêm mới";
-    }
-
-    // Placeholder search theo loại tab
-    const getSearchPlaceholder = () => {
-        if (tab === "heritage") return "🔎 Tìm theo tên di tích, tỉnh hoặc vùng...";
-        if (tab === "food") return "🔎 Tìm theo tên món ăn, tỉnh hoặc vùng...";
-        if (tab === "travel") return "🔎 Tìm điểm du lịch, tỉnh hoặc vùng...";
-        if (tab === "hotel") return "🔎 Tìm khách sạn, tỉnh hoặc vùng...";
-        return "🔎 Tìm kiếm...";
-    }
-
- 
-
-    // --- JSX ---
     return (
         <>
             <Toaster
@@ -3268,13 +2943,14 @@ const AdminTraiNghiem = () => {
                 }}
             />
 
-            <div>
+            <div className="min-h-screen bg-gradient-to-tr from-blue-50 to-green-50 py-10 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center mb-8 gap-2">
                         <span className="inline-block bg-gradient-to-tr from-blue-600 to-green-400 text-white px-3 py-[2px] rounded-lg text-lg font-bold shadow">
                             Quản Lý Bài Viết Trải Nghiệm
                         </span>
                     </div>
+
                     {/* Tabs */}
                     <div className="flex gap-3 mb-8">
                         {TABS.map(tabItem => (
@@ -3303,7 +2979,11 @@ const AdminTraiNghiem = () => {
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-400 w-5 h-5" />
                                 <input
                                     type="text"
-                                    placeholder={getSearchPlaceholder()}
+                                    placeholder={
+                                        tab === "heritage"
+                                            ? "🔎 Tìm theo tên di tích, tỉnh hoặc vùng..."
+                                            : "🔎 Tìm theo tên món ăn, tỉnh hoặc vùng..."
+                                    }
                                     value={searchTerm}
                                     onChange={e => { setSearchTerm(e.target.value); setCurrentPage(1); }}
                                     className="w-full pl-10 pr-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 text-gray-800 bg-blue-50 transition"
@@ -3314,24 +2994,19 @@ const AdminTraiNghiem = () => {
                                     if (tab === "heritage") {
                                         resetForm();
                                         setIsAdding(true);
-                                    } else if (tab === "food") {
+                                    } else {
                                         resetFoodForm();
                                         setIsAddingFood(true);
-                                    } else if (tab === "travel") {
-                                        resetTravelForm();
-                                        setIsAddingTravel(true);
-                                    } else if (tab === "hotel") {
-                                        resetHotelForm();
-                                        setIsAddingHotel(true);
                                     }
                                 }}
                                 className="flex items-center gap-2 bg-gradient-to-tr from-green-500 to-blue-500 text-white px-6 py-3 rounded-xl hover:shadow-xl hover:brightness-110 font-semibold shadow-md transition"
                             >
                                 <Plus className="w-5 h-5" />
-                                {getCreateButtonLabel()}
+                                {tab === "heritage" ? "Thêm mới di tích" : "Thêm mới ẩm thực"}
                             </button>
                         </div>
                     </div>
+
                     {/* Bảng danh sách */}
                     <div className="bg-white rounded-2xl shadow-md border border-blue-100 overflow-hidden">
                         <div className="overflow-x-auto">
@@ -3342,9 +3017,8 @@ const AdminTraiNghiem = () => {
                                             STT
                                         </th>
                                         <th className="text-left px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase">
-                                            {getNameColumnLabel()}
+                                            {tab === "heritage" ? "Tên bài viết" : "Tên món ăn"}
                                         </th>
-                                        {/* Thời kỳ chỉ hiển thị cho di tích */}
                                         {tab === "heritage" && (
                                             <th className="text-left px-6 py-4 text-xs font-bold text-blue-600 tracking-wider uppercase w-32">
                                                 Thời kỳ
@@ -3369,24 +3043,14 @@ const AdminTraiNghiem = () => {
                                 </thead>
                                 <tbody className="divide-y divide-blue-100">
                                     {currentData.map((item, idx) => {
-                                        let globalIndex;
-                                        if (tab === "heritage") {
-                                            globalIndex = data.indexOf(item);
-                                        } else if (tab === "food") {
-                                            globalIndex = foodData.indexOf(item);
-                                        } else if (tab === "travel") {
-                                            globalIndex = travelData.indexOf(item);
-                                        } else if (tab === "hotel") {
-                                            globalIndex = hotelData.indexOf(item);
-                                        }
+                                        const globalIndex = (tab === "heritage"
+                                            ? data.indexOf(item)
+                                            : foodData.indexOf(item));
                                         return (
-                                            <tr key={globalIndex} className="col-span-1 text-center">
-                                                <td className="text-center align-middle">
-                                                    <span className="inline-block px-2 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded-md tracking-wide">
-                                                        {startIndex + idx + 1}
-                                                    </span>
+                                            <tr key={globalIndex} className="hover:bg-gradient-to-l hover:from-blue-50 hover:to-green-50 transition">
+                                                <td className="text-center px-4 py-4 text-sm text-gray-700 font-bold">
+                                                    {startIndex + idx + 1}
                                                 </td>
-
                                                 <td className="px-6 py-4 text-sm font-medium text-gray-900">
                                                     {item.name}
                                                 </td>
@@ -3446,7 +3110,13 @@ const AdminTraiNghiem = () => {
                                                 </td>
                                                 <td className="px-6 py-4 text-center">
                                                     <div className="flex justify-center gap-2">
-                                                        <EditPromptButton onClick={() => startEdit(globalIndex)} />
+                                                        <button
+                                                            onClick={() => startEdit(globalIndex)}
+                                                            title="Chỉnh sửa"
+                                                            className="rounded-full p-2 bg-blue-50 hover:bg-blue-100 text-blue-500 hover:text-blue-900 shadow transition"
+                                                        >
+                                                            <Edit2 className="w-5 h-5" />
+                                                        </button>
                                                         <button
                                                             onClick={() => handleDelete(globalIndex)}
                                                             title="Xóa"
@@ -3528,970 +3198,469 @@ const AdminTraiNghiem = () => {
 
                     {/* Modal Thêm/Sửa Monument */}
                     {isAdding && (
-                        <ModalFormMonument
-                            {...{
-                                editingIndex,
-                                resetForm,
-                                formData,
-                                setFormData,
-                                imagePreview,
-                                removeImage,
-                                handleImageUpload,
-                                handleAddOrUpdate
-                            }}
-                        />
+                        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
+                            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
+                                {/* Header */}
+                                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
+                                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
+                                        {editingIndex !== null ? "Sửa bài viết" : "Thêm bài viết mới"}
+                                    </h2>
+                                    <button
+                                        onClick={resetForm}
+                                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
+                                    >
+                                        <X className="w-7 h-7" />
+                                    </button>
+                                </div>
+
+                                {/* Nội dung modal */}
+                                <div className="p-6 space-y-7">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Tên bài viết <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={formData.name}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        name: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                                placeholder="Dinh Độc Lập"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Tỉnh/Thành phố <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                value={formData.province}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        province: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                            >
+                                                <option value="">--Chọn tỉnh/thành--</option>
+                                                {provincesVN.map((p) => (
+                                                    <option key={p} value={p}>{p}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={formData.lat}
+                                                onChange={(e) => setFormData({ ...formData, lat: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="10.777141734059974"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Kinh độ (lng) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={formData.lng}
+                                                onChange={(e) => setFormData({ ...formData, lng: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="106.69522699878702"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Vùng <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                value={formData.region}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        region: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
+                                            >
+                                                {regions.map((r) => (
+                                                    <option key={r} value={r}>
+                                                        {r}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Thời kỳ <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                value={formData.period}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        period: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                            >
+                                                {periods.map((p) => (
+                                                    <option key={p} value={p}>
+                                                        {p}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        {/* Chọn trạng thái bài viết khi thêm/sửa */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Trạng thái <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                value={formData.status}
+                                                onChange={(e) =>
+                                                    setFormData({
+                                                        ...formData,
+                                                        status: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
+                                            >
+                                                {statuses.map((st) => (
+                                                    <option key={st.value} value={st.value}>
+                                                        {st.label}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    {/* Upload ảnh */}
+                                    <div>
+                                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                                            Upload hình ảnh đại diện <span className="text-red-500">*</span>
+                                        </label>
+                                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={e => handleImageUpload(e, false)}
+                                                className="hidden"
+                                                id="image-upload"
+                                                multiple
+                                            />
+                                            <label
+                                                htmlFor="image-upload"
+                                                className="cursor-pointer flex flex-col items-center gap-3"
+                                            >
+                                                <Upload className="w-12 h-12 text-blue-400" />
+                                                <span className="text-sm text-gray-700 font-medium">
+                                                    Nhấn để chọn ảnh
+                                                </span>
+                                                <span className="text-xs text-gray-500">
+                                                    JPG, PNG, GIF (tối đa 5MB)
+                                                </span>
+                                            </label>
+                                        </div>
+                                        {/* Preview nhiều ảnh */}
+                                        {imagePreview && imagePreview.length > 0 && (
+                                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
+                                                {imagePreview.map((img, idx) => (
+                                                    <div key={idx} className="relative group">
+                                                        <img
+                                                            src={img}
+                                                            alt={`Preview ${idx}`}
+                                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
+                                                        />
+                                                        <button
+                                                            onClick={() => removeImage(idx, false)}
+                                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
+                                                            type="button"
+                                                        >
+                                                            <X className="w-5 h-5" />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Mô tả */}
+                                    <div>
+                                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                                            Mô tả <span className="text-red-500">*</span>
+                                        </label>
+                                        <textarea
+                                            rows={5}
+                                            value={formData.description}
+                                            onChange={(e) =>
+                                                setFormData({
+                                                    ...formData,
+                                                    description: e.target.value,
+                                                })
+                                            }
+                                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
+                                            placeholder="Nhập mô tả chi tiết..."
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Footer modal */}
+                                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
+                                    <button
+                                        onClick={resetForm}
+                                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
+                                    >
+                                        Hủy
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={handleAddOrUpdate}
+                                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
+                                    >
+                                        <Save className="w-5 h-5" />
+                                        {editingIndex !== null ? "Cập nhật" : "Thêm mới"}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     )}
 
                     {/* Modal Thêm/Sửa Ẩm thực */}
                     {isAddingFood && (
-                        <ModalFormFood
-                            {...{
-                                editingFoodIndex,
-                                resetFoodForm,
-                                foodFormData,
-                                setFoodFormData,
-                                foodImagePreview,
-                                removeImage,
-                                handleImageUpload,
-                                handleAddOrUpdateFood
-                            }}
-                        />
-                    )}
+                        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
+                            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
+                                {/* Header */}
+                                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
+                                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
+                                        {editingFoodIndex !== null ? "Sửa bài viết ẩm thực" : "Thêm bài viết ẩm thực mới"}
+                                    </h2>
+                                    <button
+                                        onClick={resetFoodForm}
+                                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
+                                    >
+                                        <X className="w-7 h-7" />
+                                    </button>
+                                </div>
 
-                    {/* Modal Thêm/Sửa DU LỊCH */}
-                    {isAddingTravel && (
-                        <ModalFormTravel
-                            {...{
-                                editingTravelIndex,
-                                resetTravelForm,
-                                travelFormData,
-                                setTravelFormData,
-                                travelImagePreview,
-                                removeImage,
-                                handleImageUpload,
-                                handleAddOrUpdateTravel
-                            }}
-                        />
-                    )}
-                    {/* Modal Thêm/Sửa KHÁCH SẠN */}
-                    {isAddingHotel && (
-                        <ModalFormHotel
-                            {...{
-                                editingHotelIndex,
-                                resetHotelForm,
-                                hotelFormData,
-                                setHotelFormData,
-                                hotelImagePreview,
-                                removeImage,
-                                handleImageUpload,
-                                handleAddOrUpdateHotel
-                            }}
-                        />
+                                {/* Nội dung modal FOOD */}
+                                <div className="p-6 space-y-7">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Tên món ăn <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={foodFormData.name}
+                                                onChange={(e) =>
+                                                    setFoodFormData({
+                                                        ...foodFormData,
+                                                        name: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                                placeholder="Bánh xèo"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Tỉnh/Thành phố <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                value={foodFormData.province}
+                                                onChange={(e) =>
+                                                    setFoodFormData({
+                                                        ...foodFormData,
+                                                        province: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
+                                            >
+                                                <option value="">--Chọn tỉnh/thành--</option>
+                                                {provincesVN.map((p) => (
+                                                    <option key={p} value={p}>{p}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Vĩ độ (lat) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={foodFormData.lat}
+                                                onChange={(e) => setFoodFormData({ ...foodFormData, lat: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="10.777141734059974"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Kinh độ (lng) <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={foodFormData.lng}
+                                                onChange={(e) => setFoodFormData({ ...foodFormData, lng: e.target.value })}
+                                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
+                                                placeholder="106.69522699878702"
+                                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Vùng <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                value={foodFormData.region}
+                                                onChange={(e) =>
+                                                    setFoodFormData({
+                                                        ...foodFormData,
+                                                        region: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
+                                            >
+                                                {regions.map((r) => (
+                                                    <option key={r} value={r}>
+                                                        {r}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        {/* Trạng thái bài viết */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-blue-700 mb-2">
+                                                Trạng thái <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                value={foodFormData.status}
+                                                onChange={(e) =>
+                                                    setFoodFormData({
+                                                        ...foodFormData,
+                                                        status: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
+                                            >
+                                                {statuses.map((st) => (
+                                                    <option key={st.value} value={st.value}>
+                                                        {st.label}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    {/* Upload ảnh */}
+                                    <div>
+                                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                                            Upload hình ảnh món ăn <span className="text-red-500">*</span>
+                                        </label>
+                                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={e => handleImageUpload(e, true)}
+                                                className="hidden"
+                                                id="food-image-upload"
+                                                multiple
+                                            />
+                                            <label
+                                                htmlFor="food-image-upload"
+                                                className="cursor-pointer flex flex-col items-center gap-3"
+                                            >
+                                                <Upload className="w-12 h-12 text-blue-400" />
+                                                <span className="text-sm text-gray-700 font-medium">
+                                                    Nhấn để chọn ảnh
+                                                </span>
+                                                <span className="text-xs text-gray-500">
+                                                    JPG, PNG, GIF (tối đa 5MB)
+                                                </span>
+                                            </label>
+                                        </div>
+                                        {/* Preview nhiều ảnh */}
+                                        {foodImagePreview && foodImagePreview.length > 0 && (
+                                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
+                                                {foodImagePreview.map((img, idx) => (
+                                                    <div key={idx} className="relative group">
+                                                        <img
+                                                            src={img}
+                                                            alt={`Preview ${idx}`}
+                                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
+                                                        />
+                                                        <button
+                                                            onClick={() => removeImage(idx, true)}
+                                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
+                                                            type="button"
+                                                        >
+                                                            <X className="w-5 h-5" />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Mô tả */}
+                                    <div>
+                                        <label className="block text-sm font-medium text-blue-700 mb-2">
+                                            Mô tả <span className="text-red-500">*</span>
+                                        </label>
+                                        <textarea
+                                            rows={5}
+                                            value={foodFormData.description}
+                                            onChange={(e) =>
+                                                setFoodFormData({
+                                                    ...foodFormData,
+                                                    description: e.target.value,
+                                                })
+                                            }
+                                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
+                                            placeholder="Thông tin món ăn đặc sản..."
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Footer modal */}
+                                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
+                                    <button
+                                        onClick={resetFoodForm}
+                                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
+                                    >
+                                        Hủy
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={handleAddOrUpdateFood}
+                                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
+                                    >
+                                        <Save className="w-5 h-5" />
+                                        {editingFoodIndex !== null ? "Cập nhật" : "Thêm mới"}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>
         </>
     );
 };
-
-// -------------- Các Modal Form -----------------
-// Reuse UI for each modal, but customize input & handler props
-
-// Modal Di tích
-function ModalFormMonument({
-    editingIndex, resetForm, formData, setFormData, imagePreview, removeImage, handleImageUpload, handleAddOrUpdate
-}) {
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
-            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
-                {/* Header */}
-                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
-                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
-                        {editingIndex !== null ? "Sửa bài viết" : "Thêm bài viết mới"}
-                    </h2>
-                    <button
-                        onClick={resetForm}
-                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
-                    >
-                        <X className="w-7 h-7" />
-                    </button>
-                </div>
-                {/* Nội dung modal */}
-                <div className="p-6 space-y-7">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tên bài viết <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={formData.name}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        name: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                                placeholder="Dinh Độc Lập"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tỉnh/Thành phố <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={formData.province}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        province: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                            >
-                                <option value="">--Chọn tỉnh/thành--</option>
-                                {provincesVN.map((p) => (
-                                    <option key={p} value={p}>{p}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Vĩ độ (lat) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={formData.lat}
-                                onChange={(e) => setFormData({ ...formData, lat: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="10.777141734059974"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Kinh độ (lng) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={formData.lng}
-                                onChange={(e) => setFormData({ ...formData, lng: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="106.69522699878702"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Vùng <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={formData.region}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        region: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
-                            >
-                                {regions.map((r) => (
-                                    <option key={r} value={r}>
-                                        {r}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Thời kỳ <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={formData.period}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        period: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                            >
-                                {periods.map((p) => (
-                                    <option key={p} value={p}>
-                                        {p}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        {/* Chọn trạng thái bài viết khi thêm/sửa */}
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Trạng thái <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={formData.status}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        status: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
-                            >
-                                {statuses.map((st) => (
-                                    <option key={st.value} value={st.value}>
-                                        {st.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    {/* Upload ảnh */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Upload hình ảnh đại diện <span className="text-red-500">*</span>
-                        </label>
-                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={e => handleImageUpload(e, "heritage")}
-                                className="hidden"
-                                id="image-upload"
-                                multiple
-                            />
-                            <label
-                                htmlFor="image-upload"
-                                className="cursor-pointer flex flex-col items-center gap-3"
-                            >
-                                <Upload className="w-12 h-12 text-blue-400" />
-                                <span className="text-sm text-gray-700 font-medium">
-                                    Nhấn để chọn ảnh
-                                </span>
-                                <span className="text-xs text-gray-500">
-                                    JPG, PNG, GIF (tối đa 5MB)
-                                </span>
-                            </label>
-                        </div>
-                        {/* Preview nhiều ảnh */}
-                        {imagePreview && imagePreview.length > 0 && (
-                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                                {imagePreview.map((img, idx) => (
-                                    <div key={idx} className="relative group">
-                                        <img
-                                            src={img}
-                                            alt={`Preview ${idx}`}
-                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
-                                        />
-                                        <button
-                                            onClick={() => removeImage(idx, "heritage")}
-                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
-                                            type="button"
-                                        >
-                                            <X className="w-5 h-5" />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    {/* Mô tả */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Mô tả <span className="text-red-500">*</span>
-                        </label>
-                        <textarea
-                            rows={5}
-                            value={formData.description}
-                            onChange={(e) =>
-                                setFormData({
-                                    ...formData,
-                                    description: e.target.value,
-                                })
-                            }
-                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
-                            placeholder="Nhập mô tả chi tiết..."
-                        />
-                    </div>
-                </div>
-                {/* Footer modal */}
-                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
-                    <button
-                        onClick={resetForm}
-                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
-                    >
-                        Hủy
-                    </button>
-                    <button
-                        type="button"
-                        onClick={handleAddOrUpdate}
-                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
-                    >
-                        <Save className="w-5 h-5" />
-                        {editingIndex !== null ? "Cập nhật" : "Thêm mới"}
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// Modal Ẩm thực
-function ModalFormFood({
-    editingFoodIndex, resetFoodForm, foodFormData, setFoodFormData, foodImagePreview, removeImage, handleImageUpload, handleAddOrUpdateFood
-}) {
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
-            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
-                {/* Header */}
-                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
-                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
-                        {editingFoodIndex !== null ? "Sửa bài viết ẩm thực" : "Thêm bài viết ẩm thực mới"}
-                    </h2>
-                    <button
-                        onClick={resetFoodForm}
-                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
-                    >
-                        <X className="w-7 h-7" />
-                    </button>
-                </div>
-                {/* Nội dung modal FOOD */}
-                <div className="p-6 space-y-7">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tên món ăn <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={foodFormData.name}
-                                onChange={(e) =>
-                                    setFoodFormData({
-                                        ...foodFormData,
-                                        name: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                                placeholder="Bánh xèo"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tỉnh/Thành phố <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={foodFormData.province}
-                                onChange={(e) =>
-                                    setFoodFormData({
-                                        ...foodFormData,
-                                        province: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                            >
-                                <option value="">--Chọn tỉnh/thành--</option>
-                                {provincesVN.map((p) => (
-                                    <option key={p} value={p}>{p}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Vĩ độ (lat) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={foodFormData.lat}
-                                onChange={(e) => setFoodFormData({ ...foodFormData, lat: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="10.777141734059974"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Kinh độ (lng) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={foodFormData.lng}
-                                onChange={(e) => setFoodFormData({ ...foodFormData, lng: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="106.69522699878702"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Vùng <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={foodFormData.region}
-                                onChange={(e) =>
-                                    setFoodFormData({
-                                        ...foodFormData,
-                                        region: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
-                            >
-                                {regions.map((r) => (
-                                    <option key={r} value={r}>
-                                        {r}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        {/* Trạng thái bài viết */}
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Trạng thái <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={foodFormData.status}
-                                onChange={(e) =>
-                                    setFoodFormData({
-                                        ...foodFormData,
-                                        status: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
-                            >
-                                {statuses.map((st) => (
-                                    <option key={st.value} value={st.value}>
-                                        {st.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    {/* Upload ảnh */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Upload hình ảnh món ăn <span className="text-red-500">*</span>
-                        </label>
-                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={e => handleImageUpload(e, "food")}
-                                className="hidden"
-                                id="food-image-upload"
-                                multiple
-                            />
-                            <label
-                                htmlFor="food-image-upload"
-                                className="cursor-pointer flex flex-col items-center gap-3"
-                            >
-                                <Upload className="w-12 h-12 text-blue-400" />
-                                <span className="text-sm text-gray-700 font-medium">
-                                    Nhấn để chọn ảnh
-                                </span>
-                                <span className="text-xs text-gray-500">
-                                    JPG, PNG, GIF (tối đa 5MB)
-                                </span>
-                            </label>
-                        </div>
-                        {/* Preview nhiều ảnh */}
-                        {foodImagePreview && foodImagePreview.length > 0 && (
-                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                                {foodImagePreview.map((img, idx) => (
-                                    <div key={idx} className="relative group">
-                                        <img
-                                            src={img}
-                                            alt={`Preview ${idx}`}
-                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
-                                        />
-                                        <button
-                                            onClick={() => removeImage(idx, "food")}
-                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
-                                            type="button"
-                                        >
-                                            <X className="w-5 h-5" />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    {/* Mô tả */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Mô tả <span className="text-red-500">*</span>
-                        </label>
-                        <textarea
-                            rows={5}
-                            value={foodFormData.description}
-                            onChange={(e) =>
-                                setFoodFormData({
-                                    ...foodFormData,
-                                    description: e.target.value,
-                                })
-                            }
-                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
-                            placeholder="Thông tin món ăn đặc sản..."
-                        />
-                    </div>
-                </div>
-                {/* Footer modal */}
-                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
-                    <button
-                        onClick={resetFoodForm}
-                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
-                    >
-                        Hủy
-                    </button>
-                    <button
-                        type="button"
-                        onClick={handleAddOrUpdateFood}
-                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
-                    >
-                        <Save className="w-5 h-5" />
-                        {editingFoodIndex !== null ? "Cập nhật" : "Thêm mới"}
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// Modal DU LỊCH
-function ModalFormTravel({
-    editingTravelIndex, resetTravelForm, travelFormData, setTravelFormData, travelImagePreview, removeImage, handleImageUpload, handleAddOrUpdateTravel
-}) {
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
-            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
-                {/* Header */}
-                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
-                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
-                        {editingTravelIndex !== null ? "Sửa bài viết du lịch" : "Thêm bài viết du lịch mới"}
-                    </h2>
-                    <button
-                        onClick={resetTravelForm}
-                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
-                    >
-                        <X className="w-7 h-7" />
-                    </button>
-                </div>
-                {/* Nội dung modal */}
-                <div className="p-6 space-y-7">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tên điểm du lịch <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={travelFormData.name}
-                                onChange={(e) =>
-                                    setTravelFormData({
-                                        ...travelFormData,
-                                        name: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                                placeholder="Tên điểm du lịch"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tỉnh/Thành phố <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={travelFormData.province}
-                                onChange={(e) =>
-                                    setTravelFormData({
-                                        ...travelFormData,
-                                        province: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                            >
-                                <option value="">--Chọn tỉnh/thành--</option>
-                                {provincesVN.map((p) => (
-                                    <option key={p} value={p}>{p}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Vĩ độ (lat) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={travelFormData.lat}
-                                onChange={(e) => setTravelFormData({ ...travelFormData, lat: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="10.777141734059974"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Kinh độ (lng) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={travelFormData.lng}
-                                onChange={(e) => setTravelFormData({ ...travelFormData, lng: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="106.69522699878702"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Vùng <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={travelFormData.region}
-                                onChange={(e) =>
-                                    setTravelFormData({
-                                        ...travelFormData,
-                                        region: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
-                            >
-                                {regions.map((r) => (
-                                    <option key={r} value={r}>
-                                        {r}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        {/* Trạng thái bài viết */}
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Trạng thái <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={travelFormData.status}
-                                onChange={(e) =>
-                                    setTravelFormData({
-                                        ...travelFormData,
-                                        status: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
-                            >
-                                {statuses.map((st) => (
-                                    <option key={st.value} value={st.value}>
-                                        {st.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    {/* Upload ảnh */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Upload hình ảnh điểm du lịch <span className="text-red-500">*</span>
-                        </label>
-                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={e => handleImageUpload(e, "travel")}
-                                className="hidden"
-                                id="travel-image-upload"
-                                multiple
-                            />
-                            <label
-                                htmlFor="travel-image-upload"
-                                className="cursor-pointer flex flex-col items-center gap-3"
-                            >
-                                <Upload className="w-12 h-12 text-blue-400" />
-                                <span className="text-sm text-gray-700 font-medium">
-                                    Nhấn để chọn ảnh
-                                </span>
-                                <span className="text-xs text-gray-500">
-                                    JPG, PNG, GIF (tối đa 5MB)
-                                </span>
-                            </label>
-                        </div>
-                        {/* Preview nhiều ảnh */}
-                        {travelImagePreview && travelImagePreview.length > 0 && (
-                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                                {travelImagePreview.map((img, idx) => (
-                                    <div key={idx} className="relative group">
-                                        <img
-                                            src={img}
-                                            alt={`Preview ${idx}`}
-                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
-                                        />
-                                        <button
-                                            onClick={() => removeImage(idx, "travel")}
-                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
-                                            type="button"
-                                        >
-                                            <X className="w-5 h-5" />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    {/* Mô tả */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Mô tả <span className="text-red-500">*</span>
-                        </label>
-                        <textarea
-                            rows={5}
-                            value={travelFormData.description}
-                            onChange={(e) =>
-                                setTravelFormData({
-                                    ...travelFormData,
-                                    description: e.target.value,
-                                })
-                            }
-                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
-                            placeholder="Thông tin điểm du lịch..."
-                        />
-                    </div>
-                </div>
-                {/* Footer modal */}
-                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
-                    <button
-                        onClick={resetTravelForm}
-                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
-                    >
-                        Hủy
-                    </button>
-                    <button
-                        type="button"
-                        onClick={handleAddOrUpdateTravel}
-                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
-                    >
-                        <Save className="w-5 h-5" />
-                        {editingTravelIndex !== null ? "Cập nhật" : "Thêm mới"}
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// Modal KHÁCH SẠN
-function ModalFormHotel({
-    editingHotelIndex, resetHotelForm, hotelFormData, setHotelFormData, hotelImagePreview, removeImage, handleImageUpload, handleAddOrUpdateHotel
-}) {
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm transition">
-            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-blue-200 relative animate-fadein">
-                {/* Header */}
-                <div className="flex justify-between items-center p-6 border-b border-blue-100 sticky top-0 bg-white z-10">
-                    <h2 className="text-2xl font-bold bg-gradient-to-tr from-blue-600 to-green-500 bg-clip-text text-transparent">
-                        {editingHotelIndex !== null ? "Sửa bài viết khách sạn" : "Thêm bài viết khách sạn mới"}
-                    </h2>
-                    <button
-                        onClick={resetHotelForm}
-                        className="text-gray-400 hover:text-red-500 transition p-2 rounded-full"
-                    >
-                        <X className="w-7 h-7" />
-                    </button>
-                </div>
-                {/* Nội dung modal */}
-                <div className="p-6 space-y-7">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tên khách sạn <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={hotelFormData.name}
-                                onChange={(e) =>
-                                    setHotelFormData({
-                                        ...hotelFormData,
-                                        name: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                                placeholder="Tên khách sạn"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Tỉnh/Thành phố <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={hotelFormData.province}
-                                onChange={(e) =>
-                                    setHotelFormData({
-                                        ...hotelFormData,
-                                        province: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-blue-50 transition shadow-sm"
-                            >
-                                <option value="">--Chọn tỉnh/thành--</option>
-                                {provincesVN.map((p) => (
-                                    <option key={p} value={p}>{p}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Vĩ độ (lat) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={hotelFormData.lat}
-                                onChange={(e) => setHotelFormData({ ...hotelFormData, lat: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="10.777141734059974"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Kinh độ (lng) <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                value={hotelFormData.lng}
-                                onChange={(e) => setHotelFormData({ ...hotelFormData, lng: e.target.value })}
-                                className="w-full px-4 py-3 border-2 border-blue-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 text-gray-900 shadow-md transition placeholder:italic placeholder:text-blue-300"
-                                placeholder="106.69522699878702"
-                                style={{ boxShadow: '0 2px 8px 0 rgba(120,180,240,0.12)' }}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Vùng <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={hotelFormData.region}
-                                onChange={(e) =>
-                                    setHotelFormData({
-                                        ...hotelFormData,
-                                        region: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition shadow-sm"
-                            >
-                                {regions.map((r) => (
-                                    <option key={r} value={r}>
-                                        {r}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        {/* Trạng thái bài viết */}
-                        <div>
-                            <label className="block text-sm font-medium text-blue-700 mb-2">
-                                Trạng thái <span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                value={hotelFormData.status}
-                                onChange={(e) =>
-                                    setHotelFormData({
-                                        ...hotelFormData,
-                                        status: e.target.value,
-                                    })
-                                }
-                                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 bg-gray-50 transition shadow-sm"
-                            >
-                                {statuses.map((st) => (
-                                    <option key={st.value} value={st.value}>
-                                        {st.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    {/* Upload ảnh */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Upload hình ảnh khách sạn <span className="text-red-500">*</span>
-                        </label>
-                        <div className="border-2 border-dashed border-blue-200 rounded-lg p-6 text-center bg-blue-50 transition">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={e => handleImageUpload(e, "hotel")}
-                                className="hidden"
-                                id="hotel-image-upload"
-                                multiple
-                            />
-                            <label
-                                htmlFor="hotel-image-upload"
-                                className="cursor-pointer flex flex-col items-center gap-3"
-                            >
-                                <Upload className="w-12 h-12 text-blue-400" />
-                                <span className="text-sm text-gray-700 font-medium">
-                                    Nhấn để chọn ảnh
-                                </span>
-                                <span className="text-xs text-gray-500">
-                                    JPG, PNG, GIF (tối đa 5MB)
-                                </span>
-                            </label>
-                        </div>
-                        {/* Preview nhiều ảnh */}
-                        {hotelImagePreview && hotelImagePreview.length > 0 && (
-                            <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                                {hotelImagePreview.map((img, idx) => (
-                                    <div key={idx} className="relative group">
-                                        <img
-                                            src={img}
-                                            alt={`Preview ${idx}`}
-                                            className="max-w-xs max-h-44 object-contain rounded-lg shadow-lg border-2 border-blue-200"
-                                        />
-                                        <button
-                                            onClick={() => removeImage(idx, "hotel")}
-                                            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
-                                            type="button"
-                                        >
-                                            <X className="w-5 h-5" />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    {/* Mô tả */}
-                    <div>
-                        <label className="block text-sm font-medium text-blue-700 mb-2">
-                            Mô tả <span className="text-red-500">*</span>
-                        </label>
-                        <textarea
-                            rows={5}
-                            value={hotelFormData.description}
-                            onChange={(e) =>
-                                setHotelFormData({
-                                    ...hotelFormData,
-                                    description: e.target.value,
-                                })
-                            }
-                            className="w-full px-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-gray-900 bg-green-50 transition resize-none shadow-sm"
-                            placeholder="Thông tin khách sạn..."
-                        />
-                    </div>
-                </div>
-                {/* Footer modal */}
-                <div className="flex justify-end gap-4 p-6 border-t border-blue-100 sticky bottom-0 bg-gradient-to-r from-blue-50 to-green-50 z-10">
-                    <button
-                        onClick={resetHotelForm}
-                        className="px-6 py-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-semibold transition"
-                    >
-                        Hủy
-                    </button>
-                    <button
-                        type="button"
-                        onClick={handleAddOrUpdateHotel}
-                        className="flex items-center gap-2 bg-gradient-to-tr from-blue-600 to-green-400 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition"
-                    >
-                        <Save className="w-5 h-5" />
-                        {editingHotelIndex !== null ? "Cập nhật" : "Thêm mới"}
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-}
 
 export default AdminTraiNghiem;

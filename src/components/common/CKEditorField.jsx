@@ -1,75 +1,105 @@
-
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import React, { memo } from "react";
-
+import {
+  ClassicEditor,
+  Essentials,
+  Paragraph,
+  Bold,
+  Italic,
+  Heading,
+  Link,
+  List,
+  BlockQuote,
+  Table,
+  TableToolbar,
+  Image as CKImage,
+  ImageUpload,
+  ImageCaption,
+  ImageStyle,
+  ImageToolbar,
+  FileRepository,
+  Undo,
+} from "ckeditor5";
+import "ckeditor5/ckeditor5.css";
+import { memo } from "react";
 
 class Base64UploadAdapter {
   constructor(loader) {
     this.loader = loader;
   }
-upload() {
-  return this.loader.file.then(file => {
-    return new Promise(resolve => {
-      const reader = new FileReader();
-      const img = new Image();
+  upload() {
+    return this.loader.file.then(
+      (file) =>
+        new Promise((resolve) => {
+          const reader = new FileReader();
+          const img = new window.Image();
 
-      reader.onload = e => {
-        img.src = e.target.result;
-      };
+          reader.onload = (e) => {
+            img.src = e.target.result;
+          };
 
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const MAX_WIDTH = 800;
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            const MAX_WIDTH = 800;
+            const scale = MAX_WIDTH / img.width;
+            canvas.width = MAX_WIDTH;
+            canvas.height = img.height * scale;
 
-        const scale = MAX_WIDTH / img.width;
-        canvas.width = MAX_WIDTH;
-        canvas.height = img.height * scale;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            resolve({ default: canvas.toDataURL("image/jpeg", 0.8) });
+          };
 
-        resolve({
-          default: canvas.toDataURL("image/jpeg", 0.8),
-        });
-      };
-
-      reader.readAsDataURL(file);
-    });
-  });
+          reader.readAsDataURL(file);
+        })
+    );
+  }
 }
-}
-
 
 function CustomUploadAdapterPlugin(editor) {
-  editor.plugins.get("FileRepository").createUploadAdapter = loader => {
-    return new Base64UploadAdapter(loader);
-  };
+  editor.plugins.get("FileRepository").createUploadAdapter = (loader) =>
+    new Base64UploadAdapter(loader);
 }
 
-const CKEditorField = memo(({ value, onChange }) =>  {
-    
+const CKEditorField = memo(({ value, onChange }) => {
   return (
     <div style={{ border: "1px solid #ddd", borderRadius: 6 }}>
       <CKEditor
         editor={ClassicEditor}
-        data={value}  
+        data={value}
         config={{
-            licenseKey: "GPL",
-          placeholder: "Bắt đầu viết nội dung tại đây...",
+          licenseKey: "GPL",
+          plugins: [
+            Essentials,
+            Paragraph,
+            Bold,
+            Italic,
+            Heading,
+            Link,
+            List,
+            BlockQuote,
+            Table,
+            TableToolbar,
+            CKImage,
+            ImageUpload,
+            ImageCaption,
+            ImageStyle,
+            ImageToolbar,
+            FileRepository,
+            Undo,
+          ],
           extraPlugins: [CustomUploadAdapterPlugin],
           toolbar: [
             "heading",
             "|",
             "bold",
             "italic",
-           
             "link",
             "|",
             "bulletedList",
             "numberedList",
             "|",
-            "imageUpload",
+            "uploadImage",
             "blockQuote",
             "insertTable",
             "|",
@@ -78,21 +108,26 @@ const CKEditorField = memo(({ value, onChange }) =>  {
           ],
           heading: {
             options: [
-              { model: "paragraph", title: "paragraph" },
-              { model: "heading1", view: "h1", title: "heading1" },
-              { model: "heading2", view: "h2", title: "heading2" },
-              { model: "heading3", view: "h3", title: "heading3" },
+              { model: "paragraph", title: "Paragraph", class: "ck-heading_paragraph" },
+              { model: "heading1", view: "h1", title: "Heading 1", class: "ck-heading_heading1" },
+              { model: "heading2", view: "h2", title: "Heading 2", class: "ck-heading_heading2" },
+              { model: "heading3", view: "h3", title: "Heading 3", class: "ck-heading_heading3" },
             ],
           },
           table: {
             contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
           },
+          image: {
+            toolbar: ["imageStyle:inline", "imageStyle:block", "|", "imageTextAlternative"],
+          },
+          placeholder: "Bắt đầu viết nội dung tại đây...",
         }}
         onChange={(event, editor) => {
-          const html = editor.getData(); 
+          const html = editor.getData();
           onChange?.(html);
         }}
       />
+
       {/* ===== PREVIEW ===== */}
       {value && (
         <div style={{ marginTop: 16 }}>
@@ -106,7 +141,6 @@ const CKEditorField = memo(({ value, onChange }) =>  {
           >
             Xem trước nội dung
           </div>
-
           <div
             className="ck-content"
             style={{
