@@ -5,9 +5,10 @@ import imgHue from "../../assets/hue.jpg";
 import imgHoankiem from "../../assets/hoankiem.jpg";
 import img123 from "../../assets/123.jpg";
 import imgBanner from "../../assets/banner.png";
+import { productsService } from "../../adminApi/apiAdminproducts";
 
-const STORAGE_KEY = "souvenirs";
 const MOCK_IMAGES = [imgHalong, imgHue, imgHoankiem, img123, imgBanner];
+
 
 // Cấu hình cho đồ lưu niệm
 const CATEGORIES = ["Áo thun", "Cốc/Ly", "Túi vải", "Móc khóa", "Tranh mini", "Digital Art", "Nón lá", "Postcard", "Bookmark", "Magnet", "Đèn lồng", "Balo"];
@@ -36,6 +37,7 @@ const defaultProduct = () => ({
 });
 
 export default function AdminProducts() {
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterCategory, setFilterCategory] = useState("Tất cả");
@@ -59,18 +61,24 @@ export default function AdminProducts() {
     loadProducts();
   }, []);
 
-  const loadProducts = () => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setProducts(parsed);
-      } catch {
-        setProducts([]);
-      }
-    
-    }
-  };
+const loadProducts = async () => {
+  setIsLoading(true);
+  try {
+    const res = await productsService.getAll();
+    console.log("Products API:", res);
+    // res = { success: true, data: [...], pagination: {...} }
+    const data = Array.isArray(res?.data) ? res.data
+                : Array.isArray(res?.results) ? res.results
+                : Array.isArray(res) ? res
+                : [];
+    setProducts(data);
+  } catch (err) {
+    console.error("Lỗi load products:", err);
+    setProducts([]);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const saveProducts = (list) => {
     setProducts(list);
@@ -114,63 +122,63 @@ export default function AdminProducts() {
     setShowModal(true);
   };
 
-  const handleSave = () => {
-    if (!form.title?.trim()) {
-      alert("Vui lòng nhập tên sản phẩm.");
-      return;
+  const handleSave = async () => {
+  if (!form.title?.trim()) {
+    alert("Vui lòng nhập tên sản phẩm.");
+    return;
+  }
+  if (!form.shopeeLink?.trim() || !form.shopeeLink.includes("shopee.vn")) {
+    alert("⚠️ Vui lòng nhập link Shopee hợp lệ!");
+    return;
+  }
+
+  const priceObj = {};
+  const imagesObj = {};
+  priceOptions.forEach((opt) => {
+    if (opt.key.trim()) {
+      priceObj[opt.key] = opt.value;
+      imagesObj[opt.key] = form.images[opt.key] || MOCK_IMAGES[0];
     }
+  });
 
-    if (!form.shopeeLink?.trim()) {
-      alert("⚠️ Vui lòng nhập link Shopee cho sản phẩm!");
-      return;
-    }
+  const finalProduct = { ...form, price: priceObj, images: imagesObj };
+  setIsLoading(true);
 
-    // Validate Shopee link
-    if (!form.shopeeLink.includes('shopee.vn')) {
-      alert("⚠️ Link phải là link Shopee (shopee.vn)!");
-      return;
-    }
-
-    const priceObj = {};
-    const imagesObj = {};
-    priceOptions.forEach(opt => {
-      if (opt.key.trim()) {
-        priceObj[opt.key] = opt.value;
-        imagesObj[opt.key] = form.images[opt.key] || MOCK_IMAGES[0];
-      }
-    });
-
-    const finalProduct = {
-      ...form,
-      price: priceObj,
-      images: imagesObj,
-    };
-
+  try {
     if (editingProduct) {
-      const updated = products.map((x) => (x.id === editingProduct.id ? finalProduct : x));
-      saveProducts(updated);
+      await productsService.update(editingProduct.id, finalProduct);
       showSuccess("✅ Đã cập nhật sản phẩm!");
     } else {
-      const newProduct = { ...finalProduct, id: Date.now() };
-      saveProducts([...products, newProduct]);
+      await productsService.create(finalProduct);
       showSuccess("✅ Đã thêm sản phẩm!");
     }
     setShowModal(false);
-  };
-
+    await loadProducts();
+  } catch (err) {
+    console.error("Lỗi save:", err);
+    alert("Có lỗi xảy ra! Xem log F12.");
+  } finally {
+    setIsLoading(false);
+  }
+};
   const handleDelete = (id) => {
     setDeleteTarget(id);
     setShowDeleteModal(true);
   };
 
-  const confirmDelete = () => {
-    if (deleteTarget) {
-      saveProducts(products.filter((p) => p.id !== deleteTarget));
-      setShowDeleteModal(false);
-      setDeleteTarget(null);
-      showSuccess("✅ Đã xóa sản phẩm!");
-    }
-  };
+const confirmDelete = async () => {
+  if (!deleteTarget) return;
+  try {
+    await productsService.delete(deleteTarget);
+    setShowDeleteModal(false);
+    setDeleteTarget(null);
+    await loadProducts();
+    showSuccess("✅ Đã xóa sản phẩm!");
+  } catch (err) {
+    console.error("Lỗi xóa:", err);
+    alert("Xóa thất bại! Xem F12.");
+  }
+};
 
   const showSuccess = (msg) => {
     setSuccessMessage(msg);
