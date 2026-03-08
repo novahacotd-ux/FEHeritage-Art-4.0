@@ -180,7 +180,7 @@ export default function UserProfileModal({
                 <div className="mb-6">
                   <h3 className="font-semibold text-amber-900 mb-3 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-orange-600" />
-                    Bài viết đã đăng
+                    Bài viết gần đây
                   </h3>
                   <div className="space-y-3">
                     {posts.map((post) => (
