@@ -1,31 +1,23 @@
 import botdaythep from "../assets/Bót Dây Thép.png";
 import baotanghcm from "../assets/Bảo tàng Hồ Chí Minh – Chi nhánh Thành phố Hồ Chí Minh.png";
 import baotangmithuat from "../assets/Bảo tàng Mỹ thuật Thành phố Hồ Chí Minh.png";
-import benhviennhidong from "../assets/Bệnh viện Nhi đồng 2.png";
-import chuabuuson from "../assets/Chùa Bửu Sơn.png";
 import chuabuuthanh from "../assets/Chùa Bửu Thạnh.png";
 import chuachauhung from "../assets/Chùa Châu Hưng.png";
-import chuagiachai from "../assets/Chùa Giác Hải.png";
 import chuagiaclam from "../assets/Chùa Giác Lâm.png";
 import chuagiacvien from "../assets/Chùa Giác Viên (1).png";
 import chuahoison from "../assets/Chùa Hội Sơn.png";
 import chuakhanhan from "../assets/Chùa Khánh An - Cơ sở cách mạng trong thời kỳ kháng chiến chống thực dân Pháp.png";
-import chualinhson from "../assets/Chùa Linh Sơn.png";
 import chualongthanh from "../assets/Chùa Long Thạnh.png";
 import chuaphaphoa from "../assets/Chùa Pháp Hoa.png";
 import chuaphuoctuong from "../assets/Chùa Phước Tường.png";
 import chuaphungson from "../assets/Chùa Phụng Sơn (1).png";
 import chuaquantheam from "../assets/Chùa Quán Thế Âm.png";
-import chuasungduc from "../assets/Chùa Sùng Đức.png";
 import chuasactutruongtho from "../assets/Chùa Sắc Tứ Trường Thọ.png";
 import chuasactuhuelam from "../assets/Chùa Sắc tứ Huệ Lâm.png";
-import chuasactutapphuoc from "../assets/Chùa Sắc tứ Tập Phước.png";
-import chuathienphuoc from "../assets/Chùa Thiên Phước.png";
 import chuathienquang from "../assets/Chùa Thiên Quang.png";
 import chuathienton from "../assets/Chùa Thiên Tôn.png";
 import chuatuongquang from "../assets/Chùa Tường Quang - Trụ sở Hội Phật giáo cứu quốc tỉnh Gia Định, cơ sở của Tỉnh ủy Gia Định, Chi bộ xã An Phú Đông.png";
 import chuatunghiem from "../assets/Chùa Từ Nghiêm.png";
-import chuatuquang from "../assets/Chùa Từ Quang.png";
 import chuatuvan from "../assets/Chùa Từ Vân.png";
 import chuavanthanh from "../assets/Chùa Văn Thánh.png";
 import chuaxaloi from "../assets/Chùa Xá Lợi.png";
@@ -35,19 +27,14 @@ import cancurungsac from "../assets/Căn cứ Rừng Sác.png";
 import cancuvung from "../assets/Căn cứ vùng bưng 6 xã Phường Tăng Nhơn Phú B và Phường Phú Hữu.png";
 import cosobimat from "../assets/Cơ sở bí mật của Thành ủy Sài Gòn - Gia Định.png";
 import cosogiauvukhi from "../assets/Cơ sở giấu vũ khí của Biệt động Thành đánh Dinh Độc Lập.png";
-import cosoinan from "../assets/Cơ sở in ấn của Hội Ủng hộ Vệ quốc đoàn.png";
 import caumong from "../assets/Cầu Mống.png";
 import cotcothungu from "../assets/Cột cờ Thủ Ngữ.png";
 import dinhquanhocmon from "../assets/Dinh Quận Hóc Môn.png";
 import DinhDocLap from "../assets/Dinh Độc Lập.png";
 import goomoi from "../assets/Gò Ô Môi.png";
-import hambimat from "../assets/Hầm bí mật chứa vũ khí thời kháng chiến chống Mỹ.png";
-import hambimatintailieu from "../assets/Hầm bí mật in tài liệu Ban Tuyên huấn Hoa vận thời kỳ chống Mỹ cứu nước.png";
 import hoiquanhachuong from "../assets/Hội quán Hà Chương.png";
 import hoiquannghiaan from "../assets/Hội quán Nghĩa An (Miếu Quan Đế hay Chùa Ông).png";
 import hoiquannghianhuan from "../assets/Hội quán Nghĩa Nhuận (1).png";
-import hoiquanphuocan from "../assets/Hội quán Phước An.png";
-import hoiquanquantan from "../assets/Hội quán Quần Tân.png";
 import hoiquanquynhphu from "../assets/Hội quán Quỳnh Phủ.png";
 import hoiquantamson from "../assets/Hội quán Tam Sơn.png";
 import hoiquantuethanh from "../assets/Hội quán Tuệ Thành (Chùa Bà).png";
@@ -60,56 +47,33 @@ import langle from "../assets/Láng Le - Bàu Cò.png";
 import langlevanduyet from "../assets/Lăng Lê Văn Duyệt.png";
 import langtruongtanbuu from "../assets/Lăng Trương Tấn Bửu.png";
 import langvodinguy from "../assets/Lăng Võ Di Nguy.png";
-import langvotanh from "../assets/Lăng Võ Tánh.png";
+
 import langongthuytuong from "../assets/Lăng Ông Thủy Tướng.png";
 import mieucayqueo from "../assets/Miếu Cây Quéo.png";
 import mieunhiphu from "../assets/Miếu Nhị Phủ (Chùa Ông Bổn).png";
-import mieunoi from "../assets/Miếu Nổi.png";
-import mieusatan from "../assets/Miếu Sa Tân.png";
-import mieuthanhmau from "../assets/Miếu Thánh Mẫu.png";
-import mieuthatphu from "../assets/Miếu Thất phủ Thiên Hậu.png";
-import mieutanky from "../assets/Miếu Tân Kỳ, Miếu Ông Bổn.png";
-import mophanchautrinh from "../assets/Mộ Phan Châu Trinh.png";
-import motien from "../assets/Mộ Tiền hiền Tạ Dương Minh.png";
-import mocoholam from "../assets/Mộ cổ họ Lâm.png";
+
+
 import moongphamvanchi from "../assets/Mộ và đền thờ ông Phạm Văn Chí.png";
-import moonglytuong from "../assets/Mộ ông Lý Tường Quang và bà Nguyễn Thị Lâu.png";
-import moongnghi from "../assets/Mộ ông Nghị viên địa hạt Đặng Tân Xuân (trong khuôn viên Học viện Chính trị - Hành chính khu vực II).png";
+
 import ngabagiong from "../assets/Ngã Ba Giồng.png";
-import nhaco from "../assets/Nhà cổ dân dụng truyền thống của ông Vương Hồng Sển.png";
-import nhacodandung from "../assets/Nhà cổ dân dụng.png";
 import nhacodothi from "../assets/Nhà cổ đô thị Số 236 đường Bến Vân Đồn, Phường 5.png";
 import nhathothuthiem from "../assets/Nhà thờ Thủ Thiêm.png";
 import nhathotobac from "../assets/Nhà thờ tổ thợ bạc (hội quán Lệ Châu)(1).png";
 import noihophoinghi from "../assets/Nơi họp Hội nghị Xứ ủy Nam kỳ tháng 9-1940.png";
 import noithanhlapannam from "../assets/Nơi thành lập An Nam Cộng sản Đảng năm 1929.png";
-import noithanhlapkybo from "../assets/Nơi thành lập Kỳ bộ Việt Nam Thanh niên đồng chí Hội.png";
 import noidongchi from "../assets/Nơi đồng chí Nguyễn Tất Thành ở trước khi ra đi tìm đường cứu nước.png";
 import quannhanhuong from "../assets/Quán Nhan Hương.png";
 import sochihuytienphuong from "../assets/Sở Chỉ huy tiền phương Phân khu 6 trong chiến dịch Mậu Thân 1968.png";
-import thuydai from "../assets/Thủy Đài số 01 Công trường Quốc tế.png";
-import thcsvotruongtoan from "../assets/Trường THCS Võ Trường Toản.png";
-import thptchuyentrandainghia from "../assets/Trường THPT Chuyên Trần Đại Nghĩa.png";
 import thptmariecurie from "../assets/Trường THPT Marie Curie.png";
 import thptnguyenthiminhkhai from "../assets/Trường THPT Nguyễn Thị Minh Khai.png";
 import thptlehongphong from "../assets/Trường THPT chuyên Lê Hồng Phong.png";
 import thptlequydon from "../assets/Trường Trung học Lê Quý Đôn (Trường THCS – Trường THPT).png";
-import trusophaidoan from "../assets/Trụ sở Phái đoàn liên lạc của Bộ Tổng tư lệnh Quân đội Nhân dân Việt Nam cạnh Phân ban Quốc tế giám sát và kiểm soát đình chiến tại Sài Gòn (1955-1958).png";
-import trusobao from "../assets/Trụ sở báo Dân Chúng.png";
-import tuvienhoidongmen from "../assets/Tu viện Hội Dòng Mến Thánh Giá Thủ Thiêm.png";
 import toadaisuquan from "../assets/Tòa Đại sứ quán Mỹ (nay là Tổng Lãnh sự quán Hợp chủng quốc Hoa Kỳ tại TP. Hồ Chí Minh).png";
-import tinhxangocphuong from "../assets/Tịnh xá Ngọc Phương.png";
-import tuduongphuockien from "../assets/Từ đường Phước Kiến.png";
-import tuduongholy from "../assets/Từ đường họ Lý.png";
 import vienpasteur from "../assets/Viện Pasteur.png";
 import baotanglichsu from "../assets/baotangthanhpho.png";
-import bason from "../assets/bason.png";
 import chualonghoa from "../assets/chùa Long Hòa.png";
 import chuaphapquang from "../assets/chùa Pháp Quang.png";
-import chuaphulong from "../assets/chùa Phú Long.png";
-import cosobantuyenhan from "../assets/cơ sở ban tuyên huấn.png";
 import dienngochoang from "../assets/dienngochoang.png";
-import giongcavo from "../assets/giongcavo.png";
 // import hadilao1 from "../assets/hadilao1.png";
 // import hadilao2 from "../assets/hadilao2.jpg";
 // import hanuri1 from "../assets/hanuri1.jpg";
@@ -117,21 +81,13 @@ import giongcavo from "../assets/giongcavo.png";
 // import hanuri3 from "../assets/hanuri3.jpg";
 import logomcohungloi from "../assets/logomcohungloi.jpg";
 import mieuthienhau from "../assets/mieuthienhau.png";
-import thcshongbang from "../assets/thcs hồng bàng.png";
 import toaannhandan from "../assets/toaannhandan.png";
-import dinhanhoi from "../assets/Đình An Hội.png";
-import dinhannhon from "../assets/Đình An Nhơn.png";
+
 import dinhanphu from "../assets/Đình An Phú.png";
 import dinhbinhhoa from "../assets/Đình Bình Hòa.png";
 import dinhbinhkhanh from "../assets/Đình Bình Khánh và Mộ Tiền hiền Trần Quang Đạo.png";
-import dinhbinhquoitay from "../assets/Đình Bình Quới Tây.png";
-import dinhbinhtho from "../assets/Đình Bình Thọ.png";
-import dinhbinhtien from "../assets/Đình Bình Tiên.png";
 import dinhbinhtruong from "../assets/Đình Bình Trường.png";
-import {
-  default as dinhbinhdong,
-  default as dinhbinhtridong,
-} from "../assets/Đình Bình Đông.png";
+import { default as dinhbinhdong } from "../assets/Đình Bình Đông.png";
 import dinhchihoa from "../assets/Đình Chí Hoà (1).png";
 import dinhcaysop from "../assets/Đình Cây Sộp.png";
 import dinhcanthanh from "../assets/Đình Cần Thạnh.png";
@@ -140,38 +96,21 @@ import dinhduongvanhanh from "../assets/Đình Dương Văn Hạnh.png";
 import dinhhanhphu from "../assets/Đình Hanh Phú - Kho lương thực của Ban Tiếp tế tỉnh Gia Định ở Căn cứ An Phú Đông.png";
 import dinhhanhthong from "../assets/Đình Hanh Thông.png";
 import dinhhoathanh from "../assets/Đình Hòa Thạnh.png";
-import dinhhungphu from "../assets/Đình Hưng Phú.png";
-import dinhkhanhhoi from "../assets/Đình Khánh Hội.png";
 import dinhminhhuong from "../assets/Đình Minh Hương Gia Thạnh (1).png";
-import dinhnamchon from "../assets/Đình Nam Chơn.png";
-import dinhnhonhoa from "../assets/Đình Nhơn Hòa.png";
-import dinhphongphu from "../assets/Đình Phong Phú.png";
 import dinhphulac from "../assets/Đình Phú Lạc.png";
 import dinhphunhuan from "../assets/Đình Phú Nhuận.png";
-import dinhphuthanh from "../assets/Đình Phú Thạnh.png";
-import dinhphuxuan from "../assets/Đình Phú Xuân.png";
 import dinhthaibinh from "../assets/Đình Thái Bình.png";
 import dinhthongtayhoi from "../assets/Đình Thông Tây Hội.png";
-import dinhthanlinhtay from "../assets/Đình Thần Linh Tây.png";
 import dinhthanlinhdong from "../assets/Đình Thần Linh Đông.png";
 import dinhtruongtho from "../assets/Đình Trường Thọ.png";
 import dinhtanhoatay from "../assets/Đình Tân Hòa Tây.png";
 import dinhtanhoi from "../assets/Đình Tân Hội.png";
 import dinhtankhai from "../assets/Đình Tân Khai.png";
-import dinhtankieng from "../assets/Đình Tân Kiểng.png";
-import dinhtanquydong from "../assets/Đình Tân Quy Đông.png";
 import dinhtansonnhi from "../assets/Đình Tân Sơn Nhì.png";
 import dinhtanthong from "../assets/Đình Tân Thông.png";
-import dinhtanthoinhi from "../assets/Đình Tân Thới Nhì.png";
-import dinhtanthoinhut from "../assets/Đình Tân Thới Nhứt.png";
-import dinhtanthoitu from "../assets/Đình Tân Thới Tứ.png";
 import dinhtantuc from "../assets/Đình Tân Túc.png";
-import dinhtangphu from "../assets/Đình Tăng Phú.png";
-import dinhvinhhoi from "../assets/Đình Vĩnh Hội.png";
 import dinhxuanhiep from "../assets/Đình Xuân Hiệp (1).png";
-import dinhxuanhoa from "../assets/Đình Xuân Hòa.png";
 import dinhxomhue from "../assets/Đình Xóm Huế.png";
-import denthohungvuong from "../assets/Đền thờ Hùng Vương.png";
 import denthonguyenanhthu from "../assets/Đền thờ Nguyễn Ánh Thủ.png";
 import denthoongphanconghon from "../assets/Đền thờ ông Phan Công Hớn.png";
 import diadaophuthohoa from "../assets/Địa đạo Phú Thọ Hòa.png";
@@ -207,8 +146,11 @@ export const mapDataRaw = [
     description: "Kiến trúc Roman-Gothic, gạch trần Marseille.",
     detail:
       "Nhà thờ Đức Bà Sài Gòn là một di tích lịch sử và kiến trúc quan trọng tại TP. Hồ Chí Minh, được xây dựng thời Pháp thuộc (khởi công 1877, hoàn thành 1880) theo phong cách Gothic và Roman, nổi bật với vật liệu nhập khẩu từ Pháp và hai tháp chuông cao gần 57m, trở thành biểu tượng văn hóa, tôn giáo, chứng nhân lịch sử qua nhiều biến động và điểm đến du lịch không thể thiếu của thành phố",
-    images:
-      "https://res.cloudinary.com/dlccsuxkb/image/upload/v1770315627/images_5_kcptff.jpg",
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940510/images_1_ailym7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940509/images_2_pzxmsc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940508/images_3_zdzaie.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -223,7 +165,20 @@ export const mapDataRaw = [
       "Di tích Quốc gia đặc biệt, nơi kết thúc chiến tranh Việt Nam.",
     detail:
       "Dinh Độc Lập (nay là Hội trường Thống Nhất) tại TP. Hồ Chí Minh là di tích lịch sử Quốc gia đặc biệt, biểu tượng cho chiến thắng 30/4/1975, kết thúc cuộc kháng chiến chống Mỹ, cứu nước, thống nhất đất nước. Nơi đây lưu giữ nhiều kỷ vật lịch sử, là điểm tham quan du lịch và giáo dục truyền thống quan trọng, thu hút du khách trong và ngoài nước tìm hiểu về lịch sử Việt Nam.",
-    images: [DinhDocLap],
+    images: [
+      DinhDocLap,
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940748/a399ac465af6d1ba50b5e2d47ca7ccd7_nyunp3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940748/8162b0ef78831104c1517c0d50ebb0b3_fqhiiz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940748/feed7b4040ed4c654b97586adf437c50_rktb0x.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940748/a6af821f0d336c782faff29e3adab50c_hctbgm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940747/dinh-doc-lap_rfsa9x.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940747/dinh-doc-lap-bieu-tuong-hoa-binh-giua-long-do-thi-hien-dai-9944_shzqwm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940747/650593e45c31e7cc775ba1773182d13a_tqtgfc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940746/6b44862751b494576770e83bf60a8455_zrq6ub.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940745/45d806dda12593e147593f3c3150ee05_nejvu9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940741/18deb323d32789dc9d7f1f2fd8d43d4b_olacxe.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770940740/02a40849daeff07e186472a7291e234f_gxeoc9.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -235,7 +190,18 @@ export const mapDataRaw = [
     lng: "106.46159270995953",
     description:
       "Di tích lịch sử Địa đạo Củ Chi là hệ thống đường hầm ngầm phức tạp, được đào trong kháng chiến chống Pháp và chống Mỹ, dài hơn 200km, nhiều tầng sâu đến hơn 12m, vừa là nơi trú ẩn, sinh hoạt, vừa là căn cứ chiến đấu, thể hiện tài năng và ý chí kiên cường của quân dân Việt Nam; ngày nay là di tích quốc gia đặc biệt, điểm du lịch lịch sử, văn hóa hấp dẫn tại huyện Củ Chi, TP.HCM, với các khu tham quan như Bến Dược và Bến Đình, cho phép du khách trải nghiệm lịch sử qua phim tài liệu, hầm chông và thử bắn súng.",
-    images: [diadaocuchi],
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982787/Kinh-nghiem-di-dia-dao-Cu-Chi-09_wjtxfe.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982786/images_nlevyt.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982786/du-lich-dia-dao-cu-chi-4_1625068273_tjuctw.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982786/anh-3-2_fi4nxz.png",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982786/du-lich-dia-dao-cu-chi-2_1625068208.jpg_ystjwv.webp",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982785/da8c2fdd85441663d0a464154d124407_l04dvp.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982785/1d51-dee8-4cd8-9874-09795f3f807b_cowdd0.webp",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982785/1301cuchi8-1610530367-3_p52jx0.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982785/da6e88db8a46793b3e6cacab55f68940_tmbxz2.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982785/d4139a7066d985b037332b2c4e5f0783_qhxcgi.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -249,7 +215,17 @@ export const mapDataRaw = [
       "Di chỉ khảo cổ học thời tiền sử, chứng tích cư dân cổ Nam Bộ.",
     detail:
       "Giồng Cá Vồ là một di tích khảo cổ quan trọng tại Cần Giờ, TP.HCM, là một khu định cư cổ cách nay hơn 2000 năm, nơi tìm thấy nhiều mộ chum và hiện vật phong phú, phản ánh đời sống sầm uất và mối giao lưu quốc tế thời tiền sử; hiện di tích đang được quy hoạch để phát triển du lịch sinh thái và bảo tồn di sản, nhưng còn gặp khó khăn về giải phóng mặt bằng để phát huy giá trị toàn diện.",
-    images: [giongcavo],
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982816/unnamed_ehgpmp.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982815/unnamed_5_mh68nk.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982813/unnamed_4_apfxzk.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982813/unnamed_2_xmagwd.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982812/unnamed_1_leh2zz.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982810/mochim2-1661934656-9482-1661935728_hj4w4c.webp",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982809/Giong-Ca-Vo3_xncnej.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982809/4_zqes8y.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982809/2_q6a6ki.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -261,7 +237,18 @@ export const mapDataRaw = [
     lng: "106.6261867375522",
     description:
       "Lò gốm cổ Hưng Lợi tại Quận 8, TP.HCM, là di tích khảo cổ quốc gia độc đáo, từng là làng nghề gốm phát triển từ giữa thế kỷ 18 đến khoảng năm 1940, sản xuất lu, khạp, siêu, chén.... Di tích này là dấu tích của nghề gốm kết hợp người Việt và người Hoa, đặc trưng bởi loại hình lò ống (lò tàu). Dù được công nhận di tích quốc gia năm 1998, hiện trạng khu vực còn nhiều phức tạp, vẫn đang chờ dự án tu bổ và phục dựng di tích.",
-    images: [logomcohungloi],
+    images: [
+      logomcohungloi,
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941426/unnamed_af7mrk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941425/lo-gom-hung-loi-7_wmulvn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941423/lo-gom-hung-loi-6_rqpsyy.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941422/lo-gom-hung-loi-5_t819az.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941422/lo-gom-hung-loi-1_faqagr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941408/hinh-p12-ngay-16-9-2022-hinh-1-2273_xme7qk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941408/image_pyelaz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941408/lo-gom-co-luc-khai-quat-16633779998571007862642_-_Copy_cpgqkz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941407/190984-gom_ylondw.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -273,7 +260,19 @@ export const mapDataRaw = [
     lng: "106.69819808508267",
     description:
       "Điện Ngọc Hoàng (hay Chùa Ngọc Hoàng, Phước Hải Tự) ở TP.HCM là ngôi chùa cổ nổi tiếng, mang kiến trúc Trung Hoa độc đáo, là nơi cầu tự, cầu duyên, cầu bình an linh thiêng, từng được Tổng thống Mỹ Obama ghé thăm. Được xây dựng đầu thế kỷ XX bởi người Hoa Lưu Minh, ngôi chùa thờ Ngọc Hoàng Thượng Đế và nhiều vị thần khác, thu hút cả người dân địa phương lẫn du khách quốc tế.",
-    images: [dienngochoang],
+    images: [
+      dienngochoang,
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941186/chua-ngoc-hoang-1-819x1024_ptsj9d.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941196/Ph%C6%B0%E1%BB%9Bc_H%E1%BA%A3i_T%E1%BB%B1_zezqie.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941189/images_ymbczo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941189/dien-ngoc-hoang_y872d1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941188/images_1_fd8ooo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941177/2033a3d8-chua-ngoc-hoang-01_gqu9ox.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941174/chua-ngoc-hoang-07_1630235790_j5evcw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941174/chua-ngoc-hoang-03_1630235853_kbmh1r.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941172/anh10-12_mif9o9.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941171/1bc83819-chua-ngoc-hoang-04_rgbubg.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -285,7 +284,19 @@ export const mapDataRaw = [
     lng: "106.69908434917814",
     description:
       "Miếu Thiên Hậu (Quảng Triệu hội quán) là một di tích lịch sử, văn hóa quan trọng tọa lạc tại số 122 Bến Chương Dương (nay thuộc Quận 1, TP.HCM), là nơi thờ Thiên Hậu Thánh Mẫu và là di sản kiến trúc của cộng đồng người Hoa (Quảng Triệu), nổi bật với kiến trúc cổ kính và các giá trị văn hóa độc đáo, được xếp hạng di tích cấp thành phố tại TP.HCM",
-    images: [mieuthienhau],
+    images: [
+      mieuthienhau,
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941571/Z4085376117994_E6e25_yu7omb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941570/DSCF0338_jlxvlo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941569/feat_jnknq8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941569/hoi-quan-quang-trieu-con-duoc-goi-la-mieu-thien-hau-chua-ba-ben-chuong-duong-15934891789171961893_cazssz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941566/images_vqr2qv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941565/090946-c-c---nh-tr-m--l--tr-m--l--h--ng-l-m-t-----sa-th-ch--mang---m-gi--tr--v--m-t-tinh-th-n--ngu-n-internet-_lzoztw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941565/chua_ba_thien_hau_03_rwphgu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941560/35f0ebcd5ad9b3bbf07f54a50fe4ba38_juvds2.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941560/1e02150611edb35c8858ca89b8ee0d8e_hdbevv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941559/076d5bb5caa6f6acd535d1d78cb0f73b_ohw5gi.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -299,7 +310,18 @@ export const mapDataRaw = [
     description: "Kiến trúc Pháp cuối TK 19, biểu tượng tư pháp lâu đời.",
     detail:
       "Tòa án nhân dân Thành phố Hồ Chí Minh (TAND TP.HCM) là tòa án cấp tỉnh, có địa chỉ tại Số 131 Nam Kỳ Khởi Nghĩa, phường Bến Thành, Quận 1. Đây là cơ quan xét xử có thẩm quyền giải quyết các vụ án hình sự, dân sự, kinh tế, lao động... tại TP.HCM và có trách nhiệm giải quyết yêu cầu liên quan đến phán quyết trọng tài ở nhiều tỉnh thành phía Nam.",
-    images: [toaannhandan],
+    images: [
+      toaannhandan,
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941534/T%C3%B2a_%C3%A1n_nh%C3%A2n_d%C3%A2n_TPHCM_mi7tx2.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941532/Tand-Tphcm_Ymhb_ymi0lw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941533/toaan_ITMV_gxmuxa.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941529/images_4_sz43gu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941528/images_3_mvnu0l.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941477/images_2_aqxdbk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941477/images_1_c0quw2.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941475/22A09038-1_pmrcpm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941474/126174c8988b71d5289a_oc2fsr.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -314,7 +336,20 @@ export const mapDataRaw = [
       "Kiến trúc Đông Dương, lưu giữ hiện vật thời tiền sử & văn hóa Óc Eo.",
     detail:
       "Bảo tàng Lịch sử TP. HCM (Số 2 Nguyễn Bỉnh Khiêm, Quận 1, gần Thảo Cầm Viên) lưu giữ hơn 40.000 hiện vật tái hiện lịch sử Việt Nam từ thời tiền sử đến năm 1945, với kiến trúc Đông Dương độc đáo. Bảo tàng mở cửa từ thứ Ba đến Chủ Nhật (Sáng 8h-11h30, Chiều 13h-17h30), cung cấp dịch vụ thuyết minh, là điểm đến hấp dẫn để tìm hiểu di sản văn hóa và lịch sử Việt Nam.",
-    images: [baotanglichsu],
+    images: [
+      baotanglichsu,
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941768/fdea47fca4f42f4863f4d9bc33afa5fe_qhrtoq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941767/c068fc827d0ad9a431beffb292985e63_a7fbvj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941766/bao-tang-lich-su-thanh-pho-ho-chi-minh-1-1692719389_wnsvxb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941767/bc6604758698961c04ca3903f56a286c_f26aqi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941763/b6f36855017b85ccdd218d8c3687bfd3_f3gdyq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941762/Acnos-bao-tang-lich-su-04_ewn8v1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941762/98d4f06ab715700aa76596e35d57a72a_c0qleb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941759/Acnos-bao-tang-lich-su-03_pipz4g.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941735/a1f5a6567005e45babc8e4df94bec48d_qfkd4x.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941734/a35ebe21e190564078b349cf7eef4b29_vfqemv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941693/d36aba2cc615bb7d01cbc098aab48fee_onmech.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -329,8 +364,13 @@ export const mapDataRaw = [
       "Tòa dinh thự Pháp cổ (Dinh Gia Long cũ), kiến trúc Tân cổ điển.",
     detail:
       "Bảo tàng Thành phố Hồ Chí Minh (Bảo tàng Lịch sử TP.HCM) là một công trình kiến trúc Pháp cổ kính tại số 65 Lý Tự Trọng, Quận 1, trưng bày lịch sử, văn hóa Việt Nam từ thời tiền sử đến 1945, thu hút đông đảo du khách, có kiến trúc độc đáo và giờ mở cửa, giá vé thường xuyên cập nhật trên trang web chính thức, là nơi tìm hiểu về quá trình hình thành và phát triển của Sài Gòn - TP.HCM.",
-    images:
-      "https://res.cloudinary.com/dlccsuxkb/image/upload/v1770315754/d36aba2cc615bb7d01cbc098aab48fee_ror4qi.jpg",
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941648/75fec4ca68a0ae3a296dd9a59b098bc8_ehrprh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941683/7cdc5af77e99a04e41939ee7ed08445a_1_adgejz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941690/a0161d4f35a871938fb70c351d077922_tnj5r0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941682/7b4a3e39d53d3ae891d71392666dc340_rytq87.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1770941645/169307d260c8243da5d7742bc4d4f23e_p3k1zm.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -344,8 +384,18 @@ export const mapDataRaw = [
     description: "Kiến trúc Flamboyant của Pháp, trung tâm nghệ thuật cao cấp.",
     detail:
       "Nhà hát Thành phố Hồ Chí Minh (Saigon Opera House) là một công trình kiến trúc Pháp cổ điển cuối thế kỷ 19 tại trung tâm Quận 1, nổi tiếng với vẻ đẹp lộng lẫy và là nơi tổ chức nhiều sự kiện văn hóa, nghệ thuật lớn; có địa chỉ tại số 7 Công trường Lam Sơn, thường mở cửa tham quan và có lịch biểu diễn đa dạng với giá vé tùy chương trình, là di tích kiến trúc nghệ thuật cấp quốc gia.",
-    images:
-      "https://res.cloudinary.com/dlccsuxkb/image/upload/v1770315800/af70829e54a3609918c8253511180140_bznlwv.jpg",
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982840/e6a4b033521cc7ce990e0c7a7bc33b18_ntzgcr.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982837/e1e16ca581219b5cc69fbd47e45e59a5_imfsxk.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982837/c2bb5e146b1dfee960544f212ad37ab8_snkprx.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982836/af70829e54a3609918c8253511180140_zkvaba.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982834/63161076219d6b691e654bf0a8d39861_gslfep.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982833/98897f826c9669e2d8a3549ea0ea7a45_hljr62.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982832/8124d2b49a07995935e91daf33c391de_lh6rka.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982831/44bb8bda98a44331bf00533ae2e34e03_lpm2fd.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982831/8d342827a20216406bd3aaf5bdf54128_lw3dqf.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982830/5a9e15ba0b950dc80ad1baf1b11024bb_oavmno.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -360,8 +410,18 @@ export const mapDataRaw = [
       "Xây dựng theo kiểu lầu chuông miền Bắc nước Pháp, trang trí cầu kỳ.",
     detail:
       "Trụ sở Ủy ban nhân dân (UBND) Thành phố Hồ Chí Minh nằm tại số 86 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh, đối diện Phố đi bộ Nguyễn Huệ và Sông Sài Gòn, là một công trình kiến trúc cổ nổi tiếng, được xếp hạng di tích quốc gia. Đây là nơi làm việc chính của chính quyền thành phố, có lịch sử lâu đời và kiến trúc độc đáo, kết hợp giữa phong cách Phục Hưng và Art Deco.",
-    images:
-      "https://res.cloudinary.com/dlccsuxkb/image/upload/v1770315840/c19bf0611e3c5d89c32d725b51c1a4b4_b1v1ok.jpg",
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982865/faaa509adb8afac1231e6c3e6a23d2a4_cde0hf.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982864/dc44a6e3b0e38fbd9a247a178104e375_jykafg.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982862/d583775a49f0d8b2860b18e18e91551d_ku8wo6.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982861/d66a563149200c9a8bad45ecf0f7e34d_nokgvq.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982860/c19bf0611e3c5d89c32d725b51c1a4b4_mykvdn.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982858/bae88209e637fba0a008c0066338c54c_i3suth.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982857/8784501cac7e3a5e55159d784beb5e50_ettgwn.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982855/2089c72940db545f720ab8ccb139d20d_su4fbw.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982854/935d948d1d4dc15f5f056c0652f13bd0_l2ywal.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982854/356d97620b0cf1ca84b96c66fd83b11b_iywq7h.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -375,7 +435,18 @@ export const mapDataRaw = [
     description: "Gắn liền với địa danh Khám Chí Hòa lịch sử.",
     detail:
       "Đình Chí Hòa (475 Cách Mạng Tháng Tám, P. 13, Q. 10, TP.HCM) là di tích lịch sử-văn hóa quốc gia, ngôi đình cổ gần 300 năm tuổi, từng là nơi dạy học của cụ Võ Trường Toản và cơ sở cách mạng, nổi tiếng với kiến trúc cổ, thờ cúng thần linh và nhiều di vật quý, đang được tu bổ với kinh phí 34 tỷ đồng.",
-    images: [dinhchihoa],
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982854/356d97620b0cf1ca84b96c66fd83b11b_iywq7h.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982892/images_3_wjavml.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982891/images_2_c74vl5.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982889/images_1_rventg.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982888/download_s6sian.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982887/dinh-chi-hoa-3-16784545468742022610705_sn5qok.webp",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982886/dinh-chi-hoa-3-16784545468742022610705_1_absyva.webp",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982884/9_ltfwbd.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982883/4_DSC_9035_2-1600x1200-copy_wvbzhf.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982882/2-chi-hoa-2-6520.jpg_ftb1qn.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -389,7 +460,18 @@ export const mapDataRaw = [
     description: "Bảo tàng điêu khắc gỗ Phật giáo với hàng trăm bao lam.",
     detail:
       "Chùa Giác Viên (Quận 11, TP.HCM) là ngôi cổ tự hơn 160 năm tuổi, được công nhận là Di tích Lịch sử - Văn hóa cấp Quốc gia (1993), nổi bật với kiến trúc Phật giáo Nam Bộ độc đáo, đặc biệt là các bao lam gỗ chạm khắc tinh xảo và nhiều cổ vật, pho tượng gỗ quý hiếm, thể hiện nghệ thuật điêu khắc đặc trưng vùng đất phương Nam. Chùa còn lưu giữ gốc cây Mai cổ thụ và nhiều di vật triều Nguyễn, là trung tâm tâm linh quan trọng với không gian thanh tịnh, kiến trúc cổ kính độc đáo và có giá trị nghệ thuật cao.",
-    images: [chuagiacvien],
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982924/images_faeose.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982921/images_1_kl1u5m.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982920/d00d3158f3e40a8f012669499b2487ec_hyt3ow.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982919/ChuaViengiac01_br63xg.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982917/ChuaGiacVien01_orsyy0.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982916/chuaco6_FPRS_etgukq.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982914/chuaco_ZYAI_hvt6jg.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982913/b5eb99e95370e573d1131967864b8c64_xjr0ia.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982911/9a20e7ed-chua-giac-vien-thumb_xlw89j.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982910/2-1448004680037_u8k5ss.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -403,7 +485,18 @@ export const mapDataRaw = [
     description: "Ngôi chùa cổ trên gò đất cao, di chỉ khảo cổ học quan trọng.",
     detail:
       "Chùa Phụng Sơn (còn gọi là Chùa Gò) là một cổ tự hơn 200 năm tuổi tại 1408 Đường 3/2, Phường 2, Quận 11, TP. Hồ Chí Minh, là di tích lịch sử văn hóa cấp quốc gia, nổi bật với kiến trúc cổ kính kiểu Nam Bộ, nhiều pho tượng quý, và không gian thanh tịnh giữa lòng Sài Gòn nhộn nhịp, thu hút du khách và Phật tử đến chiêm bái.",
-    images: [chuaphungson],
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982954/thoi-gian-mo-cua-chua-phung-son_cy4rzr.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982952/images_bczmpp.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982950/images_4_psgazj.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982948/images_3_moaz0n.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982947/images_2_citxsq.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982945/images_1_w5qtub.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982944/image-chua-phung-son-co-tu-noi-tieng-dam-net-kien-truc-nam-bo-165710661088173_oqraqm.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982941/chua-phung-son-1_aomt5u.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982940/30ChuaPhungson01_ou5q7n.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982939/30ChuaPhungson01_1_hveblg.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -416,7 +509,18 @@ export const mapDataRaw = [
     address: "380 Trần Hưng Đạo, Quận 5",
     description:
       "Di tích lịch sử văn hóa cấp Quốc gia của người Hoa gốc Minh Đình Minh Hương Gia Thạnh (380 Trần Hưng Đạo, Q.5, TP.HCM) là di tích kiến trúc nghệ thuật quốc gia, được người Minh Hương (Việt gốc Hoa) xây dựng từ 1789, là nơi thờ tự, văn hóa, và là nơi tụ họp văn sĩ xưa; nổi bật với kiến trúc cổ kính, nhiều hoành phi, câu đối giá trị (như biển Thiện Tục Khả Phong của vua Tự Đức). Đình lưu giữ nhiều cổ vật quý, thờ cúng tổ tiên người Minh Hương và các vị thần, lễ Kỳ Yên quan trọng vào Rằm tháng Giêng hàng năm.",
-    images: [dinhminhhuong],
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982985/photo-1750504398101-1750504398600974102415_dawbji.webp",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982983/Minh-huong-gia-thanh-4-1024x528_lqiosz.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982981/IMG_9655-scaled_c27dmu.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982979/images_d0jwas.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982977/images_4_fiqzxp.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982975/images_3_icwpoo.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982973/images_2_cqry8q.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982972/images_1_w9zhi7.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982971/%C4%90%C3%ACnh_Minh_H%C6%B0%C6%A1ng_Gia_Th%E1%BA%A1nh_p8lanh.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771982969/34-anh-1-1935.jpg_dvzsf6.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -430,7 +534,19 @@ export const mapDataRaw = [
     description: "Kiệt tác chạm khắc đá và gỗ của cộng đồng người Phúc Kiến.",
     detail:
       "Hội quán Hà Chương (Chùa Ông Hược, Chùa Bà Hà Chương) tại 802 Nguyễn Trãi, Q.5, TP.HCM, là di tích kiến trúc nghệ thuật quốc gia, do người Hoa gốc Chương Châu (Phúc Kiến) xây dựng từ thế kỷ 18, thờ Thiên Hậu và các vị thần khác, nổi bật với kiến trúc nhà tứ hợp diện độc đáo và các mô típ điêu khắc gỗ tinh xảo. Đây là trung tâm sinh hoạt tín ngưỡng, văn hóa của cộng đồng người Hoa, thu hút đông đảo người dân đến lễ bái vào các dịp lễ hội lớn, đặc biệt là ngày Vía Bà Thiên Hậu (23/3 Âm lịch).",
-    images: [hoiquanhachuong],
+    images: [
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983026/IMG_8217-scaled_ihzjhy.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983024/IMG_8206-scaled_skistt.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983021/img_0664_y6kbf0.webp",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983019/images_xkyht1.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983018/images_5_ey6yeb.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983015/images_4_zy0dmw.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983014/images_3_tddjyv.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983011/images_2_w4wcnl.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983010/images_1_m1vpk2.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983008/hoi-quan-ha-chuong-di-san-van-hoa-cua-nguoi-hoa-tai-quan-5-tp-hcm-67d65a274c665_gfuj8l.jpg",
+      "https://res.cloudinary.com/dypm5avrx/image/upload/v1771983006/caption_ca2uhq.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -444,7 +560,17 @@ export const mapDataRaw = [
     description: "Thờ Quan Công, kiến trúc Triều Châu rực rỡ sắc màu.",
     detail:
       "Hội quán Nghĩa An (hay Chùa Ông, Miếu Quan Đế) là di tích kiến trúc nghệ thuật cấp quốc gia tại 678 Nguyễn Trãi, P. Chợ Lớn, Quận 5, TP.HCM, được người Hoa gốc Triều Châu xây dựng, thờ Quan Công (Quan Vũ) và là trung tâm văn hóa, tín ngưỡng của cộng đồng, nổi bật với kiến trúc Trung Hoa cổ kính, trang trí tinh xảo và nhiều nét văn hóa độc đáo. ",
-    images: [hoiquannghiaan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967566/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/b5zfaqxp9v1w3qsnc1ro.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967567/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/jwxwwnxh8h69czia5tsk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967568/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/avu7n62vjlh2pvvoskja.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967569/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/zvly6tu7om6bwckekgud.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967570/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/qbzeh8yobuaavitcviyx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967571/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/m0g8txhh0ybudxubaeyk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967573/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/m4hdph2pwiten8akrdnv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967575/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/lfgm6kezzwxfzzcekjpy.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967581/Hoi_quan_Nghia_An__Mieu_Quan_De_hay_Chua_Ong__/cps06z2kpa23daoxaqzd.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -458,7 +584,17 @@ export const mapDataRaw = [
     description: "Di tích kiến trúc gỗ quý hiếm, thờ thần bảo hộ sông nước.",
     detail:
       "Hội quán Nghĩa Nhuận (hay Đình Nghĩa Nhuận) ở Quận 5, TP.HCM, là một di tích kiến trúc nghệ thuật cấp quốc gia, nguyên là đình làng Tân Nhuận xưa, được thành lập năm 1872 bởi người Minh Hương, thờ Quan Đế và Thần Hoàng bổn cảnh, nổi bật với nghệ thuật chạm khắc gỗ tinh xảo, mang đậm dấu ấn kiến trúc Việt Nam và Hoa kiều cuối thế kỷ 19 - đầu thế kỷ 20, là nơi sinh hoạt tín ngưỡng quan trọng của cộng đồng người Hoa,",
-    images: [hoiquannghianhuan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967583/Hoi_quan_Nghia_Nhuan/xw0hgkvqovyaf0vrngir.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967584/Hoi_quan_Nghia_Nhuan/aktprd7odbsog0lkpdsf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967585/Hoi_quan_Nghia_Nhuan/h3bql6k6cp68fjawblc8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967586/Hoi_quan_Nghia_Nhuan/d06rxgfhrnt3hskk3mbq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967588/Hoi_quan_Nghia_Nhuan/rpwjdw9ifymlhzjkptrs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967590/Hoi_quan_Nghia_Nhuan/lapugn8ybliqljoulsqx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967591/Hoi_quan_Nghia_Nhuan/cjzrtmnnvxl21jqxir9m.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967592/Hoi_quan_Nghia_Nhuan/zjdzu246oqoif3yfqjao.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967593/Hoi_quan_Nghia_Nhuan/rsnqrotan6rlebr97bkz.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -472,7 +608,17 @@ export const mapDataRaw = [
     description: "Kiến trúc Phúc Kiến, mái đao vút nhọn đặc trưng.",
     detail:
       "Hội quán Ôn Lăng (còn gọi là Chùa Quan Âm, Chùa Ông Lào) tại 12 Lão Tử, P.11, Q.5, TP.HCM, là di tích kiến trúc nghệ thuật cấp quốc gia, là trung tâm tâm linh của cộng đồng người Hoa Phúc Kiến, thờ phụng Thiên Hậu Thánh Mẫu và Bồ Tát Quan Âm, nổi bật với kiến trúc Phúc Kiến độc đáo, nhiều tượng gốm, phù điêu tinh xảo và các lễ hội lớn như Lễ vía Quan Âm (19/6 âm lịch). Nơi đây thu hút du khách trong và ngoài nước bởi giá trị lịch sử, văn hóa và tín ngưỡng sâu sắc.",
-    images: [hoiquanonlang],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967595/Hoi_quan_On_Lang/kvt1gvgjmlrte1sscxpa.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967597/Hoi_quan_On_Lang/uuvnf0aiznhotfy6uncq.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967598/Hoi_quan_On_Lang/bwbkvgxujyhn4febkrde.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967599/Hoi_quan_On_Lang/ldjpqjbt8neobdqc6jmw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967599/Hoi_quan_On_Lang/abps7xt7zckonkeky2lo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967600/Hoi_quan_On_Lang/srn1vrdiyohkdosutuom.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967601/Hoi_quan_On_Lang/mektqboy6y8tke56a8r5.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967602/Hoi_quan_On_Lang/ja6eutk2mkpmvopcenvg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967603/Hoi_quan_On_Lang/t1bsgvld4aaxx5qgi1yi.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -487,7 +633,17 @@ export const mapDataRaw = [
       "(Trùng tên với Miếu Thiên Hậu) - Trung tâm của người Quảng Đông.",
     detail:
       "Hội quán Tuệ Thành (hay còn gọi Chùa Bà, Chùa Bà Thiên Hậu) tại 710 Nguyễn Trãi, Q.5, TP.HCM là một di tích lịch sử-văn hóa tín ngưỡng cổ kính, thờ Thiên Hậu Thánh Mẫu, do người Hoa gốc Tuệ Thành (Quảng Châu) xây dựng hơn 200 năm trước, nổi tiếng linh thiêng, thu hút đông đảo người dân và du khách đến cầu an, cầu duyên, chiêm ngưỡng kiến trúc độc đáo với nhiều cổ vật giá trị, đặc biệt vào dịp lễ 23/3 Âm lịch.",
-    images: [hoiquantuethanh],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967604/Hoi_quan_Tue_Thanh__Chua_Ba_/tqwtufjbxme8zl5ur6mv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967605/Hoi_quan_Tue_Thanh__Chua_Ba_/b9ka9sqdmgfgd9biqp8h.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967606/Hoi_quan_Tue_Thanh__Chua_Ba_/yeeoweznosdafmv1ffc4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967607/Hoi_quan_Tue_Thanh__Chua_Ba_/hwpp1geavtj0izmek0ra.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967608/Hoi_quan_Tue_Thanh__Chua_Ba_/znstv4xmb3veg2wgmjw2.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967609/Hoi_quan_Tue_Thanh__Chua_Ba_/mh57y7qoflbdznehph9l.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967609/Hoi_quan_Tue_Thanh__Chua_Ba_/cfhzoucdxcxm56ltjjyw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967612/Hoi_quan_Tue_Thanh__Chua_Ba_/sjfueslcdynwwqbksfes.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967613/Hoi_quan_Tue_Thanh__Chua_Ba_/gmenpl1lpinxxy3ux6vy.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -501,7 +657,26 @@ export const mapDataRaw = [
     description: "Thờ Phúc Đức Chính Thần, kiến trúc gốm sứ tinh xảo.",
     detail:
       "Miếu Nhị Phủ (hay Chùa Ông Bổn) là một ngôi miếu cổ nổi tiếng của người Hoa gốc Phúc Kiến tại Quận 5, TP.HCM, tọa lạc ở 264 Hải Thượng Lãn Ông, thờ Thánh Bổn Đầu Sư, là nơi sinh hoạt văn hóa tâm linh quan trọng, mang đậm kiến trúc Phúc Kiến, và có lịch sử lâu đời gắn liền với cộng đồng người Hoa ở Chợ Lớn.",
-    images: [mieunhiphu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967614/Mieu_Nhi_Phu__Chua__Ong_Bon_/v2pfs68rqtr8mzyssrb5.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967615/Mieu_Nhi_Phu__Chua__Ong_Bon_/i4gccc4qpvcnwzn8yihy.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967617/Mieu_Nhi_Phu__Chua__Ong_Bon_/vjhel7p7gm0nlnvjkrpo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967617/Mieu_Nhi_Phu__Chua__Ong_Bon_/fmpelajcerx9sujvttv3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967618/Mieu_Nhi_Phu__Chua__Ong_Bon_/jk6jrxga6zxjebdijjwu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967620/Mieu_Nhi_Phu__Chua__Ong_Bon_/nkpdnsqblbz0ycop2wr3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967621/Mieu_Nhi_Phu__Chua__Ong_Bon_/wzieqz3x0bwdgaenkkg7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967622/Mieu_Nhi_Phu__Chua__Ong_Bon_/mvncsaenbvfyl9gsov2j.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967624/Mieu_Nhi_Phu__Chua__Ong_Bon_/qzsj953hszl02kejevqt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967625/Mieu_Nhi_Phu__Chua__Ong_Bon_/tvysdhkqo8sr0kay1ytu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967626/Mieu_Nhi_Phu__Chua__Ong_Bon_/toyav9zfhiaja8zdmkf0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967627/Mieu_Nhi_Phu__Chua__Ong_Bon_/mgxlokexf5fagcnrjro8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967628/Mieu_Nhi_Phu__Chua__Ong_Bon_/w51ttg4bmuq7hw1qlhtp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967631/Mieu_Nhi_Phu__Chua__Ong_Bon_/kngpftrzvzidjdxlecmz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967632/Mieu_Nhi_Phu__Chua__Ong_Bon_/roqwmzrndhwkjh4vwi46.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967633/Mieu_Nhi_Phu__Chua__Ong_Bon_/br702rrpycjddqolliag.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967635/Mieu_Nhi_Phu__Chua__Ong_Bon_/kixjfvicv4wf4jhlvrim.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967636/Mieu_Nhi_Phu__Chua__Ong_Bon_/tjdkahbe2ea0robjtcz1.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -513,7 +688,22 @@ export const mapDataRaw = [
     lng: "106.65521140151400",
     description:
       "Nhà thờ tổ thợ bạc (Hội quán Lệ Châu) ở 586 Trần Hưng Đạo, Quận 5, TP.HCM là nhà thờ tổ nghề kim hoàn sớm nhất Việt Nam (xây năm 1892), là nơi thờ cúng tổ sư Cao Đình Hương và quy tụ thợ bạc Nam Bộ, nổi tiếng với lễ giỗ tổ long trọng (mùng 7-8/2 âm lịch) và có vai trò lịch sử quan trọng, được công nhận là di tích kiến trúc nghệ thuật Quốc gia.",
-    images: [nhathotobac],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967638/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/u7yyhmmfiunnp1e9hjln.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967640/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/kikytzvbuqaymeutbzs3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967642/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/kmcrygi6veal1md8hlkh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967643/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/qb43sdojnlwwnax6rdjf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967643/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/qhxrvef5tge4dy2m7wvc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967644/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/hgpgx2threifbe1rs27a.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967645/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/rjchyc2ojciizd3q4kjl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967646/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/q2u9uphudd7rgejdsybz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967647/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/birwnstxkyhgjrlb95ka.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967649/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/w3xsr21uiupmwikzfi68.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967651/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/zkohwq7binjrkyiopq2i.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967652/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/ttbbjtxpbqvzzjjvezre.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967653/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/g06lye69nj66j0ci4akd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967654/Nha_tho_to_tho_bac__hoi_quan_Le_Chau_/ifo4oxjrk7rihuihiejw.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -527,7 +717,18 @@ export const mapDataRaw = [
     description: "Nơi sinh hoạt văn hóa của cộng đồng người Hoa gốc Hải Nam.",
     detail:
       "Hội quán Quỳnh Phủ (hay còn gọi Chùa Bà Hải Nam) là di tích kiến trúc nghệ thuật cấp quốc gia tại TP.HCM, do cộng đồng người Hoa gốc Hải Nam xây dựng, thờ Bà Thiên Hậu. Nơi đây nổi bật với kiến trúc cổ, nghệ thuật đúc đồng và chạm khắc gỗ tinh xảo, là trung tâm tín ngưỡng quan trọng và điểm đến văn hóa lịch sử thu hút du khách.",
-    images: [hoiquanquynhphu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967655/Hoi_quan_Quynh_Phu/rvicdkjz5rhisqbqp8qo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967656/Hoi_quan_Quynh_Phu/ywtgiwjwhg7cwqhrwwe8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967657/Hoi_quan_Quynh_Phu/d7xoxuhm9oa5icsx83qj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967658/Hoi_quan_Quynh_Phu/vfyfn8g6mpizhho1w6yf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967660/Hoi_quan_Quynh_Phu/p7tewkzy8shte8jv4izh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967661/Hoi_quan_Quynh_Phu/qftt3flwv9t50hpqd4ps.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967663/Hoi_quan_Quynh_Phu/ydydwjwyop5ljyxjt6hz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967664/Hoi_quan_Quynh_Phu/p0fpdhkyzkgmra1q3gj6.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967666/Hoi_quan_Quynh_Phu/tb9d8kcdewfqwxtesq2i.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967667/Hoi_quan_Quynh_Phu/cebsekommypkrthzvngq.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -541,7 +742,18 @@ export const mapDataRaw = [
     description: "Chùa cổ hơn 200 năm, nằm trên ngọn đồi thấp thơ mộng.",
     detail:
       "Chùa Hội Sơn là một di tích kiến trúc nghệ thuật quốc gia hơn 300 năm tuổi, tọa lạc tại số 1A1 đường Nguyễn Xiển, phường Long Bình, TP. Thủ Đức, TP.HCM, nổi tiếng với kiến trúc cổ kính, không gian yên bình và giá trị lịch sử lâu đời, từng bị hỏa hoạn nhưng đã được phục hồi, nơi lưu giữ nhiều hiện vật khảo cổ và là minh chứng cho sự phát triển Phật giáo Nam Bộ.",
-    images: [chuahoison],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967668/Chua_Hoi_Son/a19m9citwqv9qued4dmi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967670/Chua_Hoi_Son/equ5aiwqvkneuksephao.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967671/Chua_Hoi_Son/fenh4mhpqob8nnupdp99.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967673/Chua_Hoi_Son/thiitasjkear2rcoir7h.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967674/Chua_Hoi_Son/aczjuqnysablnkesbwtl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967674/Chua_Hoi_Son/acgdlruxjkpg3lahcp1w.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967675/Chua_Hoi_Son/zo7wftlvtb8dpfgbcan7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967676/Chua_Hoi_Son/jdgw4ikkqrpuyoqmil4n.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967677/Chua_Hoi_Son/dbjxdjcrue4hk2y9wlt7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967678/Chua_Hoi_Son/iujmxblyzmns1hgqyha6.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -555,7 +767,18 @@ export const mapDataRaw = [
     description: "Kiến trúc thời Nguyễn còn nguyên trạng, thờ Phật & Tổ.",
     detail:
       "Chùa Phước Tường là ngôi cổ tự gần 300 năm tuổi, di tích lịch sử văn hóa cấp Quốc gia tại Quận 9 (nay là Thành phố Thủ Đức), TP.HCM, nổi bật với kiến trúc Phật giáo Nam bộ truyền thống, lưu giữ nhiều tượng cổ và tinh hoa nghệ thuật điêu khắc, là nơi thờ tự linh thiêng và điểm đến văn hóa hấp dẫn, mở cửa hàng ngày.",
-    images: [chuaphuoctuong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967680/Chua_Phuoc_Tuong/yzp0rhhllbdmezk4amgm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967681/Chua_Phuoc_Tuong/p8uzzlntjlpodm6ijdwn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967682/Chua_Phuoc_Tuong/nerp2247rjmavc3iyivn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967683/Chua_Phuoc_Tuong/kzo0k8swtxokmjiize2i.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967684/Chua_Phuoc_Tuong/kyxhpwpjunmyityyzkqd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967685/Chua_Phuoc_Tuong/eoljixx01exjphordzk8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967688/Chua_Phuoc_Tuong/hpomhuv6hvhkp7tf0uyj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967689/Chua_Phuoc_Tuong/xvcsb0lnewrtacex1esp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967690/Chua_Phuoc_Tuong/melwkchiqecadedv1ai0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967691/Chua_Phuoc_Tuong/nay8y6yhboxrxiok8po9.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -569,7 +792,18 @@ export const mapDataRaw = [
     description: "Ngôi đình vùng ven lưu giữ nhiều sắc phong quý.",
     detail:
       "Theo Địa chí văn hóa Thành phố Hồ Chí Minh, năm 1880 thôn Trường Thọ thuộc tổng An Điền, huyện Thủ Đức, hạt Sài Gòn; từ đó có thể xác định đình Trường Thọ được xây dựng vào khoảng thời gian này. Đình tọa lạc trên gò đất cao, không gian thoáng đãng, xung quanh là những cây dầu cổ thụ cao lớn tỏa bóng mát quanh năm. Không chỉ là nơi sinh hoạt tín ngưỡng dân gian, đình Trường Thọ còn bảo tồn gần như nguyên vẹn các giá trị kiến trúc nghệ thuật của đình làng Nam Bộ. Công trình nổi bật với hệ thống cột, kèo, mái, xà, đòn tay, rui mè bằng gỗ; các đầu kèo chạm nổi tinh xảo hình đầu rồng. Bên trong đình lưu giữ nhiều hiện vật quý như án thờ, hoành phi, liễn đối, bài vị, bao lam cửa võng, bao lam cột, phù điêu gỗ và mõ gỗ, tất cả đều được chạm khắc công phu với các đề tài truyền thống như tứ linh (rồng, lân, rùa, phượng), mây, chim, hoa lá và trái quả.",
-    images: [dinhtruongtho],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967692/Dinh_Truong_Tho/zdh1ne8vxvrdwmqn4dli.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967693/Dinh_Truong_Tho/vo83wticddzgfcb5w3kl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967695/Dinh_Truong_Tho/xxp9ofhwivxwqwteyvyh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967696/Dinh_Truong_Tho/prwbhsvfq1mgkgrjiyi0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967698/Dinh_Truong_Tho/xqxm3losdnvojkqyzvn1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967699/Dinh_Truong_Tho/ezyvyxget4fk86bfcxyn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967700/Dinh_Truong_Tho/mst325o9gm7fshqxavrc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967702/Dinh_Truong_Tho/b5wyb2ewcumcngflhukv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967703/Dinh_Truong_Tho/eokwvgzv3zrt2x30xbzs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967705/Dinh_Truong_Tho/r0eb8y9ol7nipcrxlfg0.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -583,7 +817,28 @@ export const mapDataRaw = [
     description: "Thờ Thành hoàng Bổn cảnh, kiến trúc Nam Bộ truyền thống.",
     detail:
       "Đình Xuân Hiệp là ngôi đình làng gắn liền với địa danh suối Xuân Trường, được lưu truyền trong câu ca “Ăn nem Thủ Đức, tắm suối Xuân Trường”. Đình tọa lạc trong khuôn viên rợp bóng nhiều cây cổ thụ, tạo nên không gian trang nghiêm và thoáng mát. Về kiến trúc, đình có bố cục tổng thể gồm các hạng mục võ ca, tiền điện, chính điện và nhà bếp, sắp xếp theo một trục dọc thống nhất; mái các tòa nhà đều lợp ngói âm dương truyền thống. Bên phải sân trước là các miếu nhỏ thờ Ngũ hành (lập năm 1968) và miếu Thủy Long — công trình có kiến trúc đẹp do bà Nguyễn Thị Chấn xây dựng năm 1937 để thờ thần suối Xuân Trường. Bên trái sân trước là các miếu nhỏ thờ Bạch Mã, Thần Nông và Sơn Quân.",
-    images: [dinhxuanhiep],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967707/Dinh_Xuan_Hiep/zi7mdvxdnsocevopiylw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967708/Dinh_Xuan_Hiep/j4mmkcttupqm95pkruik.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967709/Dinh_Xuan_Hiep/nbk6yoqhq0t4d51ro1xz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967710/Dinh_Xuan_Hiep/lnypgkafo51e644djtkb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967711/Dinh_Xuan_Hiep/mggibiqpwasd1eyvuhll.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967714/Dinh_Xuan_Hiep/s1tuyagimfvnedjde3zw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967715/Dinh_Xuan_Hiep/kzhcmdhxlodnls8jhkhi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967716/Dinh_Xuan_Hiep/hu5d3mhovcqmanaxrxex.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967718/Dinh_Xuan_Hiep/hhmrfuljys5iwumucwsx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967719/Dinh_Xuan_Hiep/sf4sudimpdveu70mi2qh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967900/Dinh_Xuan_Hiep/e5ynifjpxzbmfn8u049e.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967902/Dinh_Xuan_Hiep/yepphj5iktp4eh4vsacq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967903/Dinh_Xuan_Hiep/yhppmsuoo8gragyyku7k.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967905/Dinh_Xuan_Hiep/zljait6fythszsbgkumi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967907/Dinh_Xuan_Hiep/tu4sgkiqpu1qbwzftzjx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967908/Dinh_Xuan_Hiep/ycrjvwyugweds8e6a0ba.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967910/Dinh_Xuan_Hiep/d0kcpbkkn98avcsgwlvd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967911/Dinh_Xuan_Hiep/tya5ybtszyffoiobqvlx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967912/Dinh_Xuan_Hiep/t7ppp64rvdnuxreirqok.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967914/Dinh_Xuan_Hiep/pjebprgpddjgz25wmosv.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -597,7 +852,18 @@ export const mapDataRaw = [
     description: "Trung tâm tín ngưỡng của vùng đất Thủ Đức xưa.",
     detail:
       "Đình Thần Linh Đông là di tích tiêu biểu của khu vực Linh Chiểu, thờ Thành Hoàng cùng các vị thần bảo hộ làng xã. Với kiến trúc truyền thống và các nghi lễ được duy trì qua nhiều đời, đình là điểm hội tụ đời sống văn hóa – tín ngưỡng của cư dân địa phương.",
-    images: [dinhthanlinhdong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967916/Dinh_than_Linh_Dong/zv9fkiby81mdskhfnyyy.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967919/Dinh_than_Linh_Dong/uicduqygovkozkdr8png.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967921/Dinh_than_Linh_Dong/c7ehpwvy1is67y2s1uk0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967922/Dinh_than_Linh_Dong/b39cdv8sr2um19vbp3vk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967924/Dinh_than_Linh_Dong/r5l5uzku2pxse8m1m1a7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967926/Dinh_than_Linh_Dong/fhy9djjosfajfq9yoy9a.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967927/Dinh_than_Linh_Dong/pef5nqpq8dmdxqufopny.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967929/Dinh_than_Linh_Dong/xt20dbvrezfsw484iivf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967930/Dinh_than_Linh_Dong/xeimllhedjrqxyvf0dwz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967933/Dinh_than_Linh_Dong/sxteftcqnkzqhvvrzok1.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -611,7 +877,18 @@ export const mapDataRaw = [
     description: "Kiến trúc Tiền tế - Hậu cung điển hình của đình làng Nam Bộ.",
     detail:
       "Đình được xây dựng trên gò đất cao, quay về hướng Đông, có kiến trúc theo dạng chữ Đinh (丁). Mặt bằng tổng thể được tổ chức thành hai trục song song gồm trục chính và trục phụ. Trục chính, tính từ ngoài vào trong, lần lượt là tiền điện, trung điện và chính điện; trục phụ nằm bên trái gồm nhà Túc, nhà kho và nhà bếp. Giữa hai trục là khoảng không gian thông thoáng gọi là sân Thiên Tĩnh. Từ ngoài vào, cổng đình được xây dựng theo kiểu Tam quan, phía trước có bia Ông Hổ, hai bên là miếu Ngũ Hành và miếu Thần Nông. Sân đình có diện tích khoảng 17 m × 25 m, được lát gạch tàu, tạo không gian sinh hoạt và hành lễ trang nghiêm.",
-    images: [dinhbinhhoa],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967935/Dinh_Binh_Hoa/y6tiy1xgq8jyhlj1x8fn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967939/Dinh_Binh_Hoa/wlamsq1rgbbgjbjzwahd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967941/Dinh_Binh_Hoa/of7rbyuj0a8p7nvhtsk4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967942/Dinh_Binh_Hoa/fkf3hvhwzlwviqxalhs4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967944/Dinh_Binh_Hoa/z2bxxjjm4iqs2inglxwl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967946/Dinh_Binh_Hoa/hlrmjxliloxjnylltiem.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967949/Dinh_Binh_Hoa/w7qpfkddpumbvciyd25h.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967952/Dinh_Binh_Hoa/hg3bcijdcvxt7oqgvdgr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967959/Dinh_Binh_Hoa/qs026eu8wqvcewakytgf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967964/Dinh_Binh_Hoa/zmieei7gllfhtbq2xvlm.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -626,7 +903,18 @@ export const mapDataRaw = [
       "Nơi thờ Tả quân Lê Văn Duyệt, điểm tâm linh lớn nhất Sài Gòn.",
     detail:
       "Lăng Ông Bà Chiểu là quần thể đền thờ và khu mộ của Tả quân Lê Văn Duyệt cùng phu nhân là bà Đỗ Thị Phận. Tả quân Lê Văn Duyệt là danh tướng, quân sư lỗi lạc của triều Nguyễn, có nhiều công lao to lớn đối với đất nước, từng phò tá hai triều vua Gia Long và Minh Mạng. Năm 1835, dưới triều vua Minh Mạng, xảy ra biến loạn thành Phiên An, Lê Văn Duyệt bị quy kết tội “che chở quân phỉ đảng, gây nên bọn loạn”. Dù ông đã qua đời, triều đình vẫn ra lệnh san phẳng mộ và dựng bia đá khắc tám chữ “Quyền yêm Lê Văn Duyệt phục pháp xử”. Đến năm 1841, dưới triều vua Thiệu Trị, ông được minh oan, bia đá bị dỡ bỏ, ngôi mộ được đắp lại khang trang, cao rộng hơn, trở thành di tích lịch sử – văn hóa quan trọng của Thành phố Hồ Chí Minh.",
-    images: [langlevanduyet],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967970/Lang_Le_Van_Duyet_Ong_Ba_Chieu/tttgnsvqcivyidaiefgw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967973/Lang_Le_Van_Duyet_Ong_Ba_Chieu/drugvg4verr5eeezreq4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967975/Lang_Le_Van_Duyet_Ong_Ba_Chieu/bh9n5djojdrjnwpq7frf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967979/Lang_Le_Van_Duyet_Ong_Ba_Chieu/tzuoxqlj5b838m4yyima.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967983/Lang_Le_Van_Duyet_Ong_Ba_Chieu/t6o7jrfndfy6dug1v6y9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967986/Lang_Le_Van_Duyet_Ong_Ba_Chieu/j1cehmotedkrg1ijioe2.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967991/Lang_Le_Van_Duyet_Ong_Ba_Chieu/iscrlwun84owvat8so0g.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967995/Lang_Le_Van_Duyet_Ong_Ba_Chieu/jooopq98scdua542x37u.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771967999/Lang_Le_Van_Duyet_Ong_Ba_Chieu/bm4ogzxqpmbymqccf5nc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968002/Lang_Le_Van_Duyet_Ong_Ba_Chieu/aywbcxdlkryewdqrqvj6.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -640,7 +928,18 @@ export const mapDataRaw = [
     description: "Ngôi chùa được vua ban sắc phong, kiến trúc cổ lầu đặc sắc.",
     detail:
       "Ngôi chùa xưa có tên là chùa Vĩnh Trường, tọa lạc tại thôn Hòa Mỹ (nay thuộc khu vực Đa Kao – Thị Nghè), sau đó được dời về Gò Vấp. Chùa được Hòa thượng Công Thắng trùng tu vào năm 1809 và được triều Nguyễn ban biển ngạch “Sắc tứ Pháp Vũ Tự” vào năm Minh Mạng thứ ba (1822), cùng biển “Sắc tứ Trường Thọ Tự” dưới thời vua Tự Đức. Hai tấm hoành phi sắc tứ này hiện vẫn được lưu giữ và treo tại chùa. Trải qua nhiều giai đoạn, chùa được Hòa thượng Thích Tâm Giác tổ chức trùng tu nhiều lần, gần nhất vào các năm 1994–1995. Các vị trụ trì tiền nhiệm gồm: Hòa thượng Thích Liễu Kiện, Thích Thanh Hiện, Thích Trừng Giáo, Thích Long Thắng và Thích Hải Phước. Từ năm 1952, chùa do Hòa thượng Thích Tâm Giác — đời thứ 43 của dòng Lâm Tế Chánh tông — đảm nhiệm trụ trì.",
-    images: [chuasactutruongtho],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968004/Chua_tu_sac_truong_tho/tpevurnbjd4pb5hkg2h1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968006/Chua_tu_sac_truong_tho/t62sec2jqhgemgwsacgi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968008/Chua_tu_sac_truong_tho/gdz6oatpzwqbh3kqdlu4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968009/Chua_tu_sac_truong_tho/meysv2dsat2kqf37ini3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968010/Chua_tu_sac_truong_tho/zz083kyjhxvvqljejpbl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968011/Chua_tu_sac_truong_tho/zkrkxgt6xeiweqpdfsmx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968013/Chua_tu_sac_truong_tho/enh4qjohhoo0knbstvmr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968015/Chua_tu_sac_truong_tho/hks4znu41spckl52vbtu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968017/Chua_tu_sac_truong_tho/u64oq6yvhxld72til6sz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968019/Chua_tu_sac_truong_tho/toavexq5uunocd4egzpp.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -654,7 +953,18 @@ export const mapDataRaw = [
     description: "Ngôi đình cổ nhất vùng đất Gia Định (1679).",
     detail:
       "Đình Thông Tây Hội, trước năm 1944 có tên là đình Hanh Thông Tây (hay Hạnh Thông Tây), là một ngôi đình cổ tiêu biểu tại vùng Gò Vấp. Đình được xây dựng vào khoảng năm 1679 và hiện được xem là ngôi đình cổ nhất còn tồn tại của vùng đất Gia Định xưa cũng như của toàn bộ miền Nam. Không chỉ mang giá trị kiến trúc nghệ thuật đặc sắc, đình Thông Tây Hội còn là nguồn tư liệu quý về lịch sử hình thành và đời sống cư dân Gò Vấp — một vùng đất ra đời khá sớm trong tiến trình phát triển của Sài Gòn – Gia Định. Với những giá trị nổi bật về lịch sử, văn hóa, kiến trúc và xã hội, đình đã được Bộ Văn hóa – Thông tin xếp hạng là di tích kiến trúc nghệ thuật, lịch sử cấp quốc gia vào năm 1998.",
-    images: [dinhthongtayhoi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968022/Dinh_Thong_Tay_Hoi/cxqzp1n6owijbvosdr8x.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968023/Dinh_Thong_Tay_Hoi/d3j1khueunt6fmzoiwvp.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968025/Dinh_Thong_Tay_Hoi/ls9qfdofdezo5vla7olb.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968027/Dinh_Thong_Tay_Hoi/ggj6ecn9tponqqewff9i.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968030/Dinh_Thong_Tay_Hoi/i9he6r1ygaozh7uhjsnq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968031/Dinh_Thong_Tay_Hoi/qfu95yx8n59yd9xcdkbf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968033/Dinh_Thong_Tay_Hoi/ivatxndssil5id1pzewf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968034/Dinh_Thong_Tay_Hoi/psow40ec8fr29o8bwydl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968037/Dinh_Thong_Tay_Hoi/jcvwtyujxof9il4frznl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968039/Dinh_Thong_Tay_Hoi/fiqb1glapwl2rq9ag5pn.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -668,7 +978,18 @@ export const mapDataRaw = [
     description: "Ngôi đình lớn với lễ hội Kỳ Yên thu hút hàng ngàn người.",
     detail:
       "Đình Phú Nhuận được xây dựng vào năm 1820, dưới triều Nguyễn, là một di tích tiêu biểu thờ Thành Hoàng làng và là chứng nhân lịch sử quan trọng của vùng đất Phú Nhuận, Thành phố Hồ Chí Minh. Trải qua nhiều lần trùng tu, đình vẫn bảo tồn các giá trị văn hóa – lịch sử đặc sắc và đã được Nhà nước công nhận là di tích lịch sử cấp quốc gia vào năm 1997.",
-    images: [dinhphunhuan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968041/Dinh_Phu_Nhuan/xyuv0tkytzbtiuncnmhz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968043/Dinh_Phu_Nhuan/nz1ihmldzj4n1w7snh0k.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968045/Dinh_Phu_Nhuan/j6irmihkf4n5rta2vjaq.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968049/Dinh_Phu_Nhuan/y4hhkvzipja45rv01l5v.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968053/Dinh_Phu_Nhuan/ghytlvubc1g1uvetly0m.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968054/Dinh_Phu_Nhuan/lo2xereuej3zlgxnttsl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968055/Dinh_Phu_Nhuan/woyx7ker2y547bhtnsz2.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968056/Dinh_Phu_Nhuan/kcfat74fxj8stlye4lyp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968058/Dinh_Phu_Nhuan/lkchpfxluiaomf2xntzw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968060/Dinh_Phu_Nhuan/myprmqumoml46dearqw3.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -683,7 +1004,18 @@ export const mapDataRaw = [
       "Thờ vị phó tổng trấn Gia Định Thành, kiến trúc lăng mộ uy nghiêm.",
     detail:
       "Lăng Trương Tấn Bửu tại Thành phố Hồ Chí Minh là công trình kiến trúc cổ tiêu biểu đầu thế kỷ XIX, được xếp hạng di tích quốc gia. Đây là nơi an nghỉ của danh tướng Trương Tấn Bửu — một trong “Ngũ hổ tướng” dưới triều vua Gia Long — và do chính Tả quân Lê Văn Duyệt chỉ đạo xây dựng. Trải gần 200 năm tồn tại, lăng vẫn giữ được gần như nguyên trạng, trở thành biểu tượng lịch sử và kiến trúc của khu vực Gò Vấp, với hệ thống đền thờ và mộ cổ hiện do dòng họ cùng các hội tế địa phương gìn giữ, bảo quản.",
-    images: [langtruongtanbuu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968063/Lang_Truong_Tan_Buu/pkcgaizl0famb7yjs70a.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968065/Lang_Truong_Tan_Buu/wwa3bymg8k9p9kftweoy.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968067/Lang_Truong_Tan_Buu/tmmjtdk5d6q3ictjwxx7.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968071/Lang_Truong_Tan_Buu/mowf944faw9doqxfesdf.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968073/Lang_Truong_Tan_Buu/yw0mzraaqeaawqhnwoz3.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968074/Lang_Truong_Tan_Buu/vh4vz1lvusqf1yudkiun.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968076/Lang_Truong_Tan_Buu/bedijayurahxrftdj9md.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968077/Lang_Truong_Tan_Buu/vlel2w8axbr82ekx58zw.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968080/Lang_Truong_Tan_Buu/eprsrvfs6uc8fidt1riq.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968083/Lang_Truong_Tan_Buu/s4g5acrd2lgkbizgnk1e.png",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -698,7 +1030,18 @@ export const mapDataRaw = [
       "Thờ vị tướng trung thần thời Nguyễn, mộ xây bằng hợp chất cổ.",
     detail:
       "Lăng Võ Di Nguy là quần thể kiến trúc cổ gồm khu mộ và đền thờ, còn gọi là đền Phú Trung. Khu lăng được Bộ Văn hóa – Thông tin (nay là Bộ Văn hóa, Thể thao và Du lịch) xếp hạng di tích kiến trúc – nghệ thuật cấp quốc gia theo Quyết định số 43-VH/QĐ ngày 7/1/1993. Ban Quản lý Lăng Võ Di Nguy được UBND Quận Phú Nhuận thành lập năm 2003; Trưởng ban giai đoạn 2009–2014 là ông Nguyễn Cao Đức, và từ năm 2014 đến nay do ông Lê Minh Hoàng đảm nhiệm. Hằng năm, lễ giỗ Đức Bình Giang Quận Công Võ Di Nguy được tổ chức vào ngày 15–16 tháng Giêng âm lịch, và lễ giỗ cháu nội của ông là Đức Bình Giang Bá Võ Di Thái diễn ra vào ngày 15–16 tháng 11 âm lịch, theo nghi thức Tế Tiểu Cung Đình triều Nguyễn, do Ban Quản lý Lăng thực hiện.",
-    images: [langvodinguy],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968085/Lang_Vo_Di_Nguy/rdkqme69kzfngknfga3x.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968088/Lang_Vo_Di_Nguy/jallmt654zdsna9fkkof.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968090/Lang_Vo_Di_Nguy/wijztswlprkye6indgq2.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968092/Lang_Vo_Di_Nguy/srfaa37qfrwxhxs0duti.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968094/Lang_Vo_Di_Nguy/qrthn5i14h0zoftoo5ap.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968097/Lang_Vo_Di_Nguy/uewnkkgn1ko6yx23eclg.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968098/Lang_Vo_Di_Nguy/jecsf0edhibjdnxnfsxg.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968101/Lang_Vo_Di_Nguy/pwyjcxqh9psxrtlbfuno.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968102/Lang_Vo_Di_Nguy/zup7q5x1c46bgisvflm2.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968105/Lang_Vo_Di_Nguy/pzkwtschh0e61nw0hyc5.png",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -713,7 +1056,18 @@ export const mapDataRaw = [
     description: "Di tích quốc gia đặc biệt, tổ đình phái Lâm Tế tông.",
     detail:
       "Chùa Giác Lâm được cư sĩ Lý Thụy Long, người Minh Hương, quyên tiền xây dựng vào mùa xuân năm Giáp Tý (1744), dưới thời chúa Nguyễn Phúc Khoát. Ban đầu, chùa mang tên Sơn Can, sau còn được gọi là Cẩm Sơn do tọa lạc trên gò Cẩm Sơn; đồng thời có tên dân gian là Cẩm Đệm, gắn với tên riêng và nghề đan đệm của người sáng lập. Từ năm 1744 đến 1774, tư liệu về các vị trụ trì còn hạn chế. Đến năm 1774, Thiền sư Phật Ý Linh Nhạc (trụ trì chùa Từ Ân) đã cử đệ tử là Thiền sư Tổ Tông Viên Quang về trụ trì và đổi tên chùa thành Giác Lâm. Dưới thời Thiền sư Viên Quang, chùa trở thành trung tâm đào tạo kinh điển và giới luật sớm nhất cho tăng sĩ tại Gia Định và Nam Bộ. Đến năm 1873, dưới sự trụ trì của Thiền sư Minh Khiêm, chùa tiếp tục phát triển vai trò học thuật, trở thành nơi in ấn, sao chép kinh sách, khắc ván gỗ và diễn Nôm nhiều tác phẩm Phật giáo.",
-    images: [chuagiaclam],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968108/Chua_Giac_Lam/ghtkkwzkm6k9sgaed4co.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968110/Chua_Giac_Lam/qcaxspthjac1a6ok2b9j.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968113/Chua_Giac_Lam/vpfopnyoklkebarblkee.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968115/Chua_Giac_Lam/f2mkqygkahx7ddoopyxj.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968117/Chua_Giac_Lam/fwo6skbps13qceanuucv.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968120/Chua_Giac_Lam/mwodgvd6lwgbv2qz8ogi.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968123/Chua_Giac_Lam/wpcobvq74yiafrszp4c0.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968125/Chua_Giac_Lam/l7fdjqqar3l1l0lyfi4p.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968127/Chua_Giac_Lam/bhevfajbf1mnm0rjibub.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968129/Chua_Giac_Lam/v9hdpfvzdvczokrvwozn.png",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -727,7 +1081,18 @@ export const mapDataRaw = [
     description: "Căn cứ huyền thoại của Đoàn 10 Đặc công thủy.",
     detail:
       "Ngày 15/4/1966, Bộ Chỉ huy Miền quyết định thành lập Đặc khu quân sự rừng Sác với mật danh T10 (Trung đoàn 10 Đặc công rừng Sác). Đơn vị có nhiệm vụ thọc sâu, áp sát, bám trụ lâu dài, quyết tâm chiếm giữ rừng Sác làm bàn đạp tiến công liên tục vào kho tàng, bến cảng, cơ quan đầu não và các căn cứ quan trọng của quân đội Mỹ, lập nên nhiều trận đánh vang dội, gây khiếp sợ cho đối phương. Trong những năm kháng chiến chống Mỹ, Trung đoàn 10 hoạt động độc lập, điều kiện sinh hoạt và chiến đấu vô cùng gian khổ. Ban Chỉ huy và Ban Hậu cần của đơn vị chủ yếu dựa vào sự che chở, đùm bọc của nhân dân vùng ven đô; lương thực, thuốc men và các nhu yếu phẩm được các cơ sở bí mật tiếp tế. Có thời điểm địch phong tỏa nghiêm ngặt, đơn vị phải tổ chức thu mua từ xa, ngụy trang vận chuyển hàng chục tấn gạo vào căn cứ. Đặc biệt trong giai đoạn 1969–1971, do bị cắt đứt đường tiếp tế, cán bộ, chiến sĩ phải ăn cháo, rau thay cơm, nhưng vẫn kiên cường bám trụ rừng Sác với tinh thần “một tấc không đi, một ly không rời trận địa”.",
-    images: [cancurungsac],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968132/Can_cu_Rung_Sac/ntkppgqqqgywk1bwh7zw.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968135/Can_cu_Rung_Sac/cqdbcikauehpnmbv2cpz.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968137/Can_cu_Rung_Sac/vz9xeqhiwgndn1pkegyf.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968139/Can_cu_Rung_Sac/l1zieatfrfmwoyacyaee.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968140/Can_cu_Rung_Sac/isn7cqbewtspktpfcusl.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968143/Can_cu_Rung_Sac/rzficfit2cqpzawjspoc.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968146/Can_cu_Rung_Sac/frn0fhca1mmbtixtfp0s.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968149/Can_cu_Rung_Sac/vp46ekj1j4yl1feldm0z.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968151/Can_cu_Rung_Sac/xul2zk70ygn9yngolvql.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968155/Can_cu_Rung_Sac/idzq8ad5jwzvhfze8mvy.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -741,7 +1106,18 @@ export const mapDataRaw = [
     description: "Nơi diễn ra các cuộc đấu tranh chính trị thời kỳ 1930-1945.",
     detail:
       "Di tích lịch sử – văn hóa Dinh Quận Hóc Môn là một địa điểm tiêu biểu, mang giá trị to lớn trên các phương diện lịch sử, văn hóa và quân sự. Về lịch sử, di tích gắn liền với hai sự kiện trọng đại của phong trào cách mạng Nam Bộ: cuộc khởi nghĩa 18 Thôn Vườn Trầu và Nam Kỳ Khởi nghĩa ngày 23/11/1940. Về văn hóa, những cuộc đấu tranh chiếm Dinh Quận đã để lại nhiều bài vè, thơ ca, đồng dao, ca ngợi tinh thần kiên cường và ý chí bất khuất của Nhân dân 18 Thôn Vườn Trầu. Về quân sự, di tích phản ánh rõ tư duy khoa học trong công tác lãnh đạo quần chúng, tập hợp lực lượng và xây dựng cơ sở du kích, từ đó đúc kết nhiều bài học kinh nghiệm quý báu cho các cuộc kháng chiến về sau.",
-    images: [dinhquanhocmon],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968366/Dinh_Quan_Hoc_Mon/rbmttyb3v4sbppjtnuyr.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968368/Dinh_Quan_Hoc_Mon/jwnedlyclqgtia5mc9ne.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968370/Dinh_Quan_Hoc_Mon/n43njuy9napnvlougok2.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968371/Dinh_Quan_Hoc_Mon/lgkmztqzweaict5nacl4.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968373/Dinh_Quan_Hoc_Mon/xzbrgqksjdli026b14q9.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968377/Dinh_Quan_Hoc_Mon/niyfhs2jdlbslp5i3a9b.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968378/Dinh_Quan_Hoc_Mon/jucdyj27nhyddixxiaae.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968379/Dinh_Quan_Hoc_Mon/aurzzxzrwlglqvitxke2.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968381/Dinh_Quan_Hoc_Mon/qzpirtfu1xtsvtocp5qc.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968382/Dinh_Quan_Hoc_Mon/zfazwc9g2gffb3objjs1.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -755,7 +1131,18 @@ export const mapDataRaw = [
     description: "Nơi xử bắn các lãnh đạo Đảng sau khởi nghĩa Nam Kỳ.",
     detail:
       "Ngã Ba Giồng là di tích lịch sử cấp quốc gia tại huyện Hóc Môn, Thành phố Hồ Chí Minh, từng là “trường bắn” tàn khốc của thực dân Pháp trong Khởi nghĩa Nam Kỳ năm 1940. Nơi đây ghi dấu sự hy sinh anh dũng của nhiều chiến sĩ cách mạng tiêu biểu như Nguyễn Văn Cừ, Võ Văn Tần. Ngày nay, Ngã Ba Giồng đã được xây dựng thành Khu Tưởng niệm Liệt sĩ, gồm đền thờ, nhà truyền thống và tượng đài tri ân, trở thành địa chỉ đỏ có ý nghĩa giáo dục truyền thống cách mạng, thu hút đông đảo nhân dân và du khách đến tham quan, tưởng niệm.",
-    images: [ngabagiong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968385/Nga_Ba_Giong/nlxfl6ii5uibapfg5wxc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968386/Nga_Ba_Giong/rv6faijbpxa01yhw8utn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968387/Nga_Ba_Giong/lz4jzyguc1jlsdsga0pe.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968389/Nga_Ba_Giong/wphbghylttltmgj3fpkj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968390/Nga_Ba_Giong/wxwpzhatcqgghltx3fyp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968392/Nga_Ba_Giong/lzflbonegc1hxe7v973z.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968393/Nga_Ba_Giong/ohqste9ncdsl7ehbnbvb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968394/Nga_Ba_Giong/suugyumkkqlda8c4jq2i.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968396/Nga_Ba_Giong/mmfqt85f8el2w0dzzady.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968397/Nga_Ba_Giong/kzcmn35jlbklvdjk9glq.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -770,7 +1157,19 @@ export const mapDataRaw = [
     description: "Tưởng niệm cuộc đời sự nghiệp Chủ tịch Tôn Đức Thắng.",
     detail:
       "Bảo tàng Tôn Đức Thắng được thành lập nhân kỷ niệm 100 năm ngày sinh Chủ tịch Tôn Đức Thắng (1888–1988), nhằm đáp ứng nhu cầu tìm hiểu, nghiên cứu và học tập về cuộc đời, sự nghiệp của Bác Tôn của Nhân dân cả nước, đặc biệt là Nhân dân miền Nam và Thành phố Hồ Chí Minh. Việc đặt bảo tàng tại TP.HCM mang ý nghĩa sâu sắc, gắn với phong trào đấu tranh của công nhân và Nhân dân lao động Sài Gòn – Chợ Lớn đầu thế kỷ XX, nơi tên tuổi Tôn Đức Thắng gắn liền với sự ra đời của tổ chức Công hội bí mật. Là bảo tàng lưu niệm danh nhân duy nhất trong cả nước giới thiệu một cách đầy đủ, hệ thống về cuộc đời và sự nghiệp Chủ tịch Tôn Đức Thắng, bảo tàng hiện tổ chức trưng bày thường trực theo năm chủ đề chính và một phòng trưng bày chuyên đề ngắn hạn. Thông qua hoạt động trưng bày và nghiên cứu, Bảo tàng Tôn Đức Thắng góp phần giáo dục truyền thống cách mạng, bồi dưỡng lý tưởng cho giai cấp công nhân, khơi dậy lòng tự hào dân tộc và tôn vinh hình ảnh một con người vĩ đại mà giản dị trong lòng các thế hệ người Việt Nam.",
-    images: [bason],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968399/Bao_tang_Chu_tich_Ton_Duc_Thang/bqtq9kjsygjy4w6sfc5e.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968400/Bao_tang_Chu_tich_Ton_Duc_Thang/uhorro5sxttbm82ux4vc.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968402/Bao_tang_Chu_tich_Ton_Duc_Thang/t95k5njquxrlhsqr2dqf.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968404/Bao_tang_Chu_tich_Ton_Duc_Thang/rkcmygzug8azp6m7kpyf.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968406/Bao_tang_Chu_tich_Ton_Duc_Thang/msinioylolkpj8vdguaz.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968408/Bao_tang_Chu_tich_Ton_Duc_Thang/scnz9tbjduzaeqm8kq7b.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968410/Bao_tang_Chu_tich_Ton_Duc_Thang/frux5l61y12bvxdskrju.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968412/Bao_tang_Chu_tich_Ton_Duc_Thang/ypxuhupsuygggpdvliz6.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968413/Bao_tang_Chu_tich_Ton_Duc_Thang/gu4hfblom8r4wkhimsqz.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968414/Bao_tang_Chu_tich_Ton_Duc_Thang/esrc88nsevbqm8foca7l.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968417/Bao_tang_Chu_tich_Ton_Duc_Thang/mld5belkyjr5bcpjyj43.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -785,7 +1184,18 @@ export const mapDataRaw = [
       "Nơi thành lập An Nam Cộng sản Đảng (một trong 3 tổ chức tiền thân).",
     detail:
       "Năm 1929, tại phòng số 1, lầu 2 của ngôi nhà số 1 đường Nguyễn Trung Trực (khi đó là đường Philippini), phường Bến Thành, quận 1, Sài Gòn, đã diễn ra Đại hội thành lập An Nam Cộng sản Đảng. Đại hội được tổ chức trong một căn phòng thuộc khách sạn của người Pháp mang tên “Phong cảnh khách lầu”, nằm giữa trung tâm thành phố, nơi khách thập phương thường xuyên lui tới. Nhờ sự chuẩn bị và tính toán cẩn trọng của đồng chí Châu Văn Liêm, địa điểm này giúp các đại biểu tránh sự theo dõi của mật thám Pháp. Với khoảng 30 người tham dự, Đại hội đã diễn ra an toàn và thành công, đánh dấu một mốc son quan trọng trong lịch sử cách mạng Việt Nam.",
-    images: [noithanhlapannam],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968419/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/xdkdiuiwevq3vnkuqwvl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968420/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/qwykmeabzrdnblxbwzbj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968421/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/h293xwcntwwhoskitcqf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968423/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/cmdu3nhqvm0ahcup49yu.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968424/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/ounwc8niffawirbxagjr.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968425/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/aeznzgegklahrv2ocqa6.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968426/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/n8mae5iesbngh8pctk8b.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968431/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/xmelt0ery4cbwbyw6sex.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968432/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/ojbbrvj3qkqlgs5fzfsb.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968433/Noi_thanh_lap_An_Nam_Cong_san_Dang_nam_1929/ht1gqzvzgz1we7ly4qxo.webp",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -800,7 +1210,18 @@ export const mapDataRaw = [
       "Nơi tổ chức đại hội thành lập tổ chức tiền thân của Đảng tại Nam Kỳ.",
     detail:
       "Năm 1928, Việt Nam Thanh niên Cách mạng Đồng chí Hội ở Nam Kỳ đã tổ chức đại hội tại phòng số 5 khách sạn Tân Hòa, trên đại lộ Bonard (nay là nhà số 88 đường Lê Lợi, phường Bến Thành, quận 1, TP. Hồ Chí Minh). Hội do đồng chí Nguyễn Ái Quốc sáng lập năm 1925, giữ vai trò là tổ chức cách mạng mang tính chất quá độ, nhằm chuẩn bị cho sự ra đời của Đảng Cộng sản Việt Nam. Trước đó, Nguyễn Ái Quốc đã trực tiếp mở các lớp huấn luyện chính trị tại Quảng Châu để đào tạo đội ngũ cán bộ nòng cốt cho phong trào cách mạng trong nước.",
-    images: [noithanhlapkybo],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968435/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/hg3tpnlcl9qcm5fvyrs6.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968436/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/kre4ftqjhaty4u9ybp6m.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968439/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/ihikplumifcnylejisvz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968440/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/rek08img1lxciv1ldi0z.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968441/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/iewc1feip61qelueoops.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968444/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/brtbgywbzlpi2mtperqm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968445/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/zwgn70ptyoknjf9ivf5g.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968446/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/ka7y7iesllnfr0ouh2kt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968447/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/imvpooohklmvhybz9lw1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968447/Noi_thanh_lap_Ky_bo_Viet_Nam_Thanh_nien_dong_chi_Hoi/amox8qrshjm7ckiwpu2e.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -815,7 +1236,18 @@ export const mapDataRaw = [
       "(Địa điểm cũ) Nơi ghi dấu cuộc tấn công của Biệt động Sài Gòn 1968.",
     detail:
       "Tổng Lãnh sự quán Hoa Kỳ tại Thành phố Hồ Chí Minh là cơ quan đại diện cho lợi ích của Chính phủ Hoa Kỳ tại khu vực này và trực thuộc sự quản lý của Đại sứ Hoa Kỳ tại Việt Nam, đặt trụ sở tại Hà Nội. Trước khi Việt Nam thống nhất năm 1975, cơ quan này từng là Đại sứ quán Hoa Kỳ tại Sài Gòn, thuộc Việt Nam Cộng hòa, giữ vai trò trung tâm trong quan hệ ngoại giao Mỹ – Việt Nam thời kỳ đó.",
-    images: [toadaisuquan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968450/Toa_dai_su_quan_My/ujit2dbdurwjljzq0sxy.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968451/Toa_dai_su_quan_My/delxthx5wddsx566pcey.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968453/Toa_dai_su_quan_My/cyblngpu5mimwf5mws2r.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968455/Toa_dai_su_quan_My/c2kkbgwrfdcgaawnuv3h.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968457/Toa_dai_su_quan_My/b97oj35e9jm9obz6jrgo.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968459/Toa_dai_su_quan_My/bwbpkf6w5ygeoekx57wk.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968462/Toa_dai_su_quan_My/idtese9kizbhg3scz40j.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968464/Toa_dai_su_quan_My/pv80paehk7b3y7muxpuc.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968466/Toa_dai_su_quan_My/neoqaqxoc9w9f1d3lonp.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968467/Toa_dai_su_quan_My/amnsuamesiuy31us9qyt.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -829,7 +1261,18 @@ export const mapDataRaw = [
     description: "Nơi Đảng xuất bản báo công khai thời kỳ Mặt trận Dân chủ.",
     detail:
       "Báo Dân Chúng ra số đầu tiên ngày 22/7/1938, đặt trụ sở tại số 43 đường Hamelin (nay là số 43 Nguyễn Thị Hồng Gấm), là một trong những tờ báo tiêu biểu của báo chí cách mạng trước Cách mạng Tháng Tám 1945. Tờ báo giữ vai trò nòng cốt trong phong trào báo chí công khai của Đảng, trở thành công cụ đấu tranh sắc bén, cổ vũ phong trào quần chúng đòi quyền tự do, dân chủ, cải thiện đời sống, chống phản động thuộc địa, chống phát xít và chiến tranh, góp phần thúc đẩy sự ra đời của Mặt trận Dân chủ Đông Dương. Ngày 7/9/1939, thực dân Pháp ra lệnh đình bản, tịch thu tài sản và truy bắt Ban Biên tập. Trong hơn một năm hoạt động (từ tháng 7/1938 đến tháng 8/1939) với 80 số báo, Dân Chúng đã hoàn thành xuất sắc sứ mệnh lịch sử: tuyên truyền chủ nghĩa Mác – Lênin, phổ biến đường lối cách mạng của Đảng, làm phong phú ngôn ngữ tiếng Việt và ghi dấu ấn đậm nét trong lịch sử Báo chí Cách mạng Việt Nam.",
-    images: [trusobao],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968470/Tru_so_bao_dan_chung/sz65nwkzxod5m6a7zvdb.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968473/Tru_so_bao_dan_chung/fke6mv9b1iefogp68ohg.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968475/Tru_so_bao_dan_chung/plozravjexwmktni2zrf.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968476/Tru_so_bao_dan_chung/zd6bxvcqslblyybfh66u.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968477/Tru_so_bao_dan_chung/dslgh00w5wkih2qdmqlp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968480/Tru_so_bao_dan_chung/th8l2wss2vrojie4moqx.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968481/Tru_so_bao_dan_chung/hsscirbkievcbh6jq7lf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968483/Tru_so_bao_dan_chung/hxoh2mhihhhknetwvliq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968487/Tru_so_bao_dan_chung/sxlobooix2grfyxlpdas.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968489/Tru_so_bao_dan_chung/lzjre86zdewbo2umpazl.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -844,7 +1287,18 @@ export const mapDataRaw = [
       "Nơi in ấn các tài liệu bí mật truyền bá tư tưởng yêu nước thời Pháp.",
     detail:
       "Hầm B là căn hầm bí mật do Hội Ủng hộ Vệ quốc đoàn xây dựng và đưa vào sử dụng từ tháng 7 năm 1952, phục vụ việc in ấn, sao lưu tài liệu và truyền đơn cho cuộc kháng chiến chống thực dân Pháp. Hầm được ngụy trang tinh vi dưới một tủ gỗ trong ngôi nhà gỗ vách ván có diện tích 62 m²; bên cạnh là cơ sở làm đàn nhằm che giấu hoạt động in ấn. Bên trong hầm, các hội viên nòng cốt theo dõi tin tức từ các đài phát thanh, biên tập, in sao tài liệu học tập và truyền đơn để phổ biến trong nội bộ và bí mật phát tán khắp thành phố. Năm 1957, khi một cơ sở của Hội bị địch phát hiện, hầm buộc phải san lấp nhằm giữ bí mật. Sau năm 1975, hầm được khai quật, trùng tu và đến năm 1988 được công nhận là Di tích lịch sử – văn hóa cấp quốc gia.",
-    images: [cosoinan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968491/Co_so_in_an_Ve_Quoc_Doan/fitq5fltp1dq0nmniluh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968492/Co_so_in_an_Ve_Quoc_Doan/zajq40zckdhdynge8e3p.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968494/Co_so_in_an_Ve_Quoc_Doan/pditab28msuecuwkkdma.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968496/Co_so_in_an_Ve_Quoc_Doan/mnzo3g1cmwgrcovpslzr.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968497/Co_so_in_an_Ve_Quoc_Doan/q78j7pkgrx38cmxkteqw.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968499/Co_so_in_an_Ve_Quoc_Doan/zd5pt7vc2jh3dnerwxck.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968501/Co_so_in_an_Ve_Quoc_Doan/hqixred80owbjkbjmyms.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968502/Co_so_in_an_Ve_Quoc_Doan/msblakarn3xcy1orcxqq.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968503/Co_so_in_an_Ve_Quoc_Doan/i4qlomxbx136dbua9ubj.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968505/Co_so_in_an_Ve_Quoc_Doan/upo6cq0s4x4ypg7dvh24.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -856,7 +1310,18 @@ export const mapDataRaw = [
     lng: "106.68593359215306",
     description:
       "Căn nhà này từng là một căn cứ bí mật quan trọng của lực lượng Biệt động Sài Gòn trong thời kỳ kháng chiến chống Mỹ. Chủ nhân là ông Đỗ Văn Căn (bí danh Ba Mủ), một thợ giày tham gia cách mạng từ năm 1945 và là chiến sĩ đơn vị J9/T700. Năm 1965, theo chỉ đạo của tổ chức, ông cho xây dựng một hầm bí mật ngay trong nhà để cất giấu vũ khí, với kích thước 2,2 m dài, 1,8 m rộng và 1,7 m sâu, được ngụy trang tinh vi dưới bộ ghế sa-lông trong phòng khách. Chỉ trong vòng bốn tháng sau khi hoàn thành, nhiều loại vũ khí và trang thiết bị chiến đấu như súng ngắn, tiểu liên AK, đạn dược, lựu đạn và thuốc nổ đã được bí mật đưa về hầm. Số vũ khí này được ngụy trang trong các bành mủ cao su, vận chuyển từ cơ sở gia công tại chợ An Đông về nhà bằng xe ba gác. Trong cuộc Tổng tiến công và nổi dậy Xuân Mậu Thân năm 1968, căn nhà là điểm tập kết vũ khí quan trọng của nhiều cánh quân tiến vào nội đô. Mặc dù bị địch nhiều lần khám xét, hầm bí mật vẫn không bị phát hiện và tiếp tục đảm nhiệm vai trò trung chuyển vũ khí cho đến năm 1975.",
-    images: [hambimat],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968507/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/lxgrzd4ezn24zj4owyev.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968509/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/wml5u2ul2bgcovqsgiwk.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968510/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/xjypwnbsicvt0fwwn2da.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968511/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/cgvhsyrap0febdaalvvz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968512/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/jsh1d3oofkns6j3qanfl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968513/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/nozbrvuvqmjgexexhlbn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968514/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/h1nq0df3jorfod7yi8ns.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968515/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/ka4hknq0ggyhaijt75rg.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968517/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/jnkftt7bd9voiwzldtd1.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968518/Ham_bi_mat_chua_vu_khi_thoi_khang_chien_chong_My/vcgey3kuzqaakiqhunvx.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -870,7 +1335,18 @@ export const mapDataRaw = [
     description: "Nơi lưu trú và hoạt động của các lãnh đạo tuyên huấn Nam Bộ.",
     detail:
       "Di tích Ban Tuyên huấn Xứ ủy Nam Bộ là một cơ sở cách mạng quan trọng, hoạt động liên tục trong thời kỳ kháng chiến chống Mỹ. Di tích là một căn nhà gần cuối dãy phố trệt liên kế, có kết cấu nền gạch, vách tường, mái lợp ngói. Không gian ngôi nhà được bố trí đặc trưng của nhà phố truyền thống, phía trước có sân, ở giữa là khoảng trống thông thoáng gọi là giếng trời, ngăn cách nhà trên với khu bếp. Nhà trên có diện tích khoảng 3,6 m × 15 m, được chia thành phòng khách và phòng ngủ; phía sau là khu bếp với gác gỗ, rộng 3,6 m, dài 6 m, tạo điều kiện thuận lợi cho sinh hoạt và hoạt động bí mật của cơ sở cách mạng.",
-    images: [cosobantuyenhan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968521/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/nd5xzkruxacl0bxnk87m.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968523/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/kcuu0ln9foupspg57kjv.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968525/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/yedh7iqm8gbzpptl0e7b.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968528/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/xlegjlhtokkj0fd9r3vh.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968530/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/klqu6gyesivbixmmysx8.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968532/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/ixxvcdw8dh1sekycatdx.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968534/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/yjdjnssxcjrqhiekbi3o.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968537/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/ckdo1qz23qqhkokvpmj1.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968539/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/p2ywfa2i54hwvivx7fsa.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968541/Co_so_Ban_Tuyen_huan_Xu_uy_Nam_Bo/nnqmnz1fbrktdbcstxsj.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -884,7 +1360,18 @@ export const mapDataRaw = [
     description: "Một trong những kho vũ khí bí mật của Biệt động Sài Gòn.",
     detail:
       "Cơ sở giấu vũ khí của lực lượng Biệt động Thành đánh Dinh Độc lập là một căn hầm bí mật từng cất giữ hơn 2 tấn vũ khí, gồm khoảng 350 kg thuốc nổ TNT, thuốc nổ C4, 15 khẩu súng AK với 3.000 viên đạn, cùng nhiều loại vũ khí khác như súng ngắn, súng B40 và lựu đạn. Đây là nguồn trang bị quan trọng phục vụ Đội 5 Biệt động gồm 15 cán bộ, chiến sĩ tiến công Dinh Độc lập — cơ quan đầu não của chính quyền tay sai lúc bấy giờ. Di tích thể hiện rõ sự mưu trí, táo bạo và tinh thần quả cảm trong công tác bảo đảm chiến đấu của quân và dân Sài Gòn – Gia Định, đồng thời là minh chứng sinh động cho nghệ thuật tổ chức, chuẩn bị lực lượng của Biệt động Thành trong cuộc kháng chiến chống Mỹ.",
-    images: [cosogiauvukhi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968620/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/qgyujj6upiqpsr5v4inp.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968622/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/rcjppnpnbn0xy9tzkc9l.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968623/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/w5bnuvwegdbz3vseqaxe.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968625/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/b8obzwlt511r6ldzb8sf.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968627/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/gacwozoq9oqnylzjhpmr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968629/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/pdaiecy9qxbnqahejebg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968631/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/ed2wydd3qxddqcoyc0eo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968632/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/cv5ezu3imlvdcbpz7ddc.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968634/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/ly1conyp8fifwdhhbp3m.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968635/Co_so_giau_vu_khi_cua_Biet_dong_Thanh_danh_dinh_Doc_Lap/f9wuezcxehbl8i4uu1ay.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -898,7 +1385,18 @@ export const mapDataRaw = [
     description: "Trung tâm điều hành các cánh quân tấn công vào nội đô.",
     detail:
       "Quán Phở Bình tại Sài Gòn, do vợ chồng ông Ngô Toại gây dựng và hiện nay được các con kế tục, từ lâu đã nổi tiếng “danh bất hư truyền” bởi hương vị thơm ngon đặc trưng. Ngay từ thời kháng chiến chống Pháp, gia đình ông Ngô Toại đã sớm giác ngộ cách mạng, biến quán phở không chỉ là nơi buôn bán mà còn là điểm tập kết chiến sĩ Biệt động Sài Gòn. Đến năm 1967, Phở Bình được cách mạng chọn làm cơ sở bí mật của Sở Chỉ huy tiền phương Phân khu 6, cùng với nhiều địa chỉ quan trọng khác tại Sài Gòn như cơ sở Thành ủy Sài Gòn – Gia Định (số 9 Phạm Văn Chí, Quận 6) và cơ sở giấu vũ khí đánh Dinh Độc Lập năm 1968 (số 287/70 Nguyễn Đình Chiểu, Quận 3). Trong Tổng tiến công và nổi dậy Tết Mậu Thân 1968, Phở Bình trở thành một “địa chỉ đỏ” quan trọng, nơi tập kết vũ khí, đạn dược, phương tiện và lực lượng để tiến công các mục tiêu trọng yếu như Dinh Độc Lập, Tòa Đại sứ Mỹ, Đài Phát thanh Sài Gòn và Bộ Tổng Tham mưu Việt Nam Cộng hòa.",
-    images: [sochihuytienphuong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968638/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/paiujonled6sh4y8lnht.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968641/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/xiwwclchwm57nld9wg7q.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968643/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/fawnic4tk4zdvebhcraa.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968646/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/vshcsd4lzunndnri2elj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968649/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/mc0wivo8ur39ctj5ccxe.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968651/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/y2pjhmiejlbr6n6fk40r.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968654/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/ttgd4hfbhxvzitzpeswn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968657/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/dy7ievaq2sjvbgr82sq3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968659/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/iqcyliemyotiadp8z366.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968663/So_Chi_huy_tien_phuong_Phan_khu_6_trong_chien_dich_Mau_Than_1968/juuaizbfusuoit4vj4f4.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -913,7 +1411,18 @@ export const mapDataRaw = [
     description: "Nơi giam giữ và là nơi hy sinh của Tổng Bí thư Trần Phú.",
     detail:
       "Khu trại giam Bệnh viện Chợ Quán là một di tích lịch sử gắn liền với sự hy sinh của đồng chí Trần Phú — Tổng Bí thư đầu tiên của Đảng Cộng sản Việt Nam — người đã bị giam giữ và qua đời tại đây. Bệnh viện Chợ Quán được thực dân Pháp xây dựng hoàn chỉnh từ năm 1862 và đặt dưới chế độ quản lý của chính quyền thuộc địa. Trong các giai đoạn sau, khi đế quốc Mỹ và chính quyền Sài Gòn tiếp quản, Bệnh viện Chợ Quán có nhiều thay đổi về tổ chức và chức năng, song khu trại giam vẫn tiếp tục được sử dụng như một công cụ kiểm soát, quản lý và giám sát các tù nhân chính trị bị bệnh, trở thành minh chứng cho một thời kỳ lịch sử đầy đau thương nhưng giàu ý nghĩa đấu tranh cách mạng.",
-    images: [khutraigiambenhvien],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968666/Khu_trai_giam_benh_vien_Cho_Quan/m7j4q9hz89tpx5qdn3w1.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968669/Khu_trai_giam_benh_vien_Cho_Quan/ksf1n4ln6zpzqsofh4gm.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968671/Khu_trai_giam_benh_vien_Cho_Quan/hmeybvyczktbh05zgdyy.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968673/Khu_trai_giam_benh_vien_Cho_Quan/icvb1f5w25e1sso7tlft.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968676/Khu_trai_giam_benh_vien_Cho_Quan/jaj8fhu9y6xcdzhvavbs.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968677/Khu_trai_giam_benh_vien_Cho_Quan/zcuqufwocx0pdqvygvw8.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968678/Khu_trai_giam_benh_vien_Cho_Quan/bduxkptt3hhec8cxytav.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968681/Khu_trai_giam_benh_vien_Cho_Quan/taqtaslipmpt5uzalxrn.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968685/Khu_trai_giam_benh_vien_Cho_Quan/cgbwyqocojm2dk9hwrvu.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968694/Khu_trai_giam_benh_vien_Cho_Quan/zcgcuq6plq0vnpvs6y7o.png",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -928,7 +1437,30 @@ export const mapDataRaw = [
       "Nơi Bác Hồ lưu trú trước khi xuống tàu Amiral Latouche-Tréville.",
     detail:
       "Trước khi ra đi tìm đường cứu nước vào ngày 5/6/1911, Nguyễn Tất Thành đã tạm trú tại căn nhà số 5 đường Châu Văn Liêm, phường 14, quận 5, TP. Hồ Chí Minh. Đây là cơ sở của Liên Thành Thương quán, nơi Người sống và hoạt động trong khoảng 9 tháng (từ cuối năm 1910 đến trước 5/6/1911) trước khi lên tàu Amiral Latouche-Tréville.",
-    images: [noidongchi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968695/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/jemwalcdo4ctredwdpwk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968697/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/fuqniauxsc1zve1athwg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968698/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/llekd0jb9lmz805x1fuk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968699/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/u0cimcbcwnyjhktjdryl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968700/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/sfybszd1bfg7vwujgp3e.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968702/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/wi2kf2lhhy0aooijtjyx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968703/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/bqfuscvapalluo0bj22a.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968706/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/rcp3uiprkqgr6y8mrfqg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968713/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/i6tznfnb4evgiab03xmp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968715/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/z5kipcvsejbdueklhdby.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968717/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/yoqthxxeai2691ay4b8x.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968718/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/gbme5dqm4lsoz1jdkmzp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968719/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/pn1krp7qnh7roocymwhz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968720/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/xdo8qo0snuytvic8jrf6.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968721/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/xbg6nls1z7owgxoszcat.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968724/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/utzf1afcrsknbsucdspf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968725/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/fyepeoyg0mjgcmsre3b3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968727/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/wha5rvwpz3ycb8hr8ety.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968729/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/sjcjqxl0qeg5nxb7ol57.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968730/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/msxqtcraawpamnsemwer.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968731/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/t04hztawlid9stft7jjw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968732/Noi_dong_chi_Nguyen_Tat_Thanh_o_truoc_khi_ra_di_tim_duong_cuu_nuoc/k4bu5iiu8691cytfgqpl.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -942,7 +1474,19 @@ export const mapDataRaw = [
     description: "Cơ sở bí mật của Ban Tuyên huấn trong lòng địch.",
     detail:
       "Hầm bí mật in tài liệu Ban Tuyên huấn Hoa vận (thời kỳ chống Mỹ) nổi bật nhất nằm tại số 341/10 đường Gia Phú, Phường 1, Quận 6, TP.HCM, được xây dựng năm 1965 để in ấn Bản tin giải phóng tiếng Hoa và tài liệu cách mạng. Đây là di tích lịch sử cấp Quốc gia (1998), nơi giữ nguyên cấu trúc hầm dưới giường ngủ, hoạt động an toàn đến năm 1975.",
-    images: [hambimatintailieu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968734/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/obs6uj2ysqxom2dml6u4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968736/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/g3wvzi5ixukb7vpenyhe.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968738/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/ssncyjblnlssjcnumj7r.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968739/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/vthucqmzh0mircokjvms.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968741/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/mqt9rmd5pigkszmaqtwf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968743/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/sam6zxiexv2rrgknxziv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968744/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/orxswxyueup5bblu9ldb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968746/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/pa5cxggjiiy02frtvxy1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968747/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/lyicfdlcyrep49jbyfqd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968748/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/hyilii4mgwoycmtqvfta.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968749/Ham_bi_mat_in_tai_lieu_Ban_Tuyen_huan_Hoa_van_thoi_ky_chong_My_cuu_nuoc/m6lizvgi88n72kaaqxmu.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -956,7 +1500,19 @@ export const mapDataRaw = [
     description: "Đình nằm trên cù lao, có phong cảnh sơn thủy hữu tình.",
     detail:
       "Đình Bình Đông, tọa lạc trên cù lao rạch Bà Tàng (Phường 7, Quận 8, TP.HCM), là di tích lịch sử - văn hóa cấp quốc gia (từ 1997) với hơn 170 năm tuổi (xây dựng trước năm 1853). Đây là nơi ghi dấu hoạt động của cố Chủ tịch Tôn Đức Thắng (Công hội đỏ) giai đoạn 1925-1929 và thờ Thành hoàng bổn cảnh.",
-    images: [dinhbinhdong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968751/Dinh_Binh_Dong/zytczt2r7qv6kn2n4ft3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968752/Dinh_Binh_Dong/heet4pp2aq20fphx0xld.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968753/Dinh_Binh_Dong/kq56lc3niq9wnnjq6zzw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968755/Dinh_Binh_Dong/xzp7akccjcv40ucqkvui.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968756/Dinh_Binh_Dong/dznzctyhlzxuunvvfuit.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968758/Dinh_Binh_Dong/zmqswjeaym4lnu570uct.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968762/Dinh_Binh_Dong/ecq4bpzm2dozfbqksozb.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968764/Dinh_Binh_Dong/s9voyspmq5danpy2vsbe.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968765/Dinh_Binh_Dong/q3kueoohzrtmukkg25g3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968766/Dinh_Binh_Dong/grjhcuj0vjl7brra9zrl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968768/Dinh_Binh_Dong/ht9pw7bwnjlsuokuijog.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -970,7 +1526,18 @@ export const mapDataRaw = [
     description: "Di tích tội ác chiến tranh của thực dân Pháp.",
     detail:
       "Bót Dây Thép (phường Tăng Nhơn Phú A, TP Thủ Đức, TP.HCM) là di tích lịch sử quốc gia (công nhận năm 1993), từng là nơi thực dân Pháp xây dựng để liên lạc, sau đó biến thành “địa ngục trần gian”. Giai đoạn 1945-1947, nơi đây giam cầm và sát hại hơn 600 cán bộ, chiến sĩ và người dân.",
-    images: [botdaythep],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968770/Bot_Day_Thep/hxfy1zbx4uuhuzc2xrzz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968772/Bot_Day_Thep/jykfzfvdo4cxpcujkfeu.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968773/Bot_Day_Thep/aebzfslwdmp6ipwvjl5k.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968774/Bot_Day_Thep/wqdap6tei7a2xxxivrhm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968775/Bot_Day_Thep/adqj53oacl4uiagmvpsb.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968776/Bot_Day_Thep/g3qs4tekzk76orx7psn2.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968778/Bot_Day_Thep/ajqoflwmxukxzob3e8mt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968779/Bot_Day_Thep/buomdec0dj91mdqb1s8p.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968781/Bot_Day_Thep/jkucol7z7awq7joan9hp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968783/Bot_Day_Thep/ey8vprkmbwdcryzt946b.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -985,7 +1552,18 @@ export const mapDataRaw = [
       "Gắn liền với truyền thống kháng chiến của nhân dân địa phương.",
     detail:
       "Đình Phong Phú, tọa lạc tại khu phố 3, phường Tăng Nhơn Phú B, TP. Thủ Đức, TP.HCM, là di tích lịch sử - văn hóa cấp quốc gia (năm 1993). Xây dựng từ năm 1880, đình thờ Thành Hoàng làng, Thần Nông, Ngũ Hành Nương Nương và Ông Hổ. Đây là căn cứ cách mạng quan trọng với hầm bí mật trong hai cuộc kháng chiến.",
-    images: [dinhphongphu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968786/Dinh_Phong_Phu/ckbvb4xhfbxgqhj4sfxd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968788/Dinh_Phong_Phu/rtd4ght2ukedns6r5uvv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968789/Dinh_Phong_Phu/a4yef4u9rucla9bby9mk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968790/Dinh_Phong_Phu/azampeactpidnvgywtrq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968792/Dinh_Phong_Phu/hiv1wezwjwpdl33wyjcs.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968793/Dinh_Phong_Phu/ljwyy4uyfoiz2xa3n6zk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968794/Dinh_Phong_Phu/jmj2mnkv4mwxgbgczdvl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968796/Dinh_Phong_Phu/hdd9blsbhsbnggh1trj3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968798/Dinh_Phong_Phu/dfkdojvl1nzthy67i0j8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968800/Dinh_Phong_Phu/ykdozserdzbgjojkglkm.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1000,7 +1578,18 @@ export const mapDataRaw = [
       "Trung tâm của hệ phái Khất sĩ, nơi gắn liền với phong trào SVHS yêu nước.",
     detail:
       "Tổ đình Tịnh xá Ngọc Phương, tọa lạc tại số 498/1 Lê Quang Định, phường 1, quận Gò Vấp, TP.HCM, là trung tâm tu học và đào tạo Ni tài tiêu biểu của Ni giới Hệ phái Khất sĩ Việt Nam. Được cố Ni trưởng Huỳnh Liên thành lập năm 1957 và công nhận là Di tích lịch sử cấp quốc gia năm 1994, đây là nơi diễn ra các khóa tu, hoạt động Phật sự và hướng dẫn Phật tử tu học, với kiến trúc 3 khối nhà 2 tầng trang nghiêm.",
-    images: [tinhxangocphuong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968803/Tinh_xa_Ngoc_Phuong/feud75lpxyjuftviejsf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968804/Tinh_xa_Ngoc_Phuong/bwucplwenrjsch0onuk7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968805/Tinh_xa_Ngoc_Phuong/apownxrzyfhn5zli2fb8.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968808/Tinh_xa_Ngoc_Phuong/joaxps5cfbeokmdip08g.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968809/Tinh_xa_Ngoc_Phuong/y2ay8isuard8n3lrhyd4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968811/Tinh_xa_Ngoc_Phuong/xhaz7rigvv5sioy46edy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968812/Tinh_xa_Ngoc_Phuong/i3edjr6dg7i8hj1knd86.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968814/Tinh_xa_Ngoc_Phuong/ekhmqhesbuwwzwe9fvy8.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968815/Tinh_xa_Ngoc_Phuong/voh30bfln9a7edwbefls.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968816/Tinh_xa_Ngoc_Phuong/guxd0igjf5xzm2uvpnov.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1015,7 +1604,15 @@ export const mapDataRaw = [
       "Nơi làm việc của phái đoàn ta giám sát thi hành Hiệp định Giơ-ne-vơ.",
     detail:
       "Trụ sở Phái đoàn liên lạc Bộ Tổng tư lệnh QĐND Việt Nam (1955–1958) tọa lạc tại biệt thự số 87A đường Trần Kế Xương, Phường 7, Quận Phú Nhuận (trước là số 61 đường Liên tỉnh 22, ấp Đông Ba, xã Bình Hòa, tỉnh Gia Định). Đây là nơi làm việc của phái đoàn từ 17/5/1955 đến 21/5/1958, đấu tranh thi hành Hiệp định Geneva.",
-    images: [trusophaidoan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968818/Tru_so_Phai_doan_lien_lac_QDND_Viet_Nam_tai_Sai_Gon__1955_1958_/uf6mtistawfru5gspqsa.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968819/Tru_so_Phai_doan_lien_lac_QDND_Viet_Nam_tai_Sai_Gon__1955_1958_/pdqjrawskhcbn0bmsr5g.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968820/Tru_so_Phai_doan_lien_lac_QDND_Viet_Nam_tai_Sai_Gon__1955_1958_/ajxzuue1l7unqanl5eie.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968821/Tru_so_Phai_doan_lien_lac_QDND_Viet_Nam_tai_Sai_Gon__1955_1958_/lsvgwaunx27y7wxmrsjo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968822/Tru_so_Phai_doan_lien_lac_QDND_Viet_Nam_tai_Sai_Gon__1955_1958_/qsrcbnybd6ru54chzzsf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968824/Tru_so_Phai_doan_lien_lac_QDND_Viet_Nam_tai_Sai_Gon__1955_1958_/bthqn01edvudc1lfryws.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968825/Tru_so_Phai_doan_lien_lac_QDND_Viet_Nam_tai_Sai_Gon__1955_1958_/f62xoqrgh4aaspgmylsd.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1027,7 +1624,18 @@ export const mapDataRaw = [
     lng: "106.66199309818900",
     description:
       "Mộ Phan Châu Trinh nằm trong khu lưu niệm tại số 9, đường Phan Thúc Duyện, phường 4, quận Tân Bình, TP.HCM. Đây là di tích lịch sử quốc gia (từ năm 1994) tôn vinh nhà yêu nước, nhà canh tân Phan Châu Trinh (1872-1926). Khu vực rộng gần 2.000m² gồm mộ, đền thờ và phòng lưu niệm, là nơi tổ chức lễ giỗ trang trọng hàng năm.",
-    images: [mophanchautrinh],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968852/Mo_Phan_Chau_Trinh/qfaibka2e2g7zjw65t4l.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968854/Mo_Phan_Chau_Trinh/rtixsgagvjc3l2tcotzn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968856/Mo_Phan_Chau_Trinh/ikzzq2qxaorsjtvf7ukw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968857/Mo_Phan_Chau_Trinh/p34twgenlxyt9iqi1ae0.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968858/Mo_Phan_Chau_Trinh/kv2i87xnfsw9mrvuncnp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968861/Mo_Phan_Chau_Trinh/mbgyzk4top0kmttpadzu.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968863/Mo_Phan_Chau_Trinh/ektkjw12c0jdf11b1hff.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968864/Mo_Phan_Chau_Trinh/mvhjkesetrdesvgsrgqj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968866/Mo_Phan_Chau_Trinh/p5rm2cu6n54smihrfxno.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968867/Mo_Phan_Chau_Trinh/aaowwrpj9ubhm2selqir.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1041,7 +1649,18 @@ export const mapDataRaw = [
     description: "Hệ thống địa đạo độc đáo đào trên nền đất sét cứng.",
     detail:
       "Địa đạo Phú Thọ Hòa (Quận Tân Phú, TP.HCM) là di tích lịch sử cấp quốc gia, được xây dựng từ 1947–1948, nổi tiếng là một trong những địa đạo đầu tiên tại Sài Gòn và vùng Nam Bộ. Hệ thống dài gần 10km, từng là căn cứ bí mật, nơi ém quân và tấn công địch, được phục dựng một phần tại số 139 Phú Thọ Hòa.",
-    images: [diadaophuthohoa],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968870/Dia_dao_Phu_Tho_Hoa/kk9brcfijgmayo72wlv5.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968871/Dia_dao_Phu_Tho_Hoa/scu6okamyljpdko8d2w6.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968873/Dia_dao_Phu_Tho_Hoa/yjsi26yn7svoywgh4yvi.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968874/Dia_dao_Phu_Tho_Hoa/j1bigddkbc0ahpnjr5xz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968876/Dia_dao_Phu_Tho_Hoa/mknh5vmamrkuwwdr8u0t.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968877/Dia_dao_Phu_Tho_Hoa/rzfu7mvwlnecprc3k7ts.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968879/Dia_dao_Phu_Tho_Hoa/aednfbyd20ws8zfzphse.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968882/Dia_dao_Phu_Tho_Hoa/jezz89k4gt6ykxxwa5dt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968883/Dia_dao_Phu_Tho_Hoa/inui3idiowr0wuvdivez.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968884/Dia_dao_Phu_Tho_Hoa/b396zcfxh5od3baidsji.jpg",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1055,7 +1674,19 @@ export const mapDataRaw = [
     description: "Thờ Thành hoàng Bổn cảnh, kiến trúc chữ Tam tiêu biểu.",
     detail:
       "Đình Bình Trường là di tích kiến trúc nghệ thuật cấp Thành phố (xếp hạng năm 2005), tọa lạc tại Ấp 1, xã Bình Chánh, huyện Bình Chánh, TP.HCM, cách trung tâm khoảng 18km. Xây dựng đầu thế kỷ 19, đình thờ Thành Hoàng làng (được sắc phong năm 1852) với kiến trúc cổ kính (mái ngói âm dương, điêu khắc gỗ) và các lễ hội truyền thống như Kỳ Yên, Cầu Bông.",
-    images: [dinhbinhtruong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968886/Dinh_Binh_Truong/olxrsporr11limrvxaqj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968887/Dinh_Binh_Truong/n9dh6tvjfevnobumnxxw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968888/Dinh_Binh_Truong/bxawkvjwtp9nvm9uwzwb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968889/Dinh_Binh_Truong/z3epqa6syelsq6cl995o.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968891/Dinh_Binh_Truong/jk4xifzzikdyhsnbjiob.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968892/Dinh_Binh_Truong/c1bfxxhs1rjxotmrqmne.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968895/Dinh_Binh_Truong/ltydwglb2pgqkpm8ffku.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968895/Dinh_Binh_Truong/uvduaejnb36fd8wlg2fm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968897/Dinh_Binh_Truong/p5behyl5qdgtrn5wvofq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968897/Dinh_Binh_Truong/kiohp0gkrsekrhyemr58.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968899/Dinh_Binh_Truong/k6rihxmcjslnoodqvgmj.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1069,7 +1700,18 @@ export const mapDataRaw = [
     description: "Ngôi đình vùng ven giữ được nét hoang sơ, cổ kính.",
     detail:
       "Đình Phú Lạc (còn được biết đến là Đình Phong Phú) là di tích kiến trúc nghệ thuật cấp Thành phố tại TP.HCM, thờ Thành Hoàng làng và các bậc tiền nhân có công mở cõi. Xây dựng từ cuối thế kỷ XIX (khoảng năm 1880), đây là nơi tâm linh nổi tiếng, đồng thời là di tích lịch sử cách mạng quan trọng tại Nam Bộ.",
-    images: [dinhphulac],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968901/Dinh_Phu_Lac/qgysvpvmpnurs28djrdn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968903/Dinh_Phu_Lac/xmkk9ukfxepcm7mjtm74.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968904/Dinh_Phu_Lac/gxcackhymxuxgqptkjao.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968905/Dinh_Phu_Lac/kg39xfaj4fq65lrcmg1v.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968906/Dinh_Phu_Lac/hsuj5p1fumv1upzpyvn9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968907/Dinh_Phu_Lac/qqtprnfvydxh3oxu6by4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968908/Dinh_Phu_Lac/obe0g1qlv2tzgcjsc9nc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968910/Dinh_Phu_Lac/wcypeubrsiqqqrw96bob.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968911/Dinh_Phu_Lac/kbuewmgxwpslrjfwou8z.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968914/Dinh_Phu_Lac/dgkjslwcpyby3tvuu8yz.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1083,7 +1725,18 @@ export const mapDataRaw = [
     description: "Các ngôi nhà rường bằng gỗ quý có tuổi thọ trên 100 năm.",
     detail:
       "Nhà cổ dân dụng Việt Nam là những công trình kiến trúc truyền thống có tuổi đời lâu năm, nổi bật với kết cấu gỗ, mái ngói âm dương, và chạm khắc tinh xảo, thể hiện văn hóa đặc trưng. Các kiến trúc phổ biến bao gồm nhà ba gian hai chái, nhà rường, thường đi kèm sân vườn, ao cá, tạo không gian sống hài hòa.",
-    images: [nhacodandung],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968916/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/wm1dfxgoh4inktwo7xlc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968917/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/a4990tfq8nficykunnsn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968918/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/o6vpdbsf6kwg8f0z1ymf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968920/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/uep3k9hmzf2195jdlut5.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968921/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/lukfavdwbxvtymxknihg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968925/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/ilbehnenmkjcmt0g1fkt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968932/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/ocrpsm1evkuy0fwrbkeh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968933/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/lzxji6yylmvrbuhyv5cm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968934/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/bccjomdgqqfmciswqtks.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968936/Nha_co_dan_dung__Thanh_pho_Ho_Chi_Minh/mc3xm5ymzloxrann0qyh.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1097,7 +1750,19 @@ export const mapDataRaw = [
     description: "Ngôi chùa cổ nằm giữa lòng trung tâm, kiến trúc hài hòa.",
     detail:
       "Do Tổ Lê Khánh Hoà sáng lập năm 1891, là ngôi cổ tự nổi tiếng tại TP.HCM. Trụ trì là HT. Thích Minh Hiền. Chùa là nơi tu học của đạo tràng Bát Quan Trai với khoảng 150 Phật tử.",
-    images: [chualinhson],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968937/Chua_Linh_Son/trmcwrfs7g6kusmtr7pq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968938/Chua_Linh_Son/bdlysud0csuzby34s7kd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968940/Chua_Linh_Son/t4ajqftcwmsydagwtr8s.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968941/Chua_Linh_Son/p6rhfax1ssco9mpbb9ae.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968945/Chua_Linh_Son/c5xwqcfgkresdymcmxrs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968947/Chua_Linh_Son/vue22kscloqhygx0celt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968948/Chua_Linh_Son/kteuc8kwfcx0sly8kp0h.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968949/Chua_Linh_Son/wd4o25rwfb3pkmlrrqgx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968951/Chua_Linh_Son/txzjrkrb9apmdfaueztc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968952/Chua_Linh_Son/pjfydyurujnha2rvcrdp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968953/Chua_Linh_Son/j0yog5bbpzbyyfek96un.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1111,7 +1776,18 @@ export const mapDataRaw = [
     description: "Ghi dấu lịch sử khai hoang mở cõi của cư dân gốc Miền Trung.",
     detail:
       "Đình Xóm Huế (hay Đình Tân An Hội) tọa lạc tại xã Tân An Hội, huyện Củ Chi, TP.HCM, được xây dựng từ năm 1841. Nơi đây thờ thành hoàng làng, là trung tâm văn hóa, tâm linh quan trọng, đặc biệt nổi tiếng với lễ Kỳ Yên tổ chức trang trọng từ ngày 15 đến 17 tháng Hai âm lịch hàng năm.",
-    images: [dinhxomhue],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968954/Dinh_Xom_Hue/dfgeviqxr1ylzaa806xt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968956/Dinh_Xom_Hue/brws4pi7vmqx7gdzancc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968957/Dinh_Xom_Hue/cbocs6wxbksu0sipgtmv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968958/Dinh_Xom_Hue/alqmx6q9zhsfxmofqdl4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968959/Dinh_Xom_Hue/sedxeczpehdce7figrdq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968960/Dinh_Xom_Hue/oesf9psvrwgcvawnqwgm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968961/Dinh_Xom_Hue/k00pfwlng2gkcdtwmfmx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968962/Dinh_Xom_Hue/jmxptni1pl6hrhb4hiz0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968963/Dinh_Xom_Hue/wwi9pvn8yyvk3caivser.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968964/Dinh_Xom_Hue/rwtwdxb1i8xc4qsgen9q.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1126,7 +1802,18 @@ export const mapDataRaw = [
       "Ngôi đình ven biển, nơi tổ chức lễ hội Nghinh Ông lớn nhất TP.",
     detail:
       "Đình Cần Thạnh, nằm tại trung tâm thị trấn Cần Thạnh, huyện Cần Giờ, TP.HCM, là ngôi đình cổ kính mang đậm dấu ấn Nam Bộ, được xây dựng khoảng từ năm 1818 đến 1852. Nơi đây thờ Thành hoàng bản cảnh và là tâm điểm tín ngưỡng quan trọng gắn liền với Lễ hội Nghinh Ông, thờ cá Ông (Nam Hải Đại Tướng quân).",
-    images: [dinhcanthanh],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968966/Dinh_Can_Thanh/m2qtbpzbwtrsixntbqb0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968967/Dinh_Can_Thanh/vodlxb6mmjup8g8xugzz.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968971/Dinh_Can_Thanh/yirnwty4cerehshx5etg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968973/Dinh_Can_Thanh/mld434cpkjqeskft27sc.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968974/Dinh_Can_Thanh/eejiqaechu88vyg2bdhj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968975/Dinh_Can_Thanh/gudlwbmh2qtxefdohj7m.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968977/Dinh_Can_Thanh/jhk6jrfsmvuz4yfqlqdg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968978/Dinh_Can_Thanh/tmimlexqyrhy9pnszn3v.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968980/Dinh_Can_Thanh/cdwie1ewgumboeyprwdd.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968981/Dinh_Can_Thanh/cigg7uqpoip1bdboclfl.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1141,7 +1828,18 @@ export const mapDataRaw = [
       "Nơi thờ bộ xương cá Ông (Cá Voi) khổng lồ, tín ngưỡng ngư dân.",
     detail:
       "Lăng Ông Thủy Tướng tại Cần Giờ, TP.HCM, là di tích văn hóa tâm linh nổi tiếng, thờ bộ xương cá Ông (cá voi) dài 12m, có từ thế kỷ 18-19. Nơi đây tôn vinh hải thần giúp ngư dân vượt sóng gió và là nơi tổ chức Lễ hội Nghinh Ông lớn nhất vùng vào rằm tháng 8 âm lịch hàng năm.",
-    images: [langongthuytuong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968983/Lang_Ong_Thuy_Tuong/gqcvypj7mxyfmhturhoj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968984/Lang_Ong_Thuy_Tuong/jshuxnlc6mhk6gi92pqc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968985/Lang_Ong_Thuy_Tuong/lpznhoh2hhtdou6rixgu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968987/Lang_Ong_Thuy_Tuong/pfi5apr1locxpiww9xwg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968988/Lang_Ong_Thuy_Tuong/gkcfiswf1tfen2svkwb7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968989/Lang_Ong_Thuy_Tuong/pikhigmyatpro4wsnwtr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968992/Lang_Ong_Thuy_Tuong/wahjgpepb8qxz9eovzvm.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968993/Lang_Ong_Thuy_Tuong/amrumjxj5es9gztnwmkh.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968995/Lang_Ong_Thuy_Tuong/rynxn5kidf5xr1vxsuli.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968996/Lang_Ong_Thuy_Tuong/ko598pq248niltak1c1y.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1155,7 +1853,19 @@ export const mapDataRaw = [
     description: "Ngôi đình gắn liền với lịch sử khai khẩn vùng Bà Điểm.",
     detail:
       "Đình Tân Thới Nhì, tọa lạc tại số 2, đường Lý Nam Đế, thị trấn Hóc Môn, TP.HCM, là di tích kiến trúc nghệ thuật cấp thành phố (năm 2005). Đình thờ các vị thần bảo hộ, là nơi sinh hoạt văn hóa tín ngưỡng truyền thống và căn cứ cách mạng quan trọng của vùng mười tám thôn vườn trầu xưa.",
-    images: [dinhtanthoinhi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968920/Dinh_Tan_Thoi_Nhi/otpfuvmusoschudwo1mv.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968922/Dinh_Tan_Thoi_Nhi/ggtf0qx9fsw4na7rtkrd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968924/Dinh_Tan_Thoi_Nhi/e70c0pcpaguco9ygn8cx.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968926/Dinh_Tan_Thoi_Nhi/ydoxryjsw6df4fmulisj.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968928/Dinh_Tan_Thoi_Nhi/wduglsruwgnhbf57mah1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968929/Dinh_Tan_Thoi_Nhi/pbagcp7yndifjiofocj8.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968931/Dinh_Tan_Thoi_Nhi/d9gmoxx14bvnil2j1oau.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968933/Dinh_Tan_Thoi_Nhi/arpjxugu96zpavwdldzl.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968935/Dinh_Tan_Thoi_Nhi/h3wdvuhexx4wy73sftvo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968936/Dinh_Tan_Thoi_Nhi/ywacjefvnattqjoepzbq.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968938/Dinh_Tan_Thoi_Nhi/qzadqatxpz1bcmq3qrkl.png",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1170,7 +1880,18 @@ export const mapDataRaw = [
       "Di tích kiến trúc nghệ thuật và lịch sử cách mạng địa phương.",
     detail:
       "Đình Tân Thới Tứ tọa lạc tại xã Thới Tam Thôn, huyện Hóc Môn, TP.HCM, là một di tích kiến trúc nghệ thuật cấp Thành phố được xếp hạng vào năm 2003. Đình là nơi thờ tự linh thiêng, lưu giữ các giá trị văn hóa truyền thống, lịch sử lâu đời của địa phương và kiến trúc cổ Nam Bộ.",
-    images: [dinhtanthoitu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968940/Dinh_Tan_Thoi_Tu/qrslhkbkzq4k4tlt6tcs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968942/Dinh_Tan_Thoi_Tu/a5e2sj2wltn0xu6njviw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968942/Dinh_Tan_Thoi_Tu/ghmavmd6u9jwackyavkx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968944/Dinh_Tan_Thoi_Tu/qly5u9587xr7ej3dv9f1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968945/Dinh_Tan_Thoi_Tu/lbumaym4mhnk3zds1lo7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968947/Dinh_Tan_Thoi_Tu/h4o7prsolz4o03hk7k9k.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968948/Dinh_Tan_Thoi_Tu/o4mmpqne9qujnaimvjdl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968949/Dinh_Tan_Thoi_Tu/k6owzwrhc7m9pc5a3ate.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968950/Dinh_Tan_Thoi_Tu/bhot9bi5qey5pa7hwgns.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968951/Dinh_Tan_Thoi_Tu/kyec7zvgx1wvxwyjtaln.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1182,7 +1903,9 @@ export const mapDataRaw = [
     lng: "106.60009220760800",
     description:
       "Đình Tân Thới Nhứt thường được biết đến qua Nhà truyền thống Tân Thới Nhất (Quận 12, TP.HCM), nơi lưu giữ lịch sử cách mạng, giáo dục lòng yêu nước và là căn cứ che giấu cán bộ. Nơi đây là điểm tham quan, tập thể dục, và tổ chức các hoạt động văn hóa, thu hút khoảng 2.200 lượt khách/năm. ",
-    images: [dinhtanthoinhut],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968953/Dinh_Tan_Thoi_Nhut/ypwdxrnjzxd3jf7qtmca.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1196,7 +1919,18 @@ export const mapDataRaw = [
     description: "Ngôi chùa có truyền thống yêu nước, nuôi giấu cán bộ.",
     detail:
       "Chùa Từ Quang (thường gọi Chùa Bình Chánh) toạ lạc tại số 1412 (B1/7 cũ) Quốc lộ 1A, ấp 2, xã Tân Kiên, huyện Bình Chánh, TP.HCM, là ngôi cổ tự nổi tiếng từ năm 1957. Chùa thuộc hệ phái Bắc Tông, nổi tiếng linh thiêng, là nơi an nghỉ của hơn 40.000 vong linh thai nhi, thu hút đông đảo phật tử đến cầu con và bình an.",
-    images: [chuatuquang],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968955/Chua_Tu_Quang/ihuzwbcm18euzmazo4y9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968956/Chua_Tu_Quang/zhazyepu2ke1ke8dn4ds.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968957/Chua_Tu_Quang/zypgjlj5fjhbpdnublaa.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968959/Chua_Tu_Quang/qvypflprj2abjbnlb5qt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968960/Chua_Tu_Quang/iiaodobi2vsm0fnfymzj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968962/Chua_Tu_Quang/vao5rckobtaypzghydm4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968963/Chua_Tu_Quang/wiseobppxloioonikkog.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968964/Chua_Tu_Quang/spfalasjfglcarlzgw9w.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968965/Chua_Tu_Quang/njg0eyxkhuggehmlo1qa.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968966/Chua_Tu_Quang/fomvv9cyodpdrfozrdgi.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1210,7 +1944,18 @@ export const mapDataRaw = [
     description: "Ngôi đình biểu tượng của vùng đất Nhà Bè.",
     detail:
       "Đình Phú Xuân tọa lạc tại xã Phú Xuân, huyện Nhà Bè, TP.HCM, là di tích kiến trúc tín ngưỡng đặc trưng Nam Bộ có tuổi đời hơn 100 năm (thành lập năm 1900). Đình nằm bên Rạch Đôi, khuôn viên rộng khoảng (770m^{2}), nổi bật với cổng Tam quan, cấu trúc tiền điện và chính điện liền nhau, là nơi thờ thần linh và tưởng nhớ người khai phá lập làng.",
-    images: [dinhphuxuan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968968/Dinh_Phu_Xuan/n8kgfbhw1bcxvfgfupzn.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968970/Dinh_Phu_Xuan/bwpked4lfdozntnvhftu.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968972/Dinh_Phu_Xuan/fcxr91zounigpptgv8ci.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968974/Dinh_Phu_Xuan/xjjlel47egftm3rlgieh.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968976/Dinh_Phu_Xuan/ccgljkgw0uh4utmhgopf.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968978/Dinh_Phu_Xuan/ovwxfljm3mvebadykmhm.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968981/Dinh_Phu_Xuan/ynepkhzthv2rfxctfin6.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968983/Dinh_Phu_Xuan/sff6sadowepvgbtzqnpl.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968985/Dinh_Phu_Xuan/qzmooeqxtj05ldskggyj.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968987/Dinh_Phu_Xuan/q7vel5rx2bweikfeeqny.png",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1222,7 +1967,18 @@ export const mapDataRaw = [
     lng: "106.6949194371280",
     description:
       "Đình Nam Chơn, tọa lạc tại số 29 Trần Quang Khải, P. Tân Định, Quận 1, TP.HCM, là di tích lịch sử - văn hóa cấp Thành phố, được người dân gốc Chơn Sảng (Quảng Nam) xây dựng vào cuối thế kỷ 19. Ngôi đình mang kiến trúc truyền thống đặc trưng với nhà Tả vu, Hữu vu và lưu giữ 5 sắc phong thời Tự Đức. ",
-    images: [dinhnamchon],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968988/Dinh_Nam_Chon/fedvw6galm4qn8knun10.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968989/Dinh_Nam_Chon/tjbmufxtzoe7yzlyjlol.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968991/Dinh_Nam_Chon/dzg9wu0phvsainvqvuj4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968992/Dinh_Nam_Chon/kp2aexfdf0euca4cujsf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968993/Dinh_Nam_Chon/wl6jx5cnuhsu1ld3pna8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968994/Dinh_Nam_Chon/ikn0ezw53ud5dybgsurs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968995/Dinh_Nam_Chon/szhr4mhlfq6w5ua8njcg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968996/Dinh_Nam_Chon/djuswwhancmgdnrgak1d.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968997/Dinh_Nam_Chon/fcx7gu3jo3zmvzjus5eh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771968998/Dinh_Nam_Chon/l4xd3xndlq7impiou7jk.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1236,7 +1992,21 @@ export const mapDataRaw = [
     description: "Trung tâm bảo tồn nghệ thuật hát bội Nam Bộ.",
     detail:
       "Đình Nhơn Hòa, hay còn gọi là đình Cầu Muối, tọa lạc tại đường Cô Giang, quận 1, TP.HCM, là ngôi đình có lịch sử lâu đời từ thế kỷ 19. Nơi đây không chỉ thờ Thành Hoàng mà còn nổi tiếng với việc thờ cậu Hai Miên - một người nghĩa hiệp trượng nghĩa và có nơi thờ tổ sân khấu, gắn liền với văn hóa văn nghệ khu vực.",
-    images: [dinhnhonhoa],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969000/Dinh_Nhon_Hoa/sa9s0wkrxmpv2k3ripdh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969002/Dinh_Nhon_Hoa/wljz4zie9xdcnnfioqkx.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969004/Dinh_Nhon_Hoa/zmvaca0jjhdonpkkia4o.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969005/Dinh_Nhon_Hoa/hqggqszcfmpogyfhhwjs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969007/Dinh_Nhon_Hoa/v4ihr6ty35wqldcm6ehq.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969009/Dinh_Nhon_Hoa/m4mub51dijadsxnnjrfj.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969010/Dinh_Nhon_Hoa/ap4nrgzoubveeflarr8k.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969011/Dinh_Nhon_Hoa/heqoozxhmmlomcrup5hx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969014/Dinh_Nhon_Hoa/mhwobuo9znem9dv9cyic.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969016/Dinh_Nhon_Hoa/cznx8tijokgpq44x2izp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969017/Dinh_Nhon_Hoa/hgm07fknwadjbxudedgw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969018/Dinh_Nhon_Hoa/uipghlwkskdrxhavb7hn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969019/Dinh_Nhon_Hoa/xehjz2smmdzjifh6lcxa.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1250,7 +2020,18 @@ export const mapDataRaw = [
     description: "Khách sạn đầu tiên của Việt Nam (1880), chứng nhân lịch sử.",
     detail:
       "Khách sạn Continental Saigon (132-134 Đồng Khởi, Quận 1) là khách sạn 4 sao lâu đời nhất Việt Nam, khánh thành năm 1880, mang kiến trúc Pháp cổ điển giữa trung tâm TP.HCM. Nằm sát Nhà hát Thành phố, khách sạn có 87-88 phòng, nổi tiếng với không gian sân vườn (Le Jardin), dịch vụ đẳng cấp, và là di sản văn hóa gắn liền với lịch sử thành phố.",
-    images: [khachsan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969020/Khach_san_Continental/hy7ukw6mjy4qmtnp3dv7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969021/Khach_san_Continental/siad18sxzg3gp5psomp0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969023/Khach_san_Continental/thwrr3jvwy8bfmzn2unx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969025/Khach_san_Continental/jo18t6siqdir33avr92z.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969026/Khach_san_Continental/yspzdw3ipwwzuocfmone.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969027/Khach_san_Continental/c1jin3mqlze0zdiar9dn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969029/Khach_san_Continental/c7wfi1tplllwu4zahquk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969030/Khach_san_Continental/bkv1h8t1gven4aviaaks.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969032/Khach_san_Continental/lynlm3twm8tlvxolicgw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969033/Khach_san_Continental/iqqxcdemenuqtj1oczje.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1264,7 +2045,18 @@ export const mapDataRaw = [
     description: "Dinh thự cũ của Chú Hỏa, kiến trúc Baroque rực rỡ.",
     detail:
       "Bảo tàng Mỹ thuật Thành phố Hồ Chí Minh tọa lạc trong một công trình kiến trúc tráng lệ, hài hòa giữa phong cách Á Đông (Trung Hoa) và châu Âu (Pháp), do kiến trúc sư người Pháp Rivera thiết kế năm 1929 và hoàn thành năm 1934. Chủ nhân ban đầu của tòa nhà là Hui Bon Hoa (Huỳnh Văn Hòa – 黄文華), một thương nhân giàu có và danh tiếng của Sài Gòn xưa. Năm 1987, công trình được chuyển đổi thành Bảo tàng Mỹ thuật Thành phố Hồ Chí Minh; đến năm 1992 mới chính thức hoạt động do điều kiện hiện vật. Ngày nay, bảo tàng là một trung tâm mỹ thuật lớn của Việt Nam, lưu giữ nhiều tác phẩm hội họa, điêu khắc và cổ vật mỹ thuật có giá trị, tiêu biểu như bức sơn mài Vườn xuân Bắc Trung Nam của danh họa Nguyễn Gia Trí.",
-    images: [baotangmithuat],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969035/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/s8v9xfw2jeig7wqpogmf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969036/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/xnamzqubca8iagucge5v.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969037/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/hyjdiztqsdjsen4evgv1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969039/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/kad9ojjglhxuwoiyeqjj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969040/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/mpzti6nx4xfyifwpzq13.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969041/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/etfh0ex6jowyusigrhv8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969042/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/zsigruxgxryb4pydtqah.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969044/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/n6dplfjtmq9ty0l6nryr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969045/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/hhbxd917kb0nydi3ijmz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969046/Bao_tang_My_thuat_Thanh_pho_Ho_Chi_Minh/xuyzmeb3jkwzdrosbohm.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1278,7 +2070,18 @@ export const mapDataRaw = [
     description: "Cây cầu sắt cổ nhất TP, do công ty Eiffel thiết kế.",
     detail:
       "Khi mới xây dựng, người Pháp đặt tên cây cầu là Arenciel (nghĩa là Cầu Vồng), còn người Việt quen gọi là Cầu Mống do dáng cong đặc trưng như vòng mống. Cầu được xây dựng trong giai đoạn 1893–1894, do Công ty vận chuyển hàng hải Messageries Maritimes của Pháp đầu tư. Đầu những năm 2000, cầu tạm thời được tháo dỡ phục vụ thi công Đại lộ Đông Tây và Đường hầm sông Sài Gòn, sau đó được phục dựng theo nguyên bản. Cầu dài 128 m, rộng 5,2 m, làm hoàn toàn bằng thép, sơn màu ngọc bích, với hệ vòm cong mềm mại, và là một trong số ít công trình còn giữ được gần như nguyên vẹn dáng dấp kiến trúc thời Pháp.",
-    images: [caumong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969051/Cau_Mong/uvaflxy7z57xngdsyzn5.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969053/Cau_Mong/bbvkl0o2wjpgtodqnsjw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969055/Cau_Mong/nqj8qtqjoqxanporkpcj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969056/Cau_Mong/lw1lq2vcvazmw07pgak3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969058/Cau_Mong/r9arbcdmwq4vdmkfzcqs.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969059/Cau_Mong/lt0pigilbes7vbdzssgw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969061/Cau_Mong/jdskblb44vceixhxxoik.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969062/Cau_Mong/l3freahb3pw0xekc5knn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969063/Cau_Mong/nrlbgaowd9uipyntf3qr.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969065/Cau_Mong/n8hc9rwg3pi6zuevxd4b.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1292,7 +2095,18 @@ export const mapDataRaw = [
     description: "Khu mộ cổ bằng đá san hô cực kỳ quý hiếm.",
     detail:
       "Mộ cổ họ Lâm là quần thể mộ hơn 200 năm tuổi nằm trong Công viên Tao Đàn (TP. Hồ Chí Minh), thuộc dòng họ của nhạc sĩ Lam Phương (Lâm Đình Phùng) và được công nhận là di tích kiến trúc nghệ thuật cấp thành phố. Khu mộ có kiến trúc độc đáo, xây dựng bằng hợp chất ô dước, gồm mộ ông Lâm Tam Lang (mất năm 1795) và phu nhân, với bia khắc chữ Hán, chính thức được xếp hạng di tích vào năm 2014.",
-    images: [mocoholam],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969026/Mo_co_ho_Lam/ccnsdla2mtpttqmoqax2.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969027/Mo_co_ho_Lam/pdtfudsadspq2rp9ltmg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969028/Mo_co_ho_Lam/agtz5bhe80w97u5ewbqt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969029/Mo_co_ho_Lam/buwxe9m9twiweosjpfvc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969031/Mo_co_ho_Lam/saymcncl95d94ojxdt20.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969032/Mo_co_ho_Lam/nsqp6gms7kjrfwuej03h.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969034/Mo_co_ho_Lam/zdf6ap643miyxnczev6j.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969036/Mo_co_ho_Lam/zoaw4d2hqpta9k5gbxea.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969037/Mo_co_ho_Lam/jj3oyk7kuvoabkbfq32a.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969039/Mo_co_ho_Lam/s9f4tgsaw9jdioduap5g.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1307,7 +2121,18 @@ export const mapDataRaw = [
       "Nằm trong khuôn viên Thảo Cầm Viên, kiến trúc hoàng cung cổ điển.",
     detail:
       "Năm 1926, chính quyền Pháp xây dựng Đền Kỷ niệm (Temple du souvenir) gần cổng chính Thảo Cầm Viên Sài Gòn, đối diện Bảo tàng Blanchard de la Bross (nay là Bảo tàng Lịch sử TP. Hồ Chí Minh), nhằm tưởng niệm người Việt tử trận khi phục vụ trong Thế chiến thứ nhất. Sau năm 1954, đền được đổi tên thành Đền Quốc Tổ Hùng Vương và thờ thêm các nhân vật lịch sử như Lê Văn Duyệt, Trần Hưng Đạo, Quang Trung. Từ năm 1975, công trình mang tên Đền Hùng Vương và do Bảo tàng Lịch sử TP. Hồ Chí Minh quản lý đến nay.",
-    images: [denthohungvuong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969040/Den_tho_Hung_Vuong/d1esqbrxjqhc8yoluatw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969041/Den_tho_Hung_Vuong/e4x1fwsd9he5zrfk8r68.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969042/Den_tho_Hung_Vuong/oy6rnnewgmueethla5m1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969043/Den_tho_Hung_Vuong/jzw7lveqjtnnxet9zhjv.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969044/Den_tho_Hung_Vuong/reiztexq0yl8fkffofai.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969045/Den_tho_Hung_Vuong/wgncfdjqobbkaatskbyy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969047/Den_tho_Hung_Vuong/mvldoyevpkfwosjlo0yc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969049/Den_tho_Hung_Vuong/vqlmhfmkjtpyyccxyvik.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969050/Den_tho_Hung_Vuong/phovv8ph5vxu8lnjrg0o.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969051/Den_tho_Hung_Vuong/uqxnpk7dtzundx2mioje.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1322,7 +2147,18 @@ export const mapDataRaw = [
       "Bệnh viện có khuôn viên kiến trúc Pháp cổ đẹp nhất thành phố.",
     detail:
       "Bệnh viện Nhi đồng 2 được thành lập ngày 1/6/1978, là một trong ba bệnh viện Nhi tuyến cuối phục vụ khu vực phía Nam, cùng với Bệnh viện Nhi đồng 1 và Bệnh viện Nhi đồng Thành phố. Tiền thân của bệnh viện là một cơ sở quân y do người Pháp xây dựng vào thập niên 1870 để phục vụ Quân đội Pháp; từ năm 1905, dưới sự điều hành của bác sĩ Charles Grall, bệnh viện tiếp nhận cả dân thường và đến năm 1925 mang tên Bệnh viện Grall. Thời Việt Nam Cộng hòa, cơ sở này vẫn do phía Pháp quản lý, thường được gọi là Bệnh viện Đồn Đất. Sau khi đất nước thống nhất, bệnh viện được bàn giao cho Việt Nam; năm 1978, cơ sở tại Quận 1 được sử dụng để thành lập Bệnh viện Nhi đồng 2 theo quyết định của UBND TP. Hồ Chí Minh. Ngày 16/5/2016, bệnh viện được xếp hạng di tích kiến trúc nghệ thuật cấp thành phố, trở thành cơ sở y tế đầu tiên của thành phố được công nhận di tích.",
-    images: [benhviennhidong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969052/Benh_vien_Nhi_dong_2/ez0jsdja9ykhdnxludiy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969054/Benh_vien_Nhi_dong_2/lsuwvpughaxh6qps5cyn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969055/Benh_vien_Nhi_dong_2/gqr7x4eoaqzvuqly1uri.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969056/Benh_vien_Nhi_dong_2/sexlreezy1gtujcrsto5.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969057/Benh_vien_Nhi_dong_2/lpk6nmbsvaelw7rv2o6j.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969058/Benh_vien_Nhi_dong_2/dvtyn3y7o02sjzedgryi.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969059/Benh_vien_Nhi_dong_2/drp7nb703xxm9rfdn4wq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969061/Benh_vien_Nhi_dong_2/ffiv9ec9qw5w943hnb2k.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969061/Benh_vien_Nhi_dong_2/rxtmfespdiso8gaqhbgy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969063/Benh_vien_Nhi_dong_2/laz19mcvyjx2tohkuyyx.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1334,7 +2170,18 @@ export const mapDataRaw = [
     lng: "106.70580522451296",
     description:
       "Trường được thành lập năm 1955 tại Sài Gòn trên cơ sở Trường Sư phạm Nam Việt (cũ), là trường trung học công lập dành cho nam sinh, hoạt động theo triết lý giáo dục Nhân bản – Dân tộc – Khai phóng, với tôn chỉ đào tạo: Học vấn – Đạo đức – Kỷ luật. Niên khóa đầu tiên (1955–1956), trường có 3 lớp Đệ Thất; đến năm 1960 mở đủ đến lớp Đệ Nhất và năm 1961 được Bộ Quốc gia Giáo dục Việt Nam Cộng hòa công nhận là trường trung học đệ nhị cấp. Giai đoạn 1967–1968, trường phát triển lên 40 lớp; từ niên khóa 1970–1971 áp dụng hệ thống lớp 6 đến 12 như hiện nay, và từ 1971–1972 mở thêm hệ bán công học buổi tối, tiếp nhận cả nữ sinh. Đến niên khóa 1974–1975, hệ công lập của trường có khoảng 2.500 học sinh. Sau năm 1975, trường mang tên Trường cấp 1 – cấp 2 Võ Trường Toản, và đến năm 1998 chính thức đổi tên thành Trường THCS Võ Trường Toản theo quyết định của UBND Quận 1.",
-    images: [thcsvotruongtoan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969064/Truong_THCS_Vo_Truong_Toan/g9bwrj6xkzzvhulm5j9q.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969066/Truong_THCS_Vo_Truong_Toan/uiz3nghxdaiezhzgu6mi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969067/Truong_THCS_Vo_Truong_Toan/n7uqg5dd0chuwy8ebkfm.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969068/Truong_THCS_Vo_Truong_Toan/oihzvjiniorudziuehjt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969070/Truong_THCS_Vo_Truong_Toan/itjf8e4oyw3pga6jg23v.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969071/Truong_THCS_Vo_Truong_Toan/ax5pl1ofcjwzs2cfuu5a.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969072/Truong_THCS_Vo_Truong_Toan/gpwyashqrubkn4ubpd1h.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969074/Truong_THCS_Vo_Truong_Toan/xnhqgmeaqbu1c1h6wbk8.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969075/Truong_THCS_Vo_Truong_Toan/lmspxum25lfsxnczbbpg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969077/Truong_THCS_Vo_Truong_Toan/wkdxjh3wedqkmtjig0y8.webp",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1346,7 +2193,18 @@ export const mapDataRaw = [
     lng: "106.70168088600138",
     description:
       "Trước năm 1975, Trường Trần Đại Nghĩa có tiền thân là Trường Trung học La San Taberd, do linh mục Henri De Kerlan – quản xứ Nhà thờ Đức Bà Sài Gòn – sáng lập năm 1874 bằng kinh phí cá nhân. Trường được xây dựng trên nền dinh Tri phủ Tân Bình thời Tự Đức, khởi công năm 1875 và hoàn thành năm 1887. Ban đầu, trường nhằm nuôi dạy trẻ mồ côi lai Âu – Pháp bị bỏ rơi, sau mở rộng tiếp nhận học sinh không phân biệt tôn giáo. Những năm đầu, trường có 58 học sinh, do các tu sĩ và nhà truyền giáo Việt – Pháp giảng dạy. Từ năm 1889, các sư huynh Dòng La San (Les Frères des Écoles Chrétiennes) được mời từ Pháp sang quản lý, đưa quy mô nhà trường phát triển nhanh chóng, đến năm 1949 số học sinh đã vượt hơn 1.200.",
-    images: [thptchuyentrandainghia],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969078/Truong_THPT_Chuyen_Tran_Dai_Nghia/dlkqm3iriirodqk7abcc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969079/Truong_THPT_Chuyen_Tran_Dai_Nghia/utjaoag8zz6hpmmm08ly.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969081/Truong_THPT_Chuyen_Tran_Dai_Nghia/yejyposhz4oihglgg5ka.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969082/Truong_THPT_Chuyen_Tran_Dai_Nghia/u5zmmw6kufe1ej8s9dkt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969083/Truong_THPT_Chuyen_Tran_Dai_Nghia/csnvq4qdzl8wh3ldanx6.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969084/Truong_THPT_Chuyen_Tran_Dai_Nghia/ercmjrsghtn4n4ivqglk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969085/Truong_THPT_Chuyen_Tran_Dai_Nghia/trojnbpfj8u8pifqow1o.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969086/Truong_THPT_Chuyen_Tran_Dai_Nghia/s0n4gzyxotp7ueklqa6r.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969087/Truong_THPT_Chuyen_Tran_Dai_Nghia/k7qojrog1uijktb1b2yq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969089/Truong_THPT_Chuyen_Tran_Dai_Nghia/y6bhwfmfdamsaxwe2r5t.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1360,7 +2218,18 @@ export const mapDataRaw = [
     description: "Kiến trúc cổ điển, là biểu tượng tôn giáo của vùng bán đảo.",
     detail:
       "Giáo xứ Thủ Thiêm được xây dựng năm 1859, ban đầu là một nhà thờ gỗ đơn sơ, sau nhiều lần trùng tu đã trở nên kiên cố và mang diện mạo như hiện nay; Nhà xứ được khánh thành năm 1874 và vẫn còn sử dụng đến nay. Nhà thờ mang phong cách kiến trúc Đông Dương, kết hợp hài hòa yếu tố Á – Âu, có mặt bằng hình thánh giá, cột gỗ vững chắc, tường sơn vàng, mái ngói truyền thống với kết cấu ba tầng thu nhỏ dần, cùng hệ cửa lá sách và lam gió tạo sự thông thoáng và vẻ cổ kính. Bên trong, không gian giáo đường giản dị, trang nghiêm, bố trí khoảng 20 hàng ghế dài, có sức chứa tối đa khoảng 400 người, đáp ứng nhu cầu sinh hoạt và cầu nguyện của giáo dân.",
-    images: [nhathothuthiem],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969095/Nha_tho_Thu_Thiem/cvmfucsnirtq9wyl5bhn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969096/Nha_tho_Thu_Thiem/yzhkge5d194rz5ffzufl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969098/Nha_tho_Thu_Thiem/a2vjg716cilvibe3gsx4.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969099/Nha_tho_Thu_Thiem/icu3bpk9dx3skdrrrthl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969100/Nha_tho_Thu_Thiem/tobnkkhanu4pg7pzxhb6.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969101/Nha_tho_Thu_Thiem/ozij6z3lanx3mb4mioud.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969102/Nha_tho_Thu_Thiem/yqwnxfih59onybyh0vdo.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969103/Nha_tho_Thu_Thiem/tzqjkewbt6nh6ujisbce.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969106/Nha_tho_Thu_Thiem/fd3drbuhotxnmfmfthpy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969107/Nha_tho_Thu_Thiem/srd011otu9ax3iudkdu4.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1374,7 +2243,18 @@ export const mapDataRaw = [
     description: "Công trình tôn giáo hơn 150 năm tuổi bên sông Sài Gòn.",
     detail:
       "Sau cuộc nổi dậy Lê Văn Khôi năm 1833, triều vua Minh Mạng ban chỉ dụ cấm đạo, khiến nhiều cơ sở Công giáo bị phá hủy, giáo sĩ và giáo dân phải ly tán, trong đó có các nữ tu Dòng Mến Thánh Giá. Năm 1840, một số nữ tu đến Thủ Thiêm lập tu viện, ban đầu chỉ là chòi lá dựng tạm giữa vùng rừng hoang thưa dân. Do lo ngại thú dữ, họ rời Thủ Thiêm, tạm cư tại khu vực chợ Vải – Bến Thành. Sau khi Giáo xứ Thủ Thiêm được thành lập năm 1859, đến năm 1863 các nữ tu quay lại Thủ Thiêm, dựng tu viện cạnh nhà thờ, xây nhà nguyện mái tranh, nhà ở đơn sơ và tự mưu sinh bằng nông nghiệp, dệt vải, dệt chiếu. Đến thập niên 1960, Dòng Mến Thánh Giá Thủ Thiêm xây dựng ba trường học (Nữ Thủ Thiêm, Nam Thủ Thiêm, Nữ Thánh Anna) với tổng diện tích khoảng 4.000 m². Sau năm 1975, các cơ sở này được cam kết giao cho Nhà nước sử dụng vào mục đích giáo dục, nhưng từ cuối năm 2011, do dự án khu đô thị mới Thủ Thiêm, các trường ngừng hoạt động giáo dục, dẫn đến việc Dòng Mến Thánh Giá kiến nghị chính quyền hoàn trả cơ sở.",
-    images: [tuvienhoidongmen],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969109/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/evg92ubqhogsiez6xyud.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969111/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/udrsgvdzbwhzyfamftfh.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969112/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/uutn1uc2ze6vp6hgufmd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969115/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/pdumuadtbtlv7e6js4pv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969116/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/zbcbanxxoa4abvtedua4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969117/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/dtfr2bnkz9vpeftjdyfb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969118/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/hbzcqxw5pd1610ylxx8a.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969119/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/tdpj5ckhrb42iafcghfu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969120/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/qkpggehhssqckxifw6r3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969122/Tu_vien_Hoi_Dong_Men_Thanh_Gia_Thu_Thiem/p2mbz2mlum1ggbjxkz3p.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1388,7 +2268,18 @@ export const mapDataRaw = [
     description: "Thờ Thành hoàng và các bậc tiền hiền khai khẩn đất đai.",
     detail:
       "Đình Tăng Phú là di tích kiến trúc nghệ thuật cấp Thành phố, được xếp hạng theo Quyết định số 4840/QĐ-UBND ngày 27/10/2006 của UBND TP. Hồ Chí Minh. Theo các bậc cao niên, đình có lịch sử hơn 150 năm, gồm nhiều hạng mục kiến trúc như bia Thần Hổ, võ ca, tiền điện, chính điện, hậu sở, cùng các miếu Thần Nông, Ngũ Hành và Bạch Mã. Đình thờ thần Thành Hoàng Bổn Cảnh, với lễ hội chính là Lễ Kỳ Yên, tổ chức hằng năm vào ngày 14–15 tháng 2 âm lịch.",
-    images: [dinhtangphu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969124/Dinh_Tang_Phu/drgbaz3x6kymf3rp56f7.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969126/Dinh_Tang_Phu/l55ehsrtsi9xfub5gsdx.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969128/Dinh_Tang_Phu/bxmis0bw9bdwgqhjvbkz.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969130/Dinh_Tang_Phu/tnenknabhmqf5e7ua9kd.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969133/Dinh_Tang_Phu/mrwextp2zu1vgfzhsaov.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969136/Dinh_Tang_Phu/pitswmqojklkiy1htdie.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969138/Dinh_Tang_Phu/kku1sx4p21uvxw3ynuso.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969140/Dinh_Tang_Phu/qcondqrwhawhsdamm6kz.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969143/Dinh_Tang_Phu/rdwe8lkjdepuey8shown.png",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969145/Dinh_Tang_Phu/jko50jln8sznzln83wli.png",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1403,7 +2294,18 @@ export const mapDataRaw = [
       "Lưu giữ nhiều pho tượng cổ và các bức hoành phi chạm khắc tinh xảo.",
     detail:
       "Chùa Bửu Sơn thuộc hệ phái Bắc Tông, là ngôi chùa tiêu biểu về giá trị kiến trúc nghệ thuật của đình, chùa Nam Bộ. Chùa được UBND TP. Hồ Chí Minh xếp hạng di tích kiến trúc nghệ thuật theo Quyết định số 2209/QĐ-UBND ngày 28/4/2012 và được bảo vệ theo Luật Di sản Văn hóa. Được xây dựng vào cuối thế kỷ XIX trên khuôn viên khoảng 8.000 m², chùa gồm nhiều hạng mục như cổng tam quan, tiền điện, chính điện, nhà Tổ, hành lang và trai đường. Dù trùng tu trong thế kỷ XX, chùa vẫn giữ nguyên kiểu dáng kiến trúc truyền thống, với chính điện dạng nhà tứ trụ đặc trưng của Nam Bộ. Hệ khung gỗ đơn sơ, vững chắc kết hợp mái ngói và tượng trang trí mang đậm mô-típ Phật giáo đã tạo nên vẻ cổ kính, trang nghiêm, khẳng định giá trị nghệ thuật và lịch sử tiêu biểu của chùa Bửu Sơn tại TP. Thủ Đức và TP. Hồ Chí Minh.",
-    images: [chuabuuson],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969147/Chua_Buu_Son/z4i0dqz0feyi73izphaq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969149/Chua_Buu_Son/kmndxoosxk3rlgco36fs.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969150/Chua_Buu_Son/qksbdpiyukoigwtp7rxp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969151/Chua_Buu_Son/uregzcwjmzflmxkict5s.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969153/Chua_Buu_Son/gcrevdxufyecu9xmb8sn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969154/Chua_Buu_Son/xrtd38anz7ups5qhwjsx.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969156/Chua_Buu_Son/mqycr2mh5vglb3eirvks.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969156/Chua_Buu_Son/nwjntk0cfnbity9r22yj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969157/Chua_Buu_Son/zhi2jn8bfw56mmj4sq6u.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969158/Chua_Buu_Son/s4ty6bx7wzjnedkmy0jm.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1417,7 +2319,18 @@ export const mapDataRaw = [
     description: "Khu mộ cổ có kiến trúc đá tinh xảo của nhân sĩ trí thức xưa.",
     detail:
       "Mộ Nghị viên địa hạt Đặng Tân Xuân tọa lạc trên khu đất cao, còn bảo tồn gần như nguyên vẹn, là một công trình ít được biết đến ngoài giới chuyên môn. Ngôi mộ nằm cách cổng Học viện hơn 50 m về phía bên phải, do các con của ông xây dựng năm 1928, mang phong cách kiến trúc châu Âu, chủ yếu theo kiểu Pháp, với vật liệu chính gồm đá, gạch, thép cùng vôi, vữa, sỏi và cát vàng sậm.",
-    images: [moongnghi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969160/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/ujpwbesww0xqtxz7nfln.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969160/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/fhtg8pg6nb0vhxh5gszi.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969161/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/o0fgxbscu8fngh8wc1h6.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969163/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/dpzvqwjleqdajqktw8na.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969163/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/jf8v00hi3jjni6y9mkhr.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969165/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/wkedcdmk8enbbmnwebjs.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969167/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/jbayylayuwgrhxtstvdj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969169/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/a1ongkhk5aazmyngh7uw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969170/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/illanimc1iip0cgivlcq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969172/Mo_ong_Nghi_vien_dia_hat_Dang_Tan_Xuan/ofzigmyjolp8xhlueomh.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1432,7 +2345,18 @@ export const mapDataRaw = [
       "Trung tâm tu học và sinh hoạt văn hóa của cư dân vùng cửa ngõ.",
     detail:
       "Chùa Thiên Phước được xây dựng năm 1667 do Thiền sư Tiên Huệ – Tịnh Nhãn, thuộc dòng thiền Lâm Tế đời thứ 37, sáng lập. Ban đầu chỉ là một am nhỏ trên vùng Gò Cát, dân gian quen gọi là chùa Cát; đến năm 1812, nhờ ông bà Lê Văn Học hiến cúng gần 2 mẫu đất, chùa được mở rộng và trở thành trung tâm sinh hoạt tâm linh quan trọng của Phật tử địa phương. Trong quá trình tồn tại, chùa nhiều lần trùng tu: đầu thế kỷ XX dưới thời Hòa thượng Thích Huệ Cẩn, năm 1970 do Hòa thượng Thích Thiện Ngọc chủ trì, và giai đoạn 1984–1990 dưới sự đảm trách của Thượng tọa Thích Thiện Tấn. Nhờ đó, chùa vừa duy trì vai trò tu học, chiêm bái, vừa được công nhận là di tích kiến trúc nghệ thuật cấp thành phố, góp phần bảo tồn giá trị văn hóa Phật giáo.",
-    images: [chuathienphuoc],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969207/Chua_Thien_Phuoc/ih0xt1egezcpbyhdps0u.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969209/Chua_Thien_Phuoc/uxdusg0huyrr20ekk1xo.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969211/Chua_Thien_Phuoc/ubjlycnzl8g5l0rnpjhy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969213/Chua_Thien_Phuoc/okqpp1tty9sm4xop4ail.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969216/Chua_Thien_Phuoc/cd2sed87kxc7uumtn5m2.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969217/Chua_Thien_Phuoc/mvwencry05ezfvivrzxg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969218/Chua_Thien_Phuoc/jv6wa5qsvqbjrzt2s7db.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969221/Chua_Thien_Phuoc/tcd9cpkmhdf3a4nveuaq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969223/Chua_Thien_Phuoc/mtj5mksxrmgbahgvd5ge.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969224/Chua_Thien_Phuoc/ns9glpyiaeqthjb9pbsk.webp",
+    ],
     period: "Mạc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1446,7 +2370,18 @@ export const mapDataRaw = [
     description: "Ngôi đình gắn với công lao của Tiền hiền Tạ Dương Minh.",
     detail:
       "Đình Linh Tây (trong sắc phong ghi là Linh Chiểu Tây) là đình làng của người Việt, tiêu biểu cho kiến trúc đình làng truyền thống Nam Bộ, với hệ thống cổ vật và hiện vật thờ cúng được chạm khắc tinh xảo. Theo Gia Định thành thông chí của Trịnh Hoài Đức, năm 1818 thôn Linh Chiểu Tây thuộc tổng An Thủy, huyện Bình An, trấn Biên Hòa, thành Gia Định. Hiện đình còn lưu giữ sắc phong vua Tự Đức ban ngày 29/11 năm Tự Đức thứ 5 (1852) cho thần Thành hoàng bản cảnh thôn Linh Chiểu Tây, với mỹ tự “Thần Bảo An Chính Trực Hựu Thiện Đôn Ngưng”. Dựa trên các tư liệu này, đình Linh Tây được xác định xây dựng trong khoảng từ năm 1818 đến 1852.",
-    images: [dinhthanlinhtay],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969226/Dinh_than_Linh_Tay/kwhevrib8evlpn879sn3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969228/Dinh_than_Linh_Tay/in27xszabifznucuwtap.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969229/Dinh_than_Linh_Tay/w00t152mzncz1cmb95sz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969231/Dinh_than_Linh_Tay/gzi3ilmskjqwegdx9bj6.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969232/Dinh_than_Linh_Tay/r1hqioj1uj3ueprzb4xf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969234/Dinh_than_Linh_Tay/cfuxhml3tlwefzhnnkrf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969236/Dinh_than_Linh_Tay/foaprileclpsuxtn5cvs.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969239/Dinh_than_Linh_Tay/n9bwczeovx3jgudynr7s.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969240/Dinh_than_Linh_Tay/cqbkap5qinogb4fxs9x4.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969241/Dinh_than_Linh_Tay/xctora5vj8doqxjzifno.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1460,7 +2395,18 @@ export const mapDataRaw = [
     description: "Mộ người lập chợ Thủ Đức, kiến trúc đá vôi cổ.",
     detail:
       "Theo bia mộ, Tiền hiền Tạ Dương Minh họ Tạ, tên húy Huy, tên hiệu Thủ Đức. Mộ Tiền hiền Tạ Huy – Thủ Đức có diện tích 108 m², xây dựng bằng đá ong và gạch, bên ngoài trát vữa cổ, gồm ngôi mộ trung tâm, hai vòng tường bao, bình phong tiền – hậu cùng hai cửa ngoài và hai cửa trong. Về kiến trúc nghệ thuật, đây là mộ cổ tiêu biểu cuối thế kỷ XIX, còn tương đối nguyên vẹn trên địa bàn TP. Thủ Đức. Về giá trị lịch sử – văn hóa, bia mộ ghi rõ danh tính, ngày mất và công lao của người quá cố, thể hiện sự tri ân tiền nhân trong quá trình khai phá, dựng nước và giữ nước. Trong tín ngưỡng dân gian, ngôi mộ là nơi người dân và tiểu thương địa phương thường xuyên hương khói, tưởng nhớ công đức người khai ấp, lập chợ, qua đó gìn giữ truyền thống uống nước nhớ nguồn của cư dân Thủ Đức.",
-    images: [motien],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969243/Mo_Tien_hien_Ta_Duong/fi8ndyxvidtwgtzu3zow.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969245/Mo_Tien_hien_Ta_Duong/szrat4qv2dod3vwtzl8c.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969246/Mo_Tien_hien_Ta_Duong/vbxfvlgjpeqdis1aegal.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969247/Mo_Tien_hien_Ta_Duong/l4cy0y589ezse8fq3pym.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969249/Mo_Tien_hien_Ta_Duong/kpq2eigy8doy0z1vy0o1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969250/Mo_Tien_hien_Ta_Duong/gx0apytfcm536np7crsx.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969252/Mo_Tien_hien_Ta_Duong/v6wil32ieurnkkdzlv0k.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969253/Mo_Tien_hien_Ta_Duong/qg7sis1mo99usz6ps5sb.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969254/Mo_Tien_hien_Ta_Duong/cal9djtetfjk7s49n1l3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969256/Mo_Tien_hien_Ta_Duong/vluhoecpdgpixs4buevg.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1474,7 +2420,18 @@ export const mapDataRaw = [
     description: "Mộ người lập chợ Thủ Đức, kiến trúc đá vôi cổ.",
     detail:
       "Đình Bình Thọ thờ Thành Hoàng và các vị tiền hiền của vùng Bình Thọ. Đình mang kiến trúc truyền thống và là nơi tổ chức nhiều lễ hội văn hóa đặc trưng của người dân Thủ Đức.",
-    images: [dinhbinhtho],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969258/Dinh_Binh_Tho/allfwwxii6oyv4qmnw3k.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969259/Dinh_Binh_Tho/kfvmfgmcy8rmuy9dtq7q.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969261/Dinh_Binh_Tho/wqi7hkvpztjfygyl5oho.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969262/Dinh_Binh_Tho/mrgyjwwxqn650ohd5dzc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969263/Dinh_Binh_Tho/kovqg36kn9xg8l5pv07r.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969265/Dinh_Binh_Tho/ipjqolomzpjh9u8lyodc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969266/Dinh_Binh_Tho/skumndiiz9c9o2v9h3ky.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969268/Dinh_Binh_Tho/x6hntpdywfv1sn9iwhov.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969276/Dinh_Binh_Tho/x1fujdo7xqwok7qizf8u.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969277/Dinh_Binh_Tho/dzzjrfz95fmtj6tieiv2.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1488,7 +2445,18 @@ export const mapDataRaw = [
     description: "Ngôi chùa cổ danh tiếng vùng Gia Định, lưu giữ nhiều cổ vật.",
     detail:
       "Chùa Sùng Đức được thành lập năm 1806, là một trong những ngôi chùa cổ có lịch sử hơn 200 năm tại thành phố Thủ Đức. Khởi nguồn từ lòng thành kính của gia đình Phật tử ông bà Kiển, chùa ban đầu chỉ là một ngôi Tam bảo nhỏ, kiến trúc giản dị, cung thỉnh chư tăng trụ trì và đặt nền móng hình thành tự viện. Trải qua nhiều lần trùng tu, chùa dần được mở rộng quy mô. Năm 1967, Hòa thượng Thích Tuệ Hải tôn tạo lại chánh điện và chỉnh sửa nhiều hạng mục kiến trúc. Đến năm 1990, chùa tiếp tục xây dựng cổng tam quan, giảng đường, thiền đường và vườn tháp. Trong thời kỳ kháng chiến, chùa Sùng Đức còn là cơ sở cách mạng quan trọng, che chở và nuôi giấu nhiều cán bộ, chiến sĩ hoạt động bí mật.",
-    images: [chuasungduc],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969280/Chua_Sung_Duc/lc19osqtyfutsmqhgpuf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969281/Chua_Sung_Duc/baxtlrsrwaqibs2imto3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969283/Chua_Sung_Duc/g1phsv0pvsgrdcakawaw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969285/Chua_Sung_Duc/mxfklkehtwqfuuzmqqst.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969287/Chua_Sung_Duc/kacli1df7qpkoahdeeyp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969289/Chua_Sung_Duc/uv84vbthjmifui6foxrn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969290/Chua_Sung_Duc/ay7atev8zkxvje8fgkpy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969291/Chua_Sung_Duc/erfa2mxnpya9y0letslv.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969293/Chua_Sung_Duc/xka8jxahye2hqzkk2fsg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969294/Chua_Sung_Duc/qtyjcmouiv1wqfgdp4va.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1503,7 +2471,18 @@ export const mapDataRaw = [
     description: "Di tích lịch sử văn hóa cấp thành phố, thờ Thành hoàng.",
     detail:
       "Đình Xuân Hòa mang đậm kiến trúc truyền thống Nam bộ với khung gỗ, mái ngói âm dương, bình phong chạm hình Ông Hổ cùng các đề tài trang trí lưỡng long tranh châu, cá hóa long, được bảo tồn gần như nguyên vẹn. Từ tiền điện kiểu nhà ba gian đến chính điện và hậu điện theo lối tứ trụ, toàn bộ hệ kết cấu gỗ đều được chạm khắc tinh xảo, thể hiện kỹ thuật xây dựng và tay nghề điêu luyện của người xưa. Hiện đình lưu giữ hơn 50 cổ vật có niên đại từ 100–200 năm như hoành phi, liễn đối chữ Hán, chuông đồng, mõ gỗ, lư hương, long đình, bài vị… Mỗi hiện vật là một dấu ấn quý giá phản ánh chiều sâu văn hóa, tín ngưỡng và ký ức cộng đồng của địa phương.",
-    images: [dinhxuanhoa],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969296/Dinh_Xuan_Hoa/hsniatn38kot8mjigw7l.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969298/Dinh_Xuan_Hoa/cmndqytudo5sbf47nl8u.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969299/Dinh_Xuan_Hoa/io70xslqyovxrqyfkwyy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969300/Dinh_Xuan_Hoa/bmp94cvbxu9dggphsvnp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969302/Dinh_Xuan_Hoa/ihs0ms4zfvqbsbboltvk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969303/Dinh_Xuan_Hoa/ufb0lxlkduawlrflwluq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969305/Dinh_Xuan_Hoa/cbzyx6cpkxhhnbegmbe6.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969306/Dinh_Xuan_Hoa/mpiu9gmrymqwpyhjgfle.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969307/Dinh_Xuan_Hoa/ib7eqxsona9xlacmzaej.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969314/Dinh_Xuan_Hoa/wzphsmgutreeyspmldnx.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1517,7 +2496,18 @@ export const mapDataRaw = [
     description: "Nơi thờ Linh Sơn Thánh Mẫu, kiến trúc dân gian Nam Bộ.",
     detail:
       "Miếu Thánh Mẫu tọa lạc tại Quận 3, được cộng đồng người Hoa gốc Quảng Đông xây dựng năm 1874 để thờ Bà Thiên Hậu – vị thần bảo hộ ngư dân, gắn với hành trình vượt biển của người Hoa đến Việt Nam. Ngôi miếu mang đậm phong cách kiến trúc Quảng Đông với bố cục hình ấn đặc trưng, mái nhà liền kề uốn lượn, đỉnh mái trang trí lưỡng long tranh châu. Công trình nổi bật bởi nghệ thuật chạm khắc gỗ, đá tinh xảo và hệ thống tượng gốm men màu phong phú từ gốm Cây Mai và Ly Thạch Loan. Ngoài điện chính thờ Thiên Hậu, khuôn viên miếu còn thờ Bà Chúa Xứ, Quan Thế Âm Bồ Tát cùng các vị thần tài lộc, con cái, phản ánh đời sống tín ngưỡng đa dạng và dấu ấn nghệ thuật đặc sắc của cộng đồng người Hoa Quảng Đông.",
-    images: [mieuthanhmau],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969316/Mieu_Thanh_Mau/qcvs5vppbqum3l5twaya.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969318/Mieu_Thanh_Mau/scndmlcyenmj4zuwxbo0.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969319/Mieu_Thanh_Mau/v8s1iwibnulvijsqoe84.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969321/Mieu_Thanh_Mau/hlqm9lzaqglkjrqjsiga.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969322/Mieu_Thanh_Mau/cpuzzrczisubyw5e1qkn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969323/Mieu_Thanh_Mau/htoehkiqem3xkhxt8q2d.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969324/Mieu_Thanh_Mau/fx1dq12ftcetgvgbbcwh.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969325/Mieu_Thanh_Mau/ewyxzg3nwefiqn6yjwhs.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969326/Mieu_Thanh_Mau/vpk1gsnqpqt7o5dmljfp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969327/Mieu_Thanh_Mau/ljq7qeiebdjvyzpwkxp7.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1531,7 +2521,18 @@ export const mapDataRaw = [
     description: "Nơi lưu giữ sắc phong triều đình và các hiện vật tế lễ cổ.",
     detail:
       "Đình Phú Thạnh là một ngôi đình cổ, được xếp hạng di tích cấp thành phố. Đình có quy mô nhỏ, hiện đang trong quá trình sửa chữa, tu bổ. Cổng đình nằm tại số 199 đường Cách Mạng Tháng 8, tuy nhiên khu đình chính lại tọa lạc sâu trong hẻm nhỏ, cách mặt tiền đường khoảng 40m. Công trình chỉ có một cổng vào duy nhất; ba mặt xung quanh đều giáp các con hẻm hẹp, tạo nên không gian kín đáo, đặc trưng của một di tích lịch sử tồn tại giữa khu dân cư đô thị.",
-    images: [dinhphuthanh],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969330/Dinh_Phu_Thanh/e7f0lrct6frgcsfjsllj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969331/Dinh_Phu_Thanh/cim0tqkia27z3bmaooaj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969332/Dinh_Phu_Thanh/udfrcibntrdj9bmljxrh.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969334/Dinh_Phu_Thanh/b2ae9lkzmycu52ih1f45.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969335/Dinh_Phu_Thanh/hjngzekltegwitpkwhfk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969336/Dinh_Phu_Thanh/vreugo9k9rkwriap5ts1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969337/Dinh_Phu_Thanh/rs4ieoojr9p3wxowqn4g.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969338/Dinh_Phu_Thanh/lt5w9e9l1mznjuinbknj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969340/Dinh_Phu_Thanh/dco5pub8yw4wa5pmvgce.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969341/Dinh_Phu_Thanh/ms2pvduf9i4rlcq8as6v.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1545,7 +2546,18 @@ export const mapDataRaw = [
     description: "Trường nữ sinh Gia Long xưa, kiến trúc tím mộng mơ.",
     detail:
       "Trường THPT Nguyễn Thị Minh Khai, tiền thân là Trường Nữ Gia Long, được thành lập năm 1913, là một trong những trường trung học phổ thông lâu đời nhất của nền giáo dục Việt Nam. Trường hiện là trường công lập tại TP. Hồ Chí Minh và được UBND Thành phố xếp hạng Di tích Kiến trúc Nghệ thuật cấp Thành phố. Năm 1922, trường chính thức mang tên Collège des Jeunes Filles Indigènes (Trường Nữ Trung học Bản xứ). Màu tím được chọn làm đồng phục nữ sinh, biểu trưng cho sự đoan trang, kín đáo và khiêm nhường, từ đó hình thành tên gọi quen thuộc “trường áo tím”. Trải qua nhiều giai đoạn lịch sử và thay đổi tên gọi, từ sau năm 1978–1979, trường chính thức mang tên Trường THPT Nguyễn Thị Minh Khai cho đến ngày nay, tiếp tục là biểu tượng của truyền thống giáo dục và kiến trúc học đường tại Sài Gòn – TP. Hồ Chí Minh.",
-    images: [thptnguyenthiminhkhai],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969343/Truong_THPT_Nguyen_Thi_Minh_Khai/dk6xdorwcbkxdmwpcd9w.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969345/Truong_THPT_Nguyen_Thi_Minh_Khai/yqltp2tjwilvjxicty3z.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969346/Truong_THPT_Nguyen_Thi_Minh_Khai/e7x4xmwmqsqwq1adgmq9.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969347/Truong_THPT_Nguyen_Thi_Minh_Khai/vii3ytihfzll8kji78oz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969348/Truong_THPT_Nguyen_Thi_Minh_Khai/mljkd85spvfklr5iqpm3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969350/Truong_THPT_Nguyen_Thi_Minh_Khai/iq8nbbib8bhygorfeqjk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969351/Truong_THPT_Nguyen_Thi_Minh_Khai/gukwf2gszuvzwyeeydjy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969353/Truong_THPT_Nguyen_Thi_Minh_Khai/lkulwfnpigli20cnrdeo.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969354/Truong_THPT_Nguyen_Thi_Minh_Khai/qpjwzwkdmadzoc2hkb6m.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969358/Truong_THPT_Nguyen_Thi_Minh_Khai/yopkmsdoqvqrel058wia.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1559,7 +2571,18 @@ export const mapDataRaw = [
     description: "Tháp nước cổ nhất Sài Gòn vẫn còn nguyên vẹn.",
     detail:
       "Thủy đài nằm trong khuôn viên Tổng Công ty Cấp nước Sài Gòn (Sawaco), Quận 3, được người Pháp xây dựng năm 1886 và đến nay vẫn giữ nguyên kiến trúc, chưa từng trùng tu. Đây là một trong hai thủy đài cổ nhất của Sài Gòn và khu vực Đông Dương còn tồn tại. Công trình gồm một trệt và hai tầng, mang đậm dấu ấn kiến trúc thời Pháp. Từ năm 2018, tầng trệt được Sawaco cải tạo thành phòng truyền thống, trưng bày hơn 200 hiện vật, hình ảnh và tư liệu về lịch sử ngành cấp nước thành phố, góp phần bảo tồn một di sản kỹ thuật – đô thị đặc sắc của Sài Gòn xưa.",
-    images: [thuydai],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969362/Thuy_Dai/mgbq39k9tnvi6f6ezjxd.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969363/Thuy_Dai/lt8bjuszhlgdd2zk1udj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969364/Thuy_Dai/ubv65pmhwtxkdymd8kva.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969365/Thuy_Dai/ryxzn1njbvmbgi5zydq3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969367/Thuy_Dai/bbhnzrl52qtvr5st40z2.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969368/Thuy_Dai/sutqosamhcbfovkkb1l7.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969369/Thuy_Dai/esjp9s4muoe4njvh8gik.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969371/Thuy_Dai/gv24otebcntx0js2pk3f.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969372/Thuy_Dai/orike5fzwyqa8nlvih4b.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969373/Thuy_Dai/picwaddb7nvmzp1fp54r.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1574,7 +2597,17 @@ export const mapDataRaw = [
       "Kiến trúc Pháp thanh thoát, trung tâm y tế dự phòng đầu tiên.",
     detail:
       "Viện Pasteur (Institut Pasteur) là tổ chức nghiên cứu khoa học y sinh phi lợi nhuận của Pháp, được thành lập ngày 4/6/1887 và khánh thành năm 1888, mang tên nhà khoa học Louis Pasteur – người đặt nền móng cho vi sinh học hiện đại với các phát minh về khử trùng và vắc-xin. Trụ sở chính của Viện đặt tại Paris. Suốt hơn một thế kỷ, Viện Pasteur giữ vai trò tiên phong trong phòng chống bệnh truyền nhiễm, với nhiều khám phá mang tính đột phá như phân lập virus HIV năm 1983 và nghiên cứu kiểm soát các bệnh nguy hiểm: uốn ván, bạch hầu, lao, bại liệt, cúm, sốt vàng da, dịch hạch. Từ năm 1908 đến nay, các nhà khoa học của Viện Pasteur đã nhiều lần được trao Giải Nobel Sinh lý và Y khoa, khẳng định vị thế hàng đầu của Viện trong lịch sử y học thế giới.",
-    images: [vienpasteur],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969464/Vien_Pasteur/vpqrakkdj5w8gft7pola.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969465/Vien_Pasteur/nzavk6epvrw6tmao7wbt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969466/Vien_Pasteur/gm8ffusveohzw23slaoj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969468/Vien_Pasteur/yhikkdvaacjp178zrfxc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969536/Vien_Pasteur/jcpzhowkrqvlb5heiqtg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969538/Vien_Pasteur/jq3naxrfzcb8p7heye5b.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969539/Vien_Pasteur/te9zvtjxwatgnq2c4ku8.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969540/Vien_Pasteur/otw08bvndmykmltrdf6a.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969541/Vien_Pasteur/gmagpoat7sjurv9zakax.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1589,7 +2622,18 @@ export const mapDataRaw = [
       "Kiến trúc Pháp nguyên bản, một trong những trường lâu đời nhất.",
     detail:
       "Trường Marie Curie mang tên nữ bác học Marie Curie từ năm 1918, ban đầu là trường dành riêng cho nữ sinh với tên gọi École Primaire Supérieure des Jeunes Filles Françaises (Cao đẳng Tiểu học Nữ sinh người Pháp), sau đó phát triển thành Lycée Marie Curie. Sau ngày 30/4/1975, trường đổi tên thành Trường Phổ thông cấp 2 & 3 Marie Curie và duy trì mô hình này trong hai niên học 1975–1976 và 1976–1977. Từ niên học 1977–1978, khi chỉ còn đào tạo bậc trung học phổ thông hệ 12 năm, trường chính thức mang tên Trường Trung học Phổ thông Marie Curie, tiếp tục kế thừa truyền thống giáo dục lâu đời của một ngôi trường danh tiếng tại TP. Hồ Chí Minh.",
-    images: [thptmariecurie],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969545/Truong_THPT_Marie_Curie/tukgywua6lvk512g0vzv.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969546/Truong_THPT_Marie_Curie/h4mj3mfkahtrgofcnn7m.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969547/Truong_THPT_Marie_Curie/wmdkl5tfqoqr4u01ctue.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969548/Truong_THPT_Marie_Curie/zsbulexr8950ujrefwi7.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969549/Truong_THPT_Marie_Curie/xmw8tql0fthgrvswanji.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969551/Truong_THPT_Marie_Curie/hcbywmufb08msuikxkv0.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969552/Truong_THPT_Marie_Curie/xz0nulpsik9wf6r5ygvx.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969553/Truong_THPT_Marie_Curie/bzmfkfpfixxazjhdtv47.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969555/Truong_THPT_Marie_Curie/jv9cf1vgltsiim0bta4f.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969556/Truong_THPT_Marie_Curie/ppllafjp4wtp2bupdnls.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1603,7 +2647,18 @@ export const mapDataRaw = [
     description: "Thành lập năm 1874, kiến trúc Pháp cổ điển.",
     detail:
       "Trường Trung học Phổ thông Lê Quý Đôn là trường trung học phổ thông công lập của TP. Hồ Chí Minh, được thành lập năm 1874 với tên gọi ban đầu là Collège Chasseloup-Laubat. Đây là ngôi trường trung học đầu tiên của Sài Gòn và được xem là trường trung học phổ thông lâu đời nhất Việt Nam. Với bề dày lịch sử và giá trị kiến trúc – giáo dục tiêu biểu, ngày 19/11/2020, Trường THPT Lê Quý Đôn được công nhận là di tích lịch sử – văn hóa và danh lam thắng cảnh cấp Thành phố.",
-    images: [thptlequydon],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969561/Truong_THPT_Le_Quy_Don/h6ckec6uk5pm5wiq3fqo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969563/Truong_THPT_Le_Quy_Don/sqnytocv7mtwcpwnggzm.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969564/Truong_THPT_Le_Quy_Don/kmtlxbuyjwxrq4uhswy6.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969565/Truong_THPT_Le_Quy_Don/ej9kmkorcrgggzl3nxyv.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969566/Truong_THPT_Le_Quy_Don/quhiecqx7i4p1c4aw7by.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969568/Truong_THPT_Le_Quy_Don/c2waipuksv2o1j2nxpc1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969569/Truong_THPT_Le_Quy_Don/s8o3kuhhkcmakx0c9yrv.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969571/Truong_THPT_Le_Quy_Don/oafx9fdzjgumlsuidagj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969572/Truong_THPT_Le_Quy_Don/gr4tfezhn1bmviynukce.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969573/Truong_THPT_Le_Quy_Don/zsq1cpjdbbfzqtiayf4a.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1630,7 +2685,18 @@ export const mapDataRaw = [
     description: "Ngôi đình gắn liền với lịch sử vùng đất bến cảng.",
     detail:
       "Đình Khánh Hội tọa lạc tại số 71-73 Nguyễn Tất Thành, Quận 4, TP.HCM, là di tích kiến trúc nghệ thuật cấp Thành phố (từ năm 2006) với lịch sử lâu đời từ năm 1852. Đình nổi bật với kiến trúc truyền thống, mái lợp ngói âm dương, thờ Thành hoàng làng, và tổ chức lễ Kỳ Yên hàng năm vào ngày 15-17/2 Âm lịch.",
-    images: [dinhkhanhhoi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969575/Dinh_Khanh_Hoi/bpqjaz3ljubsrm9oxiuc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969577/Dinh_Khanh_Hoi/puqkku0v14tjsfgpbjuc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969579/Dinh_Khanh_Hoi/xwgndidpsjsebpehxds7.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969580/Dinh_Khanh_Hoi/cdskbykfvpczwvjnonyh.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969581/Dinh_Khanh_Hoi/jkuorp1k2tkhxhvswuoc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969582/Dinh_Khanh_Hoi/qwdspfpou1kxinmzazi0.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969583/Dinh_Khanh_Hoi/ecm9apgjsexkqlcicvtt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969584/Dinh_Khanh_Hoi/gaa1spq25jxsgpsyu4hv.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969585/Dinh_Khanh_Hoi/z8rywntqvqsxxl5phnso.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969586/Dinh_Khanh_Hoi/gmsrn1cdnc2icbxicdnu.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1644,7 +2710,18 @@ export const mapDataRaw = [
     description: "Nơi sinh hoạt văn hóa lâu đời của người dân lao động Q.4.",
     detail:
       "Đình Vĩnh Hội, tọa lạc tại số 46 đường Đinh Hòa, Quận 8, TP.HCM, là di tích kiến trúc nghệ thuật hơn 200 tuổi (xây dựng năm 1820), nổi tiếng với sắc phong cổ thời vua Tự Đức năm 1895. Đình thờ Thành hoàng bổn cảnh, mang đậm kiến trúc Nam Bộ với các tác phẩm chạm khắc gỗ tinh xảo và các cổ vật quý.",
-    images: [dinhvinhhoi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969592/Dinh_Vinh_Hoi/m2upicl1dghqlxu7h7yy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969593/Dinh_Vinh_Hoi/k3qho5gzq7anu4ajacif.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969594/Dinh_Vinh_Hoi/bvirewmvqkfm7tus4xuk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969595/Dinh_Vinh_Hoi/xwtg1iqopn2qkdhqtw5f.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969597/Dinh_Vinh_Hoi/bvpgtmfbg3zpuh9josez.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969598/Dinh_Vinh_Hoi/lrabdgv2u5xlqehvrawl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969600/Dinh_Vinh_Hoi/aqbkqskqamp3dotadk0l.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969601/Dinh_Vinh_Hoi/ov8uvk4xwvppzmx9pjrp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969602/Dinh_Vinh_Hoi/ak9x9o3yztl5gi7hyqpt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969603/Dinh_Vinh_Hoi/gecw1evbkj2dhmx79zwl.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1683,7 +2760,20 @@ export const mapDataRaw = [
     description: "Thờ Kim Hoa Thánh Mẫu, nổi tiếng với cầu tự.",
     detail:
       "Hội quán Tam Sơn (số 118 Triệu Quang Phục, Quận 5, TP.HCM) là di tích kiến trúc nghệ thuật cấp thành phố, được cộng đồng người Hoa gốc Phúc Kiến xây dựng khoảng năm 1839. Nơi đây nổi tiếng thờ Thiên Hậu Thánh Mẫu và Kim Huê Thánh Mẫu, là điểm sinh hoạt tín ngưỡng cổ kính, nổi tiếng linh thiêng về cầu tự và bình an.",
-    images: [hoiquantamson],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969605/Hoi_quan_Tam_Son/ql3eagfqljeeomqno5xr.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969606/Hoi_quan_Tam_Son/o9csziseoq5jdhlaejwp.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969608/Hoi_quan_Tam_Son/cy6njfoud8gbysiqrdre.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969609/Hoi_quan_Tam_Son/ilkuunwhrh7vdjkkzf2o.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969610/Hoi_quan_Tam_Son/mwqvr2gj4iy7djiypfde.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969611/Hoi_quan_Tam_Son/zn8v3krejkpdjhw7vrvd.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969612/Hoi_quan_Tam_Son/dqwpp5ksjgbmcffu0onk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969613/Hoi_quan_Tam_Son/wbqasdfek72qh3pitzmn.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969615/Hoi_quan_Tam_Son/fnr0hbrto2ygejs1sgwm.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969616/Hoi_quan_Tam_Son/fpjtbklbpavcudvmtuc5.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969617/Hoi_quan_Tam_Son/wxozrzdjcivirfbmc8sf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969619/Hoi_quan_Tam_Son/xhsdqacigje7yu7jdiri.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1697,7 +2787,18 @@ export const mapDataRaw = [
     description: "Trường Petrus Ký cũ, kiến trúc Beaux-Arts đỉnh cao.",
     detail:
       "Trường THPT Chuyên Lê Hồng Phong (TP.HCM), thành lập năm 1927, là một trong những trường THPT hàng đầu và lâu đời nhất miền Nam, nổi tiếng với chất lượng đào tạo chuyên, thành tích học sinh giỏi quốc tế/quốc gia cao. Địa chỉ tại 235 Nguyễn Văn Cừ, P. Chợ Quán, Q.5, trường tuyển sinh lớp 10 toàn quốc, nổi bật với các lớp chuyên (Toán, Hóa, Sinh, Tin, Anh...) và điểm chuẩn cao hàng năm.",
-    images: [thptlehongphong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969621/Truong_THPT_chuyen_Le__Hong_Phong/rxo191n3jgwr1wrtypkf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969622/Truong_THPT_chuyen_Le__Hong_Phong/il9y9prqpv2qdt7jmyyg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969623/Truong_THPT_chuyen_Le__Hong_Phong/iuccrfphmuvmpivfca77.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969624/Truong_THPT_chuyen_Le__Hong_Phong/mu5gt4skmgajzvcmqyyf.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969628/Truong_THPT_chuyen_Le__Hong_Phong/p7fylbomegefzqaqk0ma.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969629/Truong_THPT_chuyen_Le__Hong_Phong/pmaabluywnsqy4twcxye.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969631/Truong_THPT_chuyen_Le__Hong_Phong/yy7pbxbxpuqr04chfquv.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969632/Truong_THPT_chuyen_Le__Hong_Phong/y8xwjh0dvdif8hia7ce1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969633/Truong_THPT_chuyen_Le__Hong_Phong/rmwvu6kvceace3iymn7d.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969634/Truong_THPT_chuyen_Le__Hong_Phong/zyjr2sdemzwkdllg6z9m.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1709,7 +2810,19 @@ export const mapDataRaw = [
     lng: "106.66079758130500",
     description:
       "Trường THCS Hồng Bàng (Quận 5, TP.HCM) là ngôi trường có lịch sử lâu đời từ năm 1933-1934, mang kiến trúc Pháp cổ kính xen lẫn hiện đại. Trường nổi bật với khuôn viên rộng, 12 phòng học, 1 phòng vi tính và 6 phòng chức năng, tạo không gian giáo dục toàn diện, thường xuyên tổ chức các chuyên đề văn hóa, STEM và kỹ năng.",
-    images: [thcshongbang],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969637/Truong_THCS_Hong_Bang/uw4abnrdwrepo7gqp3vq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969637/Truong_THCS_Hong_Bang/ho0rz1skzetnsahyeyev.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969639/Truong_THCS_Hong_Bang/pgtev77oaa9f3cgrzbxj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969640/Truong_THCS_Hong_Bang/qlhrrfnfqkav2tk7uv2y.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969641/Truong_THCS_Hong_Bang/hopsz5lfwnilyqpfmxdz.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969645/Truong_THCS_Hong_Bang/lacbtuikwhv6mjxw59ef.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969647/Truong_THCS_Hong_Bang/rshz1b52hf8a6hnxlax2.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969648/Truong_THCS_Hong_Bang/fit5z9cztxglhd9jkii1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969649/Truong_THCS_Hong_Bang/jjyxj1sup4tzemdkcmnk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969650/Truong_THCS_Hong_Bang/ttservc6rxn5an1ns2zx.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969651/Truong_THCS_Hong_Bang/qwg5y1xszaxvoakndo8k.webp",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1723,7 +2836,18 @@ export const mapDataRaw = [
     description: "Ngôi đình có lịch sử hơn 200 năm, thờ thần Thành hoàng.",
     detail:
       "Đình Tân Kiểng, nằm tại Quận 5, TP.HCM, là di tích lịch sử - văn hóa nổi tiếng từ thế kỷ XIX, ban đầu là trung tâm một vùng trù mật, sau đổi tên từ Tân Cảnh (kiêng húy hoàng tử Cảnh). Đình có diện tích khoảng (700m^{2}), thờ các vị tiền hiền và chư vị hội đồng, mang đậm nét văn hóa Việt - Hoa.",
-    images: [dinhtankieng],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969241/Dinh_Tan_Kieng/gq9tlvedp0jouqbniji0.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969242/Dinh_Tan_Kieng/eyiexudeum95gqkxa3mg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969243/Dinh_Tan_Kieng/euicfxnruyufbvviiwjm.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969244/Dinh_Tan_Kieng/i0rwlymtw1sumtmsjwyo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969246/Dinh_Tan_Kieng/ianovdmakdtqszu25bms.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969248/Dinh_Tan_Kieng/y6yspm6gwpoyt7bg6bco.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969249/Dinh_Tan_Kieng/tlfmxvni3uxqo1b1gefb.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969249/Dinh_Tan_Kieng/zusyqfyz3vsexelq6tsu.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969251/Dinh_Tan_Kieng/trzpjifjwgj8wvlx8utm.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969252/Dinh_Tan_Kieng/mj8zwytt98jlmxo4boms.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1737,7 +2861,20 @@ export const mapDataRaw = [
     description: "Kiến trúc gốm Cây Mai phủ kín mái, thờ Quan Công.",
     detail:
       "Hội quán Phước An (hay Chùa Minh Hương), tọa lạc tại số 184 Hồng Bàng, Quận 5, TP.HCM, là cơ sở tín ngưỡng đặc sắc của cộng đồng người Hoa xây dựng từ năm 1865 (trùng tu 1902). Nổi tiếng với kiến trúc gỗ, gốm sứ tinh xảo và thờ Quan Thánh Đế Quân, nơi đây được công nhận là di tích kiến trúc nghệ thuật cấp thành phố vào năm 2009.",
-    images: [hoiquanphuocan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969254/Hoi_quan_Phuoc_An/lsdo4hjjhmmg2cnbk3ef.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969255/Hoi_quan_Phuoc_An/wyp0n1vcttse6bfdrrja.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969257/Hoi_quan_Phuoc_An/tvuvnwsebykwdourjypy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969258/Hoi_quan_Phuoc_An/jmst0khgk3qroriywvcl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969259/Hoi_quan_Phuoc_An/wa0z3yqwnhb3ld3rcyup.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969259/Hoi_quan_Phuoc_An/t9qawqxowbdxkww1gr4i.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969261/Hoi_quan_Phuoc_An/yenvrmmmwigbgjpzknyt.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969262/Hoi_quan_Phuoc_An/xmfipszzyl6i3bylsnbi.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969263/Hoi_quan_Phuoc_An/gqna9f6sxqsj0ju2tc3d.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969264/Hoi_quan_Phuoc_An/wkjsv4dpgtj4src9b281.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969266/Hoi_quan_Phuoc_An/o0trwtj5rhqjbnyzed7c.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969267/Hoi_quan_Phuoc_An/kxeeu3w2yke4tiezs9tu.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1752,7 +2889,13 @@ export const mapDataRaw = [
       "Kiến trúc nhà thờ họ đặc trưng của người Hoa, chạm trổ lộng lẫy.",
     detail:
       "Từ đường họ Lý (hay nhà thờ tộc Lý) nằm tại số 292 Hải Thượng Lãn Ông, Quận 5, TP.HCM, là di tích kiến trúc nghệ thuật cấp thành phố (2009). Công trình được xây dựng từ 1873-1880 bởi Lý Tường Quang (Hộ Xường) - một trong bốn phú hào giàu có bậc nhất Sài Gòn xưa, nổi bật với kiến trúc cổ kính, điêu khắc tinh xảo và lưu giữ nhiều hiện vật quý.",
-    images: [tuduongholy],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969270/Tu_duong_ho_Ly/zjer5nmjjo3vxdxeibyt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969271/Tu_duong_ho_Ly/jwmjokqxduorejipjx85.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969272/Tu_duong_ho_Ly/qryklafzmluilalkdhju.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969274/Tu_duong_ho_Ly/wl6sdimitl5p4kann6lq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969275/Tu_duong_ho_Ly/gtgtzlom4bzz9zgrdrpt.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1766,7 +2909,19 @@ export const mapDataRaw = [
     description: "Nơi thờ tự tổ tiên của cộng đồng người gốc Phúc Kiến.",
     detail:
       "Được xây dựng từ năm 1887, công trình mang đậm nét kiến trúc truyền thống Trung Hoa, nổi bật với mái hai tầng ngói lưu ly xanh, chạm khắc gỗ tinh xảo và là nơi thờ tự, tưởng nhớ tổ tiên của bang Phước Kiến.",
-    images: [tuduongphuockien],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969276/Tu_duong_Phuoc_Kien/u2yxodmqhtxcgt6diz4s.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969277/Tu_duong_Phuoc_Kien/m7fnijakeay5dfkv3grc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969279/Tu_duong_Phuoc_Kien/funse36q6hyrzcvzrhmc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969282/Tu_duong_Phuoc_Kien/qtrqbtooup4mabyvq4lu.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969282/Tu_duong_Phuoc_Kien/m6wqquba24ynuaqtq8h0.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969284/Tu_duong_Phuoc_Kien/v4z7s0uvpb9f5qnbvna7.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969308/Tu_duong_Phuoc_Kien/pkeyzzxfjpv1yqk8zfny.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969309/Tu_duong_Phuoc_Kien/own0z8dy2bswhwlz4ker.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969310/Tu_duong_Phuoc_Kien/vqrpdgy2l5qvfdrydyoc.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969311/Tu_duong_Phuoc_Kien/eokjsowibhkxchjqxxsm.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969312/Tu_duong_Phuoc_Kien/erno2tuqznvhqtkmwkpt.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1782,7 +2937,18 @@ export const mapDataRaw = [
       "Nằm ven kênh Tàu Hủ, gắn liền với sự giao thương Chợ Lớn xưa.",
     detail:
       "Đình Bình Tiên tọa lạc tại số 122 Minh Phụng, Phường 6, Quận 6, TP.HCM, được xây dựng vào năm 1832 và xếp hạng di tích kiến trúc nghệ thuật cấp thành phố năm 2009. Đình thờ Thần hoàng bổn cảnh cùng các vị khác như Linh Sơn thánh mẫu, nổi bật với kiến trúc cổ kính (đòn nóc năm 1849) và nhiều cổ vật quý từ thời Tự Đức.",
-    images: [dinhbinhtien],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969314/Dinh_Binh_Tien/yam6pljy7kj2as66aa8f.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969315/Dinh_Binh_Tien/n8vtq8tpni15xtjkvupj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969317/Dinh_Binh_Tien/pyubvbiblbyixxzcaz2n.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969318/Dinh_Binh_Tien/qqqqksoapjx8f37gbvl4.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969319/Dinh_Binh_Tien/ajz5y4sha9p6mc2loqek.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969321/Dinh_Binh_Tien/lqw3qkqbjftsqilbh8uw.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969322/Dinh_Binh_Tien/dncvpnvkjgx8gfhj5wxq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969323/Dinh_Binh_Tien/c04s4nwzfekmtdmfcssh.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969324/Dinh_Binh_Tien/dv0da7mr5q1fqhe6rwiy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969325/Dinh_Binh_Tien/gf8z7wye7uaz1wlzno7s.webp",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1794,7 +2960,20 @@ export const mapDataRaw = [
     lng: "106.63663912179700",
     description:
       "Chùa Giác Hải (quận 6, TP.HCM) là ngôi chùa cổ hơn 100 năm tuổi, được công nhận là Di tích kiến trúc - nghệ thuật cấp thành phố vào năm 2015. Được xây dựng cuối thế kỷ XIX, chùa nổi tiếng với kiến trúc Đông - Tây kết hợp, các cột đắp nổi rồng vàng và là nơi tôn trí nhiều pho tượng gỗ cổ quý giá.",
-    images: [chuagiachai],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969326/Chua_Giac_Hai/pivmdlydrbvd8okkfk8j.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969328/Chua_Giac_Hai/zuvjs3cwgqqiff5uqtas.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969328/Chua_Giac_Hai/p5n3jzaq7pnxh5fg8wbo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969329/Chua_Giac_Hai/qdclfbl5wsol828wno1v.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969331/Chua_Giac_Hai/pgipsc3pyxuljfhiz3lv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969332/Chua_Giac_Hai/s9jvim6xclpslpgl3lch.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969333/Chua_Giac_Hai/os4shp6xeovqtg4nzqqv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969333/Chua_Giac_Hai/lt8lhw6aizkrg1jj3yds.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969334/Chua_Giac_Hai/rhsn0lwvoxoxj3f4sp81.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969335/Chua_Giac_Hai/snw76xwhljj1gbtb7sto.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969336/Chua_Giac_Hai/odeg4npq84nfjnim6foo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969337/Chua_Giac_Hai/kmavgk09lx9yuknfksoy.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1808,7 +2987,20 @@ export const mapDataRaw = [
     description: 'Kiến trúc "Chồng diêm" Á Đông, chợ đầu mối lớn nhất Chợ Lớn.',
     detail:
       "Chợ Bình Tây (Chợ Lớn Mới) tọa lạc tại 57A Tháp Mười, Phường 2, Quận 6, TP.HCM, là ngôi chợ cổ sầm uất bậc nhất với hơn 100 năm tuổi. Được thương nhân người Hoa Quách Đàm xây dựng từ năm 1928, chợ nổi bật với kiến trúc Á Đông, 12 cổng, hơn 2.300 sạp hàng hoạt động từ 2h00 - 23h00, chuyên sỉ đa dạng mặt hàng từ gia vị, bánh kẹo đến đồ gia dụng.",
-    images: [chobinhtay],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969339/Cho_Binh_Tay/uctlazwadj6evvykkhhl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969340/Cho_Binh_Tay/we1pc1jbfa1tawe5tytg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969341/Cho_Binh_Tay/ssf69mwdogyjfqsyvgui.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969342/Cho_Binh_Tay/plteads8iykcstcsq0sl.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969343/Cho_Binh_Tay/wk7wbfzk3jkbaugx7xur.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969344/Cho_Binh_Tay/vmscab6ac0qr6sfzxld3.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969345/Cho_Binh_Tay/rkgrykbg1pywl9jshwen.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969346/Cho_Binh_Tay/ip0hdc6e1ulgt4wvhcog.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969348/Cho_Binh_Tay/skvkpau5sbgrggiuwwiy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969349/Cho_Binh_Tay/zuqtgachjc8exkqnjmfa.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969350/Cho_Binh_Tay/dhveqxnhedhdpxl8by6v.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969351/Cho_Binh_Tay/b5ughi4zp4ysawcseplz.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1823,7 +3015,15 @@ export const mapDataRaw = [
     description: "Ngôi đình hiếm hoi còn sót lại của vùng đất Nhà Bè xưa.",
     detail:
       "Đình Tân Qui Đông, tọa lạc tại phường Tân Phong, Quận 7, TP.HCM, là một di tích kiến trúc nghệ thuật và văn hóa đặc sắc được xếp hạng cấp Thành phố vào năm 2009. Được xây dựng từ thời Nguyễn, đình là nơi thờ Thành Hoàng, trung tâm tín ngưỡng và là “địa chỉ đỏ” quan trọng trong đời sống văn hóa của cư dân địa phương.",
-    images: [dinhtanquydong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969352/Dinh_Tan_Quy_Dong/fwuungph8hh9r7czqkgl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969353/Dinh_Tan_Quy_Dong/dtpvjo1ktazovp1kqjmz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969354/Dinh_Tan_Quy_Dong/if6ze8mv5371bunfchw7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969357/Dinh_Tan_Quy_Dong/y7xakxidtchhntznulje.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969358/Dinh_Tan_Quy_Dong/euslazmt70s5heazxvea.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969360/Dinh_Tan_Quy_Dong/gyhyh6y3we2uogfneqwu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969361/Dinh_Tan_Quy_Dong/rbfj0lcnhtolilrwf4fe.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1853,7 +3053,18 @@ export const mapDataRaw = [
       "Kiến trúc đình làng Nam Bộ kết hợp hài hòa với không gian sông nước.",
     detail:
       "Đình Hưng Phú là di tích kiến trúc nghệ thuật lâu đời, tọa lạc tại số 617/19 Bến Ba Đình, phường 9, quận 8, TPHCM theo UBND QUẬN 8. Được xây dựng đầu thế kỷ 19, đình thờ Thành Hoàng Bổn Cảnh Nguyễn Phục, mang đậm kiến trúc truyền thống Nam Bộ, là trung tâm sinh hoạt văn hóa, tín ngưỡng cộng đồng. Đình đã qua nhiều lần trùng tu nhưng vẫn bảo tồn các giá trị gốc.",
-    images: [dinhhungphu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969363/Dinh_Hung_Phu/b52dpv9gnaegb47teqnb.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969365/Dinh_Hung_Phu/fpi768l82wihuqo5xou3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969366/Dinh_Hung_Phu/blplvizlrciqmrxfwxdp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969367/Dinh_Hung_Phu/xvksiwxwjltcehkxppae.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969369/Dinh_Hung_Phu/ppasay0rmnfijrvehaep.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969370/Dinh_Hung_Phu/xcufgqbicuchwwaxueqv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969372/Dinh_Hung_Phu/ycdjpgcftn28grylqw4m.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969373/Dinh_Hung_Phu/worr4b1cy2o5szgjqqx8.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969374/Dinh_Hung_Phu/n2h4rnq5opzosbvnbcnk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969376/Dinh_Hung_Phu/veateqaezyh1kfcz5cnl.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1868,7 +3079,18 @@ export const mapDataRaw = [
     description: "Di tích lịch sử chứng kiến sự thay đổi từ làng lên phố.",
     detail:
       "Đình Bình Trị Đông (quận Bình Tân, TP.HCM) là Di tích Kiến trúc nghệ thuật cấp Thành phố (theo quyết định năm 2020), tọa lạc tại số 2A đường Lê Đình Cẩn, phường Bình Trị Đông A. Đây là ngôi đình cổ, linh thiêng, đồng thời là căn cứ cách mạng quan trọng, nơi lưu giữ nhiều hiện vật cổ và có đài liệt sĩ tưởng niệm tại sân đình.",
-    images: [dinhbinhtridong],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969792/Dinh_Binh_Tri_Dong/l2utqaos8fyhp6m3icjo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969793/Dinh_Binh_Tri_Dong/cbilyqirs3ohdcsdiqob.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969795/Dinh_Binh_Tri_Dong/je7tpbfzuu2nbutw8fhb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969796/Dinh_Binh_Tri_Dong/pxuwxwqxrwxzfeoctayp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969797/Dinh_Binh_Tri_Dong/mqffeymshz80qsobkmva.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969798/Dinh_Binh_Tri_Dong/xhpxavzq6glbjpfmuwtc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969799/Dinh_Binh_Tri_Dong/qnuftq2yicmzbt0uiavp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969800/Dinh_Binh_Tri_Dong/gcq5xidvbhabalisgvfo.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969801/Dinh_Binh_Tri_Dong/scseodzwz9adzk3g9e1r.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969802/Dinh_Binh_Tri_Dong/zzzpwrkgdmdpn95cauqf.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1883,7 +3105,18 @@ export const mapDataRaw = [
     description: "Một trong những ngôi chùa cổ nhất Gia Định, có tháp cổ đẹp.",
     detail:
       "Chùa Sắc tứ Tập Phước (hay Tập Phước tự) là một trong những cổ tự danh tiếng tại TP.HCM, tọa lạc tại số 233 Phan Văn Trị, Phường 11, Quận Bình Thạnh (trước đây thuộc Gò Vấp). Được vua Gia Long sắc tứ vào năm 1802, chùa mang đậm dấu ấn lịch sử triều Nguyễn, từng là nơi tu hành của nhiều bậc cao tăng và là chốn an yên nổi tiếng.",
-    images: [chuasactutapphuoc],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969804/Chua_Sac_tu_Tap_Phuoc/polexn9iqgv3wnerxbcs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969805/Chua_Sac_tu_Tap_Phuoc/uhfqutlbsmgzaqx2kjq1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969806/Chua_Sac_tu_Tap_Phuoc/g8bwztz7njjpfhywoyvp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969807/Chua_Sac_tu_Tap_Phuoc/tmkaiwpomlnn2gcl1z5i.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969808/Chua_Sac_tu_Tap_Phuoc/fgx05ytdbhcitkak1dg9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969809/Chua_Sac_tu_Tap_Phuoc/wooaluauwwaydqe0deja.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969810/Chua_Sac_tu_Tap_Phuoc/ibxpdosuzqkhn6fnbwm9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969811/Chua_Sac_tu_Tap_Phuoc/zj3mtn7fu4rrquafrg00.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969812/Chua_Sac_tu_Tap_Phuoc/nsijko31wcwc1bym1pq3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969813/Chua_Sac_tu_Tap_Phuoc/qcbrmpgywnerkylooc7s.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1897,7 +3130,18 @@ export const mapDataRaw = [
     description: "Gắn liền với khu du lịch Văn Thánh, là nơi thờ Khổng Tử xưa.",
     detail:
       "Chùa Văn Thánh (hay Quan Âm Thị Nghè) tọa lạc tại 115/9 Ngô Tất Tố, Phường 22, Bình Thạnh, TP.HCM, là ngôi cổ tự thành lập năm 1906, nổi tiếng với không gian thanh tịnh và kiến trúc Bắc tông truyền thống. Nơi đây mang dấu ấn lịch sử từ Văn Thánh Miếu Gia Định cũ, là điểm đến tâm linh và di tích văn hóa quan trọng",
-    images: [chuavanthanh],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969815/Chua_Van_Thanh/z5ri47px1wcgho9wfqqf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969816/Chua_Van_Thanh/f7qn9zdjrrnx4uzx80e7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969817/Chua_Van_Thanh/ltvfxx8v6rzvirnvycgq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969818/Chua_Van_Thanh/fbttzhn7sbtzldgv2bqv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969819/Chua_Van_Thanh/v0rvab5tonuludjc4quw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969820/Chua_Van_Thanh/rlqr9cruecvylz1f7dp3.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969821/Chua_Van_Thanh/dafgsqfa0xsfpegmgfq9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969823/Chua_Van_Thanh/vjkeoh4tbf8bvlisaqvq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969824/Chua_Van_Thanh/rv5xck4olcs8rablyewn.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969825/Chua_Van_Thanh/goaufc72exwp2sihxfem.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1911,7 +3155,18 @@ export const mapDataRaw = [
     description: "Ngôi đình có cảnh quan đẹp bên bán đảo Thanh Đa.",
     detail:
       "Đình thần Bình Quới Tây (32/5 Bình Quới, Phường 28, Bình Thạnh, TP.HCM) là di tích lịch sử - văn hóa cấp thành phố, mang đậm kiến trúc đình làng Nam Bộ xưa. Nơi đây thờ Thần hoàng bổn cảnh, là trung tâm tín ngưỡng quan trọng, nổi bật với Lễ Kỳ yên, góp phần lưu giữ văn hóa truyền thống giữa lòng thành phố.",
-    images: [dinhbinhquoitay],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969827/Dinh_Binh_Quoi_Tay/pwnfypa8a4tjqdduq60o.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969827/Dinh_Binh_Quoi_Tay/dbxlxguahkqpztiovtal.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969828/Dinh_Binh_Quoi_Tay/qqwxcpwljcillejbb7uw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969829/Dinh_Binh_Quoi_Tay/nfvxd2yrh8iixe12hnwd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969830/Dinh_Binh_Quoi_Tay/a26nrbmjtquh9nfgy8ke.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969831/Dinh_Binh_Quoi_Tay/jxt806zetjgg9884r7hi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969832/Dinh_Binh_Quoi_Tay/macrypfsrpm9cxu0x6ec.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969833/Dinh_Binh_Quoi_Tay/aowfutofdb1skhfc6c0j.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969834/Dinh_Binh_Quoi_Tay/hpklp8o8vlujakiycjgj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969836/Dinh_Binh_Quoi_Tay/mwqqt7ach9cfyz71mamb.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1925,7 +3180,18 @@ export const mapDataRaw = [
     description: "Nơi lưu giữ hàng ngàn cổ vật của học giả Vương Hồng Sển.",
     detail:
       "Nhà cổ của nhà văn hóa Vương Hồng Sển (Vân Đường Phủ) tọa lạc tại số 9/1 Nguyễn Thiện Thuật, P.14, Q.Bình Thạnh, TP.HCM, là di tích kiến trúc nghệ thuật cấp thành phố từ năm 2003. Ngôi nhà gỗ 5 gian 2 chái, diện tích (750m^{2}), mang đậm dấu ấn kiến trúc truyền thống Nam Bộ với các cấu trúc chạm trổ công phu, là nơi lưu giữ nhiều kỷ vật quý. ",
-    images: [nhaco],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969837/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/bobr2k2vb5o61uyqx53s.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969839/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/ibqgmvbdeqqfm46t3mfz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969839/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/cfyhicwdf7xkoqrbzqbs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969840/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/etikajfxjzgdnktgd7pl.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969841/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/vikypntuqiisyaupherk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969842/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/mvq6j0oxuiinedaasnlf.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969844/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/s9qx8cuysiyqfmqfclb7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969845/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/mwqjsidmqkrplc2tol6h.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969846/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/z1emm5qh7saxqfwjwgon.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969847/Nha_co_dan_dung_truyen_thong_cua_ong_Vuong_Hong_Sen/x9t9ns6tunbwkh9pfcxm.jpg",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1940,7 +3206,18 @@ export const mapDataRaw = [
     description: "Thờ các bậc tiền hiền có công lập làng An Nhơn xưa.",
     detail:
       "Đình An Nhơn, tọa lạc tại 110/25 đường số 30, phường An Nhơn, quận Gò Vấp, TP.HCM, là di tích kiến trúc nghệ thuật cấp quốc gia được xây dựng từ năm 1802. Đình mang đậm dấu ấn kiến trúc đình làng truyền thống Nam Bộ, thờ Thành hoàng Nam Hải Tứ vị Thánh Nương và ông Trần Xuân Hòa.",
-    images: [dinhannhon],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969848/Dinh_An_Nhon/smjvxk4ebjqyqxkkrukw.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969850/Dinh_An_Nhon/w3k0jmilxioi8nvggaby.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969851/Dinh_An_Nhon/boahi0sn8vb1f1iq6tyv.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969852/Dinh_An_Nhon/zwq47qz4tgq4jz8fb5d1.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969854/Dinh_An_Nhon/daezjlxlaecv5uxdcxwx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969855/Dinh_An_Nhon/rlcf3ye6plbxufqwxg4m.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969857/Dinh_An_Nhon/saendrg5yckwabhbj45d.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969859/Dinh_An_Nhon/wnhizoshwn3crax0tfq9.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969860/Dinh_An_Nhon/ywcmxgept0uvulbezhgi.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969861/Dinh_An_Nhon/f8oacwgijshmq52l07f2.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1952,7 +3229,18 @@ export const mapDataRaw = [
     lng: "106.68530484479900",
     description:
       "Hội quán Quần Tân (hay còn gọi là chùa Bà Thiên Hậu, Sùng Chính Hội quán) tọa lạc tại quận Gò Vấp, TP.HCM, là nơi sinh hoạt văn hóa và tín ngưỡng của cộng đồng người Hẹ (Hakka). Công trình có kiến trúc quy mô vừa phải, nổi bật với các bao lam, trang thờ chạm trổ tinh xảo từ thế kỷ 19 và thờ chính Thiên Hậu Thánh Mẫu.",
-    images: [hoiquanquantan],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969862/Hoi_quan_Quan_Tan/p9crs6wlpbuq1kao44k4.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969864/Hoi_quan_Quan_Tan/zvy7dds50ycymky4ystu.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969865/Hoi_quan_Quan_Tan/man6igfojjerzzevhv9z.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969866/Hoi_quan_Quan_Tan/tezjgsy082mvatwczitj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969867/Hoi_quan_Quan_Tan/ccqbt58rsmady90k8vrp.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969868/Hoi_quan_Quan_Tan/dwu2u1hwis2beqzrqe7x.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969869/Hoi_quan_Quan_Tan/q1hjks4yxtwp3sib3typ.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969870/Hoi_quan_Quan_Tan/cuvyndgr2fthaiki1bxd.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969871/Hoi_quan_Quan_Tan/iljcf52iajhdr2ycewe7.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969873/Hoi_quan_Quan_Tan/laxaf6q90gl8bqkv8jrh.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1967,6 +3255,18 @@ export const mapDataRaw = [
       "Ngôi chùa mang nét kiến trúc Phật giáo hiện đại pha lẫn cổ truyền.",
     detail:
       'Chùa An Lạc tại TP. HCM có hai địa điểm nổi bật chính, nổi tiếng với không gian thanh tịnh và kiến trúc đặc trưng, là điểm đến tâm linh, tu học (khóa tu "Ngày An Lạc") và hoạt động thiện nguyện, hoằng pháp ý nghĩa.',
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969874/Chua_An_Lac/ohamwe1p3ipkcsoflgvs.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969876/Chua_An_Lac/jslhta8xevyxlmifllvy.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969876/Chua_An_Lac/jnj6kg3fhl33nxiiweuk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969878/Chua_An_Lac/aa0f9adnchmfn6hdipvx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969879/Chua_An_Lac/i1ngorika6yqzjoyar4k.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969880/Chua_An_Lac/jp3v9hyyo1nqczsimvxk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969881/Chua_An_Lac/a01gop6iwyakqdchgcwc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969881/Chua_An_Lac/ha6n5wzt9xs7ampx6ywa.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969882/Chua_An_Lac/uslvv0jod6y5yhfomhcr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969884/Chua_An_Lac/ekuymnuqtc8oftdtnaft.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1980,7 +3280,18 @@ export const mapDataRaw = [
     description: "Nơi thờ bà Thiên Hậu của cộng đồng người Hoa thuộc 7 phủ.",
     detail:
       "Miếu Thất Phủ Thiên Hậu là một cơ sở tín ngưỡng của cộng đồng người Hoa, ghi nhận có địa chỉ tại số 128 đường Nguyễn Thái Sơn, Quận Gò Vấp, TP.HCM . Miếu thờ Bà Thiên Hậu, vị thần quan trọng trong đời sống tâm linh của người Hoa, đặc biệt là các cộng đồng liên quan đến 7 phủ/bang hội.",
-    images: [mieuthatphu],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969885/Mieu_That_phu_Thien_Hau/dk5qpuc20ge39sxupslq.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969886/Mieu_That_phu_Thien_Hau/qexyu6duyjxazo5ptccx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969887/Mieu_That_phu_Thien_Hau/zjpd6polwcitvbtipgyr.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969888/Mieu_That_phu_Thien_Hau/gpbdo5j4sqpvi6lb6tjz.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969889/Mieu_That_phu_Thien_Hau/geopyb9lgklwcbup3vel.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969890/Mieu_That_phu_Thien_Hau/n838maijlhmgaql6cebt.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969891/Mieu_That_phu_Thien_Hau/okwmqdon9nrecoq2wryk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969892/Mieu_That_phu_Thien_Hau/v6x0umhxllme8jjhifzx.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969894/Mieu_That_phu_Thien_Hau/slteryp1zxe8fjzqepyb.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969895/Mieu_That_phu_Thien_Hau/jg65orxptkyndwbtlayo.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -1995,7 +3306,18 @@ export const mapDataRaw = [
       "Ngôi miếu độc đáo nằm hoàn toàn trên một cù lao nhỏ giữa sông.",
     detail:
       "Miếu Nổi (Phù Châu Miếu) là một ngôi miếu cổ hơn 300 năm tuổi tọa lạc trên một cù lao nhỏ giữa dòng sông Vàm Thuật, phường 5, quận Gò Vấp, TP.HCM. Nổi tiếng với kiến trúc độc đáo, hàng trăm tượng rồng cẩn sành sứ và không gian tâm linh linh thiêng, đây là địa điểm thu hút du khách tham quan và cầu an.",
-    images: [mieunoi],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969897/Mieu_Noi/gaswatcwtv7t1gqbvfdy.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969898/Mieu_Noi/xhtwxtctbvs4tfkyrdzj.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969900/Mieu_Noi/vdy8tfmee42u0p9sui6t.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969901/Mieu_Noi/lbcvsuwqsorj0eqkzdtg.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969901/Mieu_Noi/tugki3nyigoryyrqigcy.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969902/Mieu_Noi/kq398ifdc9iqqskxdied.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969905/Mieu_Noi/nb2vpaliwdafdnzcejnc.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969906/Mieu_Noi/xsqerpd7ksn6bzkzc0bk.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969907/Mieu_Noi/bljvrk6nflcfcx3a9d1n.jpg",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969908/Mieu_Noi/pynlvomfrthlnw4rbifu.jpg",
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2009,7 +3331,15 @@ export const mapDataRaw = [
     description: "Lưu giữ sắc phong cổ và các đồ tế tự bằng đồng quý giá.",
     detail:
       "Đình An Hội (Gò Vấp, TPHCM) là di tích kiến trúc nghệ thuật cấp Thành phố, nổi bật với giá trị văn hóa và lịch sử lâu đời. Đình thờ Thành hoàng làng, là nơi sinh hoạt tâm linh và cộng đồng quan trọng. Cùng với Miếu Sa Tân, Đình An Hội góp phần bảo tồn văn hóa truyền thống tại khu vực.",
-    images: [dinhanhoi],
+    images: ["https://res.cloudinary.com/dcizhss2x/image/upload/v1772021168/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_pjwhrh.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021165/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_4_fxvamb.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021167/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_9_f2lhmy.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021166/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_pnie8e.jpg","https://res.cloudinary.com/dcizhss2x/image/upload/v1772021166/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_5_empfdz.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021165/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_qoazfd.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021166/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_8_ewgujb.jpg","https://res.cloudinary.com/dcizhss2x/image/upload/v1772021166/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_6_ojcixf.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021166/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_7_a097i4.jpg","https://res.cloudinary.com/dcizhss2x/image/upload/v1772021164/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_jyqcqr.jpg"
+
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2024,7 +3354,18 @@ export const mapDataRaw = [
       "Ngôi miếu ven sông Sài Gòn, thờ các vị thần bảo hộ sông nước.",
     detail:
       "Miếu Sa Tân (hay Kỳ Thánh Thủy Long Cung) là ngôi miếu cổ gần 200 tuổi, tọa lạc tại số 46 Trần Bá Giao, Phường 5, Quận Gò Vấp, TP.HCM, nằm ven sông Vàm Thuật. Miếu nổi tiếng linh thiêng, có kiến trúc độc đáo kết hợp Việt - Hoa với mái ngói âm dương, thờ Mẹ Thủy Long Cung, Bà Chúa Xứ, Phật Mẫu Diêu Trì, nổi tiếng là điểm cầu bình an.",
-    images: [mieusatan],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021622/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_szr1gy.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021622/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_xz9ivq.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021623/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_4_uvh6eb.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021622/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_ekoqgr.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021623/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_5_ikgwwf.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021623/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_aughjd.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021623/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_7_xrrxlf.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021623/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_6_fp00fv.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021623/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_rhzv6q.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021623/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_rhzv6q.jpg"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2037,7 +3378,18 @@ export const mapDataRaw = [
     lng: "106.6811069082920",
     description:
       "Chùa Phú Long (hay Chùa Ông Chất/Bà Cả Đành), tọa lạc tại số 62A Huỳnh Văn Bánh, Phường 15, quận Phú Nhuận, TP.HCM, là ngôi cổ tự hệ phái Bắc tông được thành lập năm 1804. Chùa nổi bật với kiến trúc gỗ cổ Nam Bộ, mái ngói âm dương và được công nhận là di tích kiến trúc nghệ thuật cấp thành phố năm 2007.",
-    images: [chuaphulong],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021766/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_1_oppqhr.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021767/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_b74gma.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021768/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_aos5jf.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021768/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_xhy9hh.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021769/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_ihfblk.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021769/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_ihfblk.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021769/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_5_ydxaf1.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021770/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_6_wzuuuy.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021770/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_gqfi9b.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021771/B%E1%BA%A3n_sao_c%E1%BB%A7a_unnamed_h5bhg0.jpg"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2049,7 +3401,17 @@ export const mapDataRaw = [
     lng: "106.67540826411500",
     description:
       'Lăng Võ Tánh (hay Mộ Võ Tánh) là di tích kiến trúc nghệ thuật cấp thành phố tại số 19/4 Hồ Văn Huê, P. 9, Q. Phú Nhuận, TP.HCM, thờ danh tướng Võ Tánh - một trong "Gia Định tam hùng" nhà Nguyễn. Xây dựng năm 1802, đây là ngôi mộ gió (nơi an táng bài vị) mang kiến trúc cổ Nam Bộ, bao gồm cổng tam quan, sân tế, đền thờ và nấm mộ, mở cửa từ 7h-21h.',
-    images: [langvotanh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021897/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_prkfb4.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021903/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_vxhndv.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021904/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_stzmee.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021904/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_stzmee.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021905/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_6_ya56ge.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021904/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_4_jwmtmy.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021906/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_7_t0leoe.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021906/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_7_t0leoe.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772021908/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_k7hhhn.jpg"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2065,7 +3427,18 @@ export const mapDataRaw = [
       "Nơi thờ Ông Bổn, vị thần bảo hộ đất đai theo tín ngưỡng Hoa - Việt.",
     detail:
       "Miếu Tân Kỳ (còn gọi là Miếu Ông Bổn) tại số 481/13 Trường Chinh, P.14, Q. Tân Bình là di tích kiến trúc nghệ thuật cấp TP.HCM, nổi bật với mái ngói âm dương và kiến trúc Hoa độc đáo. Nơi đây thờ Ông Bổn, vị thần bảo vệ đất đai và con người, là điểm sinh hoạt văn hóa tín ngưỡng đặc sắc của cộng đồng Việt - Hoa.",
-    images: [mieutanky],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022042/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_1_ingl9e.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022043/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_2_ahtx5q.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022044/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_3_cjkqfs.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022045/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_4_wk1sjr.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022046/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_ymudux.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022050/B%E1%BA%A3n_sao_c%E1%BB%A7a_new0401_lw9ujb.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022051/B%E1%BA%A3n_sao_c%E1%BB%A7a_sddefault_z6iucj.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022052/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_zqsp1i.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022053/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_xktzwo.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022054/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_zwezsn.jpg"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2080,7 +3453,18 @@ export const mapDataRaw = [
     description: "Khu mộ kép bằng đá có giá trị nghệ thuật điêu khắc rất cao.",
     detail:
       'Mộ ông Lý Tường Quang (Bá hộ Xường, 1842-1896) và vợ là bà Nguyễn Thị Lâu (mất năm 1913) là khu di tích kiến trúc nghệ thuật cấp thành phố tại hẻm 79/30 Phú Thọ Hòa, Q. Tân Phú, TP.HCM, thể hiện sự giàu có của "Tam Xường" - một trong Tứ đại Phú hộ Sài Gòn xưa.',
-    images: [moonglytuong],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022262/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_1_xurvge.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022263/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_2_rorx7b.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022265/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_3_laozjf.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022265/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_4_m5njsl.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022266/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_kgsdir.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022268/B%E1%BA%A3n_sao_c%E1%BB%A7a_Mo-Ba-ho-Xuong-15_dylz2c.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022269/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_sjnlly.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022270/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_rajyly.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022271/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_e13tzi.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022273/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_uv6zvb.jpg"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2107,7 +3491,18 @@ export const mapDataRaw = [
     description: "Tưởng niệm 32 dân công hy sinh trong đợt 2 Mậu Thân 1968.",
     detail:
       'Khu di tích Dân công hỏa tuyến Vĩnh Lộc Mậu Thân 1968 (tại xã Vĩnh Lộc A, Bình Chánh, TP.HCM) là "địa chỉ đỏ" ghi dấu sự hy sinh của 32 dân công (25 nữ, 7 nam) vào đêm 15/6/1968 trong lúc vận chuyển đạn. Đây là di tích bi tráng về tinh thần bất khuất, tôn vinh lực lượng dân công hỏa tuyến vùng ven Sài Gòn.',
-    images: [khuditich],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022381/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_1_qga0qm.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022382/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_wps12m.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022383/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_gd2msb.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022384/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_yzs53i.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022398/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_w8md1m.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022437/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_4_gf7tdc.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022438/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_5_bp0vcz.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022440/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_6_yywozd.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022441/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_7_kw6mlf.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022442/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_dc2hvc.jpg"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2121,7 +3516,18 @@ export const mapDataRaw = [
     description: "Di tích trận đánh lừng lẫy của lực lượng vũ trang Chợ Lớn.",
     detail:
       'Khu di tích lịch sử Láng Le - Bàu Cò (ấp 1, xã Tân Nhựt, huyện Bình Chánh, TP.HCM) là căn cứ cách mạng quan trọng thời kháng chiến chống Pháp và Mỹ. Nơi đây ghi dấu trận chống càn oanh liệt ngày 15/4/1948, trở thành "địa chỉ đỏ" giáo dục truyền thống, được xếp hạng di tích lịch sử cấp thành phố năm 2003.',
-    images: [langle],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022560/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_hsixbs.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022560/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_hsixbs.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022563/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_on1yyt.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022564/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_4_e1wmwu.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022569/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_5_p4rwn5.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022601/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_6_htihka.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022602/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_7_si5gqm.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022605/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_8_tccurv.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022607/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_9_zjgtac.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022610/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_f8ddlh.jpg"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2136,7 +3542,18 @@ export const mapDataRaw = [
       "Di tích ghi dấu tội ác thực dân Pháp và sự anh dũng của quân ta.",
     detail:
       "Khu di tích lịch sử Rạch Già tọa lạc tại ấp 6, xã Hưng Long, huyện Bình Chánh, TP.HCM, là căn cứ cách mạng quan trọng giai đoạn 1946-1948. Nơi đây thờ Chủ tịch Hồ Chí Minh và các liệt sĩ, nổi bật với đền tưởng niệm và đình Hậu Mỹ, được UBND TP.HCM xếp hạng di tích lịch sử năm 2008.",
-    images: [langle],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022719/B%E1%BA%A3n_sao_c%E1%BB%A7a_-1698035044-966-width1200height799_mohqbl.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022720/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_1_uz0uim.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022722/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_bjcme6.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022723/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_m5xhee.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022725/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_2_lq9ytv.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022727/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_3_bqzj8n.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022727/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_4_jhbtbg.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022729/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_5_wyxt5s.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022731/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_6_p4mamr.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022741/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_dywtbs.jpg"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2148,7 +3565,12 @@ export const mapDataRaw = [
     lng: "106.54382596854200",
     description:
       'Khu tưởng niệm tọa lạc tại xã An Điền là nơi tri ân các chiến sĩ Tiểu đoàn Phú Lợi và nhân dân đã anh dũng hy sinh trong trận chống càn khốc liệt năm 1970. Với kiến trúc đền thờ và bia đá uy nghiêm giữa không gian xanh, đây là "địa chỉ đỏ" linh thiêng để khách tham quan dâng hương và tìm hiểu về tinh thần cách mạng kiên cường trên vùng đất sắt.',
-    images: [langvotanh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022853/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_1_f4kl7l.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022855/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_y3eihv.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022857/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_rjenxf.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022858/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_xec5vy.jpg"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2163,7 +3585,11 @@ export const mapDataRaw = [
     description: "Thờ vị anh hùng có công đánh giặc cứu dân vùng cửa sông.",
     detail:
       'Đình Dương Văn Hạnh (hay đình thờ "thần không đầu" Dương Văn Hạnh) tọa lạc tại xã Lý Nhơn, huyện Cần Giờ, TP.HCM, là di tích lịch sử cấp thành phố (từ năm 2009). Đình thờ vị anh hùng dân địa phương được suy tôn làm Thành Hoàng, nổi tiếng với kiến trúc Nam Bộ truyền thống, khuôn viên 2000m² và lễ Kỳ yên hàng năm vào 16/12 âm lịch.',
-    images: [dinhduongvanhanh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022929/B%E1%BA%A3n_sao_c%E1%BB%A7a_images_q0s0ar.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022930/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_1_w0uvgo.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772022932/B%E1%BA%A3n_sao_c%E1%BB%A7a_t%E1%BA%A3i_xu%E1%BB%91ng_nypqfs.jpg"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2177,7 +3603,18 @@ export const mapDataRaw = [
     description: "Ngôi đình nằm gần phà Bình Khánh, cửa ngõ vào huyện Cần Giờ.",
     detail:
       "Đình Bình Khánh được dựng trước năm 1850, hơn 150 năm tồn tại qua 7–8 thế hệ, là chứng nhân cho những thăng trầm của vùng đất Nam Bộ. Năm 1947, đình bị quân Pháp đốt phá, nhiều hiện vật và sắc thần bị thất lạc. Sau Hiệp định Genève, năm 1955, người dân trở về góp công dựng lại đình; lần trùng tu gần nhất diễn ra vào năm 2003. Từ cuộc tổng điều tra di tích năm 1999, đình đã được xếp vào danh mục cần bảo vệ của TP. Hồ Chí Minh. Sau trùng tu, đình vẫn giữ dáng vẻ cổ kính với mái ngói, đầu đao rồng, lưỡng long chầu nguyệt, nội điện kiến trúc tứ trụ, chạm khắc tinh xảo. Không gian thờ tự trang nghiêm với các ban thờ Thần, Tiền hiền – Hậu hiền, Quan Thánh Đế Quân, cùng nhiều linh vật truyền thống. Hằng năm, từ ngày 16 đến 18 tháng Ba âm lịch, đình tổ chức Đại lễ Kỳ Yên, thu hút đông đảo người dân và khách thập phương về chiêm bái, sinh hoạt văn hóa tín ngưỡng.",
-    images: [dinhbinhkhanh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023015/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-3_ven2mg.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023017/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-2_drmjhc.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023019/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM_rkqqpo.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023024/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-10_mvn6co.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023026/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-9_ip9aq7.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023029/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-8_xhx0da.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023044/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-7_weodns.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023047/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-6_q4k4ur.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023050/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-5_hyqywm.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023055/Tu%E1%BB%95i_tr%E1%BA%BB_X%C3%A3_B%C3%ACnh_Kh%C3%A1nh_-_TPHCM-4_afnzlc.png"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2192,7 +3629,18 @@ export const mapDataRaw = [
     description: "Tên gọi dân dã, kiến trúc giản dị, đậm chất làng quê.",
     detail:
       "Đình Cây Sộp, còn gọi là đình Vĩnh An Tây, được xây dựng vào đầu thế kỷ XIX tại thôn Vĩnh An Tây, huyện Bình Long, phủ Tân Bình, tỉnh Gia Định xưa. Trải qua nhiều biến cố lịch sử, đình nhiều lần bị hư hại và di dời: năm 1945, dân quân địa phương chủ động tháo dỡ đình để tránh rơi vào tay thực dân Pháp; năm 1967, đình bị quân đội Mỹ san bằng khi xây dựng căn cứ Đồng Dù. Sau đó, đình được dựng tạm năm 1972 tại Xóm Trảng (Củ Chi), rồi đến năm 1975 được xây dựng lại trên nền cũ với vật liệu đơn sơ. Năm 1997, đình được tu bổ khang trang hơn. Đến năm 2008, Sở Văn hoá và Thông tin TP. Hồ Chí Minh tiếp tục phục hồi, tôn tạo hệ thống hầm bí mật và đường hầm trong khuôn viên đình, góp phần bảo tồn di tích và phục vụ khách tham quan.",
-    images: [dinhcaysop],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023181/tiktok-cuchiphonggau-4_oixf6l.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023195/tiktok-cuchiphonggau-3_muw8ry.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023197/tiktok-cuchiphonggau-2_btn2ai.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023199/tiktok-cuchiphonggau_kqomm3.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023201/H%C3%A0_Nguy%E1%BB%85n-vietnamnet-3_uygbfx.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023202/H%C3%A0_Nguy%E1%BB%85n-vietnamnet-2_ognoiz.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023209/Google_Maps-2_ntpbss.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023204/H%C3%A0_Nguy%E1%BB%85n-vietnamnet_hibzds.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023207/Google_Maps-3_xtsyjz.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023211/Google_Maps_yb2ba6.webp"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2206,7 +3654,14 @@ export const mapDataRaw = [
     description: 'Ngôi đình tiêu biểu cho tín ngưỡng dân gian tại "Đất Thép".',
     detail:
       "Đình Tân Thông là cơ sở tín ngưỡng dân gian giàu giá trị lịch sử, gắn liền với quá trình khai hoang lập thôn và hun đúc tinh thần đoàn kết, yêu nước của cộng đồng địa phương. Được xây dựng năm 1845 để thờ Thành Hoàng Bổn Cảnh, đình từng được vua Tự Đức ban sắc phong vào năm 1853. Trong hai cuộc kháng chiến chống Pháp và chống Mỹ, Đình Tân Thông là nơi hội họp, tuyên truyền và tổ chức các phong trào cách mạng của những người yêu nước. Với những giá trị tiêu biểu đó, đình đã được UBND TP. Hồ Chí Minh xếp hạng Di tích lịch sử cấp thành phố vào ngày 20/12/2016.",
-    images: [dinhtanthong],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023320/Google_Maps-10_te3zpx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023331/Google_Maps-8_ai5kmb.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023322/Google_Maps-9_xhslps.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023335/Google_Maps-2_aapugx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023333/Google_Maps-7_rdpded.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023346/Google_Maps_nqytq7.webp","https://res.cloudinary.com/dcizhss2x/image/upload/v1772023344/Google_Maps-3_p8jp6l.webp","https://res.cloudinary.com/dcizhss2x/image/upload/v1772023342/Google_Maps-4_sj07jp.webp"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2221,7 +3676,18 @@ export const mapDataRaw = [
     description: "Ngôi chùa cổ có kiến trúc hài hòa, không gian thanh tịnh.",
     detail:
       "Chùa Thiên Quang là ngôi chùa thuộc phái Bắc Tông, được Hòa thượng Thích Minh Tâm – Trưởng tử của Tổ sư Huệ Đăng (chùa Thiên Thai, Bà Rịa) xây dựng vào đầu thế kỷ XX; hiện do Đại đức Thích Tịnh Đức trụ trì. Chùa từng được trùng tu vào các năm 1956, 1959 và 1987. Quần thể kiến trúc gồm chính điện, tổ đường, giảng đường và nhà trù; trong đó giảng đường còn giữ hệ thống cột gỗ, mái ngói truyền thống. Khuôn viên chùa rộng rãi, có tượng Phật Thích Ca nhập niết bàn, tượng Phật Di Lặc và tháp mộ các vị trụ trì tiền nhiệm. Chùa còn lưu giữ hầm bí mật và đường hầm phục vụ hoạt động cách mạng. Với những giá trị lịch sử – văn hóa tiêu biểu, chùa Thiên Quang được UBND TP. Hồ Chí Minh xếp hạng Di tích lịch sử năm 2007.",
-    images: [chuathienquang],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023522/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-10_btlba9.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023535/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-9_zpxmeu.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023537/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-8_i7qdzw.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023539/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-7_y067qn.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023542/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-6_y5czah.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023544/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-5_v1k7a3.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023546/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-4_jtiewr.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023550/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-3_uutc2s.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023556/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n_gslffd.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023554/Th%C3%ADch_%C4%90i_Ch%C3%B9a_-H%E1%BB%93ng_Nguy%E1%BB%85n-2_kmbvno.jpg"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2235,7 +3701,14 @@ export const mapDataRaw = [
     description: "Thờ vị lãnh đạo cuộc khởi nghĩa 18 Thôn Vườn Trầu.",
     detail:
       "Đền thờ Phan Công Hớn (Phan Văn Hớn) tọa lạc tại ấp Tây Bắc Lân, xã Bà Điểm, huyện Hóc Môn, TP. Hồ Chí Minh, là nơi tưởng niệm vị thủ lĩnh cuộc khởi nghĩa 18 Thôn Vườn Trầu chống thực dân Pháp năm 1885. Được công nhận là di tích lịch sử cấp thành phố từ năm 2003, đền là địa điểm tổ chức lễ giỗ ông vào ngày 25 tháng 2 âm lịch hằng năm theo nghi thức tế Thành Hoàng, nhằm tôn vinh công lao hy sinh vì nước, bảo vệ dân lành. Khu di tích gồm ngôi mộ đơn sơ bằng đá ong, tô hồ ô dước và đền thờ xây gạch mộc mạc nhưng trang nghiêm. Trên hàng cột phía trước đền khắc hai câu liễn: “Vì nước hy sinh gan liệt sĩ”, “Thương nòi chiến tử nghĩa anh hùng”, thể hiện lòng tri ân sâu sắc của nhân dân đối với người anh hùng dân tộc.",
-    images: [denthoongphanconghon],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023654/YTUP-TV886-9_ymyslh.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023659/YTUP-TV886-8_mebgeg.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023680/YTUP-TV886-7_tyll3x.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023682/YTUP-TV886-6_mhlsl3.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023684/YTUP-TV886-5_ivlww2.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023687/YTUP-TV886-4_ejkke1.png"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2249,7 +3722,18 @@ export const mapDataRaw = [
     description: "Địa điểm quyết định cuộc Khởi nghĩa Nam Kỳ (9/1940).",
     detail:
       "Di tích “Nơi họp Hội nghị Xứ ủy Nam Kỳ tháng 9/1940” là địa điểm ghi dấu hoạt động lãnh đạo cách mạng quan trọng của Đảng trong thời kỳ kháng chiến chống thực dân Pháp, gắn liền với quá trình chuẩn bị Khởi nghĩa Nam Kỳ. Từ ngày 21 đến 23/9/1940, tại nhà bà Nguyễn Thị Hương, làng Xuân Thới Đông, quận Hóc Môn (nay là huyện Hóc Môn), đồng chí Tạ Uyên – Bí thư Xứ ủy Nam Kỳ đã triệu tập Hội nghị Xứ ủy nhằm bàn kế hoạch khởi nghĩa. Hội nghị quyết định đẩy mạnh công tác chuẩn bị và trao quyền cho Ban Thường vụ Xứ ủy ra lệnh khởi nghĩa. Trên cơ sở đó, ngày 20/11/1940, Thường vụ Xứ ủy đã phát lệnh tổng khởi nghĩa trong toàn Nam Kỳ vào đêm 22 rạng sáng 23/11/1940. Di tích mang giá trị lịch sử đặc biệt, gắn với một mốc son tiêu biểu của phong trào cách mạng Nam Bộ.",
-    images: [noihophoinghi],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023732/Google_Maps-10_nsylia.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023733/Google_Maps-6_ibj1ko.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023738/Google_Maps-5_qmk6zm.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023742/%C4%90%E1%BA%A3ng_b%E1%BB%99_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-3_it5zah.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023743/%C4%90%E1%BA%A3ng_b%E1%BB%99_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-2_ydio1j.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023745/%C4%90%E1%BA%A3ng_b%E1%BB%99_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh_fzzady.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023748/Google_Maps-4_y7qxwa.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023755/Google_Maps-3_sbezwd.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023758/Google_Maps-2_mfrctt.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023762/Google_Maps_fgwmhs.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2265,7 +3749,14 @@ export const mapDataRaw = [
       "Nơi thành lập An Nam Cộng sản Đảng (một trong 3 tổ chức tiền thân).",
     detail:
       "Căn nhà số 14 Cách mạng Tháng Tám, còn gọi là “Nhà kiếng”, được xây dựng ban đầu làm thư viện với kiến trúc nhiều cửa kính lấy ánh sáng. Từ năm 1950, nơi đây trở thành trụ sở của Liên đoàn công nhân Tư sở, sau đổi thành Tổng Liên đoàn Lao công Việt Nam (1952–1975), một tổ chức công đoàn vàng do Trần Quốc Bửu cầm đầu, chịu sự chi phối của Mỹ nhằm kìm hãm phong trào đấu tranh của công nhân miền Nam. Sau ngày giải phóng, căn nhà là trụ sở của Liên đoàn Lao động TP. Hồ Chí Minh, nơi sinh hoạt, giáo dục truyền thống yêu nước và phát động các phong trào thi đua của giai cấp công nhân thành phố. Với ý nghĩa lịch sử tiêu biểu, công trình được UBND TP. Hồ Chí Minh xếp hạng Di tích lịch sử cấp thành phố năm 2003.",
-    images: [noihophoinghi],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023924/Google_Maps-10_v1vwcw.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023931/Google_Maps-9_eqyys7.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023940/Google_Maps-8_rk2b1n.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023943/Google_Maps-7_dp67tc.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023956/Google_Maps-6_p7hioh.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772023962/Google_Maps-5_c2sfli.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2279,7 +3770,18 @@ export const mapDataRaw = [
     description: "Cơ sở bí mật nuôi giấu cán bộ và liên lạc nội đô.",
     detail:
       "Di tích Quán Nhan Hương, nằm trong khuôn viên Thảo Cầm Viên (quận 1), từng là cơ sở hoạt động bí mật của lực lượng biệt động Sài Gòn, được thành lập năm 1963. Quán do ông Nguyễn Văn Tửng (1913, quê Trà Vinh) xây dựng bằng tiền tích góp và đặt tên theo người vợ đã mất, vừa làm nơi buôn bán, vừa nuôi giấu cán bộ, tổ chức gặp gỡ, chỉ đạo và động viên lực lượng trước các trận đánh quan trọng. Nhờ vị trí đông người qua lại, gần các cơ quan đầu não của đối phương, quán tạo điều kiện thuận lợi cho hoạt động cách mạng mà không bị nghi ngờ. Không gian quán khoảng 100 m² hiện vẫn giữ gần như nguyên trạng, được phục dựng sinh động với các mô hình thực khách, quân nhân và sinh hoạt thường ngày, tái hiện rõ nét vai trò đặc biệt của một cơ sở cách mạng giữa lòng Sài Gòn xưa.",
-    images: [quannhanhuong],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024082/vnexpress_bl0sca.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024084/Google_Maps-9_hoatip.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024085/Google_Maps-8_qfnuib.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024094/Google_Maps-7_b54dls.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024097/Google_Maps-6_kqmzxw.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024100/Google_Maps-5_xhajuh.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024103/Google_Maps-4_fnzoav.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024103/Google_Maps-4_fnzoav.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024108/Google_Maps-2_xt4wh1.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024111/Google_Maps_keiknz.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2291,7 +3793,18 @@ export const mapDataRaw = [
     lng: "106.7063198762404",
     description:
       "Cột cờ Thủ Ngữ do người Pháp xây dựng năm 1865, ban đầu giữ vai trò điều hành tàu thuyền ra vào cảng Sài Gòn. Tháng 9/1945, nơi đây ghi dấu sự hy sinh của những chiến sĩ cảm tử bảo vệ lá cờ đỏ sao vàng trong những ngày đầu Nam Bộ kháng chiến. Trải hơn 150 năm tồn tại, cột cờ đã chứng kiến những biến chuyển lịch sử và sự phát triển không ngừng của đô thị sông nước Sài Gòn – TP. Hồ Chí Minh. Công trình có cấu trúc độc đáo với cột cờ cao bên bờ sông, kết hợp ba tầng giật cấp; tầng thấp là nền cao, phía trên là ngôi nhà bao quanh chân cột, gian trung tâm vươn cao với mái bát giác, tạo nên một dấu ấn kiến trúc – lịch sử tiêu biểu của thành phố.",
-    images: [cotcothungu],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024228/Google_Maps-5_fjwvg2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024236/Google_Maps-10_fm33q9.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024251/Google_Maps-8_uzcurx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024251/Google_Maps-8_uzcurx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024251/Google_Maps-8_uzcurx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024259/Google_Maps-6_qu1tom.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024263/Google_Maps-4_iqaqeu.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024267/Google_Maps-3_c1uyxt.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024271/Google_Maps-2_hpdfpo.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024275/Google_Maps_qwfbnl.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2306,7 +3819,18 @@ export const mapDataRaw = [
     description: "Trung tâm của phong trào Phật giáo yêu nước miền Nam.",
     detail:
       "Chùa Ấn Quang, thường được tôn xưng là Tổ đình Ấn Quang, được tạo lập năm 1948 và nhiều lần mở rộng, nâng cấp; hiện có thư viện và nhà xuất bản phục vụ hoạt động Phật giáo. Trong suốt quá trình hình thành và phát triển, chùa từng là trụ sở của nhiều tổ chức Phật giáo quan trọng như Phật học đường Nam Việt, Giáo hội Tăng già Nam Việt (1959–1963), cơ sở chính của Giáo hội Phật giáo Việt Nam Thống nhất, văn phòng Viện Hóa Đạo và Viện Tăng Thống (1976–1980), cũng như trụ sở Ban Trị sự Thành hội Phật giáo TP. Hồ Chí Minh từ năm 1982 đến 2017. Chùa Ấn Quang giữ vị trí tiêu biểu trong đời sống tôn giáo và lịch sử Phật giáo Việt Nam hiện đại.",
-    images: [chuaanquang],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024354/Google_Maps-10_g3pyu8.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024365/Google_Maps-9_tolc1m.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024377/Google_Maps-8_fau1gj.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024380/Google_Maps-7_eunkwm.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024383/Google_Maps-6_m8ritl.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024386/Google_Maps-5_cxxxr1.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024389/Google_Maps-4_jjc3ov.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024393/Google_Maps-3_ewjwsp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024400/Google_Maps-2_od5irn.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024405/Google_Maps_oaglhc.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2321,7 +3845,18 @@ export const mapDataRaw = [
       "Ngôi chùa dành cho chư Ni, kiến trúc trang nghiêm, thanh tịnh.",
     detail:
       "Chùa Từ Nghiêm tọa lạc giữa khu dân lao động nên từ lâu trở thành điểm sinh hoạt tín ngưỡng gần gũi của đông đảo Phật tử và người dân. Trong giai đoạn 1963–1972, khi phong trào đấu tranh đòi tự do tín ngưỡng, tự do tôn giáo và hòa bình dân tộc lan rộng tại Sài Gòn, chùa Từ Nghiêm cùng nhiều tự viện lớn như Ấn Quang, Xá Lợi, Ngọc Phương… là nơi hội tụ của học sinh, sinh viên và Phật tử tham gia đấu tranh. Nhiều chư Ni đã trực tiếp xuống đường, góp phần vào phong trào phản đối chính quyền Sài Gòn, tiêu biểu có Ni trưởng Tịnh Mẫn đang tu học tại chùa Từ Nghiêm thời kỳ này. Ngôi chùa vì thế không chỉ là nơi tu tập, lễ bái mà còn gắn liền với lịch sử đấu tranh vì quyền sống, hòa bình và tự do tôn giáo của đô thị Sài Gòn.",
-    images: [chuatunghiem],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024506/Google_Maps-10_djskyd.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024506/Google_Maps-10_djskyd.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024514/Google_Maps-8_kmmpac.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024517/Google_Maps-7_xig4a5.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024522/Google_Maps-6_kf5gg6.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024526/Google_Maps-5_c87o1a.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024530/Google_Maps-4_ieihj2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024534/Google_Maps-3_lgja8b.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024537/Google_Maps-2_q5juhn.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024544/Google_Maps_pjwkhc.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2337,7 +3872,18 @@ export const mapDataRaw = [
       'Được mệnh danh là "Nhật Bản thu nhỏ", kiến trúc Phật giáo Bắc tông độc đáo.',
     detail:
       "Tu viện Khánh An là ngôi chùa quy mô lớn tọa lạc tại quận 12, TP. Hồ Chí Minh, được gọi là “tu viện” nhằm giảm nhẹ sắc thái tín ngưỡng, hướng đến không gian tu học và thiền tập. Nơi đây thường xuyên tổ chức các khóa tu, khóa thiền, đặc biệt là thiền Tứ niệm xứ, thu hút đông đảo chư Tăng, Phật tử và người trẻ đến chiêm bái, nghe thuyết pháp. Gắn liền với lịch sử kháng chiến chống Pháp của quân và dân An Phú Đông, tu viện từng là cơ sở cách mạng, ghi dấu nhiều sự kiện quan trọng. Với giá trị lịch sử và kiến trúc độc đáo mang dáng dấp chùa Nhật Bản nhưng xây dựng trên nền tảng chùa Việt truyền thống, Tu viện Khánh An đã được UBND TP. Hồ Chí Minh công nhận là Di tích lịch sử cấp thành phố vào ngày 27/7/2007.",
-    images: [chuakhanhan],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024609/Google_Maps-10_vtpfwm.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024619/Google_Maps-9_bjhwvp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024619/Google_Maps-9_bjhwvp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024643/Google_Maps-7_gogecr.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024646/Google_Maps-6_ftpemj.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024649/Google_Maps-5_ffig8y.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024653/Google_Maps-4_pqwlnv.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024656/Google_Maps-3_xuymaf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024661/Google_Maps-2_jefkr2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024666/Google_Maps_bbcruq.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2352,7 +3898,18 @@ export const mapDataRaw = [
       "Di tích lịch sử gắn liền với sự hình thành vùng đất Hóc Môn - Tham Lương.",
     detail:
       "Chùa Tường Quang từng là trụ sở Hội Phật giáo cứu quốc tỉnh Gia Định, giữ vai trò quan trọng trong việc vận động tăng ni, Phật tử tham gia kháng chiến, đồng thời là cơ sở tiếp tế tài chính, vật phẩm cho cách mạng. Trong thời kỳ chống Pháp, chùa còn là cơ sở của Tỉnh ủy Gia Định, Chi bộ xã An Phú Đông, trạm giao liên và nơi dừng chân của cán bộ, chiến sĩ cách mạng. Sau chiến thắng Điện Biên Phủ năm 1954, nhân dân An Phú Đông đã tụ họp tại chùa để mừng thắng lợi vẻ vang của dân tộc. Chùa được xây dựng trên khu đất rộng ven sông Vàm Thuật, với kiến trúc mộc mạc gồm chính điện, tổ đường và nhà liêu. Không gian thờ tự trang nghiêm với các ban thờ Phật Thích Ca, Quan Âm, Địa Tạng, Cửu Huyền Thất Tổ cùng chư vị tôn túc, góp phần tạo nên giá trị lịch sử – văn hóa tiêu biểu của chùa Tường Quang.",
-    images: [chuatuongquang],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024770/Google_Maps-10_ecbek4.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024778/Google_Maps-9_rimcfq.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024808/Google_Maps-8_yymmxb.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024813/Google_Maps-7_xxupcx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024820/Google_Maps-6_gf2lbo.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024820/Google_Maps-6_gf2lbo.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024830/Google_Maps-4_gartf5.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024836/Google_Maps-3_tg4oaw.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024842/Google_Maps-2_ly3zlk.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024847/Google_Maps_vv1dca.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2366,7 +3923,19 @@ export const mapDataRaw = [
     description: "Ngôi đình vùng chiến khu An Phú Đông năm xưa.",
     detail:
       "Đình Hanh Phú tọa lạc trên khuôn viên rộng hơn 3.200 m² bên bờ sông Vàm Thuật, thuộc phường An Phú Đông, quận 12, là di tích gắn liền với những năm tháng chiến tranh khốc liệt của vùng cù lao Hanh Phú. Trong hai cuộc kháng chiến chống Pháp và chống Mỹ, khu vực này nhiều lần bị bao vây, càn quét, oanh kích; đình bị đốt phá, bắn phá và hoàn toàn đổ nát, trở thành chứng tích tố cáo tội ác của các thế lực xâm lược. Sau chiến tranh, từ mảnh đất thấm đẫm đau thương, nhân dân địa phương đã vận động xây dựng lại đình năm 1982; tiếp đó xây thêm sân khấu năm 2000 và cổng tam quan năm 2004. Không chỉ là nơi thờ phụng, đình còn giữ vai trò kho lương tiếp tế cho căn cứ cách mạng An Phú Đông trong kháng chiến và là địa điểm giáo dục truyền thống yêu nước cho thế hệ trẻ. Với những giá trị lịch sử – văn hóa tiêu biểu, Đình Hanh Phú được UBND TP. Hồ Chí Minh xếp hạng Di tích lịch sử – văn hóa, danh lam thắng cảnh cấp thành phố năm 2007.",
-    images: [dinhhanhphu],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024920/Google_Maps-10_rqylex.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024923/Google_Maps-9_tttjyj.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024940/Google_Maps-8_rdl7u8.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024945/Google_Maps-7_fuw9pl.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024955/Google_Maps-6_lnwqhb.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024962/Google_Maps-5_zvecgc.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024967/Google_Maps-4_iybxqr.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024980/Google_Maps-2_umuxcr.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024973/Google_Maps-3_sllbi9.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772024985/Google_Maps_vtdury.webp",
+      
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2381,7 +3950,18 @@ export const mapDataRaw = [
       "Ngôi miếu dân gian gắn liền với những truyền thuyết vùng Gia Định.",
     detail:
       "Miếu Cây Quéo là một ngôi miếu dân gian có lịch sử hơn 100 năm, tọa lạc tại làng Tân Đông Trung xưa (nay thuộc phường Trung Mỹ Tây, Quận 12). Miếu thờ Bà Chúa Xứ và Ngũ Hành Nương Nương, do trong khuôn viên có cây quéo cổ thụ lớn nên được người dân quen gọi là Miếu Cây Quéo. Miếu được trùng tu vào các năm 1938 và 1976, gồm cổng miếu, sân thờ Thổ Địa, tượng Quan Âm; nội thất thờ bà Huỳnh Thị Nương, Ngũ Hành, Phật Di Lặc, Địa Mẫu; phía sau chính điện thờ Tiền hiền, Hậu hiền. Công trình phụ bên trái là nơi đặt bàn thờ Chủ tịch Hồ Chí Minh và phòng tiếp khách. Không chỉ là cơ sở tín ngưỡng, Miếu Cây Quéo còn gắn liền với phong trào cách mạng tại địa phương. Nơi đây từng ba lần treo cờ đỏ búa liềm vào các mốc lịch sử quan trọng: ngày thành lập chi bộ xã Tân Đông Trung (10/10/1930), Khởi nghĩa Nam Kỳ (30/11/1940) và chuẩn bị Tổng khởi nghĩa Cách mạng Tháng Tám (24/8/1945). Miếu cũng từng là địa điểm hoạt động của Hội Truyền bá Quốc ngữ, tổ chức các lớp học cho nhân dân.",
-    images: [mieucayqueo],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025123/Google_Maps-10_elbitt.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025145/Google_Maps-9_hchzne.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025179/Google_Maps-8_zrmh8p.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025183/Google_Maps-7_yqimxe.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025198/Google_Maps-6_czr2q6.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025198/Google_Maps-6_czr2q6.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025210/Google_Maps-4_jponb1.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025216/Google_Maps-3_wg4ogc.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025221/Google_Maps-2_ug9ypp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025227/Google_Maps_iang0b.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2396,7 +3976,18 @@ export const mapDataRaw = [
       "Thờ vị anh hùng có công đánh đuổi thực dân Pháp tại địa phương.",
     detail:
       "Đền thờ Nguyễn Ảnh Thủ có khuôn viên rộng khoảng 600m², tọa lạc tại tổ 60, khu phố 5, phường Tân Thới Nhất, Quận 12. Đền được Nhân dân xây dựng theo kiểu nhà ba gian, tường gạch, mái ngói nhằm tưởng nhớ công lao và tinh thần vì nước quên thân của ông Nguyễn Ảnh Thủ. Sau năm 1975, đền tiếp tục được Nhân dân, khách thập phương và con cháu dòng họ Nguyễn Ảnh chung tay tu sửa, trong đó đợt trùng tu lớn nhất diễn ra năm 1990; đến năm 2018, đền được tu bổ cấp thiết từ nguồn ngân sách thành phố. Hiện nay, đền do Ban Trị sự quản lý, là nơi tổ chức các nghi lễ truyền thống quan trọng như giỗ Nguyễn Ảnh Thủ (14/5 Âm lịch) và vía Ngũ Hành Nương Nương (16/12 Âm lịch), đồng thời là địa chỉ sinh hoạt văn hóa, giáo dục truyền thống cho Nhân dân và học sinh địa phương. Với giá trị lịch sử – văn hóa tiêu biểu, Đền thờ Nguyễn Ảnh Thủ đã được UBND Thành phố công nhận là di tích lịch sử – văn hóa cấp thành phố theo Quyết định số 3948/QĐ-UBND ngày 18/8/2011.",
-    images: [denthonguyenanhthu],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025334/Google_Maps-10_baf4cs.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025351/Google_Maps-9_lwupxw.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025358/Google_Maps-8_ovfgyk.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025364/Google_Maps-7_kcsc2i.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025369/Google_Maps-6_rincg1.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025374/Google_Maps-5_rlvh0w.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025381/Google_Maps-4_hilmpe.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025387/Google_Maps-3_zdndwn.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025392/Google_Maps-2_lgl7zx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025397/Google_Maps_xlampd.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2408,7 +3999,15 @@ export const mapDataRaw = [
     lng: "106.6172486390817",
     description:
       "Đình Tân Hội được hình thành từ thế kỷ XIX, do Nhân dân ấp Tân Hội, làng Thuận Kiều xây dựng cách nay hơn 160 năm. Theo sắc phong còn lưu giữ, đình được triều Nguyễn ban sắc vào năm 1852, thời vua Tự Đức. Trải qua tác động của thời gian và chiến tranh, đình nhiều lần bị hư hại và được trùng tu, song vẫn giữ nguyên vị trí ban đầu và những nét kiến trúc đặc trưng của đình làng Nam Bộ; trong đó các đợt tu sửa lớn diễn ra vào các năm 1960 và 1999, đều do Nhân dân đóng góp. Đình là trung tâm sinh hoạt văn hóa – tín ngưỡng của cộng đồng, nơi tổ chức các lễ cúng truyền thống như Lễ Kỳ Yên (16/11 Âm lịch), Lễ cúng Bà (23/3 Âm lịch), Lễ cúng Ông (16/8 Âm lịch), các kỳ cúng thường niên và lễ tưởng niệm cán bộ, du kích từng hoạt động tại đình. Ngày nay, Đình Tân Hội không chỉ là nơi chiêm bái, hội họp của Nhân dân và thanh niên địa phương mà còn gắn liền với các hoạt động từ thiện, chăm lo đời sống cộng đồng do Ban Trị sự và hội viên đình tổ chức.",
-    images: [dinhtanhoi],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025479/Wikipedia_eab6up.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025483/sggp.org.vn_kbae8t.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025490/Google_Maps-5_jbc3qo.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025495/Google_Maps-4_ss2pbn.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025501/Google_Maps-3_eb4v9u.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025505/Google_Maps-2_cjtd9c.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025514/Google_Maps_kqj3v1.webp"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2423,7 +4022,18 @@ export const mapDataRaw = [
     description: "Di tích lịch sử giữa lòng khu đô thị mới Thủ Thiêm.",
     detail:
       "Đình An Phú có diện tích khoảng 2.500m², tọa lạc tại phường An Phú, thành phố Thủ Đức. Quần thể đình gồm Miếu Ngũ Hành, Miếu Trung trinh liệt nữ, tiền điện, chính điện, nhà túc và nhà bếp; trong đó tiền điện và chính điện là hạng mục chính, nối liền nhau theo kiểu kết cấu kẻ chuyền – đặc trưng của kiến trúc đình làng Nam Bộ thế kỷ XIX. Chính điện vẫn giữ bộ khung gỗ nguyên gốc, tiền điện được trùng tu năm 1992; hệ thống hiên bao quanh mang đậm phong cách kiến trúc dân tộc và thích ứng khí hậu nhiệt đới. Không chỉ là công trình kiến trúc cổ, Đình An Phú còn là cơ sở cách mạng an toàn trong hai cuộc kháng chiến (1945–1975), gắn liền với nhiều sự kiện lịch sử quan trọng như phong trào Thanh niên Tiền phong và Cách mạng Tháng Tám 1945, sự ra đời của chính quyền Việt Minh, cuộc kháng chiến chống Pháp, Tổng tiến công Tết Mậu Thân 1968 và Chiến dịch Hồ Chí Minh năm 1975. Với những giá trị tiêu biểu về lịch sử và văn hóa, Đình An Phú là một di tích có ý nghĩa quan trọng đối với Thành phố Hồ Chí Minh và cả nước.",
-    images: [dinhanphu],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025745/Google_Maps-10_icgyow.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025760/Google_Maps-9_nfcelr.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025764/Google_Maps-8_byvdi2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025771/Google_Maps-7_otjuqp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025775/Google_Maps-6_sipefq.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025780/Google_Maps-5_mhnupm.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025787/Google_Maps-4_qvowlx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025794/Google_Maps-3_jdiapb.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025800/Google_Maps-2_ozdstk.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025805/Google_Maps_fpuruc.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2435,7 +4045,18 @@ export const mapDataRaw = [
     lng: "106.80685475411875",
     description:
       "Vùng bưng 6 xã huyện Thủ Đức là khu vực ven đô Sài Gòn, có hệ thống giao thông thủy bộ quan trọng, giữ vị trí chiến lược trong việc xây dựng căn cứ địa cách mạng, tạo thế liên hoàn với các căn cứ vùng ven để tiến công vào trung tâm đầu não của thực dân, đế quốc. Hiện nay, Nhà truyền thống căn cứ Vùng bưng 6 xã là nơi trưng bày hình ảnh, hiện vật và tư liệu về truyền thống đấu tranh cách mạng của quân và dân địa phương trong hai cuộc kháng chiến chống Pháp và chống Mỹ. Công trình đi vào hoạt động từ tháng 8 năm 2011, hằng năm thu hút hàng nghìn lượt khách tham quan, học tập; tọa lạc trên đường Lã Xuân Oai, khu phố Phước Hiệp, phường Long Trường, thành phố Thủ Đức, Thành phố Hồ Chí Minh.",
-    images: [cancuvung],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025610/Google_Maps-10_vizara.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025617/Google_Maps-9_gxxfip.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025622/Google_Maps-8_vnw0h4.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025626/Google_Maps-7_rafxh6.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025637/Google_Maps-6_lbyjyp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025644/Google_Maps-5_nvaefq.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025650/Google_Maps-4_qq0bnf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025656/Google_Maps-3_pph04k.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025656/Google_Maps-3_pph04k.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025668/Google_Maps_eoh70y.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2449,7 +4070,18 @@ export const mapDataRaw = [
     description: "Ngôi chùa nằm ở vùng cao, không gian yên tĩnh, cổ kính.",
     detail:
       "Chùa Bửu Thạnh được xây dựng năm 1801, thuộc hệ phái Phật giáo Bắc Tông, do Tổ sư pháp hiệu Tiên Hiền sáng lập và trụ trì suốt 32 năm, đến khi viên tịch năm 1833. Thuở ban đầu, chùa có quy mô lớn, kiến trúc bằng gỗ quý trên khu đất rộng, nhưng đã bị thiêu hủy hoàn toàn trong chiến tranh chống Pháp năm 1947. Năm 1955, Hòa thượng Thích Huệ Thành trùng tu chùa tại vị trí mới, cách nền chùa cũ khoảng 50m về hướng Tây Bắc, trên khu đất rộng 6,5 ha; sau đó chùa tiếp tục bị chiến tranh phá hủy. Đến năm 1976, chùa được trùng tu lại và giao cho Hòa thượng Thích Huệ Cảnh trụ trì. Là chùa Bắc Tông, Bửu Thạnh thờ các vị Phật như A Di Đà, Thích Ca, Di Lặc, đồng thời phối thờ Thánh Mẫu, Quan Đế Thánh Quân và Ngũ Hành.",
-    images: [chuabuuthanh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025867/Google_Maps-10_ihtvwt.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025873/Google_Maps-9_w2ubw3.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025877/Google_Maps-8_jsxnip.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025884/Google_Maps-7_h0dzpt.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025890/Google_Maps-6_l7f9fu.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025895/Google_Maps-5_fxgbfa.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025900/Google_Maps-4_yhrj8i.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025907/Google_Maps-3_n67ebb.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025913/Google_Maps-2_n6ndzx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772025919/Google_Maps_fgkxzc.webp"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2463,7 +4095,15 @@ export const mapDataRaw = [
     description: "Ngôi đình cổ ven sông Đồng Nai, cảnh trí u tịch.",
     detail:
       "Đình Thái Bình, trước đây có tên là đình Vĩnh Thuận, được xây dựng vào khoảng thế kỷ XIX tại gò đình làng Vĩnh Thuận, xưa thuộc Tổng Long Vĩnh, huyện Long Thành, phủ Phước Long, tỉnh Biên Hòa. Trong hai cuộc kháng chiến chống thực dân Pháp và đế quốc Mỹ, đình là cơ sở cách mạng, nơi che chở cán bộ, chiến sĩ. Trải qua nhiều lần trùng tu, đình hiện do Ban Quý tế quản lý và vẫn giữ được những nét kiến trúc tiêu biểu của đình làng Nam Bộ. Đình có mặt bằng gồm Võ ca, Tiền điện, Chính điện và Hậu sở nối tiếp nhau, thờ Thần Thành Hoàng Bổn Cảnh cùng các vị thần linh, anh hùng dân tộc, danh nhân và những người có công với làng, với nước. Đình duy trì đầy đủ các nghi lễ truyền thống, trong đó lễ Kỳ Yên (15–16/11 Âm lịch) là lễ hội chính; ngoài ra còn có các lễ cúng Tiên sư, Tiền hiền, Hậu hiền và ngày truyền thống 27/7 hằng năm để tri ân các chiến sĩ cách mạng đã hy sinh vì độc lập, tự do của dân tộc.",
-    images: [dinhthaibinh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026019/Trang_tin_%C4%91i%E1%BB%87n_t%E1%BB%AD_%C4%90%E1%BA%A3ng_b%E1%BB%99_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh_kkmtlz.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026025/Chi%E1%BA%BFn_d%E1%BB%8Bch_t%C3%ACnh_nguy%E1%BB%87n_m%C3%B9a_h%C3%A8_xanh_l%E1%BA%A7n_th%E1%BB%A9_XXII_n%C4%83m_2024_Tr%C6%B0%E1%BB%9Dng_%C4%90H_Kinh_T%E1%BA%BF_-_Lu%E1%BA%ADt_hxkpgs.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026030/Chi%E1%BA%BFn_d%E1%BB%8Bch_t%C3%ACnh_nguy%E1%BB%87n_m%C3%B9a_h%C3%A8_xanh_l%E1%BA%A7n_th%E1%BB%A9_XXII_n%C4%83m_2024_Tr%C6%B0%E1%BB%9Dng_%C4%90H_Kinh_T%E1%BA%BF_-_Lu%E1%BA%ADt-6_k8va5p.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026038/Chi%E1%BA%BFn_d%E1%BB%8Bch_t%C3%ACnh_nguy%E1%BB%87n_m%C3%B9a_h%C3%A8_xanh_l%E1%BA%A7n_th%E1%BB%A9_XXII_n%C4%83m_2024_Tr%C6%B0%E1%BB%9Dng_%C4%90H_Kinh_T%E1%BA%BF_-_Lu%E1%BA%ADt-5_kg3bpv.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026041/Chi%E1%BA%BFn_d%E1%BB%8Bch_t%C3%ACnh_nguy%E1%BB%87n_m%C3%B9a_h%C3%A8_xanh_l%E1%BA%A7n_th%E1%BB%A9_XXII_n%C4%83m_2024_Tr%C6%B0%E1%BB%9Dng_%C4%90H_Kinh_T%E1%BA%BF_-_Lu%E1%BA%ADt-4_h99m8c.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026049/Chi%E1%BA%BFn_d%E1%BB%8Bch_t%C3%ACnh_nguy%E1%BB%87n_m%C3%B9a_h%C3%A8_xanh_l%E1%BA%A7n_th%E1%BB%A9_XXII_n%C4%83m_2024_Tr%C6%B0%E1%BB%9Dng_%C4%90H_Kinh_T%E1%BA%BF_-_Lu%E1%BA%ADt-3_xxw3vl.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026054/Chi%E1%BA%BFn_d%E1%BB%8Bch_t%C3%ACnh_nguy%E1%BB%87n_m%C3%B9a_h%C3%A8_xanh_l%E1%BA%A7n_th%E1%BB%A9_XXII_n%C4%83m_2024_Tr%C6%B0%E1%BB%9Dng_%C4%90H_Kinh_T%E1%BA%BF_-_Lu%E1%BA%ADt-2_rwvxfk.webp"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2477,7 +4117,18 @@ export const mapDataRaw = [
     description: "Ngôi chùa có khuôn viên rộng, nhiều tháp cổ kiến trúc đẹp.",
     detail:
       "Chùa Châu Hưng trước năm 1975 được xây dựng trên vùng đất Gò Cát, giữa không gian ruộng lúa, ao rau muống, là một “địa chỉ đỏ” quan trọng ở cửa ngõ Sài Gòn, nơi che chở, nuôi giấu cán bộ, du kích và bộ đội hoạt động cách mạng. Các vị trụ trì, tăng ni nơi đây đều sớm gắn bó với cách mạng, lấy chùa làm cơ sở hoạt động bí mật. Chùa được xây dựng theo truyền thống kiến trúc Việt Nam, không gian thoáng đãng, hài hòa với thiên nhiên, gồm các hạng mục như phòng khách, nhà vãng sanh, khuôn viên cây cảnh và hòn non bộ. Về kiến trúc, chùa có mặt bằng kiểu chữ nhị, cổng tam quan, kết cấu bê tông cốt thép, mang sắc vàng đặc trưng của Phật giáo. Công trình gồm hai tháp chính: tháp tiền điện hai tầng, trên đỉnh gắn bánh xe pháp luân, khắc dòng chữ “Châu Hưng Cổ Tự” bằng Hán tự và “Chùa Châu Hưng” bằng chữ quốc ngữ; tháp còn lại cao hơn, cũng hai tầng, trang trí chữ “Vạn” và chữ “Phật” bằng Hán tự, tạo nên dáng vẻ trang nghiêm, đặc trưng của ngôi chùa cổ gắn liền với lịch sử cách mạng địa phương.",
-    images: [chuachauhung],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026119/Google_Maps-10_cvln75.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026129/Google_Maps-9_nzonzu.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026135/Google_Maps-8_lgzhgl.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026141/Google_Maps-7_r2wncu.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026146/Google_Maps-3_tspkhe.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026152/Google_Maps-6_ej0dsf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026159/Google_Maps-5_zq3tjd.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026166/Google_Maps-4_qwldla.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026172/Google_Maps-2_qbjeoc.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026178/Google_Maps_ydtc55.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2492,7 +4143,18 @@ export const mapDataRaw = [
     description: "Kiến trúc hiện đại đầu tiên của Phật giáo Sài Gòn (1956).",
     detail:
       "Chùa Xá Lợi được khởi công xây dựng ngày 5/8/1956 và hoàn thành ngày 2/5/1958, theo thiết kế của các kiến trúc sư Trần Văn Đường, Đỗ Bá Vinh, dưới sự điều hành thi công của các kỹ sư Dư Ngọc Ánh và Hồ Tố Thuận. Chùa được xây dựng để thờ xá lợi Đức Phật, ban đầu gọi là chùa thờ Xá Lợi; khi khánh thành, Hòa thượng Khánh Anh chính thức đặt tên là chùa Xá Lợi theo cách gọi quen thuộc của Nhân dân. Đây là ngôi chùa đầu tiên tại Sài Gòn được xây dựng theo phong cách kiến trúc mới, với bái đường ở trên và giảng đường ở dưới. Quần thể chùa gồm chánh điện, giảng đường, tháp chuông, thư viện, tăng phòng, trai đường, văn phòng, đoàn quán, phòng phát hành kinh sách, phòng khách và vãng sinh đường, thể hiện vai trò vừa là trung tâm tín ngưỡng vừa là cơ sở sinh hoạt Phật giáo tiêu biểu của thành phố.",
-    images: [chuaxaloi],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026236/Google_Maps-10_k2mft4.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026242/Google_Maps-9_dex1fp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026248/Google_Maps-8_weuurz.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026254/Google_Maps-7_ezqbbv.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026260/Google_Maps-6_z2afeq.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026266/Google_Maps-5_c4sla0.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026273/Google_Maps-4_b9qg4f.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026279/Google_Maps-3_effxup.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026285/Google_Maps-2_dutbx8.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026291/Google_Maps_x6x8rn.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2508,7 +4170,17 @@ export const mapDataRaw = [
       "Cơ sở bí mật của đặc khu Sài Gòn - Gia Định trong kháng chiến.",
     detail:
       "Chùa Thiên Tôn là một ngôi chùa cổ tại Thành phố Hồ Chí Minh, được hình thành từ giữa thế kỷ XX, gắn liền với nhiều giá trị văn hóa, lịch sử và những dấu ấn trong quá trình đấu tranh của dân tộc. Chùa mang đậm kiến trúc Phật giáo truyền thống Việt Nam, với hệ thống công trình trang nghiêm, hoa văn chạm khắc tinh xảo, thể hiện tinh thần tôn kính đạo pháp. Không chỉ là không gian tâm linh, Chùa Thiên Tôn còn là trung tâm sinh hoạt Phật sự, nơi lưu giữ các giá trị nghệ thuật và lịch sử qua hệ thống tượng thờ, tranh tường về cuộc đời Đức Phật. Hằng năm, chùa tổ chức các lễ lớn như Phật đản, Vu Lan, các buổi thuyết pháp và khóa tu học, góp phần gìn giữ, lan tỏa bản sắc văn hóa Phật giáo trong đời sống đương đại.",
-    images: [chuathienton],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026351/Google_Maps-10_tsevxp.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026357/Google_Maps-9_fxnax4.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026363/Google_Maps-8_uodtfa.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026363/Google_Maps-8_uodtfa.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026375/Google_Maps-6_riurve.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026382/Google_Maps-5_vv0wrx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026388/Google_Maps-4_hgtyak.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026394/Google_Maps-3_awcc7o.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026401/Google_Maps-2_w7qmql.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2523,7 +4195,17 @@ export const mapDataRaw = [
     description: "Các ngôi nhà dân thường được sử dụng làm nơi họp kín.",
     detail:
       "Căn nhà có vị trí đặc biệt, nằm đối diện bót cảnh sát Ngụy Quận 6 và bên hông Tòa Hành chính Ngụy Quận 6, nơi từng có cả một trung đội cảnh sát dã chiến chiếm đóng. Tại chính địa điểm tưởng chừng nguy hiểm này, ông Lưu Vinh đã xây dựng hai hầm bí mật để nuôi giấu cán bộ cách mạng: một hầm dưới gầm bếp, ngụy trang làm nơi để củi, và một hầm nhỏ trên gác lửng tầng trệt, đủ chỗ cho hai người ẩn náu, thể hiện tư duy táo bạo “nơi nguy hiểm nhất cũng là nơi an toàn nhất”. Ngày nay, nơi đây trở thành Nhà Truyền thống cách mạng người Hoa Thành phố, đón tiếp hàng trăm đoàn khách trong và ngoài nước đến tham quan, nghiên cứu về truyền thống đấu tranh cách mạng của đồng bào người Hoa trong hai cuộc kháng chiến chống Pháp và chống Mỹ. Không chỉ trưng bày hình ảnh, hiện vật lịch sử, nhà truyền thống còn là điểm sinh hoạt văn hóa, giáo dục truyền thống cho các câu lạc bộ, đoàn thể và thế hệ trẻ, góp phần gìn giữ và phát huy giá trị cách mạng của cộng đồng người Hoa tại Thành phố Hồ Chí Minh.",
-    images: [cosobimat],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026459/S%E1%BB%9F_D%C3%A2n_t%E1%BB%99c_v%C3%A0_t%C3%B4n_gi%C3%A1o_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-2_e0jehb.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026466/S%E1%BB%9F_D%C3%A2n_t%E1%BB%99c_v%C3%A0_t%C3%B4n_gi%C3%A1o_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh_ue3xsz.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026472/Google_Maps-8_z3ibne.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026478/Google_Maps-7_kekxj6.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026485/Google_Maps-6_pl7cb4.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026492/Google_Maps-5_tiagve.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026498/Google_Maps-4_nwykrx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026505/Google_Maps-3_cosh4j.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026510/Google_Maps-2_vjuuzk.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2537,7 +4219,17 @@ export const mapDataRaw = [
     description: "Thờ vị lãnh đạo phong trào công nhân Sài Gòn - Chợ Lớn.",
     detail:
       "Trước phần mộ ông Phạm Văn Chí, ban đầu Nhân dân lập một miếu thờ bằng đá, về sau được trùng tu và phát triển thành ngôi đình theo kiểu đình làng Nam Bộ, gọi là đình Bình Hòa Hội, tôn ông làm Thành Hoàng của làng. Khu đền có cổng tam quan, sân thờ Linh Sơn Thánh Mẫu và bia ghi tiểu sử ông; chính điện đặt nhiều bàn thờ các vị thần, trong đó có bàn thờ ông Phạm Văn Chí. Lăng mộ ông được xây dựng kiên cố, trong khuôn viên còn có mộ ông Lê Văn Ưng (Huỳnh Văn Ưng), người đầu tiên lập làng Bình Hòa Hội. Miếu, đền và lăng mộ ông Phạm Văn Chí là nơi ghi nhớ công lao của thủ lĩnh nghĩa quân làng Bình Đông trong khởi nghĩa Trương Định, đồng thời là không gian sinh hoạt tín ngưỡng, giáo dục truyền thống yêu nước của Nhân dân. Hằng năm, vào các ngày 15, 16, 17 tháng 2 Âm lịch, người dân tổ chức giỗ ông kết hợp lễ Kỳ Yên theo phong tục cổ truyền. Di tích đã được UBND Thành phố Hồ Chí Minh xếp hạng di tích lịch sử cấp thành phố theo Quyết định số 4301/QĐ-UBND ngày 10/10/2008.",
-    images: [moongphamvanchi],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026573/Google_Maps-10_obrbok.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026580/Google_Maps-9_iegsc8.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026586/Google_Maps-8_xrcklc.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026598/Google_Maps-6_zim6yr.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026604/Google_Maps-5_aazggi.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026611/Google_Maps-4_osfadg.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026617/Google_Maps-3_uryala.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026623/Google_Maps-2_s9soe2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026631/Google_Maps_vtgejn.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2552,7 +4244,15 @@ export const mapDataRaw = [
     description: "Di chỉ khảo cổ học và là căn cứ kháng chiến vùng ven.",
     detail:
       "Gò Ô Môi, còn gọi là Gò Chị Ba Lý, vốn là nơi ở của bà Ngô Thị Tài (bí danh Ba Lý), thuộc ấp Bà Bướm, xã Phú Mỹ, huyện Nhà Bè xưa. Do trong khuôn viên có cây ô môi lớn nên người dân quen gọi là Gò Ô Môi. Đây là địa điểm ghi dấu chiến công tiêu biểu trong cuộc đấu tranh bảo vệ quê hương, trở thành ký ức không phai của người dân Nhà Bè – Quận 7 và Thành phố Hồ Chí Minh. Hiện nay, khu di tích lịch sử Gò Ô Môi tọa lạc trên đường Đào Trí, khu phố 2, phường Phú Thuận, Quận 7, với diện tích khoảng 700m². Khuôn viên được tôn tạo trang nghiêm, trồng lại cây ô môi và nhiều cây xanh; trung tâm là mộ chung của ba liệt sĩ Nguyễn Văn Ba, Lê Văn Sắn và Hồ Văn Nhái, hai bên là tượng đài dừa nước – biểu tượng vùng đất Nhà Bè. Di tích là nơi tổ chức các hoạt động tưởng niệm, tham quan, giáo dục truyền thống yêu nước và tinh thần hy sinh vì độc lập, tự do của dân tộc cho các thế hệ hôm nay và mai sau.",
-    images: [goomoi],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026691/Google_Maps-5_xapmo2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026698/Google_Maps-4_oegjut.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026704/Google_Maps-3_b1z4df.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026712/Google_Maps-2_ree4zv.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026718/Google_Maps_e7nhjj.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026725/xanhsm-2_i4vckh.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026732/xanhsm_wgdonc.jpg"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2567,7 +4267,17 @@ export const mapDataRaw = [
       "Kiến trúc mang đậm dấu ấn miền Bắc Việt Nam giữa lòng Sài Gòn.",
     detail:
       "Chùa Long Hoa được hình thành trước năm 1902, khởi đầu là một am nhỏ, sau phát triển thành Long Hoa Cổ Tự và trở thành căn cứ cách mạng quan trọng của Huyện ủy Nhà Bè. Trong quá trình hoạt động, Hòa thượng trụ trì cùng các đồng chí lãnh đạo địa phương đã đào hai hầm bí mật trong chùa làm nơi ẩn náu, hội họp của cán bộ cách mạng; dấu tích một hầm dưới bệ thờ Phật Thích Ca tại chính điện chùa cũ hiện vẫn còn được bảo tồn. Trong kháng chiến chống Mỹ, chùa là cơ sở nuôi giấu cán bộ, điểm liên lạc an toàn của lực lượng du kích nhờ địa thế kênh rạch chằng chịt, cây cối rậm rạp. Hiện nay, Chùa Long Hoa là di tích lịch sử cấp Thành phố với tổng diện tích hơn 11.700m², gồm các khu vực bảo vệ I và II. Quần thể chùa có cổng tam quan, sân Rồng, chính điện mới xây dựng năm 1997 và chính điện chùa cũ còn lưu giữ dấu tích lịch sử, cùng các công trình phụ trợ. Di tích không chỉ mang giá trị kiến trúc – tôn giáo mà còn là địa chỉ đỏ giáo dục truyền thống cách mạng cho các thế hệ hôm nay và mai sau.",
-    images: [chualonghoa],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026798/Google_Maps-10_ggwwy6.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026804/Google_Maps-9_tolxlg.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026809/Google_Maps-8_pdwitt.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026814/Google_Maps-7_cszks7.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026814/Google_Maps-7_cszks7.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026825/Google_Maps-5_oalrxt.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026830/Google_Maps-4_lkrhxn.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026841/Google_Maps-3_swjdwh.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772026849/Google_Maps-2_ypyfbd.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2583,7 +4293,18 @@ export const mapDataRaw = [
       "Trung tâm tu học và sinh hoạt văn hóa của cư dân vùng cửa ngõ.",
     detail:
       "Chùa Thiên Phước tọa lạc tại số 1581 Phạm Thế Hiển, phường 6, quận 8, được Phật tử miền Bắc di cư vào Nam dựng lập năm 1956 bằng những vật liệu thô sơ. Từ năm 1963–1964, chùa lần lượt do Thượng tọa Thích Đạt Hảo tiếp quản và Thượng tọa Thích Nhật Hiện trụ trì; đây cũng là giai đoạn chùa được trùng tu, xây dựng kiên cố bằng bê tông. Trong kháng chiến chống đế quốc Mỹ, chùa Thiên Phước là cơ sở cách mạng quan trọng, vừa hoạt động tôn giáo công khai, vừa bí mật in ấn tài liệu, cất giấu vũ khí, nuôi giấu cán bộ, đặc biệt phục vụ cuộc Tổng tiến công và nổi dậy Tết Mậu Thân 1968. Chùa quay hướng Đông Nam, có diện tích khoảng 700 m², kiến trúc gồm cổng tam quan, chính điện, các điện thờ và tượng Quan Âm giữa sân. Với những đóng góp to lớn cho sự nghiệp cách mạng, chùa Thiên Phước là di tích lịch sử có giá trị, tiêu biểu cho tinh thần yêu nước và sự gắn bó của Phật giáo với dân tộc.",
-    images: [chuathienphuoc],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969207/Chua_Thien_Phuoc/ih0xt1egezcpbyhdps0u.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969209/Chua_Thien_Phuoc/uxdusg0huyrr20ekk1xo.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969211/Chua_Thien_Phuoc/ubjlycnzl8g5l0rnpjhy.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969213/Chua_Thien_Phuoc/okqpp1tty9sm4xop4ail.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969216/Chua_Thien_Phuoc/cd2sed87kxc7uumtn5m2.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969217/Chua_Thien_Phuoc/mvwencry05ezfvivrzxg.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969218/Chua_Thien_Phuoc/jv6wa5qsvqbjrzt2s7db.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969221/Chua_Thien_Phuoc/tcd9cpkmhdf3a4nveuaq.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969223https://res.cloudinary.com/dcizhss2x/image/upload/v1772027041/Google_Maps-10_pdo5rf.webp/Chua_Thien_Phuoc/mtj5mksxrmgbahgvd5ge.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969224/Chua_Thien_Phuoc/ns9glpyiaeqthjb9pbsk.webp",
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2598,7 +4319,18 @@ export const mapDataRaw = [
       "Trung tâm tín ngưỡng của bà con lao động khu vực kênh rạch Q.8.",
     detail:
       "Chùa Pháp Quang là cơ sở cách mạng của liên quận 7–8 trong giai đoạn 1963–1975. Chùa do Sư bà Thích Đạt Đạo (thế danh Lê Thị Tịnh, quê xã Đức Hòa Thượng, Long An) xây dựng năm 1948. Xuất thân trong gia đình có truyền thống yêu nước, sớm giác ngộ cách mạng, từ năm 1963 Sư bà đã đưa chùa Pháp Quang trở thành điểm tựa quan trọng cho phong trào kháng chiến chống đế quốc Mỹ, đồng thời là nơi diễn ra nhiều hoạt động đấu tranh tiêu biểu của Phật giáo yêu nước. Chùa có diện tích khoảng 2.599 m², bố cục gồm ba dãy chính: tăng xá, ni xá và chính điện. Khuôn viên còn có đài Quan Âm, miếu cô hồn, tháp cổ, Hậu Tổ, các tịnh thất và hệ thống hầm bí mật được xây dựng từ sau lần trùng tu năm 1966 để phục vụ hoạt động cách mạng. Hiện nay, chùa vẫn lưu giữ nhiều hiện vật như hầm bí mật, máy in, máy đánh chữ, máy quay ronéo, loa phát thanh và tài liệu tuyên truyền. Với vai trò lịch sử đặc biệt và truyền thống từ bi, cứu tế xã hội, chùa Pháp Quang là di tích có giá trị, ghi dấu sự đóng góp của Phật giáo và nhân dân trong sự nghiệp đấu tranh giải phóng dân tộc.",
-    images: [chuaphapquang],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027041/Google_Maps-10_pdo5rf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027045/Google_Maps-9_g3aqn0.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027063/Google_Maps-8_cjf4og.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027073/Google_Maps-7_gzt38x.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027079/Google_Maps-6_ppzx00.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027086/Google_Maps-5_llc86w.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027093/Google_Maps-4_d60wkk.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027093/Google_Maps-4_d60wkk.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027108/Google_Maps-3_g03dcl.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027117/Google_Maps-2_sli9gy.webp"
+    ],
     period: "Hiện đại",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2613,7 +4345,18 @@ export const mapDataRaw = [
     description: "Ngôi đình nhỏ gắn liền với tên gọi địa danh Cầu Sơn.",
     detail:
       "Đình Cầu Sơn được xây dựng vào khoảng cuối thế kỷ XIX tại ngã ba kênh Lòng Tảo (nay là kênh Thanh Đa), đến năm 1932 được dời về vị trí hiện nay, số 118 Xô Viết Nghệ Tĩnh, phường 26, quận Bình Thạnh. Dù trải qua nhiều lần di dời và biến động lịch sử, đình vẫn lưu giữ được nhiều cổ vật quý như các cặp liễn từ những năm 1860–1864 và hoành phi năm 1872, minh chứng cho bề dày hơn một thế kỷ tồn tại. Trong thời kỳ kháng chiến chống Mỹ (1954–1971), đình Cầu Sơn là cơ sở cách mạng quan trọng, nơi liên lạc, vận động quần chúng và phục vụ nhiều đơn vị như chi bộ Hộ 19, Lữ đoàn biệt động 316, quân báo A34. Đặc biệt, trong Tổng tiến công và nổi dậy Tết Mậu Thân 1968, đình là điểm tập kết lương thực, quân y và trạm cứu chữa thương binh. Đến Chiến dịch Hồ Chí Minh năm 1975, đình góp phần chuẩn bị và treo hàng trăm lá cờ Mặt trận Dân tộc Giải phóng. Với những đóng góp to lớn trong hai cuộc kháng chiến, đình Cầu Sơn đã được UBND TP. Hồ Chí Minh xếp hạng Di tích lịch sử theo Quyết định số 117/2005/QĐ-UB ngày 12/7/2005.",
-    images: [dinhcauson],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027188/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh-7_hiarne.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027195/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh-6_l9rs0m.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027204/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh-5_qdxtc9.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027211/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh-4_lz5zjr.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027217/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh-3_hw2l1f.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027217/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh-3_hw2l1f.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027233/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh-2_w5rdmz.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027241/UBND_Ph%C6%B0%E1%BB%9Dng_26_Qu%E1%BA%ADn_B%C3%ACnh_Th%E1%BA%A1nh_mjryqj.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027249/Google_Maps-3_vmr00q.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027256/Google_Maps-2_icbuc3.webp"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2629,7 +4372,18 @@ export const mapDataRaw = [
       "Ngôi chùa nhỏ nhưng có lịch sử lâu đời gắn liền với các trí thức yêu nước.",
     detail:
       "Chùa Tổ Đình Long Thạnh tọa lạc tại số 1756 Tỉnh lộ 10, phường Tân Tạo, quận Bình Tân, TP. Hồ Chí Minh. Chùa do Thiền sư Tổ Đạt – Trí Tâm, đời thứ 36 Thiền phái Lâm Tế (dòng Đạo Bổn Nguyên), khai sơn năm Canh Dần (1740). Trải qua hơn 260 năm tồn tại với chín đời trụ trì, chùa Long Thạnh không chỉ là trung tâm Phật học, hoằng pháp tiêu biểu của Nam Kỳ lục tỉnh từ cuối thế kỷ XVIII, mà còn có nhiều đóng góp cho phong trào yêu nước và cách mạng giải phóng dân tộc. Sau khi bị hư hại nặng vào năm 1945, chùa được phục dựng và trùng tu nhiều lần, đặc biệt dưới sự chủ trì của Hòa thượng Thích Bửu Ý vào các năm 1959, 1984 và giai đoạn 1993–1995, hình thành diện mạo kiến trúc hiện nay với cổng tam quan, đài Quan Âm và các hạng mục chính. Những năm gần đây, chùa tiếp tục được tôn tạo với nhiều công trình và tượng Phật lộ thiên như tượng Phật Thích Ca, Bồ tát Di Lặc, vườn Lâm Tì Ni, thiền đường và nhà vãng sanh, góp phần gìn giữ và phát huy giá trị lịch sử, văn hóa, tâm linh của một tổ đình cổ kính ở vùng đất phương Nam.",
-    images: [chualongthanh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027352/Google_Maps-10_ky5ng2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027357/Google_Maps-9_owzlic.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027357/Google_Maps-9_owzlic.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027368/Google_Maps-7_w6emio.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027376/Google_Maps-6_allxhd.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027385/Google_Maps-5_mz0wzu.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027393/Google_Maps-4_pbbwzy.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027400/Google_Maps-3_vljxiw.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027407/Google_Maps-2_tclwjh.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027414/Google_Maps_rsvvai.webp"
+    ],
     period: "Hậu Lê",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2643,7 +4397,17 @@ export const mapDataRaw = [
     description: "Nơi giữ gìn bản sắc văn hóa của cư dân xóm củi ven sông.",
     detail:
       "Đình Tân Khai là một công trình kiến trúc cổ kính, di tích lịch sử – văn hóa quốc gia tọa lạc tại quận Bình Tân. Được xây dựng vào khoảng cuối thế kỷ XVIII, đình mang đậm phong cách kiến trúc đình làng Nam Bộ, là nơi thờ tự các vị thần linh và các bậc anh hùng dân tộc. Trong suốt chiều dài lịch sử, đình Tân Khai từng gắn liền với nhiều sự kiện quan trọng của các cuộc kháng chiến cứu nước và quá trình hình thành, phát triển của địa phương. Không chỉ có giá trị tín ngưỡng, đình còn là trung tâm sinh hoạt văn hóa, góp phần gắn kết cộng đồng dân cư. Ngày nay, đình Tân Khai trở thành điểm đến văn hóa – du lịch tiêu biểu, thể hiện sự tiếp nối hài hòa giữa truyền thống lịch sử và đời sống hiện đại của TP. Hồ Chí Minh.",
-    images: [dinhtankhai],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027485/Li%C3%AAn_%C4%90%E1%BB%99i_Ti%E1%BB%83u_H%E1%BB%8Dc_B%C3%ACnh_Tr%E1%BB%8B_1_-_Ph%C6%B0%E1%BB%9Dng_B%C3%ACnh_Tr%E1%BB%8B_%C4%90%C3%B4ng_-_TP._H%E1%BB%93_Ch%C3%AD_Minh-2_bfouob.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027497/Li%C3%AAn_%C4%90%E1%BB%99i_Ti%E1%BB%83u_H%E1%BB%8Dc_B%C3%ACnh_Tr%E1%BB%8B_1_-_Ph%C6%B0%E1%BB%9Dng_B%C3%ACnh_Tr%E1%BB%8B_%C4%90%C3%B4ng_-_TP._H%E1%BB%93_Ch%C3%AD_Minh_s5sbfh.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027522/Google_Maps-2_ti11e3.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027539/Youtube-Master_V-6_kbcgze.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027529/Google_Maps_vqrdoo.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027549/Youtube-Master_V-5_vi9wci.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027558/Youtube-Master_V-4_a4hrfu.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027564/Youtube-Master_V-3_kfuitc.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027564/Youtube-Master_V-3_kfuitc.png"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2659,7 +4423,18 @@ export const mapDataRaw = [
       "Di tích kiến trúc nghệ thuật với các mảng chạm khắc tuyệt mỹ.",
     detail:
       "Đình Thần Hanh Thông là di tích lịch sử cấp thành phố, có tuổi đời hơn 200 năm, tọa lạc tại quận Gò Vấp. Di tích gắn liền với Lễ hội Kỳ Yên – nghi lễ truyền thống tiêu biểu nhằm cầu quốc thái dân an, đồng thời tưởng nhớ công đức các bậc tiền nhân khai phá vùng đất. Lễ hội được tổ chức trang nghiêm với các bài văn tế cổ truyền và nghi thức giao lưu, đón tiếp giữa Ban Quý tế đình với đại biểu từ các đình làng lân cận. Bên cạnh giá trị tín ngưỡng – văn hóa, đình Thần Hanh Thông còn giữ vai trò lịch sử quan trọng khi từng là cơ sở cách mạng bí mật trong thời kỳ kháng chiến chống thực dân Pháp. Với sự kết hợp hài hòa giữa yếu tố tâm linh, lịch sử và sinh hoạt cộng đồng, đình là không gian văn hóa đặc sắc, thể hiện tinh thần đoàn kết của nhân dân và ý thức gìn giữ, phát huy di sản truyền thống dân tộc.",
-    images: [dinhhanhthong],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027720/Youtube-Thanh_Nguy%E1%BB%85n-7_x4bler.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027720/Youtube-Thanh_Nguy%E1%BB%85n-9_qhjos0.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027722/Youtube-Thanh_Nguy%E1%BB%85n-8_kd9rrr.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027723/Youtube-Thanh_Nguy%E1%BB%85n-6_jl9nsd.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027723/Youtube-Thanh_Nguy%E1%BB%85n-4_gzf9g1.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027725/Youtube-Thanh_Nguy%E1%BB%85n_ouehk1.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027724/Youtube-Thanh_Nguy%E1%BB%85n-10_okpsz2.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027725/Youtube-Thanh_Nguy%E1%BB%85n-3_wlxsre.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027726/Youtube-Thanh_Nguy%E1%BB%85n-5_dttkia.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027725/Youtube-Thanh_Nguy%E1%BB%85n-2_v09rjn.png"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2675,7 +4450,16 @@ export const mapDataRaw = [
       "Lưu giữ những kỷ niệm về phong trào đấu tranh của tăng ni, phật tử.",
     detail:
       "Chùa Từ Vân tọa lạc tại số 62 Phan Xích Long, phường 1, quận Phú Nhuận, TP. Hồ Chí Minh, được xếp hạng di tích lịch sử cấp thành phố năm 2007. Với kiến trúc cổ kính và không gian thanh tịnh, chùa vừa là điểm sinh hoạt tín ngưỡng, vừa giữ vai trò quan trọng trong hai cuộc kháng chiến chống Pháp và chống Mỹ. Từ năm 1940 đến 1975, chùa Từ Vân là trạm giao liên cách mạng, nơi nuôi giấu và bảo vệ cán bộ, Phật tử yêu nước. Đặc biệt, năm 1963, chùa trở thành địa điểm họp bàn, tổ chức đấu tranh chính trị của đồng chí Nguyễn Minh Mẫn cùng các tăng ni, Phật tử và thanh niên yêu nước phản đối chính sách gia đình trị của chính quyền Ngô Đình Diệm. Khu giảng đường phía sau tổ đường hiện vẫn lưu dấu nhiều cuộc họp quan trọng, ghi nhận vai trò của chùa Từ Vân như một di tích cách mạng tiêu biểu, đồng thời là chốn hành hương tâm linh yên bình giữa lòng đô thị.",
-    images: [chuatuvan],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027799/Google_Maps-8_b8zi63.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027799/Google_Maps-9_ichr2y.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027799/Google_Maps-10_obcjdq.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027810/Google_Maps-7_l6xp0y.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027811/Google_Maps-4_nfw2rc.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027811/Google_Maps-3_wm6izo.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027810/Google_Maps-6_d816p5.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027811/Google_Maps-5_bbi42p.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2689,7 +4473,16 @@ export const mapDataRaw = [
     description: "Nơi tưởng niệm Bồ tát Thích Quảng Đức tự thiêu vì hòa bình.",
     detail:
       "Theo tư liệu lưu giữ tại chùa, ngôi chùa được một số sĩ quan và binh lính Pháp – Việt kiến tạo vào năm 1920, xuất phát từ niềm tin vào sự linh ứng của Bồ tát Quán Thế Âm đã cứu họ thoát nạn trên biển khi thuyền bị máy bay Đức bắn thủng. Trong cơn nguy cấp, Thượng sĩ Dương Phong Quang cùng mọi người nhất tâm niệm danh hiệu Bồ tát. Từ đó, chùa ban đầu được gọi là chùa Mạch Lô (hay Bạch Lô), gắn với hình ảnh mũ trắng của Bồ tát và binh lính thủy, mặt tiền quay hướng Tây Nam. Qua nhiều giai đoạn trùng tu và tôn tạo, chùa hình thành quần thể kiến trúc quy mô với bảo tháp chánh điện bát giác bảy tầng cao 28 m, mái lợp ngói vẩy rồng, trên đỉnh là bàn tay Pháp Ấn và hoa ưu đàm. Chùa hiện tôn thờ nhiều pho tượng có giá trị nghệ thuật và tâm linh đặc biệt như tượng Bồ tát Quảng Đức tại bảo tháp Lửa Từ Bi, tượng Bồ tát Quán Thế Âm 11 mặt tại động An Lạc Sơn, tượng Phật Thích Ca bằng đồng tại chánh điện, cùng bức tranh Bồ tát Quảng Đức tự thiêu vẽ bằng máu chư Tăng Ni, Phật tử năm 1963. Ngày nay, chùa tiếp tục được trùng tu, mở rộng, trở thành không gian tín ngưỡng mang đậm dấu ấn lịch sử, tâm linh và nghệ thuật Phật giáo.",
-    images: [chuaquantheam],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027899/Google_Maps-6_mbtg4s.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027899/Google_Maps-7_cdoqyl.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027898/Google_Maps-9_wq2fwu.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027906/Google_Maps-5_xwpdpy.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027907/Google_Maps-4_wad3yd.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027908/Google_Maps-2_b8n5jf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027911/Google_Maps_zkdbem.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027907/Google_Maps-3_n9xdfd.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2703,7 +4496,17 @@ export const mapDataRaw = [
     description: "Nằm bên dòng kênh Nhiêu Lộc, nổi tiếng với lễ hội hoa đăng.",
     detail:
       "Chùa Pháp Hoa được xây dựng năm 1928, tọa lạc trong một con hẻm trên đường Thích Quảng Đức, quận Phú Nhuận, TP. Hồ Chí Minh. Trải qua gần một thế kỷ tồn tại, từ ngôi chùa mái tranh giản dị ban đầu, chùa được trùng tu quy mô vào năm 1993 và hình thành diện mạo như ngày nay. Chùa hiện lưu giữ khoảng 10.000 bình gốm thuộc nhiều nền văn hóa và niên đại khác nhau, tạo nên giá trị đặc sắc về lịch sử và mỹ thuật. Năm 2015, chùa Pháp Hoa được công nhận là di tích lịch sử cấp thành phố. Đặc biệt, chùa còn xác lập kỷ lục với bộ Kinh Diệu Pháp Liên Hoa khắc trên đá đầu tiên tại Việt Nam, gồm gần 70.000 chữ Việt ngữ được chạm khắc tinh xảo trên nền đá granite, góp phần làm nổi bật giá trị văn hóa và tâm linh của ngôi chùa giữa lòng đô thị.",
-    images: [chuaphaphoa],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027974/B%C3%A1o_Ng%C6%B0%E1%BB%9Di_Lao_%C4%90%E1%BB%99ng-3_bxbnmq.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027986/B%C3%A1o_Ng%C6%B0%E1%BB%9Di_Lao_%C4%90%E1%BB%99ng-2_liw9ut.jpg",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027987/Google_Maps-10_wym8ek.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027987/Google_Maps-8_hynidf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027991/Google_Maps-4_o2ngos.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027990/Google_Maps-7_rxr93r.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027992/Google_Maps-6_k3otbb.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772027992/Google_Maps-3_vsdeze.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028000/Google_Maps_ozn8mm.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2719,7 +4522,16 @@ export const mapDataRaw = [
       "Chứng tích về các trận đánh phá hủy kho tàng chiến tranh của địch.",
     detail:
       "Công viên Tân Phước, quận Tân Bình, TP. Hồ Chí Minh, là nơi lưu giữ dấu tích kho bom Phú Thọ Hòa – công trình quân sự trọng yếu do thực dân Pháp xây dựng, từng là kho bom lớn nhất Đông Dương, nằm ở vùng ngoại vi Sài Gòn xưa. Rạng sáng ngày 2/6/1954, từ hệ thống địa đạo Phú Thọ Hòa, 10 chiến sĩ đặc công đã dũng cảm vượt qua vòng phòng thủ nghiêm ngặt, bí mật đột nhập và gài mìn hẹn giờ vào các dãy kho. Vụ nổ liên hoàn đã thiêu rụi toàn bộ kho bom và kho xăng, tạo nên biển lửa khổng lồ rực sáng bầu trời phía Tây Sài Gòn, gây chấn động lớn đối với bộ máy quân sự của đối phương. Ngày nay, dấu tích kho bom Phú Thọ Hòa được bảo tồn trong khuôn viên Công viên Tân Phước như một đài tưởng niệm, ghi dấu chiến công oanh liệt và tinh thần chiến đấu quả cảm của quân dân Việt Nam trong cuộc kháng chiến chống thực dân xâm lược.",
-    images: [khobomphutho],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028083/Hu%E1%BA%A5n_Phan_V%C4%83n-6_tei3eu.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028083/Hu%E1%BA%A5n_Phan_V%C4%83n-6_tei3eu.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028085/Hu%E1%BA%A5n_Phan_V%C4%83n-7_uaxo0k.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028105/L%C3%AA_Nh%C3%A2n_Media-2_c9idqd.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028104/L%C3%AA_Nh%C3%A2n_Media-3_femg9b.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028106/L%C3%AA_Nh%C3%A2n_Media_jgtcaz.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028105/Hu%E1%BA%A5n_Phan_V%C4%83n_nmcrx1.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028103/Hu%E1%BA%A5n_Phan_V%C4%83n-2_owc0b2.png"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2732,7 +4544,17 @@ export const mapDataRaw = [
     lng: "106.63529699939312",
     description:
       "Ngôi mộ ông Nguyễn Quý Anh và bà Lý Thu Liên tọa lạc trên khu đất rộng gần 1.000 m², được UBND TP. Hồ Chí Minh xếp hạng di tích lịch sử – văn hóa theo Quyết định số 697/QĐ-UBND ngày 17/2/2011. Khu mộ có tường rào gạch cao hơn 2 m, phía tây bắc giáp đường Thoại Ngọc Hầu, phía bắc giáp đường Nguyễn Sơn; mộ xây theo hướng Đông Nam và là mộ song táng. Nhà mồ có hình bát giác, kiến trúc cao, trang trí nhiều hoa văn, bên trong là hai ngôi mộ bằng đá cẩm thạch mài nhẵn: mộ ông Nguyễn Quý Anh xây năm 1938 nằm bên phải và mộ bà Lý Thu Liên xây năm 1954 nằm bên trái. Phía sau là bàn hương án bằng đá với lư hương, bình hoa và bài vị thờ, cùng bia đá khắc chữ Quốc ngữ ghi lại thân thế, năm sinh – năm mất và công đức của người quá cố, thể hiện giá trị lịch sử, kiến trúc và văn hóa của di tích.",
-    images: [khobomphutho],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028178/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-10_v363bf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028180/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-8_d3cujg.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028180/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-8_d3cujg.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028191/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-7_konn9y.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028202/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-4_shxbkq.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028192/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-6_hje3fa.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028207/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh_mpbvfg.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028207/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-5_fyc4tf.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028206/B%C3%A1o_ph%C3%A1p_lu%E1%BA%ADt_Th%C3%A0nh_Ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh-2_znthtk.webp"
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2746,7 +4568,18 @@ export const mapDataRaw = [
     description: "Trung tâm tín ngưỡng của làng Tân Sơn Nhì xưa.",
     detail:
       "Đình Phú Thạnh gắn liền với lịch sử làng Phú Thọ Hòa xưa của Sài Gòn và TP. Hồ Chí Minh ngày nay, vừa là không gian sinh hoạt văn hóa truyền thống, vừa là cơ sở cách mạng quan trọng. Trong thời kỳ kháng chiến chống thực dân Pháp, đình là nơi tập hợp, tuyên truyền vận động quần chúng, nuôi giấu cán bộ Ban Công tác Thành số 2 và số 6, đồng thời là địa điểm hội họp của chi bộ Đảng và các tổ chức quần chúng làng Phú Thọ Hòa. Trong cuộc kháng chiến chống Mỹ cứu nước, đình Phú Thạnh tiếp tục phát huy vai trò là cơ sở cách mạng vững chắc của Chi bộ Phú Thọ Hòa, nơi quyên góp tài chính cho vùng căn cứ, nuôi giấu và cứu chữa thương bệnh binh, đặc biệt trong Tổng tiến công và nổi dậy Tết Mậu Thân 1968. Đến Chiến dịch Hồ Chí Minh năm 1975, đình còn là nơi phổ biến chỉ thị Tổng tiến công và nổi dậy cho cán bộ liên xã, ghi dấu những đóng góp quan trọng của đình trong sự nghiệp giải phóng dân tộc.",
-    images: [dinhphuthanh],
+    images: [
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969330/Dinh_Phu_Thanh/e7f0lrct6frgcsfjsllj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969331/Dinh_Phu_Thanh/cim0tqkia27z3bmaooaj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969332/Dinh_Phu_Thanh/udfrcibntrdj9bmljxrh.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969334/Dinh_Phu_Thanh/b2ae9lkzmycu52ih1f45.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969335/Dinh_Phu_Thanh/hjngzekltegwitpkwhfk.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969336/Dinh_Phu_Thanh/vreugo9k9rkwriap5ts1.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969337/Dinh_Phu_Thanh/rs4ieoojr9p3wxowqn4g.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969338/Dinh_Phu_Thanh/lt5w9e9l1mznjuinbknj.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969340/Dinh_Phu_Thanh/dco5pub8yw4wa5pmvgce.webp",
+      "https://res.cloudinary.com/ddkuek7r2/image/upload/v1771969341/Dinh_Phu_Thanh/ms2pvduf9i4rlcq8as6v.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2760,7 +4593,16 @@ export const mapDataRaw = [
     description: "Di tích kiến trúc nghệ thuật lưu giữ nhiều hiện vật cổ.",
     detail:
       "Đình Tân Hòa Tây tọa lạc tại số 17/14 đường Lương Minh Nguyệt, phường Tân Thới Hòa, quận Tân Phú, gắn liền với lịch sử ấp Tân Hòa Tây xưa thuộc làng Phú Thọ Hòa. Theo ký ức của các bậc cao niên, đình trước đây được xây dựng theo dạng chữ tam gồm tiền điện, chính điện và hậu sở, với hệ vì kèo bằng gỗ quý, chạm khắc tinh xảo. Các hoành phi Hán – Việt như “Thần Huy Phổ Chiếu” (năm Mậu Thân) và “Ân Uy Đãng Hạo” (năm Giáp Ngọ) cho thấy đình đã tồn tại hơn một thế kỷ. Đình Tân Hòa Tây thờ Thần Thành Hoàng Bổn Cảnh, hằng năm duy trì lễ hội truyền thống Kỳ Yên vào ngày 15–16 tháng 2 âm lịch, thể hiện đời sống tín ngưỡng phong phú của cư dân địa phương. Hiện đình còn bảo lưu nhiều di vật, cổ vật quý phục vụ thờ cúng dân gian như khánh thờ, bảng gỗ khắc tên các vị thần, mõ gỗ, hạc gỗ, liễn đối và hoành phi, có giá trị lớn về lịch sử, văn hóa và mỹ thuật.",
-    images: [dinhtanhoatay],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028328/Google_Maps-10_tidvtr.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028328/Google_Maps-10_tidvtr.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028330/Google_Maps-9_hbbug4.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028332/Google_Maps-7_ozlup3.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028337/Google_Maps-4_zatwos.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028336/Google_Maps-5_jwxfpb.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028344/Google_Maps_sqcwwc.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028339/Google_Maps-2_gmgmmg.webp"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2775,7 +4617,16 @@ export const mapDataRaw = [
       "Ngôi đình có kiến trúc gỗ tinh xảo, ẩn mình trong khu dân cư.",
     detail:
       "Đình Hòa Thạnh được xây dựng vào cuối thế kỷ XIX, là cơ sở tín ngưỡng dân gian tiêu biểu của cư dân địa phương, phản ánh quan niệm truyền thống về thế giới tự nhiên và đạo lý “uống nước nhớ nguồn” trong việc tưởng niệm những bậc tiền nhân khai phá, lập làng. Nhân vật được thờ phụng chính tại đình là Thành Hoàng Bản Cảnh. Công trình đình Hòa Thạnh được bố trí theo hai trục song song: trục chính gồm tiền điện, trung điện, chính điện và hậu điện; trục phụ gồm miếu Ngũ Hành, nhà túc và nhà bếp. Ngày nay, đình không chỉ đáp ứng nhu cầu sinh hoạt tín ngưỡng mà còn là không gian giáo dục truyền thống, nơi diễn ra các hoạt động văn hóa, góp phần gắn kết cộng đồng dân cư địa phương.",
-    images: [dinhhoathanh],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028421/Google_Maps-10_bh3egx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028421/Google_Maps-10_bh3egx.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028433/Google_Maps-6_gg12l8.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028433/Google_Maps-6_gg12l8.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028437/Google_Maps-4_njgmby.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028439/Google_Maps-3_op5edi.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028443/Google_Maps_t4xmo2.webp",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028442/Google_Maps-2_kz8zsk.webp",
+    ],
     period: "Pháp thuộc",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
@@ -2789,7 +4640,18 @@ export const mapDataRaw = [
     description: "Chứng tích lịch sử vùng đất cửa ngõ Tây Bắc thành phố.",
     detail:
       "Đình Tân Sơn Nhì là di tích lịch sử cấp thành phố, có hơn 200 năm tuổi, tọa lạc tại số 207 đường Tân Kỳ Tân Quý, phường Tân Sơn Nhì, quận Tân Phú, TP. Hồ Chí Minh. Đình thờ Thần Hoàng Bổn Cảnh, giữ vai trò trung tâm trong đời sống văn hóa và tín ngưỡng của cư dân địa phương. Gắn liền với quá trình hình thành làng Tân Sơn Nhì xưa (thuộc tổng Dương Hòa Thượng, phủ Tân Bình, tỉnh Gia Định), đình là không gian tín ngưỡng quan trọng từ thời phong kiến. Ngày nay, với giá trị lịch sử – văn hóa đặc sắc, đình Tân Sơn Nhì không chỉ là nơi thờ tự Thần Hoàng, vị thần bảo hộ dân làng, mà còn là địa điểm sinh hoạt cộng đồng, duy trì các lễ cúng đình truyền thống, góp phần bảo tồn và phát huy bản sắc văn hóa địa phương.",
-    images: [dinhtansonnhi],
+    images: [
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028530/Youtube_-_V%C5%A9_Nh%C6%B0-10_etdrnf.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028531/Youtube_-_V%C5%A9_Nh%C6%B7-9_neennx.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028535/Youtube_-_V%C5%A9_Nh%C6%B7-8_xp54rh.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028537/Youtube_-_V%C5%A9_Nh%C6%B7-7_tbdxs2.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028542/Youtube_-_V%C5%A9_Nh%C6%B7-6_tf4vur.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028544/Youtube_-_V%C5%A9_Nh%C6%B7-5_kzenry.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028546/Youtube_-_V%C5%A9_Nh%C6%B7-4_ctfitz.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028549/Youtube_-_V%C5%A9_Nh%C6%B7-2_af03vi.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028551/Youtube_-_V%C5%A9_Nh%C6%B7_hmwv02.png",
+      "https://res.cloudinary.com/dcizhss2x/image/upload/v1772028547/Youtube_-_V%C5%A9_Nh%C6%B7-3_tuqwxp.png"
+    ],
     period: "Nguyễn",
     region: "Nam",
     province: "TP. Hồ Chí Minh",
