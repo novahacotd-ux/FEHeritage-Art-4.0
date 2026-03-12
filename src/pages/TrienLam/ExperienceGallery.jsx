@@ -86,7 +86,7 @@ const ExperienceGallery = ({
   return (
     <>
       <section
-        className="relative mx-auto my-20 max-w-6xl text-center overflow-hidden"
+        className="relative mx-auto pt-20 max-w-6xl text-center overflow-hidden"
         data-aos="zoom-in"
         data-aos-delay="200"
       >
