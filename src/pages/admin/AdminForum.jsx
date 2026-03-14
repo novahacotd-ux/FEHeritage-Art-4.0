@@ -108,6 +108,7 @@ const AdminForum = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [displayPage, setDisplayPage] = useState(1);
   const [pagination, setPagination] = useState({
     page: 1,
     limit: 10,
@@ -150,6 +151,7 @@ const AdminForum = () => {
         if (response.success) {
           setThreads(response.data);
           setPagination(response.pagination);
+          setDisplayPage(response.pagination.page);
         }
         if (!isSilent) toast.success("Đã cập nhật danh sách", { id: loadId });
       } catch (error) {
@@ -475,7 +477,7 @@ const AdminForum = () => {
                           ? "opacity-60"
                           : "opacity-100";
                       const displayIndex =
-                        (pagination.page - 1) * pagination.limit + (index + 1);
+                        (displayPage - 1) * pagination.limit + (index + 1);
                       return (
                         <tr
                           key={item.id}
