@@ -1,17 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ExperienceGallery from "./ExperienceGallery";
+import { useCallback, useEffect, useState } from "react";
 import ImageModal from "../../components/ImageModal";
 import {
-  getPosts,
-  getCommentsByPost,
   createPostComment,
   deleteComment,
+  getCommentsByPost,
+  getPosts,
   likeComment,
   unlikeComment,
-  
 } from "../../services/api";
+import ExperienceGallery from "./ExperienceGallery";
 
 const DEFAULT_PERIODS = ["Lý", "Trần", "Lê", "Nguyễn", "Hiện đại"];
 const REGIONS = ["Bắc", "Trung", "Nam"];
@@ -21,6 +20,8 @@ const TrienLam = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [loading, setLoading] = useState(true);
   const [periods, setPeriods] = useState(DEFAULT_PERIODS);
+  const [isFilterPanelVisible, setFilterPanelVisible] = useState(false);
+
   const [activeTab, setActiveTab] = useState("all");
   const [galleryFilters, setGalleryFilters] = useState({
     periods: new Set(DEFAULT_PERIODS),
@@ -58,9 +59,14 @@ const TrienLam = () => {
 
           setGalleryItems(formatted);
           const serverPeriods = [...new Set(formatted.map((i) => i.period))];
-          const mergedPeriods = [...new Set([...DEFAULT_PERIODS, ...serverPeriods])];
+          const mergedPeriods = [
+            ...new Set([...DEFAULT_PERIODS, ...serverPeriods]),
+          ];
           setPeriods(mergedPeriods);
-          setGalleryFilters(prev => ({ ...prev, periods: new Set(mergedPeriods) }));
+          setGalleryFilters((prev) => ({
+            ...prev,
+            periods: new Set(mergedPeriods),
+          }));
         }
       } catch (err) {
         console.error("Lỗi tải triển lãm:", err);
@@ -99,8 +105,10 @@ const TrienLam = () => {
       if (res?.success) {
         setGalleryItems((prev) =>
           prev.map((item) =>
-            item.id === postId ? { ...item, comments: [res.data, ...item.comments] } : item
-          )
+            item.id === postId
+              ? { ...item, comments: [res.data, ...item.comments] }
+              : item,
+          ),
         );
         return true;
       }
@@ -117,10 +125,13 @@ const TrienLam = () => {
       if (res?.success) {
         setGalleryItems((prev) =>
           prev.map((item) =>
-            item.id === postId 
-              ? { ...item, comments: item.comments.filter((c) => c.id !== commentId) }
-              : item
-          )
+            item.id === postId
+              ? {
+                  ...item,
+                  comments: item.comments.filter((c) => c.id !== commentId),
+                }
+              : item,
+          ),
         );
       }
     } catch (err) {
@@ -197,7 +208,7 @@ const TrienLam = () => {
   const handleUnlikeComment = async (commentId, postId) => {
     try {
       await unlikeComment(commentId);
-  
+
       setGalleryItems((prev) =>
         prev.map((item) => {
           // Chỉ xử lý nếu đúng bài viết (Post) chứa bình luận đó
@@ -248,10 +259,20 @@ const TrienLam = () => {
     const matchesTab = activeTab === "all" || item.type === activeTab;
     const matchesPeriod = galleryFilters.periods.has(item.period);
     const matchesRegion = galleryFilters.regions.has(item.region);
-    return matchesTab && matchesPeriod && matchesRegion && (item.year <= galleryFilters.year);
+    return (
+      matchesTab &&
+      matchesPeriod &&
+      matchesRegion &&
+      item.year <= galleryFilters.year
+    );
   });
 
-  if (loading) return <div className="flex items-center justify-center min-h-screen">Đang tải...</div>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        Đang tải...
+      </div>
+    );
 
   // For clarity with variable name, use filteredItems as in your sample
   const filteredItems = filteredGalleryItems;
@@ -267,6 +288,8 @@ const TrienLam = () => {
         setGalleryFilters={setGalleryFilters}
         filteredGalleryItems={filteredItems}
         openModal={setSelectedImageIndex}
+        isFilterPanelVisible={isFilterPanelVisible}
+        setFilterPanelVisible={setFilterPanelVisible}
       />
 
       {selectedImageIndex !== null && filteredItems[selectedImageIndex] && (
@@ -276,18 +299,24 @@ const TrienLam = () => {
           totalImages={filteredItems.length}
           onClose={() => setSelectedImageIndex(null)}
           onNext={() =>
-            setSelectedImageIndex(i =>
-              i === filteredItems.length - 1 ? 0 : i + 1
+            setSelectedImageIndex((i) =>
+              i === filteredItems.length - 1 ? 0 : i + 1,
             )
           }
           onPrev={() =>
-            setSelectedImageIndex(i =>
-              i === 0 ? filteredItems.length - 1 : i - 1
+            setSelectedImageIndex((i) =>
+              i === 0 ? filteredItems.length - 1 : i - 1,
             )
           }
-          onLoadComments={() => handleLoadComments(filteredItems[selectedImageIndex].id)}
-          onCommentSubmit={(data) => handleCommentSubmit(filteredItems[selectedImageIndex].id, data)}
-          onCommentDelete={(cId) => handleCommentDelete(cId, filteredItems[selectedImageIndex].id)}
+          onLoadComments={() =>
+            handleLoadComments(filteredItems[selectedImageIndex].id)
+          }
+          onCommentSubmit={(data) =>
+            handleCommentSubmit(filteredItems[selectedImageIndex].id, data)
+          }
+          onCommentDelete={(cId) =>
+            handleCommentDelete(cId, filteredItems[selectedImageIndex].id)
+          }
           onLikeComment={handleLikeComment}
           onUnlikeComment={handleUnlikeComment}
           onImageSelect={setSelectedImageIndex}
