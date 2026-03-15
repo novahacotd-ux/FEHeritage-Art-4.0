@@ -1,17 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ExperienceGallery from "./ExperienceGallery";
+import { useCallback, useEffect, useState } from "react";
 import ImageModal from "../../components/ImageModal";
 import {
-  getPosts,
-  getCommentsByPost,
   createPostComment,
   deleteComment,
+  getCommentsByPost,
+  getPosts,
   likeComment,
   unlikeComment,
-  
 } from "../../services/api";
+import ExperienceGallery from "./ExperienceGallery";
 
 const DEFAULT_PERIODS = ["Lý", "Trần", "Lê", "Nguyễn", "Hiện đại"];
 const REGIONS = ["Bắc", "Trung", "Nam"];
@@ -21,6 +20,8 @@ const TrienLam = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [loading, setLoading] = useState(true);
   const [periods, setPeriods] = useState(DEFAULT_PERIODS);
+  const [isFilterPanelVisible, setFilterPanelVisible] = useState(false);
+
   const [activeTab, setActiveTab] = useState("all");
   const [galleryFilters, setGalleryFilters] = useState({
     periods: new Set(DEFAULT_PERIODS),
@@ -58,9 +59,14 @@ const TrienLam = () => {
 
           setGalleryItems(formatted);
           const serverPeriods = [...new Set(formatted.map((i) => i.period))];
-          const mergedPeriods = [...new Set([...DEFAULT_PERIODS, ...serverPeriods])];
+          const mergedPeriods = [
+            ...new Set([...DEFAULT_PERIODS, ...serverPeriods]),
+          ];
           setPeriods(mergedPeriods);
-          setGalleryFilters(prev => ({ ...prev, periods: new Set(mergedPeriods) }));
+          setGalleryFilters((prev) => ({
+            ...prev,
+            periods: new Set(mergedPeriods),
+          }));
         }
       } catch (err) {
         console.error("Lỗi tải triển lãm:", err);
@@ -74,28 +80,24 @@ const TrienLam = () => {
   // 3. Sử dụng useCallback cho các hàm truyền xuống Modal để tránh vòng lặp request
   const handleLoadComments = useCallback(async (postId) => {
     if (!postId) return;
-  
     try {
       const res = await getCommentsByPost(postId);
-  
       if (res?.success) {
-        const formattedComments = res.data.map((comment) => ({
-          ...comment,
-          likeCount: comment.like_count || 0, // convert đúng field
-          isLiked: false, // backend không trả
-        }));
-  
-        setGalleryItems((prev) =>
-          prev.map((item) =>
-            item.id === postId
-              ? { ...item, comments: formattedComments }
-              : item
-          )
-        );
+        const all = res.data;
+        const rootComments = all
+          .filter(c => c.parent_comment_id === null)
+          .map(root => ({
+            ...root,
+            likeCount: root.like_count || 0,
+            // Ép buộc tìm reply nếu mảng replies của server bị rỗng
+            replies: all.filter(child => child.parent_comment_id === root.id)
+          }));
+
+        setGalleryItems(prev => prev.map(item => 
+          item.id === postId ? { ...item, comments: rootComments } : item
+        ));
       }
-    } catch (err) {
-      console.error("Lỗi tải comments:", err);
-    }
+    } catch (err) { console.error(err); }
   }, []);
   const handleCommentSubmit = useCallback(async (postId, data) => {
     try {
@@ -103,8 +105,10 @@ const TrienLam = () => {
       if (res?.success) {
         setGalleryItems((prev) =>
           prev.map((item) =>
-            item.id === postId ? { ...item, comments: [res.data, ...item.comments] } : item
-          )
+            item.id === postId
+              ? { ...item, comments: [res.data, ...item.comments] }
+              : item,
+          ),
         );
         return true;
       }
@@ -121,10 +125,13 @@ const TrienLam = () => {
       if (res?.success) {
         setGalleryItems((prev) =>
           prev.map((item) =>
-            item.id === postId 
-              ? { ...item, comments: item.comments.filter((c) => c.id !== commentId) }
-              : item
-          )
+            item.id === postId
+              ? {
+                  ...item,
+                  comments: item.comments.filter((c) => c.id !== commentId),
+                }
+              : item,
+          ),
         );
       }
     } catch (err) {
@@ -140,27 +147,13 @@ const TrienLam = () => {
         parent_comment_id: parentCommentId,
       });
   
-      const newReply = res.data;
-  
-      setGalleryItems((prev) =>
-        prev.map((item) =>
-          item.id === postId
-            ? {
-                ...item,
-                comments: item.comments.map((comment) =>
-                  comment.id === parentCommentId
-                    ? {
-                        ...comment,
-                        replies: [...(comment.replies || []), newReply],
-                      }
-                    : comment
-                ),
-              }
-            : item
-        )
-      );
+      if (res?.success) {
+        // Gọi lại hàm load phía trên để đồng bộ dữ liệu mới nhất từ server
+        await handleLoadComments(postId);
+        return res; // Trả về res để Modal biết đã gửi xong và xóa text trong ô nhập
+      }
     } catch (err) {
-      console.error("Lỗi reply:", err);
+      console.error("Lỗi khi gửi phản hồi:", err);
     }
   };
   // ─── Like/Unlike Comment ───────────────────────────────────────────────────
@@ -168,64 +161,118 @@ const TrienLam = () => {
     try {
       await likeComment(commentId);
   
-      setGalleryItems((prev) =>
-        prev.map((item) =>
-          item.id === postId
-            ? {
-                ...item,
-                comments: item.comments.map((comment) =>
-                  comment.id === commentId
-                    ? {
-                        ...comment,
-                        isLiked: true,
-                        likeCount: (comment.likeCount || 0) + 1,
-                      }
-                    : comment
-                ),
-              }
-            : item
-        )
-      );
+      setGalleryItems((prevItems) => {
+        return prevItems.map((item) => {
+          // Nếu không đúng Post, bỏ qua để tối ưu hiệu năng
+          if (item.id !== postId) return item;
+  
+          const updatedComments = item.comments.map((comment) => {
+            // 1. Kiểm tra Like cho Comment cha
+            if (comment.id === commentId) {
+              return {
+                ...comment,
+                isLiked: true,
+                // Đảm bảo cập nhật cả 2 kiểu đặt tên nếu bạn chưa chắc chắn
+                likeCount: (comment.likeCount || 0) + 1,
+                like_count: (comment.like_count || 0) + 1, 
+              };
+            }
+  
+            // 2. Kiểm tra Like cho Replies
+            if (comment.replies && comment.replies.length > 0) {
+              const updatedReplies = comment.replies.map((reply) => {
+                if (reply.id === commentId) {
+                  return {
+                    ...reply,
+                    isLiked: true,
+                    likeCount: (reply.likeCount || 0) + 1,
+                    like_count: (reply.like_count || 0) + 1,
+                  };
+                }
+                return reply;
+              });
+  
+              return { ...comment, replies: updatedReplies };
+            }
+  
+            return comment;
+          });
+  
+          return { ...item, comments: updatedComments };
+        });
+      });
     } catch (err) {
-      console.error(err);
+      console.error("Lỗi cập nhật Like:", err);
     }
   };
   const handleUnlikeComment = async (commentId, postId) => {
     try {
       await unlikeComment(commentId);
-  
+
       setGalleryItems((prev) =>
-        prev.map((item) =>
-          item.id === postId
-            ? {
-                ...item,
-                comments: item.comments.map((comment) =>
-                  comment.id === commentId
-                    ? {
-                        ...comment,
-                        isLiked: false,
-                        likeCount: Math.max((comment.likeCount || 1) - 1, 0),
-                      }
-                    : comment
-                ),
+        prev.map((item) => {
+          // Chỉ xử lý nếu đúng bài viết (Post) chứa bình luận đó
+          if (item.id !== postId) return item;
+  
+          return {
+            ...item,
+            comments: item.comments.map((comment) => {
+              // Trường hợp 1: Unlike bình luận cha
+              if (comment.id === commentId) {
+                return {
+                  ...comment,
+                  isLiked: false,
+                  // Trừ đi 1 và đảm bảo không nhỏ hơn 0
+                  likeCount: Math.max((comment.likeCount || 0) - 1, 0),
+                  like_count: Math.max((comment.like_count || 0) - 1, 0),
+                };
               }
-            : item
-        )
+  
+              // Trường hợp 2: Tìm và Unlike trong các phản hồi (replies)
+              if (comment.replies && comment.replies.length > 0) {
+                return {
+                  ...comment,
+                  replies: comment.replies.map((reply) =>
+                    reply.id === commentId
+                      ? {
+                          ...reply,
+                          isLiked: false,
+                          likeCount: Math.max((reply.likeCount || 0) - 1, 0),
+                          like_count: Math.max((reply.like_count || 0) - 1, 0),
+                        }
+                      : reply
+                  ),
+                };
+              }
+  
+              return comment;
+            }),
+          };
+        })
       );
     } catch (err) {
-      console.error(err);
+      console.error("Lỗi khi bỏ thích:", err);
     }
   };
-  
   // 4. Logic lọc Gallery
   const filteredGalleryItems = galleryItems.filter((item) => {
     const matchesTab = activeTab === "all" || item.type === activeTab;
     const matchesPeriod = galleryFilters.periods.has(item.period);
     const matchesRegion = galleryFilters.regions.has(item.region);
-    return matchesTab && matchesPeriod && matchesRegion && (item.year <= galleryFilters.year);
+    return (
+      matchesTab &&
+      matchesPeriod &&
+      matchesRegion &&
+      item.year <= galleryFilters.year
+    );
   });
 
-  if (loading) return <div className="flex items-center justify-center min-h-screen">Đang tải...</div>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        Đang tải...
+      </div>
+    );
 
   // For clarity with variable name, use filteredItems as in your sample
   const filteredItems = filteredGalleryItems;
@@ -241,6 +288,8 @@ const TrienLam = () => {
         setGalleryFilters={setGalleryFilters}
         filteredGalleryItems={filteredItems}
         openModal={setSelectedImageIndex}
+        isFilterPanelVisible={isFilterPanelVisible}
+        setFilterPanelVisible={setFilterPanelVisible}
       />
 
       {selectedImageIndex !== null && filteredItems[selectedImageIndex] && (
@@ -250,18 +299,24 @@ const TrienLam = () => {
           totalImages={filteredItems.length}
           onClose={() => setSelectedImageIndex(null)}
           onNext={() =>
-            setSelectedImageIndex(i =>
-              i === filteredItems.length - 1 ? 0 : i + 1
+            setSelectedImageIndex((i) =>
+              i === filteredItems.length - 1 ? 0 : i + 1,
             )
           }
           onPrev={() =>
-            setSelectedImageIndex(i =>
-              i === 0 ? filteredItems.length - 1 : i - 1
+            setSelectedImageIndex((i) =>
+              i === 0 ? filteredItems.length - 1 : i - 1,
             )
           }
-          onLoadComments={() => handleLoadComments(filteredItems[selectedImageIndex].id)}
-          onCommentSubmit={(data) => handleCommentSubmit(filteredItems[selectedImageIndex].id, data)}
-          onCommentDelete={(cId) => handleCommentDelete(cId, filteredItems[selectedImageIndex].id)}
+          onLoadComments={() =>
+            handleLoadComments(filteredItems[selectedImageIndex].id)
+          }
+          onCommentSubmit={(data) =>
+            handleCommentSubmit(filteredItems[selectedImageIndex].id, data)
+          }
+          onCommentDelete={(cId) =>
+            handleCommentDelete(cId, filteredItems[selectedImageIndex].id)
+          }
           onLikeComment={handleLikeComment}
           onUnlikeComment={handleUnlikeComment}
           onImageSelect={setSelectedImageIndex}

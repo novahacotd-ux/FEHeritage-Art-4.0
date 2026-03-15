@@ -69,7 +69,10 @@ export const changePassword = (data) => api.put("/auth/change-password", data);
 export const getPosts = () => api.get("/experience-posts");
 export const getPostById = (postId) => api.get(`/experience-posts/${postId}`);
 export const getPostsByUser = (userId) => api.get(`/experience-posts/user/${userId}`);
-
+export const createReply = (commentId, data) => {
+  const payload = typeof data === "string" ? { content: data } : data;
+  return api.post(`/experience-comments/${commentId}/replies`, payload);
+};
 export const createPost = (formData) =>
   api.post("/experience-posts", formData, {
     headers: { "Content-Type": "multipart/form-data" },
@@ -119,5 +122,32 @@ export const uploadFile = (formData) =>
   api.post("/upload", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
+
+// ==================== NEWS (Tin tức) ====================
+// Backend Hoppscotch: /api/news/ (có trailing slash), BASE_URL = .../api
+export const getNews = (params) => api.get("/news/", { params });
+export const getNewsById = (id) => api.get(`/news/${id}`);
+export const createNews = (data) => api.post("/news/", data);
+export const updateNews = (id, data) => api.put(`/news/${id}`, data);
+export const deleteNews = (id) => api.delete(`/news/${id}`);
+export const updateNewsStatus = (id, data) => api.patch(`/news/${id}/status`, data);
+export const uploadNewsMedia = (id, formData) =>
+  api.post(`/news/${id}/media`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+// ==================== EVENTS (Sự kiện) ====================
+export const getEvents = (params) => api.get("/events", { params });
+export const getEventById = (id) => api.get(`/events/${id}`);
+export const createEvent = (data) => api.post("/events", data);
+export const updateEvent = (id, data) => api.put(`/events/${id}`, data);
+export const deleteEvent = (id) => api.delete(`/events/${id}`);
+/** Đăng ký tham gia sự kiện (user). body: FormData (image file) hoặc JSON tùy backend */
+export const registerEvent = (eventId, data) =>
+  data instanceof FormData
+    ? api.post(`/events/${eventId}/register`, data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+    : api.post(`/events/${eventId}/register`, data);
 
 export default api;
